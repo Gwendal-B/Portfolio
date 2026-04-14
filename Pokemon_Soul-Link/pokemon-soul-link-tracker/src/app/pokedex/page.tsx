@@ -1,5 +1,5 @@
-import gen1Pokemon from "@/data/gen1-pokemon.json";
-import type { Pokemon } from "@/types/pokemon";
+import gen1Pokemon from "../../data/gen1-pokemon.json";
+import type { Pokemon } from "../../types/pokemon";
 import Link from "next/link";
 
 /*
