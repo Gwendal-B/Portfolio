@@ -245,6 +245,25 @@ function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
   setSelectedCaptureBId("");
 }
 
+function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
+  if (!capture.soulLinkId) {
+    return null;
+  }
+
+  const soulLink = soulLinks.find((link) => link.id === capture.soulLinkId);
+
+  if (!soulLink) {
+    return null;
+  }
+
+  const linkedCaptureId =
+    soulLink.pokemonAId === capture.id
+      ? soulLink.pokemonBId
+      : soulLink.pokemonAId;
+
+  return captures.find((currentCapture) => currentCapture.id === linkedCaptureId) ?? null;
+}
+
   if (isLoading) {
     return (
       <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
@@ -499,6 +518,9 @@ function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
               {captures.map((capture) => {
                 const pokemon = pokemonById.get(capture.pokemonId);
                 const player = run.players.find((currentPlayer) => currentPlayer.id === capture.playerId);
+                const linkedCapture = getLinkedCapture(capture);
+                const linkedPokemon = linkedCapture ? pokemonById.get(linkedCapture.pokemonId) : null;
+                const linkedPlayer = linkedCapture ? run.players.find((currentPlayer) => currentPlayer.id === linkedCapture.playerId) : null;
 
                 return (
                   <article
@@ -523,10 +545,46 @@ function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
                               {player ? player.name : capture.playerId}
                             </p>
 
-                            <p className="md:col-span-2">
+                            <p>
                               <span className="font-medium text-white">Zone :</span>{" "}
                               {capture.routeName}
                             </p>
+
+                            {linkedCapture ? (
+                              <div className="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-2">
+                                <p className="text-xs font-semibold uppercase tracking-wide text-purple-300">
+                                  Soul Link
+                                </p>
+
+                                <div className="mt-2 flex items-start justify-between gap-3">
+                                  <div className="space-y-1 text-sm text-zinc-200">
+                                    <p>
+                                      <span className="font-medium text-white">Partenaire :</span>{" "}
+                                      {linkedPokemon ? linkedPokemon.name : "Inconnu"}
+                                    </p>
+                                    <p>
+                                      <span className="font-medium text-white">Joueur :</span>{" "}
+                                      {linkedPlayer ? linkedPlayer.name : "Inconnu"}
+                                    </p>
+                                  </div>
+
+                                  {linkedPokemon && (
+                                    <img
+                                      src={linkedPokemon.spriteUrl}
+                                      alt={linkedPokemon.name}
+                                      className="h-24 w-24 shrink-0 object-contain shrink-0 self-start -mt-7 [image-rendering:pixelated]"
+                                    />
+                                  )}
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-zinc-500">
+                                <p className="text-xs font-semibold uppercase tracking-wide">
+                                  Soul Link
+                                </p>
+                                <p className="mt-1 text-sm">Aucun lien</p>
+                              </div>
+                            )}
                           </div>
 
                           <div className="grid gap-3 md:grid-cols-2">
@@ -566,15 +624,16 @@ function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
                                 <option value="box">Boîte</option>
                               </select>
                             </div>
-                            <div>
-                              <button
-                                type="button"
-                                onClick={() => handleDeleteCapture(capture.id)}
-                                className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
-                              >
-                                Supprimer la capture
-                              </button>
-                            </div>
+                          </div>
+
+                          <div>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteCapture(capture.id)}
+                              className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
+                            >
+                              Supprimer la capture
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -583,7 +642,7 @@ function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
                         <img
                           src={pokemon.spriteUrl}
                           alt={pokemon.name}
-                          className="h-20 w-20 object-contain"
+                          className="h-30 w-30 object-contain"
                         />
                       )}
                     </div>
