@@ -63,13 +63,13 @@ Le site permet :
 
 ### 🟢 Version 1.0 – MVP
 
-- [ ] Site informatif
-- [ ] Support de la Génération 1
-- [ ] Pokédex 1G
-- [ ] Tracker local
-- [ ] Mode Nuzlocke
-- [ ] Mode Soul Link
-- [ ] Sauvegarde via LocalStorage
+- [x] Site informatif
+- [x] Support de la Génération 1
+- [x] Pokédex 1G
+- [x] Tracker local
+- [x] Mode Nuzlocke
+- [x] Mode Soul Link
+- [x] Sauvegarde via LocalStorage
 
 ### 🟡 Version 2.0
 
