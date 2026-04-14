@@ -5,6 +5,7 @@ import Link from "next/link";
 import gen1Pokemon from "../../../../data/gen1-pokemon.json";
 import {
   addCapturedPokemon,
+  deleteCapturedPokemon,
   getCapturedPokemonsByRunId,
   getRunById,
   updateCapturedPokemon,
@@ -123,6 +124,21 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   };
 
   updateCapturedPokemon(updatedCapture);
+
+  const updatedCaptures = getCapturedPokemonsByRunId(runId);
+  setCaptures(updatedCaptures);
+}
+
+function handleDeleteCapture(captureId: string) {
+  const confirmed = window.confirm(
+    "Es-tu sûr de vouloir supprimer cette capture ?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  deleteCapturedPokemon(captureId);
 
   const updatedCaptures = getCapturedPokemonsByRunId(runId);
   setCaptures(updatedCaptures);
@@ -351,7 +367,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                     className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
                   >
                     <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                      <div>
+                      <div className="flex-1">
                         <h3 className="text-lg font-semibold text-white">
                           {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`}
                         </h3>
@@ -410,6 +426,15 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                                 <option value="team">Équipe</option>
                                 <option value="box">Boîte</option>
                               </select>
+                            </div>
+                            <div>
+                              <button
+                                type="button"
+                                onClick={() => handleDeleteCapture(capture.id)}
+                                className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
+                              >
+                                Supprimer la capture
+                              </button>
                             </div>
                           </div>
                         </div>

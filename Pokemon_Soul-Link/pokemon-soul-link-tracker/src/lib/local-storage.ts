@@ -99,6 +99,16 @@ export function updateCapturedPokemon(updatedCapture: CapturedPokemon): void {
   saveCapturedPokemons(updatedCaptures);
 }
 
+export function deleteCapturedPokemon(captureId: string): void {
+  const existingCaptures = getCapturedPokemons();
+
+  const updatedCaptures = existingCaptures.filter(
+    (capture) => capture.id !== captureId
+  );
+
+  saveCapturedPokemons(updatedCaptures);
+}
+
 export function getCapturedPokemonsByRunId(runId: string): CapturedPokemon[] {
   const captures = getCapturedPokemons();
   return captures.filter((capture) => capture.runId === runId);
