@@ -33,12 +33,25 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [lifeStatus, setLifeStatus] = useState<LifeStatus>("alive");
   const [storageStatus, setStorageStatus] = useState<StorageStatus>("team");
   const [errorMessage, setErrorMessage] = useState("");
+  const [pokemonSearch, setPokemonSearch] = useState("");
 
   const pokedex = gen1Pokemon as Pokemon[];
 
   const pokemonById = useMemo(() => {
     return new Map(pokedex.map((pokemon) => [pokemon.id, pokemon]));
   }, [pokedex]);
+
+  const filteredPokemons = useMemo(() => {
+    const search = pokemonSearch.trim().toLowerCase();
+
+    if (!search) {
+      return [];
+    }
+
+    return pokedex
+      .filter((pokemon) => pokemon.name.toLowerCase().includes(search))
+      .slice(0, 10);
+  }, [pokedex, pokemonSearch]);
 
   useEffect(() => {
     async function loadRun() {
@@ -104,6 +117,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setRouteName("");
     setLifeStatus("alive");
     setStorageStatus("team");
+    setPokemonSearch("");
   }
 
   function handleUpdateCapture(
@@ -232,21 +246,59 @@ function handleDeleteCapture(captureId: string) {
 
           <form onSubmit={handleAddCapture} className="mt-6 grid gap-4 md:grid-cols-2">
             <div>
-              <label htmlFor="pokemonId" className="mb-2 block text-sm font-medium">
-                Pokémon
+              <label htmlFor="pokemonSearch" className="mb-2 block text-sm font-medium">
+                Rechercher un Pokémon
               </label>
-              <select
-                id="pokemonId"
-                value={selectedPokemonId}
-                onChange={(event) => setSelectedPokemonId(Number(event.target.value))}
+
+              <input
+                id="pokemonSearch"
+                type="text"
+                value={pokemonSearch}
+                onChange={(event) => setPokemonSearch(event.target.value)}
+                placeholder="Ex : Bulbizarre"
                 className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              >
-                {pokedex.map((pokemon) => (
-                  <option key={pokemon.id} value={pokemon.id}>
-                    #{String(pokemon.dexNumber).padStart(3, "0")} - {pokemon.name}
-                  </option>
-                ))}
-              </select>
+              />
+
+              <div className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-3 text-sm text-zinc-400">
+                Pokémon sélectionné :{" "}
+                <span className="font-medium text-white">
+                  {pokemonById.get(selectedPokemonId)?.name ?? "Aucun"}
+                </span>
+              </div>
+
+              {pokemonSearch.trim() !== "" && (
+                <div className="mt-3 max-h-48 overflow-y-auto rounded-lg border border-zinc-800 bg-zinc-950">
+                  {filteredPokemons.length === 0 ? (
+                    <p className="px-4 py-3 text-sm text-zinc-400">
+                      Aucun Pokémon trouvé.
+                    </p>
+                  ) : (
+                    filteredPokemons.map((pokemon) => (
+                      <button
+                        key={pokemon.id}
+                        type="button"
+                        onClick={() => {
+                          setSelectedPokemonId(pokemon.id);
+                          setPokemonSearch("");
+                        }}
+                        className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-zinc-900 ${
+                          selectedPokemonId === pokemon.id
+                            ? "bg-zinc-900 text-white"
+                            : "text-zinc-300"
+                        }`}
+                      >
+                        <span>
+                          #{String(pokemon.dexNumber).padStart(3, "0")} - {pokemon.name}
+                        </span>
+
+                        {selectedPokemonId === pokemon.id && (
+                          <span className="text-xs text-blue-400">Sélectionné</span>
+                        )}
+                      </button>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
 
             <div>
