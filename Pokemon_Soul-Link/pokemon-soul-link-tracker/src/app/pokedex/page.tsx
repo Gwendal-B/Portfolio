@@ -1,51 +1,85 @@
+"use client";
+
+import { useState } from "react";
 import gen1Pokemon from "../../data/gen1-pokemon.json";
 import type { Pokemon } from "../../types/pokemon";
 import Link from "next/link";
 
-/*
-  Cette page affiche la liste des Pokémon de la 1G.
-
-  Important :
-  - TSX = TypeScript + JSX
-  - JSX = syntaxe proche du HTML qu'on écrit dans React
-  - TypeScript = permet de typer les données
-*/
-
 export default function PokedexPage() {
-  /*
-    Ici, on indique à TypeScript :
-    "gen1Pokemon doit être considéré comme une liste de Pokemon"
-    
-    Le "as Pokemon[]" sert de conversion de type.
-  */
   const pokemons = gen1Pokemon as Pokemon[];
+
+  // État pour la recherche
+  const [search, setSearch] = useState("");
+
+  // État pour le filtre par type
+  const [selectedType, setSelectedType] = useState("Tous");
+
+  // Récupération de tous les types uniques
+  const types = [
+    "Tous",
+    ...Array.from(new Set(pokemons.flatMap((p) => p.types))),
+  ];
+
+  // Filtrage des Pokémon
+  const filteredPokemons = pokemons.filter((pokemon) => {
+    const matchesSearch = pokemon.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchesType =
+      selectedType === "Tous" ||
+      pokemon.types.includes(selectedType);
+
+    return matchesSearch && matchesType;
+  });
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white px-6 py-10">
       <div className="mx-auto max-w-6xl">
+        {/* En-tête */}
         <header className="mb-8">
-          <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">
-            Pokédex
-          </p>
-
-          <h1 className="mt-2 text-4xl font-bold">Pokédex 1G</h1>
-
-          <p className="mt-3 max-w-2xl text-zinc-300">
-            Voici la liste des Pokémon disponibles pour la première génération.
-            Cette page est volontairement simple pour constituer une base propre
-            de ton projet.
+          <h1 className="text-4xl font-bold">Pokédex – Génération 1</h1>
+          <p className="mt-2 text-zinc-400">
+            Explore les Pokémon et filtre-les par nom ou par type.
           </p>
         </header>
 
-        <section className="mb-6">
-          <p className="text-sm text-zinc-400">
-            Nombre de Pokémon affichés :{" "}
-            <span className="font-semibold text-white">{pokemons.length}</span>
-          </p>
+        {/* Barre de recherche et filtre */}
+        <section className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          {/* Recherche */}
+          <input
+            type="text"
+            placeholder="Rechercher un Pokémon..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full md:w-1/2 rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          {/* Filtre par type */}
+          <select
+            value={selectedType}
+            onChange={(e) => setSelectedType(e.target.value)}
+            className="w-full md:w-1/4 rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            {types.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
         </section>
 
+        {/* Nombre de résultats */}
+        <p className="mb-4 text-sm text-zinc-400">
+          Pokémon affichés :{" "}
+          <span className="font-semibold text-white">
+            {filteredPokemons.length}
+          </span>
+        </p>
+
+        {/* Grille des Pokémon */}
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {pokemons.map((pokemon) => (
+          {filteredPokemons.map((pokemon) => (
             <Link
               key={pokemon.id}
               href={`/pokedex/${pokemon.id}`}
@@ -57,7 +91,6 @@ export default function PokedexPage() {
                     <p className="text-sm text-zinc-400">
                       #{String(pokemon.dexNumber).padStart(3, "0")}
                     </p>
-
                     <h2 className="mt-1 text-xl font-semibold">
                       {pokemon.name}
                     </h2>
@@ -70,6 +103,7 @@ export default function PokedexPage() {
                   />
                 </div>
 
+                {/* Types */}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {pokemon.types.map((type) => (
                     <span
@@ -81,16 +115,13 @@ export default function PokedexPage() {
                   ))}
                 </div>
 
+                {/* Statistiques */}
                 <div className="mt-4 grid grid-cols-2 gap-2 text-sm text-zinc-300">
-                  <p>HP : {pokemon.stats.hp}</p>
-                  <p>ATK : {pokemon.stats.attack}</p>
+                  <p>PV : {pokemon.stats.hp}</p>
+                  <p>ATQ : {pokemon.stats.attack}</p>
                   <p>DEF : {pokemon.stats.defense}</p>
                   <p>VIT : {pokemon.stats.speed}</p>
                 </div>
-
-                <p className="mt-4 text-sm text-zinc-400">
-                  Taux de capture : {pokemon.captureRate}
-                </p>
               </article>
             </Link>
           ))}

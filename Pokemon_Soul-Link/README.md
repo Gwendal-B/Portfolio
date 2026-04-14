@@ -31,6 +31,7 @@ Le site permet :
   - Nuzlocke
   - Soul Link
   - Randomizer
+
 - Explication des règles et variantes
 - Support progressif des générations
 
@@ -137,6 +138,12 @@ npm run dev
 📸 Aperçu (à venir)
 
 Des captures d’écran et maquettes seront ajoutées prochainement.
+
+## 📚 Documentation
+
+- 📘 Cahier des charges : `Docs/Cahier des charges.md`
+- 🗺️ V1 du projet : `Docs/V1 du projet.md`
+- 📖 Lexique officiel : `Docs/Lexique.md`
 
 🤝 Contribution
 

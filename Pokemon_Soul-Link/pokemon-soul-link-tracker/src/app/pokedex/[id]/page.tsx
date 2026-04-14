@@ -104,10 +104,15 @@ export default async function PokemonDetailPage({
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="rounded-xl bg-zinc-800/50 p-4">
-              <h2 className="mb-3 text-lg font-semibold">Statistiques</h2>
+              <h2 className="mb-3 text-lg font-semibold">
+                Statistiques de base
+              </h2>
+              <p className="mb-3 text-sm text-zinc-400">
+                Valeurs fixes propres à chaque espèce de Pokémon.
+              </p>
 
               <div className="space-y-2 text-zinc-300">
-                <p>HP : {pokemon.stats.hp}</p>
+                <p>PV : {pokemon.stats.hp}</p>
                 <p>Attaque : {pokemon.stats.attack}</p>
                 <p>Défense : {pokemon.stats.defense}</p>
                 <p>Vitesse : {pokemon.stats.speed}</p>
