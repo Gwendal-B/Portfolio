@@ -89,6 +89,16 @@ export function addCapturedPokemon(capture: CapturedPokemon): void {
   saveCapturedPokemons(updatedCaptures);
 }
 
+export function updateCapturedPokemon(updatedCapture: CapturedPokemon): void {
+  const existingCaptures = getCapturedPokemons();
+
+  const updatedCaptures = existingCaptures.map((capture) =>
+    capture.id === updatedCapture.id ? updatedCapture : capture
+  );
+
+  saveCapturedPokemons(updatedCaptures);
+}
+
 export function getCapturedPokemonsByRunId(runId: string): CapturedPokemon[] {
   const captures = getCapturedPokemons();
   return captures.filter((capture) => capture.runId === runId);

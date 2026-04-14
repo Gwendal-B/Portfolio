@@ -3,7 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import gen1Pokemon from "../../../../data/gen1-pokemon.json";
-import { addCapturedPokemon, getCapturedPokemonsByRunId, getRunById } from "../../../../lib/local-storage";
+import {
+  addCapturedPokemon,
+  getCapturedPokemonsByRunId,
+  getRunById,
+  updateCapturedPokemon,
+} from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
 import type { Pokemon } from "../../../../types/pokemon";
@@ -99,6 +104,29 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setLifeStatus("alive");
     setStorageStatus("team");
   }
+
+  function handleUpdateCapture(
+  captureId: string,
+  field: "lifeStatus" | "storageStatus",
+  value: LifeStatus | StorageStatus
+) {
+  const captureToUpdate = captures.find((capture) => capture.id === captureId);
+
+  if (!captureToUpdate) {
+    return;
+  }
+
+  const updatedCapture: CapturedPokemon = {
+    ...captureToUpdate,
+    [field]: value,
+    updatedAt: new Date().toISOString(),
+  };
+
+  updateCapturedPokemon(updatedCapture);
+
+  const updatedCaptures = getCapturedPokemonsByRunId(runId);
+  setCaptures(updatedCaptures);
+}
 
   if (isLoading) {
     return (
@@ -328,27 +356,62 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                           {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`}
                         </h3>
 
-                        <div className="mt-2 space-y-1 text-sm text-zinc-300">
-                          <p>
-                            <span className="font-medium text-white">Surnom :</span>{" "}
-                            {capture.nickname || "Aucun"}
-                          </p>
-                          <p>
-                            <span className="font-medium text-white">Joueur :</span>{" "}
-                            {player ? player.name : capture.playerId}
-                          </p>
-                          <p>
-                            <span className="font-medium text-white">Zone :</span>{" "}
-                            {capture.routeName}
-                          </p>
-                          <p>
-                            <span className="font-medium text-white">Statut :</span>{" "}
-                            {capture.lifeStatus}
-                          </p>
-                          <p>
-                            <span className="font-medium text-white">Emplacement :</span>{" "}
-                            {capture.storageStatus}
-                          </p>
+                        <div className="mt-2 space-y-4 text-sm text-zinc-300">
+                          <div className="grid gap-3 md:grid-cols-2">
+                            <p>
+                              <span className="font-medium text-white">Surnom :</span>{" "}
+                              {capture.nickname || "Aucun"}
+                            </p>
+
+                            <p>
+                              <span className="font-medium text-white">Joueur :</span>{" "}
+                              {player ? player.name : capture.playerId}
+                            </p>
+
+                            <p className="md:col-span-2">
+                              <span className="font-medium text-white">Zone :</span>{" "}
+                              {capture.routeName}
+                            </p>
+                          </div>
+
+                          <div className="grid gap-3 md:grid-cols-2">
+                            <div>
+                              <label className="mb-1 block font-medium text-white">Statut</label>
+                              <select
+                                value={capture.lifeStatus}
+                                onChange={(event) =>
+                                  handleUpdateCapture(
+                                    capture.id,
+                                    "lifeStatus",
+                                    event.target.value as LifeStatus
+                                  )
+                                }
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
+                              >
+                                <option value="alive">Vivant</option>
+                                <option value="dead">Mort</option>
+                                <option value="unusable">Inutilisable</option>
+                              </select>
+                            </div>
+
+                            <div>
+                              <label className="mb-1 block font-medium text-white">Emplacement</label>
+                              <select
+                                value={capture.storageStatus}
+                                onChange={(event) =>
+                                  handleUpdateCapture(
+                                    capture.id,
+                                    "storageStatus",
+                                    event.target.value as StorageStatus
+                                  )
+                                }
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
+                              >
+                                <option value="team">Équipe</option>
+                                <option value="box">Boîte</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
