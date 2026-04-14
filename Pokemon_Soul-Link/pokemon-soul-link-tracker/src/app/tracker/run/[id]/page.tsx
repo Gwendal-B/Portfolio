@@ -77,6 +77,14 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     ? captures.filter((capture) => capture.playerId === playerTwo.id)
     : [];
 
+  const playerOneTeam = playerOneCaptures.filter(
+    (capture) => capture.storageStatus === "team"
+  );
+
+  const playerTwoTeam = playerTwoCaptures.filter(
+    (capture) => capture.storageStatus === "team"
+  );
+
   useEffect(() => {
     async function loadRun() {
       const resolvedParams = await params;
@@ -503,11 +511,58 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       </article>
     );
   }
+
+  function renderTeamPanel(
+    title: string,
+    teamCaptures: CapturedPokemon[]
+  ) {
+    return (
+      <div className="sticky top-6 rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
+        <h2 className="text-lg font-semibold text-white">{title}</h2>
+
+        {teamCaptures.length === 0 ? (
+          <p className="mt-3 text-sm text-zinc-400">Aucun Pokémon en équipe.</p>
+        ) : (
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            {teamCaptures.map((capture) => {
+              const pokemon = pokemonById.get(capture.pokemonId);
+
+              return (
+                <div
+                  key={capture.id}
+                  className="rounded-lg border border-zinc-800 bg-zinc-950 p-2"
+                >
+                  {pokemon ? (
+                    <img
+                      src={pokemon.spriteUrl}
+                      alt={pokemon.name}
+                      className="mx-auto h-16 w-16 object-contain [image-rendering:pixelated]"
+                    />
+                  ) : (
+                    <div className="flex h-16 items-center justify-center text-xs text-zinc-500">
+                      Inconnu
+                    </div>
+                  )}
+
+                  <p className="mt-2 truncate text-center text-xs text-zinc-300">
+                    {capture.nickname || pokemon?.name || "Pokémon"}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   if (isLoading) {
     return (
       <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)_220px]">
           <p className="text-zinc-400">Chargement de la run...</p>
+          </div>
         </div>
       </main>
     );
@@ -516,7 +571,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   if (!run) {
     return (
       <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)_220px]">
           <p className="text-zinc-400">Run introuvable.</p>
 
           <Link
@@ -525,6 +581,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
           >
             Créer une nouvelle run
           </Link>
+          </div>
         </div>
       </main>
     );
@@ -532,432 +589,446 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-5xl">
-        <header className="mb-8">
-          <Link
-            href="/tracker/new"
-            className="text-sm text-zinc-400 hover:text-white"
-          >
-            ← Retour à la création de run
-          </Link>
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)_220px]">
+          <aside className="hidden xl:block">
+            {run.mode === "soul-link" && playerOne
+              ? renderTeamPanel(playerOne.name, playerOneTeam)
+              : null}
+          </aside>
+          <div>
+            <header className="mb-8">
+              <Link
+                href="/tracker/new"
+                className="text-sm text-zinc-400 hover:text-white"
+              >
+                ← Retour à la création de run
+              </Link>
 
-          <p className="mt-6 text-sm uppercase tracking-[0.2em] text-zinc-400">
-            Tracker
-          </p>
-
-          <h1 className="mt-2 text-4xl font-bold">{run.name}</h1>
-
-          <p className="mt-3 text-zinc-400">
-            Tu peux maintenant ajouter et suivre les Pokémon capturés dans cette run.
-          </p>
-        </header>
-
-        <section className="grid gap-6 md:grid-cols-2">
-          <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-            <h2 className="text-xl font-semibold">Informations générales</h2>
-
-            <div className="mt-4 space-y-3 text-zinc-300">
-              <p>
-                <span className="font-medium text-white">Nom :</span> {run.name}
+              <p className="mt-6 text-sm uppercase tracking-[0.2em] text-zinc-400">
+                Tracker
               </p>
-              <p>
-                <span className="font-medium text-white">Mode :</span> {run.mode}
+
+              <h1 className="mt-2 text-4xl font-bold">{run.name}</h1>
+
+              <p className="mt-3 text-zinc-400">
+                Tu peux maintenant ajouter et suivre les Pokémon capturés dans cette run.
               </p>
-              <p>
-                <span className="font-medium text-white">Jeu :</span> {run.game}
-              </p>
-              <p>
-                <span className="font-medium text-white">Génération :</span> {run.generation}
-              </p>
-            </div>
-          </article>
+            </header>
 
-          <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-            <h2 className="text-xl font-semibold">Joueurs</h2>
+            <section className="grid gap-6 md:grid-cols-2">
+              <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+                <h2 className="text-xl font-semibold">Informations générales</h2>
 
-            <div className="mt-4 space-y-3 text-zinc-300">
-              {run.players.map((player) => (
-                <p key={player.id}>
-                  <span className="font-medium text-white">{player.id} :</span>{" "}
-                  {player.name}
-                </p>
-              ))}
-            </div>
-          </article>
-        </section>
+                <div className="mt-4 space-y-3 text-zinc-300">
+                  <p>
+                    <span className="font-medium text-white">Nom :</span> {run.name}
+                  </p>
+                  <p>
+                    <span className="font-medium text-white">Mode :</span> {run.mode}
+                  </p>
+                  <p>
+                    <span className="font-medium text-white">Jeu :</span> {run.game}
+                  </p>
+                  <p>
+                    <span className="font-medium text-white">Génération :</span> {run.generation}
+                  </p>
+                </div>
+              </article>
 
-        <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-          <h2 className="text-xl font-semibold">Ajouter une capture</h2>
+              <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+                <h2 className="text-xl font-semibold">Joueurs</h2>
 
-          <form onSubmit={handleAddCapture} className="mt-6 grid gap-4 md:grid-cols-2">
-            <div>
-              <label htmlFor="pokemonSearch" className="mb-2 block text-sm font-medium">
-                Rechercher un Pokémon
-              </label>
-
-              <input
-                id="pokemonSearch"
-                type="text"
-                value={pokemonSearch}
-                onChange={(event) => setPokemonSearch(event.target.value)}
-                placeholder="Ex : Bulbizarre"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              />
-
-              <div className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-3 text-sm text-zinc-400">
-                Pokémon sélectionné :{" "}
-                <span className="font-medium text-white">
-                  {pokemonById.get(selectedPokemonId)?.name ?? "Aucun"}
-                </span>
-              </div>
-
-              {pokemonSearch.trim() !== "" && (
-                <div className="mt-3 max-h-48 overflow-y-auto rounded-lg border border-zinc-800 bg-zinc-950">
-                  {filteredPokemons.length === 0 ? (
-                    <p className="px-4 py-3 text-sm text-zinc-400">
-                      Aucun Pokémon trouvé.
+                <div className="mt-4 space-y-3 text-zinc-300">
+                  {run.players.map((player) => (
+                    <p key={player.id}>
+                      <span className="font-medium text-white">{player.id} :</span>{" "}
+                      {player.name}
                     </p>
-                  ) : (
-                    filteredPokemons.map((pokemon) => (
-                      <button
-                        key={pokemon.id}
-                        type="button"
-                        onClick={() => {
-                          setSelectedPokemonId(pokemon.id);
-                          setPokemonSearch("");
-                        }}
-                        className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-zinc-900 ${
-                          selectedPokemonId === pokemon.id
-                            ? "bg-zinc-900 text-white"
-                            : "text-zinc-300"
-                        }`}
-                      >
-                        <span>
-                          #{String(pokemon.dexNumber).padStart(3, "0")} - {pokemon.name}
-                        </span>
+                  ))}
+                </div>
+              </article>
+            </section>
 
-                        {selectedPokemonId === pokemon.id && (
-                          <span className="text-xs text-blue-400">Sélectionné</span>
-                        )}
-                      </button>
-                    ))
+            <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+              <h2 className="text-xl font-semibold">Ajouter une capture</h2>
+
+              <form onSubmit={handleAddCapture} className="mt-6 grid gap-4 md:grid-cols-2">
+                <div>
+                  <label htmlFor="pokemonSearch" className="mb-2 block text-sm font-medium">
+                    Rechercher un Pokémon
+                  </label>
+
+                  <input
+                    id="pokemonSearch"
+                    type="text"
+                    value={pokemonSearch}
+                    onChange={(event) => setPokemonSearch(event.target.value)}
+                    placeholder="Ex : Bulbizarre"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                  />
+
+                  <div className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-3 text-sm text-zinc-400">
+                    Pokémon sélectionné :{" "}
+                    <span className="font-medium text-white">
+                      {pokemonById.get(selectedPokemonId)?.name ?? "Aucun"}
+                    </span>
+                  </div>
+
+                  {pokemonSearch.trim() !== "" && (
+                    <div className="mt-3 max-h-48 overflow-y-auto rounded-lg border border-zinc-800 bg-zinc-950">
+                      {filteredPokemons.length === 0 ? (
+                        <p className="px-4 py-3 text-sm text-zinc-400">
+                          Aucun Pokémon trouvé.
+                        </p>
+                      ) : (
+                        filteredPokemons.map((pokemon) => (
+                          <button
+                            key={pokemon.id}
+                            type="button"
+                            onClick={() => {
+                              setSelectedPokemonId(pokemon.id);
+                              setPokemonSearch("");
+                            }}
+                            className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-zinc-900 ${
+                              selectedPokemonId === pokemon.id
+                                ? "bg-zinc-900 text-white"
+                                : "text-zinc-300"
+                            }`}
+                          >
+                            <span>
+                              #{String(pokemon.dexNumber).padStart(3, "0")} - {pokemon.name}
+                            </span>
+
+                            {selectedPokemonId === pokemon.id && (
+                              <span className="text-xs text-blue-400">Sélectionné</span>
+                            )}
+                          </button>
+                        ))
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
-            </div>
 
-            <div>
-              <label htmlFor="nickname" className="mb-2 block text-sm font-medium">
-                Surnom
-              </label>
-              <input
-                id="nickname"
-                type="text"
-                value={nickname}
-                onChange={(event) => setNickname(event.target.value)}
-                placeholder="Ex : Sparky"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="playerId" className="mb-2 block text-sm font-medium">
-                Joueur
-              </label>
-              <select
-                id="playerId"
-                value={selectedPlayerId}
-                onChange={(event) => setSelectedPlayerId(event.target.value)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              >
-                {run.players.map((player) => (
-                  <option key={player.id} value={player.id}>
-                    {player.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="routeName" className="mb-2 block text-sm font-medium">
-                Zone de capture
-              </label>
-              <input
-                id="routeName"
-                type="text"
-                value={routeName}
-                onChange={(event) => setRouteName(event.target.value)}
-                placeholder="Ex : Route 2"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="lifeStatus" className="mb-2 block text-sm font-medium">
-                Statut
-              </label>
-              <select
-                id="lifeStatus"
-                value={lifeStatus}
-                onChange={(event) => setLifeStatus(event.target.value as LifeStatus)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              >
-                <option value="alive">Vivant</option>
-                <option value="dead">Mort</option>
-                <option value="unusable">Inutilisable</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="storageStatus" className="mb-2 block text-sm font-medium">
-                Emplacement
-              </label>
-              <select
-                id="storageStatus"
-                value={storageStatus}
-                onChange={(event) => setStorageStatus(event.target.value as StorageStatus)}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-              >
-                <option value="team">Équipe</option>
-                <option value="box">Boîte</option>
-              </select>
-            </div>
-
-            {errorMessage && (
-              <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-                {errorMessage}
-              </p>
-            )}
-
-            <div className="md:col-span-2">
-              <button
-                type="submit"
-                className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
-              >
-                Ajouter la capture
-              </button>
-            </div>
-          </form>
-        </section>
-
-        <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-xl font-semibold">Captures</h2>
-            <p className="text-sm text-zinc-400">
-              Total : <span className="font-medium text-white">{captures.length}</span>
-            </p>
-          </div>
-
-          {captures.length === 0 ? (
-            <p className="mt-4 text-zinc-400">
-              Aucune capture enregistrée pour le moment.
-            </p>
-          ) : run.mode === "soul-link" ? (
-            <div className="mt-6 grid gap-6 lg:grid-cols-2">
-              <div>
-                <h3 className="mb-4 text-lg font-semibold text-white">
-                  {playerOne ? playerOne.name : "Joueur 1"}
-                </h3>
-
-                <div className="space-y-4">
-                  {playerOneCaptures.length === 0 ? (
-                    <p className="text-sm text-zinc-400">Aucune capture.</p>
-                  ) : (
-                    playerOneCaptures.map((capture) => renderCaptureCard(capture))
-                  )}
+                <div>
+                  <label htmlFor="nickname" className="mb-2 block text-sm font-medium">
+                    Surnom
+                  </label>
+                  <input
+                    id="nickname"
+                    type="text"
+                    value={nickname}
+                    onChange={(event) => setNickname(event.target.value)}
+                    placeholder="Ex : Sparky"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                  />
                 </div>
-              </div>
 
-              <div>
-                <h3 className="mb-4 text-lg font-semibold text-white">
-                  {playerTwo ? playerTwo.name : "Joueur 2"}
-                </h3>
-
-                <div className="space-y-4">
-                  {playerTwoCaptures.length === 0 ? (
-                    <p className="text-sm text-zinc-400">Aucune capture.</p>
-                  ) : (
-                    playerTwoCaptures.map((capture) => renderCaptureCard(capture))
-                  )}
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="mt-6 space-y-4">
-              {captures.map((capture) => renderCaptureCard(capture))}
-            </div>
-          )}
-        </section>
-        {run.mode === "soul-link" && (
-          <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-            <h2 className="text-xl font-semibold">Créer un lien Soul Link</h2>
-
-            <p className="mt-3 text-zinc-400">
-              Lie manuellement deux captures appartenant à deux joueurs différents.
-            </p>
-
-            <form
-              onSubmit={handleCreateSoulLink}
-              className="mt-6 grid gap-4 md:grid-cols-2"
-            >
-              <div>
-                <label
-                  htmlFor="selectedCaptureAId"
-                  className="mb-2 block text-sm font-medium"
-                >
-                  Capture du joueur A
-                </label>
-
-                <select
-                  id="selectedCaptureAId"
-                  value={selectedCaptureAId}
-                  onChange={(event) => setSelectedCaptureAId(event.target.value)}
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                >
-                  <option value="">Sélectionner une capture</option>
-                  {availableSoulLinkCaptures.map((capture) => {
-                    const pokemon = pokemonById.get(capture.pokemonId);
-                    const player = run.players.find(
-                      (currentPlayer) => currentPlayer.id === capture.playerId
-                    );
-
-                    return (
-                      <option key={capture.id} value={capture.id}>
-                        {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
-                        {player ? player.name : capture.playerId} — {capture.routeName}
+                <div>
+                  <label htmlFor="playerId" className="mb-2 block text-sm font-medium">
+                    Joueur
+                  </label>
+                  <select
+                    id="playerId"
+                    value={selectedPlayerId}
+                    onChange={(event) => setSelectedPlayerId(event.target.value)}
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                  >
+                    {run.players.map((player) => (
+                      <option key={player.id} value={player.id}>
+                        {player.name}
                       </option>
-                    );
-                  })}
-                </select>
-              </div>
+                    ))}
+                  </select>
+                </div>
 
-              <div>
-                <label
-                  htmlFor="selectedCaptureBId"
-                  className="mb-2 block text-sm font-medium"
-                >
-                  Capture du joueur B
-                </label>
+                <div>
+                  <label htmlFor="routeName" className="mb-2 block text-sm font-medium">
+                    Zone de capture
+                  </label>
+                  <input
+                    id="routeName"
+                    type="text"
+                    value={routeName}
+                    onChange={(event) => setRouteName(event.target.value)}
+                    placeholder="Ex : Route 2"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                  />
+                </div>
 
-                <select
-                  id="selectedCaptureBId"
-                  value={selectedCaptureBId}
-                  onChange={(event) => setSelectedCaptureBId(event.target.value)}
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                >
-                  <option value="">Sélectionner une capture</option>
-                  {availableSoulLinkCaptures.map((capture) => {
-                    const pokemon = pokemonById.get(capture.pokemonId);
-                    const player = run.players.find(
-                      (currentPlayer) => currentPlayer.id === capture.playerId
-                    );
+                <div>
+                  <label htmlFor="lifeStatus" className="mb-2 block text-sm font-medium">
+                    Statut
+                  </label>
+                  <select
+                    id="lifeStatus"
+                    value={lifeStatus}
+                    onChange={(event) => setLifeStatus(event.target.value as LifeStatus)}
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                  >
+                    <option value="alive">Vivant</option>
+                    <option value="dead">Mort</option>
+                    <option value="unusable">Inutilisable</option>
+                  </select>
+                </div>
 
-                    return (
-                      <option key={capture.id} value={capture.id}>
-                        {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
-                        {player ? player.name : capture.playerId} — {capture.routeName}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+                <div>
+                  <label htmlFor="storageStatus" className="mb-2 block text-sm font-medium">
+                    Emplacement
+                  </label>
+                  <select
+                    id="storageStatus"
+                    value={storageStatus}
+                    onChange={(event) => setStorageStatus(event.target.value as StorageStatus)}
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                  >
+                    <option value="team">Équipe</option>
+                    <option value="box">Boîte</option>
+                  </select>
+                </div>
 
-              {soulLinkErrorMessage && (
-                <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-                  {soulLinkErrorMessage}
+                {errorMessage && (
+                  <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                    {errorMessage}
+                  </p>
+                )}
+
+                <div className="md:col-span-2">
+                  <button
+                    type="submit"
+                    className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
+                  >
+                    Ajouter la capture
+                  </button>
+                </div>
+              </form>
+            </section>
+
+            <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+              <div className="flex items-center justify-between gap-4">
+                <h2 className="text-xl font-semibold">Captures</h2>
+                <p className="text-sm text-zinc-400">
+                  Total : <span className="font-medium text-white">{captures.length}</span>
                 </p>
+              </div>
+
+              {captures.length === 0 ? (
+                <p className="mt-4 text-zinc-400">
+                  Aucune capture enregistrée pour le moment.
+                </p>
+              ) : run.mode === "soul-link" ? (
+                <div className="mt-6 grid gap-6 lg:grid-cols-2">
+                  <div>
+                    <h3 className="mb-4 text-lg font-semibold text-white">
+                      {playerOne ? playerOne.name : "Joueur 1"}
+                    </h3>
+
+                    <div className="space-y-4">
+                      {playerOneCaptures.length === 0 ? (
+                        <p className="text-sm text-zinc-400">Aucune capture.</p>
+                      ) : (
+                        playerOneCaptures.map((capture) => renderCaptureCard(capture))
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-4 text-lg font-semibold text-white">
+                      {playerTwo ? playerTwo.name : "Joueur 2"}
+                    </h3>
+
+                    <div className="space-y-4">
+                      {playerTwoCaptures.length === 0 ? (
+                        <p className="text-sm text-zinc-400">Aucune capture.</p>
+                      ) : (
+                        playerTwoCaptures.map((capture) => renderCaptureCard(capture))
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-6 space-y-4">
+                  {captures.map((capture) => renderCaptureCard(capture))}
+                </div>
               )}
+            </section>
+            {run.mode === "soul-link" && (
+              <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+                <h2 className="text-xl font-semibold">Créer un lien Soul Link</h2>
 
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  className="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition hover:bg-purple-700"
+                <p className="mt-3 text-zinc-400">
+                  Lie manuellement deux captures appartenant à deux joueurs différents.
+                </p>
+
+                <form
+                  onSubmit={handleCreateSoulLink}
+                  className="mt-6 grid gap-4 md:grid-cols-2"
                 >
-                  Créer le lien
-                </button>
-              </div>
-            </form>
-          </section>
-        )}
-        {run.mode === "soul-link" && (
-          <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="text-xl font-semibold">Liens Soul Link</h2>
-              <p className="text-sm text-zinc-400">
-                Total : <span className="font-medium text-white">{soulLinks.length}</span>
-              </p>
-            </div>
-
-            {soulLinks.length === 0 ? (
-              <p className="mt-4 text-zinc-400">
-                Aucun lien Soul Link enregistré pour le moment.
-              </p>
-            ) : (
-              <div className="mt-6 space-y-4">
-                {soulLinks.map((soulLink) => {
-                  const captureA = captures.find((capture) => capture.id === soulLink.pokemonAId);
-                  const captureB = captures.find((capture) => capture.id === soulLink.pokemonBId);
-
-                  const pokemonA = captureA ? pokemonById.get(captureA.pokemonId) : null;
-                  const pokemonB = captureB ? pokemonById.get(captureB.pokemonId) : null;
-
-                  const playerA = captureA
-                    ? run.players.find((player) => player.id === captureA.playerId)
-                    : null;
-
-                  const playerB = captureB
-                    ? run.players.find((player) => player.id === captureB.playerId)
-                    : null;
-
-                  return (
-                    <article
-                      key={soulLink.id}
-                      className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
+                  <div>
+                    <label
+                      htmlFor="selectedCaptureAId"
+                      className="mb-2 block text-sm font-medium"
                     >
-                      <p className="text-sm text-zinc-400">
-                        Lien actif : {soulLink.active ? "Oui" : "Non"}
-                      </p>
+                      Capture du joueur A
+                    </label>
 
-                      <div className="mt-3 grid gap-4 md:grid-cols-2">
-                        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-                          <p className="font-semibold text-white">
-                            {pokemonA ? pokemonA.name : "Capture inconnue"}
-                          </p>
-                          <p className="mt-2 text-sm text-zinc-300">
-                            Joueur : {playerA ? playerA.name : "Inconnu"}
-                          </p>
-                          <p className="text-sm text-zinc-300">
-                            Zone : {captureA ? captureA.routeName : "Inconnue"}
-                          </p>
-                        </div>
+                    <select
+                      id="selectedCaptureAId"
+                      value={selectedCaptureAId}
+                      onChange={(event) => setSelectedCaptureAId(event.target.value)}
+                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                    >
+                      <option value="">Sélectionner une capture</option>
+                      {availableSoulLinkCaptures.map((capture) => {
+                        const pokemon = pokemonById.get(capture.pokemonId);
+                        const player = run.players.find(
+                          (currentPlayer) => currentPlayer.id === capture.playerId
+                        );
 
-                        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-                          <p className="font-semibold text-white">
-                            {pokemonB ? pokemonB.name : "Capture inconnue"}
-                          </p>
-                          <p className="mt-2 text-sm text-zinc-300">
-                            Joueur : {playerB ? playerB.name : "Inconnu"}
-                          </p>
-                          <p className="text-sm text-zinc-300">
-                            Zone : {captureB ? captureB.routeName : "Inconnue"}
-                          </p>
-                        </div>
-                      </div>
+                        return (
+                          <option key={capture.id} value={capture.id}>
+                            {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
+                            {player ? player.name : capture.playerId} — {capture.routeName}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
 
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteSoulLink(soulLink.id)}
-                        className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
-                      >
-                        Supprimer le Soul Link
-                      </button>
-                    </article>
-                  );
-                })}
-              </div>
+                  <div>
+                    <label
+                      htmlFor="selectedCaptureBId"
+                      className="mb-2 block text-sm font-medium"
+                    >
+                      Capture du joueur B
+                    </label>
+
+                    <select
+                      id="selectedCaptureBId"
+                      value={selectedCaptureBId}
+                      onChange={(event) => setSelectedCaptureBId(event.target.value)}
+                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                    >
+                      <option value="">Sélectionner une capture</option>
+                      {availableSoulLinkCaptures.map((capture) => {
+                        const pokemon = pokemonById.get(capture.pokemonId);
+                        const player = run.players.find(
+                          (currentPlayer) => currentPlayer.id === capture.playerId
+                        );
+
+                        return (
+                          <option key={capture.id} value={capture.id}>
+                            {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
+                            {player ? player.name : capture.playerId} — {capture.routeName}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+
+                  {soulLinkErrorMessage && (
+                    <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                      {soulLinkErrorMessage}
+                    </p>
+                  )}
+
+                  <div className="md:col-span-2">
+                    <button
+                      type="submit"
+                      className="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition hover:bg-purple-700"
+                    >
+                      Créer le lien
+                    </button>
+                  </div>
+                </form>
+              </section>
             )}
-          </section>
-        )}
+            {run.mode === "soul-link" && (
+              <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <h2 className="text-xl font-semibold">Liens Soul Link</h2>
+                  <p className="text-sm text-zinc-400">
+                    Total : <span className="font-medium text-white">{soulLinks.length}</span>
+                  </p>
+                </div>
+
+                {soulLinks.length === 0 ? (
+                  <p className="mt-4 text-zinc-400">
+                    Aucun lien Soul Link enregistré pour le moment.
+                  </p>
+                ) : (
+                  <div className="mt-6 space-y-4">
+                    {soulLinks.map((soulLink) => {
+                      const captureA = captures.find((capture) => capture.id === soulLink.pokemonAId);
+                      const captureB = captures.find((capture) => capture.id === soulLink.pokemonBId);
+
+                      const pokemonA = captureA ? pokemonById.get(captureA.pokemonId) : null;
+                      const pokemonB = captureB ? pokemonById.get(captureB.pokemonId) : null;
+
+                      const playerA = captureA
+                        ? run.players.find((player) => player.id === captureA.playerId)
+                        : null;
+
+                      const playerB = captureB
+                        ? run.players.find((player) => player.id === captureB.playerId)
+                        : null;
+
+                      return (
+                        <article
+                          key={soulLink.id}
+                          className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
+                        >
+                          <p className="text-sm text-zinc-400">
+                            Lien actif : {soulLink.active ? "Oui" : "Non"}
+                          </p>
+
+                          <div className="mt-3 grid gap-4 md:grid-cols-2">
+                            <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
+                              <p className="font-semibold text-white">
+                                {pokemonA ? pokemonA.name : "Capture inconnue"}
+                              </p>
+                              <p className="mt-2 text-sm text-zinc-300">
+                                Joueur : {playerA ? playerA.name : "Inconnu"}
+                              </p>
+                              <p className="text-sm text-zinc-300">
+                                Zone : {captureA ? captureA.routeName : "Inconnue"}
+                              </p>
+                            </div>
+
+                            <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
+                              <p className="font-semibold text-white">
+                                {pokemonB ? pokemonB.name : "Capture inconnue"}
+                              </p>
+                              <p className="mt-2 text-sm text-zinc-300">
+                                Joueur : {playerB ? playerB.name : "Inconnu"}
+                              </p>
+                              <p className="text-sm text-zinc-300">
+                                Zone : {captureB ? captureB.routeName : "Inconnue"}
+                              </p>
+                            </div>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteSoulLink(soulLink.id)}
+                            className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
+                          >
+                            Supprimer le Soul Link
+                          </button>
+                        </article>
+                      );
+                    })}
+                  </div>
+                )}
+              </section>
+            )}
+          </div>
+          <aside className="hidden xl:block">
+            {run.mode === "soul-link" && playerTwo
+              ? renderTeamPanel(playerTwo.name, playerTwoTeam)
+              : null}
+          </aside>
+        </div>
       </div>
     </main>
   );
