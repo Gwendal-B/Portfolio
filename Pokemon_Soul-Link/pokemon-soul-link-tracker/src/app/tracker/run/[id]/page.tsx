@@ -66,6 +66,17 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     return captures.filter((capture) => capture.soulLinkId === null);
   }, [captures]);
 
+  const playerOne = run?.players[0] ?? null;
+  const playerTwo = run?.players[1] ?? null;
+
+  const playerOneCaptures = playerOne
+    ? captures.filter((capture) => capture.playerId === playerOne.id)
+    : [];
+
+  const playerTwoCaptures = playerTwo
+    ? captures.filter((capture) => capture.playerId === playerTwo.id)
+    : [];
+
   useEffect(() => {
     async function loadRun() {
       const resolvedParams = await params;
@@ -354,6 +365,144 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     return captures.find((currentCapture) => currentCapture.id === linkedCaptureId) ?? null;
   }
 
+  function renderCaptureCard(capture: CapturedPokemon) {
+    const pokemon = pokemonById.get(capture.pokemonId);
+    const player = run?.players.find(
+      (currentPlayer) => currentPlayer.id === capture.playerId
+    );
+    const linkedCapture = getLinkedCapture(capture);
+    const linkedPokemon = linkedCapture
+      ? pokemonById.get(linkedCapture.pokemonId)
+      : null;
+    const linkedPlayer = linkedCapture
+      ? run?.players.find(
+          (currentPlayer) => currentPlayer.id === linkedCapture.playerId
+        )
+      : null;
+
+    return (
+      <article
+        key={capture.id}
+        className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-semibold text-white">
+              {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`}
+            </h3>
+
+            <p className="mt-1 text-sm text-zinc-400">
+              {capture.nickname ? `Surnom : ${capture.nickname}` : "Aucun surnom"}
+            </p>
+          </div>
+
+          {pokemon && (
+            <img
+              src={pokemon.spriteUrl}
+              alt={pokemon.name}
+              className="h-24 w-24 shrink-0 object-contain [image-rendering:pixelated]"
+            />
+          )}
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-zinc-300">
+          <p>
+            <span className="font-medium text-white">Joueur :</span>{" "}
+            {player ? player.name : capture.playerId}
+          </p>
+
+          <p>
+            <span className="font-medium text-white">Zone :</span>{" "}
+            {capture.routeName}
+          </p>
+        </div>
+
+        {linkedCapture && (
+          <div className="mt-4 rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-3">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-purple-300">
+                  Soul Link
+                </p>
+
+                <div className="mt-2 space-y-1 text-sm text-zinc-200">
+                  <p>
+                    <span className="font-medium text-white">Partenaire :</span>{" "}
+                    {linkedPokemon ? linkedPokemon.name : "Inconnu"}
+                  </p>
+                  <p>
+                    <span className="font-medium text-white">Joueur :</span>{" "}
+                    {linkedPlayer ? linkedPlayer.name : "Inconnu"}
+                  </p>
+                </div>
+              </div>
+
+              {linkedPokemon && (
+                <img
+                  src={linkedPokemon.spriteUrl}
+                  alt={linkedPokemon.name}
+                  className="h-20 w-20 shrink-0 object-contain [image-rendering:pixelated]"
+                />
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div>
+            <label className="mb-1 block text-sm font-medium text-white">
+              Statut
+            </label>
+            <select
+              value={capture.lifeStatus}
+              onChange={(event) =>
+                handleUpdateCapture(
+                  capture.id,
+                  "lifeStatus",
+                  event.target.value as LifeStatus
+                )
+              }
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
+            >
+              <option value="alive">Vivant</option>
+              <option value="dead">Mort</option>
+              <option value="unusable">Inutilisable</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="mb-1 block text-sm font-medium text-white">
+              Emplacement
+            </label>
+            <select
+              value={capture.storageStatus}
+              onChange={(event) =>
+                handleUpdateCapture(
+                  capture.id,
+                  "storageStatus",
+                  event.target.value as StorageStatus
+                )
+              }
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
+            >
+              <option value="team">Équipe</option>
+              <option value="box">Boîte</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <button
+            type="button"
+            onClick={() => handleDeleteCapture(capture.id)}
+            className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
+          >
+            Supprimer la capture
+          </button>
+        </div>
+      </article>
+    );
+  }
   if (isLoading) {
     return (
       <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
@@ -603,142 +752,39 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             <p className="mt-4 text-zinc-400">
               Aucune capture enregistrée pour le moment.
             </p>
+          ) : run.mode === "soul-link" ? (
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div>
+                <h3 className="mb-4 text-lg font-semibold text-white">
+                  {playerOne ? playerOne.name : "Joueur 1"}
+                </h3>
+
+                <div className="space-y-4">
+                  {playerOneCaptures.length === 0 ? (
+                    <p className="text-sm text-zinc-400">Aucune capture.</p>
+                  ) : (
+                    playerOneCaptures.map((capture) => renderCaptureCard(capture))
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <h3 className="mb-4 text-lg font-semibold text-white">
+                  {playerTwo ? playerTwo.name : "Joueur 2"}
+                </h3>
+
+                <div className="space-y-4">
+                  {playerTwoCaptures.length === 0 ? (
+                    <p className="text-sm text-zinc-400">Aucune capture.</p>
+                  ) : (
+                    playerTwoCaptures.map((capture) => renderCaptureCard(capture))
+                  )}
+                </div>
+              </div>
+            </div>
           ) : (
             <div className="mt-6 space-y-4">
-              {captures.map((capture) => {
-                const pokemon = pokemonById.get(capture.pokemonId);
-                const player = run.players.find((currentPlayer) => currentPlayer.id === capture.playerId);
-                const linkedCapture = getLinkedCapture(capture);
-                const linkedPokemon = linkedCapture ? pokemonById.get(linkedCapture.pokemonId) : null;
-                const linkedPlayer = linkedCapture ? run.players.find((currentPlayer) => currentPlayer.id === linkedCapture.playerId) : null;
-
-                return (
-                  <article
-                    key={capture.id}
-                    className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
-                  >
-                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-white">
-                          {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`}
-                        </h3>
-
-                        <div className="mt-2 space-y-4 text-sm text-zinc-300">
-                          <div className="grid gap-3 md:grid-cols-2">
-                            <p>
-                              <span className="font-medium text-white">Surnom :</span>{" "}
-                              {capture.nickname || "Aucun"}
-                            </p>
-
-                            <p>
-                              <span className="font-medium text-white">Joueur :</span>{" "}
-                              {player ? player.name : capture.playerId}
-                            </p>
-
-                            <p>
-                              <span className="font-medium text-white">Zone :</span>{" "}
-                              {capture.routeName}
-                            </p>
-
-                            {linkedCapture ? (
-                              <div className="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-2">
-                                <p className="text-xs font-semibold uppercase tracking-wide text-purple-300">
-                                  Soul Link
-                                </p>
-
-                                <div className="mt-2 flex items-start justify-between gap-3">
-                                  <div className="space-y-1 text-sm text-zinc-200">
-                                    <p>
-                                      <span className="font-medium text-white">Partenaire :</span>{" "}
-                                      {linkedPokemon ? linkedPokemon.name : "Inconnu"}
-                                    </p>
-                                    <p>
-                                      <span className="font-medium text-white">Joueur :</span>{" "}
-                                      {linkedPlayer ? linkedPlayer.name : "Inconnu"}
-                                    </p>
-                                  </div>
-
-                                  {linkedPokemon && (
-                                    <img
-                                      src={linkedPokemon.spriteUrl}
-                                      alt={linkedPokemon.name}
-                                      className="h-24 w-24 shrink-0 object-contain shrink-0 self-start -mt-7 [image-rendering:pixelated]"
-                                    />
-                                  )}
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-zinc-500">
-                                <p className="text-xs font-semibold uppercase tracking-wide">
-                                  Soul Link
-                                </p>
-                                <p className="mt-1 text-sm">Aucun lien</p>
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="grid gap-3 md:grid-cols-2">
-                            <div>
-                              <label className="mb-1 block font-medium text-white">Statut</label>
-                              <select
-                                value={capture.lifeStatus}
-                                onChange={(event) =>
-                                  handleUpdateCapture(
-                                    capture.id,
-                                    "lifeStatus",
-                                    event.target.value as LifeStatus
-                                  )
-                                }
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
-                              >
-                                <option value="alive">Vivant</option>
-                                <option value="dead">Mort</option>
-                                <option value="unusable">Inutilisable</option>
-                              </select>
-                            </div>
-
-                            <div>
-                              <label className="mb-1 block font-medium text-white">Emplacement</label>
-                              <select
-                                value={capture.storageStatus}
-                                onChange={(event) =>
-                                  handleUpdateCapture(
-                                    capture.id,
-                                    "storageStatus",
-                                    event.target.value as StorageStatus
-                                  )
-                                }
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
-                              >
-                                <option value="team">Équipe</option>
-                                <option value="box">Boîte</option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div>
-                            <button
-                              type="button"
-                              onClick={() => handleDeleteCapture(capture.id)}
-                              className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
-                            >
-                              Supprimer la capture
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      {pokemon && (
-                        <img
-                          src={pokemon.spriteUrl}
-                          alt={pokemon.name}
-                          className="h-30 w-30 object-contain"
-                        />
-                      )}
-                    </div>
-                  </article>
-                );
-              })}
+              {captures.map((capture) => renderCaptureCard(capture))}
             </div>
           )}
         </section>
