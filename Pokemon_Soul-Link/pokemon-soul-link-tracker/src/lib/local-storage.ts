@@ -1,8 +1,10 @@
 import type { Run } from "../types/run";
 import type { CapturedPokemon } from "../types/tracker";
+import type { SoulLink } from "../types/soul-link";
 
 const RUNS_STORAGE_KEY = "pokemon-soul-link-runs";
 const CAPTURES_STORAGE_KEY = "pokemon-soul-link-captures";
+const SOUL_LINKS_STORAGE_KEY = "pokemon-soul-link-soul-links";
 
 /*
   ========================
@@ -112,4 +114,49 @@ export function deleteCapturedPokemon(captureId: string): void {
 export function getCapturedPokemonsByRunId(runId: string): CapturedPokemon[] {
   const captures = getCapturedPokemons();
   return captures.filter((capture) => capture.runId === runId);
+}
+
+/*
+  ========================
+  SOUL LINKS
+  ========================
+*/
+
+export function getSoulLinks(): SoulLink[] {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  const storedSoulLinks = localStorage.getItem(SOUL_LINKS_STORAGE_KEY);
+
+  if (!storedSoulLinks) {
+    return [];
+  }
+
+  try {
+    const parsedSoulLinks = JSON.parse(storedSoulLinks) as SoulLink[];
+    return Array.isArray(parsedSoulLinks) ? parsedSoulLinks : [];
+  } catch (error) {
+    console.error("Erreur lors de la lecture des Soul Links :", error);
+    return [];
+  }
+}
+
+export function saveSoulLinks(soulLinks: SoulLink[]): void {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  localStorage.setItem(SOUL_LINKS_STORAGE_KEY, JSON.stringify(soulLinks));
+}
+
+export function addSoulLink(soulLink: SoulLink): void {
+  const existingSoulLinks = getSoulLinks();
+  const updatedSoulLinks = [...existingSoulLinks, soulLink];
+  saveSoulLinks(updatedSoulLinks);
+}
+
+export function getSoulLinksByRunId(runId: string): SoulLink[] {
+  const soulLinks = getSoulLinks();
+  return soulLinks.filter((soulLink) => soulLink.runId === runId);
 }

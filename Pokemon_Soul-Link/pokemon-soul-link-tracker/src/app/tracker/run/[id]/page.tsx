@@ -5,14 +5,19 @@ import Link from "next/link";
 import gen1Pokemon from "../../../../data/gen1-pokemon.json";
 import {
   addCapturedPokemon,
+  addSoulLink,
   deleteCapturedPokemon,
   getCapturedPokemonsByRunId,
   getRunById,
+  getSoulLinksByRunId,
   updateCapturedPokemon,
+
 } from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
 import type { Pokemon } from "../../../../types/pokemon";
+import type { SoulLink } from "../../../../types/soul-link";
+
 
 type RunDetailPageProps = {
   params: Promise<{
@@ -34,6 +39,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [storageStatus, setStorageStatus] = useState<StorageStatus>("team");
   const [errorMessage, setErrorMessage] = useState("");
   const [pokemonSearch, setPokemonSearch] = useState("");
+  const [soulLinks, setSoulLinks] = useState<SoulLink[]>([]);
+  const [selectedCaptureAId, setSelectedCaptureAId] = useState("");
+  const [selectedCaptureBId, setSelectedCaptureBId] = useState("");
+  const [soulLinkErrorMessage, setSoulLinkErrorMessage] = useState("");
 
   const pokedex = gen1Pokemon as Pokemon[];
 
@@ -53,6 +62,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       .slice(0, 10);
   }, [pokedex, pokemonSearch]);
 
+  const availableSoulLinkCaptures = useMemo(() => {
+    return captures.filter((capture) => capture.soulLinkId === null);
+  }, [captures]);
+
   useEffect(() => {
     async function loadRun() {
       const resolvedParams = await params;
@@ -65,6 +78,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
       if (foundRun) {
         setCaptures(getCapturedPokemonsByRunId(currentRunId));
+        setSoulLinks(getSoulLinksByRunId(currentRunId));
+
         if (foundRun.players.length > 0) {
           setSelectedPlayerId(foundRun.players[0].id);
         }
@@ -156,6 +171,78 @@ function handleDeleteCapture(captureId: string) {
 
   const updatedCaptures = getCapturedPokemonsByRunId(runId);
   setCaptures(updatedCaptures);
+}
+
+function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+
+  if (!run) {
+    return;
+  }
+
+  setSoulLinkErrorMessage("");
+
+  if (run.mode !== "soul-link") {
+    setSoulLinkErrorMessage("Cette run n'est pas en mode Soul Link.");
+    return;
+  }
+
+  if (!selectedCaptureAId || !selectedCaptureBId) {
+    setSoulLinkErrorMessage("Tu dois sélectionner deux captures.");
+    return;
+  }
+
+  if (selectedCaptureAId === selectedCaptureBId) {
+    setSoulLinkErrorMessage("Tu ne peux pas lier une capture avec elle-même.");
+    return;
+  }
+
+  const captureA = captures.find((capture) => capture.id === selectedCaptureAId);
+  const captureB = captures.find((capture) => capture.id === selectedCaptureBId);
+
+  if (!captureA || !captureB) {
+    setSoulLinkErrorMessage("Impossible de retrouver les captures sélectionnées.");
+    return;
+  }
+
+  if (captureA.playerId === captureB.playerId) {
+    setSoulLinkErrorMessage("Les deux captures doivent appartenir à deux joueurs différents.");
+    return;
+  }
+
+  const now = new Date().toISOString();
+  const soulLinkId = `soul-link-${Date.now()}`;
+
+  const newSoulLink: SoulLink = {
+    id: soulLinkId,
+    runId: run.id,
+    pokemonAId: captureA.id,
+    pokemonBId: captureB.id,
+    active: true,
+    createdAt: now,
+  };
+
+  addSoulLink(newSoulLink);
+
+  const updatedCaptureA: CapturedPokemon = {
+    ...captureA,
+    soulLinkId,
+    updatedAt: now,
+  };
+
+  const updatedCaptureB: CapturedPokemon = {
+    ...captureB,
+    soulLinkId,
+    updatedAt: now,
+  };
+
+  updateCapturedPokemon(updatedCaptureA);
+  updateCapturedPokemon(updatedCaptureB);
+
+  setSoulLinks(getSoulLinksByRunId(run.id));
+  setCaptures(getCapturedPokemonsByRunId(run.id));
+  setSelectedCaptureAId("");
+  setSelectedCaptureBId("");
 }
 
   if (isLoading) {
@@ -506,6 +593,168 @@ function handleDeleteCapture(captureId: string) {
             </div>
           )}
         </section>
+        {run.mode === "soul-link" && (
+          <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+            <h2 className="text-xl font-semibold">Créer un lien Soul Link</h2>
+
+            <p className="mt-3 text-zinc-400">
+              Lie manuellement deux captures appartenant à deux joueurs différents.
+            </p>
+
+            <form
+              onSubmit={handleCreateSoulLink}
+              className="mt-6 grid gap-4 md:grid-cols-2"
+            >
+              <div>
+                <label
+                  htmlFor="selectedCaptureAId"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Capture du joueur A
+                </label>
+
+                <select
+                  id="selectedCaptureAId"
+                  value={selectedCaptureAId}
+                  onChange={(event) => setSelectedCaptureAId(event.target.value)}
+                  className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                >
+                  <option value="">Sélectionner une capture</option>
+                  {availableSoulLinkCaptures.map((capture) => {
+                    const pokemon = pokemonById.get(capture.pokemonId);
+                    const player = run.players.find(
+                      (currentPlayer) => currentPlayer.id === capture.playerId
+                    );
+
+                    return (
+                      <option key={capture.id} value={capture.id}>
+                        {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
+                        {player ? player.name : capture.playerId} — {capture.routeName}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="selectedCaptureBId"
+                  className="mb-2 block text-sm font-medium"
+                >
+                  Capture du joueur B
+                </label>
+
+                <select
+                  id="selectedCaptureBId"
+                  value={selectedCaptureBId}
+                  onChange={(event) => setSelectedCaptureBId(event.target.value)}
+                  className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                >
+                  <option value="">Sélectionner une capture</option>
+                  {availableSoulLinkCaptures.map((capture) => {
+                    const pokemon = pokemonById.get(capture.pokemonId);
+                    const player = run.players.find(
+                      (currentPlayer) => currentPlayer.id === capture.playerId
+                    );
+
+                    return (
+                      <option key={capture.id} value={capture.id}>
+                        {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
+                        {player ? player.name : capture.playerId} — {capture.routeName}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
+              {soulLinkErrorMessage && (
+                <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                  {soulLinkErrorMessage}
+                </p>
+              )}
+
+              <div className="md:col-span-2">
+                <button
+                  type="submit"
+                  className="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition hover:bg-purple-700"
+                >
+                  Créer le lien
+                </button>
+              </div>
+            </form>
+          </section>
+        )}
+        {run.mode === "soul-link" && (
+          <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="text-xl font-semibold">Liens Soul Link</h2>
+              <p className="text-sm text-zinc-400">
+                Total : <span className="font-medium text-white">{soulLinks.length}</span>
+              </p>
+            </div>
+
+            {soulLinks.length === 0 ? (
+              <p className="mt-4 text-zinc-400">
+                Aucun lien Soul Link enregistré pour le moment.
+              </p>
+            ) : (
+              <div className="mt-6 space-y-4">
+                {soulLinks.map((soulLink) => {
+                  const captureA = captures.find((capture) => capture.id === soulLink.pokemonAId);
+                  const captureB = captures.find((capture) => capture.id === soulLink.pokemonBId);
+
+                  const pokemonA = captureA ? pokemonById.get(captureA.pokemonId) : null;
+                  const pokemonB = captureB ? pokemonById.get(captureB.pokemonId) : null;
+
+                  const playerA = captureA
+                    ? run.players.find((player) => player.id === captureA.playerId)
+                    : null;
+
+                  const playerB = captureB
+                    ? run.players.find((player) => player.id === captureB.playerId)
+                    : null;
+
+                  return (
+                    <article
+                      key={soulLink.id}
+                      className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
+                    >
+                      <p className="text-sm text-zinc-400">
+                        Lien actif : {soulLink.active ? "Oui" : "Non"}
+                      </p>
+
+                      <div className="mt-3 grid gap-4 md:grid-cols-2">
+                        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
+                          <p className="font-semibold text-white">
+                            {pokemonA ? pokemonA.name : "Capture inconnue"}
+                          </p>
+                          <p className="mt-2 text-sm text-zinc-300">
+                            Joueur : {playerA ? playerA.name : "Inconnu"}
+                          </p>
+                          <p className="text-sm text-zinc-300">
+                            Zone : {captureA ? captureA.routeName : "Inconnue"}
+                          </p>
+                        </div>
+
+                        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
+                          <p className="font-semibold text-white">
+                            {pokemonB ? pokemonB.name : "Capture inconnue"}
+                          </p>
+                          <p className="mt-2 text-sm text-zinc-300">
+                            Joueur : {playerB ? playerB.name : "Inconnu"}
+                          </p>
+                          <p className="text-sm text-zinc-300">
+                            Zone : {captureB ? captureB.routeName : "Inconnue"}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+        )}
       </div>
     </main>
   );
