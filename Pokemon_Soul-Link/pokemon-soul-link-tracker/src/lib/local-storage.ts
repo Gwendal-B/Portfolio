@@ -160,3 +160,13 @@ export function getSoulLinksByRunId(runId: string): SoulLink[] {
   const soulLinks = getSoulLinks();
   return soulLinks.filter((soulLink) => soulLink.runId === runId);
 }
+
+export function deleteSoulLink(soulLinkId: string): void {
+  const existingSoulLinks = getSoulLinks();
+
+  const updatedSoulLinks = existingSoulLinks.filter(
+    (link) => link.id !== soulLinkId
+  );
+
+  saveSoulLinks(updatedSoulLinks);
+}

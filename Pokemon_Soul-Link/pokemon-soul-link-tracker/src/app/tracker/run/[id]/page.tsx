@@ -11,7 +11,7 @@ import {
   getRunById,
   getSoulLinksByRunId,
   updateCapturedPokemon,
-
+  deleteSoulLink,
 } from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
@@ -243,6 +243,58 @@ function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
   setCaptures(getCapturedPokemonsByRunId(run.id));
   setSelectedCaptureAId("");
   setSelectedCaptureBId("");
+}
+
+function handleDeleteSoulLink(soulLinkId: string) {
+  const confirmed = window.confirm(
+    "Es-tu sûr de vouloir supprimer ce Soul Link ?"
+  );
+
+  if (!confirmed || !run) {
+    return;
+  }
+
+  const soulLinkToDelete = soulLinks.find(
+    (link) => link.id === soulLinkId
+  );
+
+  if (!soulLinkToDelete) {
+    return;
+  }
+
+  const now = new Date().toISOString();
+
+  // Mettre à jour les captures associées
+  const captureA = captures.find(
+    (capture) => capture.id === soulLinkToDelete.pokemonAId
+  );
+
+  const captureB = captures.find(
+    (capture) => capture.id === soulLinkToDelete.pokemonBId
+  );
+
+  if (captureA) {
+    updateCapturedPokemon({
+      ...captureA,
+      soulLinkId: null,
+      updatedAt: now,
+    });
+  }
+
+  if (captureB) {
+    updateCapturedPokemon({
+      ...captureB,
+      soulLinkId: null,
+      updatedAt: now,
+    });
+  }
+
+  // Supprimer le Soul Link
+  deleteSoulLink(soulLinkId);
+
+  // Rafraîchir l'état
+  setSoulLinks(getSoulLinksByRunId(run.id));
+  setCaptures(getCapturedPokemonsByRunId(run.id));
 }
 
 function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
@@ -807,6 +859,14 @@ function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
                           </p>
                         </div>
                       </div>
+
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteSoulLink(soulLink.id)}
+                        className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
+                      >
+                        Supprimer le Soul Link
+                      </button>
                     </article>
                   );
                 })}
