@@ -136,185 +136,223 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   }
 
   function handleUpdateCapture(
-  captureId: string,
-  field: "lifeStatus" | "storageStatus",
-  value: LifeStatus | StorageStatus
-) {
-  const captureToUpdate = captures.find((capture) => capture.id === captureId);
+    captureId: string,
+    field: "lifeStatus" | "storageStatus",
+    value: LifeStatus | StorageStatus
+  ) {
+    const captureToUpdate = captures.find((capture) => capture.id === captureId);
 
-  if (!captureToUpdate) {
-    return;
+    if (!captureToUpdate) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+
+    const updatedCapture: CapturedPokemon = {
+      ...captureToUpdate,
+      [field]: value,
+      updatedAt: now,
+    };
+
+    updateCapturedPokemon(updatedCapture);
+
+    /*
+      Automatisation Soul Link :
+      si une capture liée passe à "dead",
+      alors son partenaire devient "unusable".
+    */
+    if (
+      field === "lifeStatus" &&
+      value === "dead" &&
+      captureToUpdate.soulLinkId !== null
+    ) {
+      const soulLink = soulLinks.find(
+        (link) => link.id === captureToUpdate.soulLinkId
+      );
+
+      if (soulLink) {
+        const linkedCaptureId =
+          soulLink.pokemonAId === captureToUpdate.id
+            ? soulLink.pokemonBId
+            : soulLink.pokemonAId;
+
+        const linkedCapture = captures.find(
+          (capture) => capture.id === linkedCaptureId
+        );
+
+        if (linkedCapture && linkedCapture.lifeStatus !== "dead") {
+          const updatedLinkedCapture: CapturedPokemon = {
+            ...linkedCapture,
+            lifeStatus: "unusable",
+            updatedAt: now,
+          };
+
+          updateCapturedPokemon(updatedLinkedCapture);
+        }
+      }
+    }
+
+    const updatedCaptures = getCapturedPokemonsByRunId(runId);
+    setCaptures(updatedCaptures);
   }
 
-  const updatedCapture: CapturedPokemon = {
-    ...captureToUpdate,
-    [field]: value,
-    updatedAt: new Date().toISOString(),
-  };
+  function handleDeleteCapture(captureId: string) {
+    const confirmed = window.confirm(
+      "Es-tu sûr de vouloir supprimer cette capture ?"
+    );
 
-  updateCapturedPokemon(updatedCapture);
+    if (!confirmed) {
+      return;
+    }
 
-  const updatedCaptures = getCapturedPokemonsByRunId(runId);
-  setCaptures(updatedCaptures);
-}
+    deleteCapturedPokemon(captureId);
 
-function handleDeleteCapture(captureId: string) {
-  const confirmed = window.confirm(
-    "Es-tu sûr de vouloir supprimer cette capture ?"
-  );
-
-  if (!confirmed) {
-    return;
+    const updatedCaptures = getCapturedPokemonsByRunId(runId);
+    setCaptures(updatedCaptures);
   }
 
-  deleteCapturedPokemon(captureId);
+  function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-  const updatedCaptures = getCapturedPokemonsByRunId(runId);
-  setCaptures(updatedCaptures);
-}
+    if (!run) {
+      return;
+    }
 
-function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
-  event.preventDefault();
+    setSoulLinkErrorMessage("");
 
-  if (!run) {
-    return;
-  }
+    if (run.mode !== "soul-link") {
+      setSoulLinkErrorMessage("Cette run n'est pas en mode Soul Link.");
+      return;
+    }
 
-  setSoulLinkErrorMessage("");
+    if (!selectedCaptureAId || !selectedCaptureBId) {
+      setSoulLinkErrorMessage("Tu dois sélectionner deux captures.");
+      return;
+    }
 
-  if (run.mode !== "soul-link") {
-    setSoulLinkErrorMessage("Cette run n'est pas en mode Soul Link.");
-    return;
-  }
+    if (selectedCaptureAId === selectedCaptureBId) {
+      setSoulLinkErrorMessage("Tu ne peux pas lier une capture avec elle-même.");
+      return;
+    }
 
-  if (!selectedCaptureAId || !selectedCaptureBId) {
-    setSoulLinkErrorMessage("Tu dois sélectionner deux captures.");
-    return;
-  }
+    const captureA = captures.find((capture) => capture.id === selectedCaptureAId);
+    const captureB = captures.find((capture) => capture.id === selectedCaptureBId);
 
-  if (selectedCaptureAId === selectedCaptureBId) {
-    setSoulLinkErrorMessage("Tu ne peux pas lier une capture avec elle-même.");
-    return;
-  }
+    if (!captureA || !captureB) {
+      setSoulLinkErrorMessage("Impossible de retrouver les captures sélectionnées.");
+      return;
+    }
 
-  const captureA = captures.find((capture) => capture.id === selectedCaptureAId);
-  const captureB = captures.find((capture) => capture.id === selectedCaptureBId);
+    if (captureA.playerId === captureB.playerId) {
+      setSoulLinkErrorMessage("Les deux captures doivent appartenir à deux joueurs différents.");
+      return;
+    }
 
-  if (!captureA || !captureB) {
-    setSoulLinkErrorMessage("Impossible de retrouver les captures sélectionnées.");
-    return;
-  }
+    const now = new Date().toISOString();
+    const soulLinkId = `soul-link-${Date.now()}`;
 
-  if (captureA.playerId === captureB.playerId) {
-    setSoulLinkErrorMessage("Les deux captures doivent appartenir à deux joueurs différents.");
-    return;
-  }
+    const newSoulLink: SoulLink = {
+      id: soulLinkId,
+      runId: run.id,
+      pokemonAId: captureA.id,
+      pokemonBId: captureB.id,
+      active: true,
+      createdAt: now,
+    };
 
-  const now = new Date().toISOString();
-  const soulLinkId = `soul-link-${Date.now()}`;
+    addSoulLink(newSoulLink);
 
-  const newSoulLink: SoulLink = {
-    id: soulLinkId,
-    runId: run.id,
-    pokemonAId: captureA.id,
-    pokemonBId: captureB.id,
-    active: true,
-    createdAt: now,
-  };
-
-  addSoulLink(newSoulLink);
-
-  const updatedCaptureA: CapturedPokemon = {
-    ...captureA,
-    soulLinkId,
-    updatedAt: now,
-  };
-
-  const updatedCaptureB: CapturedPokemon = {
-    ...captureB,
-    soulLinkId,
-    updatedAt: now,
-  };
-
-  updateCapturedPokemon(updatedCaptureA);
-  updateCapturedPokemon(updatedCaptureB);
-
-  setSoulLinks(getSoulLinksByRunId(run.id));
-  setCaptures(getCapturedPokemonsByRunId(run.id));
-  setSelectedCaptureAId("");
-  setSelectedCaptureBId("");
-}
-
-function handleDeleteSoulLink(soulLinkId: string) {
-  const confirmed = window.confirm(
-    "Es-tu sûr de vouloir supprimer ce Soul Link ?"
-  );
-
-  if (!confirmed || !run) {
-    return;
-  }
-
-  const soulLinkToDelete = soulLinks.find(
-    (link) => link.id === soulLinkId
-  );
-
-  if (!soulLinkToDelete) {
-    return;
-  }
-
-  const now = new Date().toISOString();
-
-  // Mettre à jour les captures associées
-  const captureA = captures.find(
-    (capture) => capture.id === soulLinkToDelete.pokemonAId
-  );
-
-  const captureB = captures.find(
-    (capture) => capture.id === soulLinkToDelete.pokemonBId
-  );
-
-  if (captureA) {
-    updateCapturedPokemon({
+    const updatedCaptureA: CapturedPokemon = {
       ...captureA,
-      soulLinkId: null,
+      soulLinkId,
       updatedAt: now,
-    });
-  }
+    };
 
-  if (captureB) {
-    updateCapturedPokemon({
+    const updatedCaptureB: CapturedPokemon = {
       ...captureB,
-      soulLinkId: null,
+      soulLinkId,
       updatedAt: now,
-    });
+    };
+
+    updateCapturedPokemon(updatedCaptureA);
+    updateCapturedPokemon(updatedCaptureB);
+
+    setSoulLinks(getSoulLinksByRunId(run.id));
+    setCaptures(getCapturedPokemonsByRunId(run.id));
+    setSelectedCaptureAId("");
+    setSelectedCaptureBId("");
   }
 
-  // Supprimer le Soul Link
-  deleteSoulLink(soulLinkId);
+  function handleDeleteSoulLink(soulLinkId: string) {
+    const confirmed = window.confirm(
+      "Es-tu sûr de vouloir supprimer ce Soul Link ?"
+    );
 
-  // Rafraîchir l'état
-  setSoulLinks(getSoulLinksByRunId(run.id));
-  setCaptures(getCapturedPokemonsByRunId(run.id));
-}
+    if (!confirmed || !run) {
+      return;
+    }
 
-function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
-  if (!capture.soulLinkId) {
-    return null;
+    const soulLinkToDelete = soulLinks.find(
+      (link) => link.id === soulLinkId
+    );
+
+    if (!soulLinkToDelete) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+
+    // Mettre à jour les captures associées
+    const captureA = captures.find(
+      (capture) => capture.id === soulLinkToDelete.pokemonAId
+    );
+
+    const captureB = captures.find(
+      (capture) => capture.id === soulLinkToDelete.pokemonBId
+    );
+
+    if (captureA) {
+      updateCapturedPokemon({
+        ...captureA,
+        soulLinkId: null,
+        updatedAt: now,
+      });
+    }
+
+    if (captureB) {
+      updateCapturedPokemon({
+        ...captureB,
+        soulLinkId: null,
+        updatedAt: now,
+      });
+    }
+
+    // Supprimer le Soul Link
+    deleteSoulLink(soulLinkId);
+
+    // Rafraîchir l'état
+    setSoulLinks(getSoulLinksByRunId(run.id));
+    setCaptures(getCapturedPokemonsByRunId(run.id));
   }
 
-  const soulLink = soulLinks.find((link) => link.id === capture.soulLinkId);
+  function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
+    if (!capture.soulLinkId) {
+      return null;
+    }
 
-  if (!soulLink) {
-    return null;
+    const soulLink = soulLinks.find((link) => link.id === capture.soulLinkId);
+
+    if (!soulLink) {
+      return null;
+    }
+
+    const linkedCaptureId =
+      soulLink.pokemonAId === capture.id
+        ? soulLink.pokemonBId
+        : soulLink.pokemonAId;
+
+    return captures.find((currentCapture) => currentCapture.id === linkedCaptureId) ?? null;
   }
-
-  const linkedCaptureId =
-    soulLink.pokemonAId === capture.id
-      ? soulLink.pokemonBId
-      : soulLink.pokemonAId;
-
-  return captures.find((currentCapture) => currentCapture.id === linkedCaptureId) ?? null;
-}
 
   if (isLoading) {
     return (
