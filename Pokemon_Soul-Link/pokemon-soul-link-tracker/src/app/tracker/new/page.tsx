@@ -1,39 +1,108 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import type { ChallengeMode, Gen1Game, Player, Run, RunRules } from "../../../types/run";
+import { addRun } from "../../../lib/local-storage";
 
 export default function NewRunPage() {
-  /*
-    useState permet de stocker une valeur qui peut changer.
-    Ici, on stocke les champs du formulaire.
-  */
+  const router = useRouter();
+
   const [runName, setRunName] = useState("");
-  const [mode, setMode] = useState("nuzlocke");
-  const [game, setGame] = useState("Pokemon Rouge");
+  const [mode, setMode] = useState<ChallengeMode>("nuzlocke");
+  const [game, setGame] = useState<Gen1Game>("Pokemon Rouge");
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
 
-  /*
-    Cette fonction se déclenche quand on soumet le formulaire.
-    Pour le moment, on empêche juste le rechargement de la page
-    et on affiche les données dans la console.
-  */
+  const [errorMessage, setErrorMessage] = useState("");
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const newRun = {
-      runName,
-      mode,
-      game,
-      players:
-        mode === "soul-link"
-          ? [playerOne, playerTwo].filter((player) => player.trim() !== "")
-          : [playerOne].filter((player) => player.trim() !== ""),
+    setErrorMessage("");
+
+    /*
+      On enlève les espaces inutiles au début et à la fin.
+    */
+    const trimmedRunName = runName.trim();
+    const trimmedPlayerOne = playerOne.trim();
+    const trimmedPlayerTwo = playerTwo.trim();
+
+    /*
+      Validation simple du formulaire
+    */
+    if (!trimmedRunName) {
+      setErrorMessage("Le nom de la run est obligatoire.");
+      return;
+    }
+
+    if (!trimmedPlayerOne) {
+      setErrorMessage("Le nom du joueur 1 est obligatoire.");
+      return;
+    }
+
+    if (mode === "soul-link" && !trimmedPlayerTwo) {
+      setErrorMessage("Le nom du joueur 2 est obligatoire en mode Soul Link.");
+      return;
+    }
+
+    /*
+      On crée une date unique au format ISO.
+      Exemple : 2026-04-14T12:34:56.789Z
+    */
+    const now = new Date().toISOString();
+
+    /*
+      Identifiant simple pour la run.
+      Pour une V1 locale, c'est largement suffisant.
+    */
+    const runId = `run-${Date.now()}`;
+
+    /*
+      Création des joueurs
+    */
+    const players: Player[] =
+      mode === "soul-link"
+        ? [
+            { id: "player-1", name: trimmedPlayerOne },
+            { id: "player-2", name: trimmedPlayerTwo },
+          ]
+        : [{ id: "player-1", name: trimmedPlayerOne }];
+
+    /*
+      Règles de base de la V1
+    */
+    const rules: RunRules = {
+      oneEncounterPerRoute: true,
+      faintEqualsDeath: true,
+      nicknameRequired: true,
+      soulLinkEnabled: mode === "soul-link",
     };
 
-    console.log("Nouvelle run :", newRun);
+    /*
+      Objet final de la run
+    */
+    const newRun: Run = {
+      id: runId,
+      name: trimmedRunName,
+      mode,
+      generation: 1,
+      game,
+      players,
+      rules,
+      createdAt: now,
+      updatedAt: now,
+    };
 
-    alert("Run créée en mémoire. On branchera la sauvegarde locale ensuite.");
+    /*
+      Sauvegarde dans le localStorage
+    */
+    addRun(newRun);
+
+    /*
+      Redirection vers la page de la run
+    */
+    router.push(`/tracker/run/${runId}`);
   }
 
   return (
@@ -47,7 +116,7 @@ export default function NewRunPage() {
           <h1 className="mt-2 text-4xl font-bold">Créer une nouvelle run</h1>
 
           <p className="mt-3 text-zinc-400">
-            Configure une première run locale pour ton challenge Pokémon.
+            Configure une run locale pour ton challenge Pokémon.
           </p>
         </header>
 
@@ -59,6 +128,7 @@ export default function NewRunPage() {
             <label htmlFor="runName" className="mb-2 block text-sm font-medium">
               Nom de la run
             </label>
+
             <input
               id="runName"
               type="text"
@@ -73,10 +143,11 @@ export default function NewRunPage() {
             <label htmlFor="mode" className="mb-2 block text-sm font-medium">
               Mode de jeu
             </label>
+
             <select
               id="mode"
               value={mode}
-              onChange={(event) => setMode(event.target.value)}
+              onChange={(event) => setMode(event.target.value as ChallengeMode)}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             >
               <option value="nuzlocke">Nuzlocke</option>
@@ -88,10 +159,11 @@ export default function NewRunPage() {
             <label htmlFor="game" className="mb-2 block text-sm font-medium">
               Jeu
             </label>
+
             <select
               id="game"
               value={game}
-              onChange={(event) => setGame(event.target.value)}
+              onChange={(event) => setGame(event.target.value as Gen1Game)}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             >
               <option value="Pokemon Rouge">Pokémon Rouge</option>
@@ -107,12 +179,13 @@ export default function NewRunPage() {
             >
               Joueur 1
             </label>
+
             <input
               id="playerOne"
               type="text"
               value={playerOne}
               onChange={(event) => setPlayerOne(event.target.value)}
-              placeholder="Nom du joueur"
+              placeholder="Nom du joueur 1"
               className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             />
           </div>
@@ -125,15 +198,22 @@ export default function NewRunPage() {
               >
                 Joueur 2
               </label>
+
               <input
                 id="playerTwo"
                 type="text"
                 value={playerTwo}
                 onChange={(event) => setPlayerTwo(event.target.value)}
-                placeholder="Nom du second joueur"
+                placeholder="Nom du joueur 2"
                 className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
               />
             </div>
+          )}
+
+          {errorMessage && (
+            <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+              {errorMessage}
+            </p>
           )}
 
           <button
@@ -152,12 +232,15 @@ export default function NewRunPage() {
               <span className="font-medium text-white">Nom :</span>{" "}
               {runName || "Non renseigné"}
             </p>
+
             <p>
               <span className="font-medium text-white">Mode :</span> {mode}
             </p>
+
             <p>
               <span className="font-medium text-white">Jeu :</span> {game}
             </p>
+
             <p>
               <span className="font-medium text-white">Joueur 1 :</span>{" "}
               {playerOne || "Non renseigné"}
