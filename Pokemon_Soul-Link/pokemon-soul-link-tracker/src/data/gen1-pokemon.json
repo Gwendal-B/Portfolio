@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "dexNumber": 1,
+    "name": "Bulbizarre",
+    "generation": 1,
+    "types": ["Plante", "Poison"],
+    "stats": {
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "speed": 45
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+    "evolutions": [2]
+  },
+  {
+    "id": 4,
+    "dexNumber": 4,
+    "name": "Salamèche",
+    "generation": 1,
+    "types": ["Feu"],
+    "stats": {
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+    "evolutions": [5]
+  },
+  {
+    "id": 7,
+    "dexNumber": 7,
+    "name": "Carapuce",
+    "generation": 1,
+    "types": ["Eau"],
+    "stats": {
+      "hp": 44,
+      "attack": 48,
+      "defense": 65,
+      "speed": 43
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
+    "evolutions": [8]
+  }
+]
