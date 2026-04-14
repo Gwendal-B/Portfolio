@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🎮 PokéChallenge Tracker
 
-First, run the development server:
+![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Statut](https://img.shields.io/badge/statut-en%20développement-orange)
+![Licence](https://img.shields.io/badge/licence-MIT-green)
+
+Une plateforme web combinant un site informatif et un tracker interactif dédié aux challenges Pokémon tels que le Nuzlocke, le Soul Link et le Randomizer.
+
+---
+
+## 📖 Description
+
+**PokéChallenge Tracker** est un outil conçu pour les joueurs souhaitant suivre leurs aventures Pokémon tout en accédant à des ressources complètes sur les règles et mécaniques des challenges.
+
+Le site permet :
+
+- d’explorer les règles des différents challenges ;
+- d’accéder à un Pokédex détaillé ;
+- de suivre une run grâce à un tracker interactif ;
+- de gérer des Soul Links entre joueurs.
+
+---
+
+## ✨ Fonctionnalités
+
+### 📚 Partie informative
+
+- Guides sur les challenges :
+
+  - Nuzlocke
+  - Soul Link
+  - Randomizer
+
+- Explication des règles et variantes
+- Support progressif des générations
+
+### 📊 Pokédex
+
+- Statistiques des Pokémon
+- Types et talents
+- Taux de capture
+- Évolutions
+- Filtres avancés
+
+### 🧭 Tracker interactif
+
+- Création et gestion de runs
+- Suivi des captures par zone
+- Gestion des statuts (vivant, mort, boîte, équipe)
+- Liaison des Pokémon en Soul Link
+- Journal de progression
+
+### ⚙️ Personnalisation
+
+- Règles personnalisables
+- Presets de challenges
+- Sélection de la génération
+
+---
+
+## 🚀 Roadmap
+
+### 🟢 Version 1.0 – MVP
+
+- [ ] Site informatif
+- [ ] Support de la Génération 1
+- [ ] Pokédex 1G
+- [ ] Tracker local
+- [ ] Mode Nuzlocke
+- [ ] Mode Soul Link
+- [ ] Sauvegarde via LocalStorage
+
+### 🟡 Version 2.0
+
+- [ ] Règles personnalisables
+- [ ] Gestion des routes
+- [ ] Automatisation du Soul Link
+- [ ] Ajout de la Génération 2
+
+### 🔵 Version 3.0
+
+- [ ] Comptes utilisateurs
+- [ ] Sauvegarde en ligne
+- [ ] Ajout des Générations 3 et 4
+
+### 🟣 Version 4.0
+
+- [ ] Multijoueur en temps réel
+- [ ] Partage de runs
+- [ ] Intégration Twitch et Discord
+
+---
+
+## 🛠️ Technologies
+
+| Domaine | Technologie |
+|---------|-------------|
+| Frontend | Next.js (React) |
+| Styling | Tailwind CSS |
+| Backend | Supabase / Node.js |
+| Base de données | PostgreSQL |
+| Données Pokémon | PokéAPI |
+| Hébergement | Vercel |
+| Versioning | GitHub |
+
+---
+
+## 📂 Structure du projet
 
 ```bash
+pokechallenge-tracker/
+├── public/
+├── src/
+│   ├── app/
+│   ├── components/
+│   ├── data/
+│   ├── lib/
+│   ├── types/
+│   └── utils/
+├── README.md
+└── package.json
+
+⚙️ Installation
+
+# Cloner le dépôt
+git clone https://github.com/ton-utilisateur/pokechallenge-tracker.git
+
+# Accéder au projet
+cd pokechallenge-tracker
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📸 Aperçu (à venir)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Des captures d’écran et maquettes seront ajoutées prochainement.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📚 Documentation
 
-## Learn More
+- 📘 Cahier des charges : `Docs/Cahier des charges.md`
+- 🗺️ V1 du projet : `Docs/V1 du projet.md`
+- 📖 Lexique officiel : `Docs/Lexique.md`
 
-To learn more about Next.js, take a look at the following resources:
+🤝 Contribution
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Les contributions sont les bienvenues !
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Fork le projet
+    Crée une branche (feature/ma-fonctionnalite)
+    Commit tes modifications
+    Push la branche
+    Ouvre une Pull Request
 
-## Deploy on Vercel
+📜 Licence
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ce projet est distribué sous licence MIT.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⚠️ Mentions légales
+
+Ce projet est un fan project non officiel.
+Pokémon et tous les noms associés sont la propriété de © Nintendo, Game Freak et The Pokémon Company.
+
+👤 Auteur
+
+Développé par Gwendal Boisard - [https://github.com/Gwendal-B]
