@@ -1,9 +1,9 @@
-```markdown
+
+# 🎮 PokéChallenge Tracker
+
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![Statut](https://img.shields.io/badge/statut-en%20développement-orange)
 ![Licence](https://img.shields.io/badge/licence-MIT-green)
-
-# 🎮 PokéChallenge Tracker
 
 Une plateforme web combinant un site informatif et un tracker interactif dédié aux challenges Pokémon tels que le Nuzlocke, le Soul Link et le Randomizer.
 
@@ -14,6 +14,7 @@ Une plateforme web combinant un site informatif et un tracker interactif dédié
 **PokéChallenge Tracker** est un outil conçu pour les joueurs souhaitant suivre leurs aventures Pokémon tout en accédant à des ressources complètes sur les règles et mécaniques des challenges.
 
 Le site permet :
+
 - d’explorer les règles des différents challenges ;
 - d’accéder à un Pokédex détaillé ;
 - de suivre une run grâce à un tracker interactif ;
@@ -24,7 +25,9 @@ Le site permet :
 ## ✨ Fonctionnalités
 
 ### 📚 Partie informative
+
 - Guides sur les challenges :
+
   - Nuzlocke
   - Soul Link
   - Randomizer
@@ -32,6 +35,7 @@ Le site permet :
 - Support progressif des générations
 
 ### 📊 Pokédex
+
 - Statistiques des Pokémon
 - Types et talents
 - Taux de capture
@@ -39,6 +43,7 @@ Le site permet :
 - Filtres avancés
 
 ### 🧭 Tracker interactif
+
 - Création et gestion de runs
 - Suivi des captures par zone
 - Gestion des statuts (vivant, mort, boîte, équipe)
@@ -46,6 +51,7 @@ Le site permet :
 - Journal de progression
 
 ### ⚙️ Personnalisation
+
 - Règles personnalisables
 - Presets de challenges
 - Sélection de la génération
@@ -55,6 +61,7 @@ Le site permet :
 ## 🚀 Roadmap
 
 ### 🟢 Version 1.0 – MVP
+
 - [ ] Site informatif
 - [ ] Support de la Génération 1
 - [ ] Pokédex 1G
@@ -64,17 +71,20 @@ Le site permet :
 - [ ] Sauvegarde via LocalStorage
 
 ### 🟡 Version 2.0
+
 - [ ] Règles personnalisables
 - [ ] Gestion des routes
 - [ ] Automatisation du Soul Link
 - [ ] Ajout de la Génération 2
 
 ### 🔵 Version 3.0
+
 - [ ] Comptes utilisateurs
 - [ ] Sauvegarde en ligne
 - [ ] Ajout des Générations 3 et 4
 
 ### 🟣 Version 4.0
+
 - [ ] Multijoueur en temps réel
 - [ ] Partage de runs
 - [ ] Intégration Twitch et Discord
