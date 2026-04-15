@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import gen1Pokemon from "../../../../data/gen1-pokemon.json";
+import gen2Pokemon from "../../../../data/gen2-pokemon.json";
 import {
   addCapturedPokemon,
   addSoulLink,
@@ -19,6 +20,7 @@ import type { Pokemon } from "../../../../types/pokemon";
 import type { SoulLink } from "../../../../types/soul-link";
 import StatusBadge from "../../../../components/ui/StatusBadge";
 import { kantoRoutes } from "../../../../data/routes/kanto";
+import { johtoRoutes } from "../../../../data/routes/johto";
 
 
 type RunDetailPageProps = {
@@ -47,11 +49,28 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [soulLinkErrorMessage, setSoulLinkErrorMessage] = useState("");
   const [showManualSoulLink, setShowManualSoulLink] = useState(false);
 
-  const pokedex = gen1Pokemon as Pokemon[];
+  const availablePokemon = useMemo(() => {
+    const generationOnePokemon = gen1Pokemon as Pokemon[];
+    const generationTwoPokemon = gen2Pokemon as Pokemon[];
+
+    if (!run) {
+      return generationOnePokemon;
+    }
+
+    if (run.game === "Pokemon Rouge / Bleu / Jaune") {
+      return generationOnePokemon;
+    }
+
+    if (run.game === "Pokemon Or / Argent / Cristal") {
+      return [...generationOnePokemon, ...generationTwoPokemon];
+    }
+
+    return generationOnePokemon;
+  }, [run]);
 
   const pokemonById = useMemo(() => {
-    return new Map(pokedex.map((pokemon) => [pokemon.id, pokemon]));
-  }, [pokedex]);
+    return new Map(availablePokemon.map((pokemon) => [pokemon.id, pokemon]));
+  }, [availablePokemon]);
 
   const filteredPokemons = useMemo(() => {
     const search = pokemonSearch.trim().toLowerCase();
@@ -60,10 +79,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       return [];
     }
 
-    return pokedex
+    return availablePokemon
       .filter((pokemon) => pokemon.name.toLowerCase().includes(search))
       .slice(0, 10);
-  }, [pokedex, pokemonSearch]);
+  }, [availablePokemon, pokemonSearch]);
 
   const availableSoulLinkCaptures = useMemo(() => {
     return captures.filter((capture) => capture.soulLinkId === null);
@@ -74,7 +93,11 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       return [];
     }
 
-    return kantoRoutes.filter((route) => route.availableIn.includes(run.game));
+    const allRoutes = [...kantoRoutes, ...johtoRoutes];
+
+    return allRoutes.filter((route) =>
+      route.availableIn.includes(run.game)
+    );
   }, [run]);
 
   const playerOne = run?.players[0] ?? null;
@@ -114,7 +137,9 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
           setSelectedPlayerId(foundRun.players[0].id);
         }
 
-        const availableRoutesForRun = kantoRoutes.filter((route) =>
+        const allRoutes = [...kantoRoutes, ...johtoRoutes];
+
+        const availableRoutesForRun = allRoutes.filter((route) =>
           route.availableIn.includes(foundRun.game)
         );
 
