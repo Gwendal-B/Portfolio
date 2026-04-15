@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-zinc-950 px-6 py-12 text-white">
-      <div className="mx-auto max-w-5xl">
+    <main className="min-h-screen px-6 py-12 text-white">
+      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
         <section className="rounded-3xl border border-zinc-800 bg-zinc-900 px-8 py-12">
           <p className="text-sm uppercase tracking-[0.25em] text-zinc-400">
             PokéChallenge Tracker

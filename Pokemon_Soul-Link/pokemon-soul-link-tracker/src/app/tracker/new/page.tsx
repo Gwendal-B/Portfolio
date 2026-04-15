@@ -106,8 +106,8 @@ export default function NewRunPage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-3xl">
+    <main className="min-h-screen px-6 py-12 text-white">
+      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
         <header className="mb-10">
           <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">
             Tracker

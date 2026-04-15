@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function RulesPage() {
   return (
-    <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-5xl">
+    <main className="min-h-screen px-6 py-12 text-white">
+      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
         {/* En-tête */}
         <header className="mb-10">
           <h1 className="text-4xl font-bold">Règles des Challenges Pokémon</h1>

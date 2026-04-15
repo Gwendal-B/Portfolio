@@ -49,8 +49,8 @@ export default async function PokemonDetailPage({
   */
   if (!pokemon) {
     return (
-      <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-        <div className="mx-auto max-w-3xl">
+      <main className="min-h-screen px-6 py-12 text-white">
+        <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
           <p className="text-zinc-400">Pokémon introuvable.</p>
 
           <Link
@@ -65,8 +65,8 @@ export default async function PokemonDetailPage({
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-4xl">
+    <main className="min-h-screen px-6 py-12 text-white">
+      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
         <Link
           href="/pokedex"
           className="mb-6 inline-block text-sm text-zinc-400 hover:text-white"

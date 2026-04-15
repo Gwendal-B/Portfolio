@@ -563,8 +563,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-        <div className="mx-auto max-w-7xl">
+      <main className="min-h-screen px-6 py-12 text-white">
+        <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
           <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
           <p className="text-zinc-400">Chargement de la run...</p>
           </div>
@@ -575,8 +575,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
   if (!run) {
     return (
-      <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-        <div className="mx-auto max-w-7xl">
+      <main className="min-h-screen px-6 py-12 text-white">
+        <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
           <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
           <p className="text-zinc-400">Run introuvable.</p>
 
@@ -593,8 +593,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
-      <div className="mx-auto max-w-7xl">
+    <main className="min-h-screen px-6 py-12 text-white">
+      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
         <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
           <aside className="hidden xl:block">
             {run.mode === "soul-link" && playerOne ? renderTeamPanel(playerOne.name, playerOneTeam) : null}
