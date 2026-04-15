@@ -14,6 +14,8 @@ export interface RunRules {
   faintEqualsDeath: boolean;
   nicknameRequired: boolean;
   soulLinkEnabled: boolean;
+  sharedDeathEnabled: boolean;
+  duplicateSpeciesClause: boolean;
 }
 
 export interface Run {
