@@ -45,6 +45,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [selectedCaptureAId, setSelectedCaptureAId] = useState("");
   const [selectedCaptureBId, setSelectedCaptureBId] = useState("");
   const [soulLinkErrorMessage, setSoulLinkErrorMessage] = useState("");
+  const [showManualSoulLink, setShowManualSoulLink] = useState(false);
 
   const pokedex = gen1Pokemon as Pokemon[];
 
@@ -983,13 +984,29 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                 <h2 className="text-xl font-semibold">Créer un lien Soul Link</h2>
 
                 <p className="mt-3 text-zinc-400">
-                  Lie manuellement deux captures appartenant à deux joueurs différents.
+                  Les liens Soul Link sont créés automatiquement lorsque les deux joueurs
+                  capturent un Pokémon dans la même zone.
                 </p>
 
-                <form
-                  onSubmit={handleCreateSoulLink}
-                  className="mt-6 grid gap-4 md:grid-cols-2"
+                <p className="mt-2 text-sm text-zinc-500">
+                  Tu peux également créer un lien manuellement si nécessaire.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setShowManualSoulLink((prev) => !prev)}
+                  className="mt-4 rounded-lg border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm font-medium text-purple-300 transition hover:bg-purple-500/20"
                 >
+                  {showManualSoulLink
+                    ? "Masquer le lien manuel"
+                    : "Créer un lien manuellement"}
+                </button>
+
+                {showManualSoulLink && (
+                  <form
+                    onSubmit={handleCreateSoulLink}
+                    className="mt-6 grid gap-4 md:grid-cols-2"
+                  >
                   <div>
                     <label
                       htmlFor="selectedCaptureAId"
@@ -1067,6 +1084,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                     </button>
                   </div>
                 </form>
+                )}
               </section>
             )}
             {run.mode === "soul-link" && (
