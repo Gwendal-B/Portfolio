@@ -522,7 +522,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     teamCaptures: CapturedPokemon[]
   ) {
     return (
-      <div className="sticky top-6 rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
+      <div className="sticky top-24 rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
         <h2 className="text-lg font-semibold text-white">{title}</h2>
 
         {teamCaptures.length === 0 ? (
