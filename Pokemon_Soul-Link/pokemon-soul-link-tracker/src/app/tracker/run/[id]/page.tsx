@@ -159,13 +159,27 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     }
 
     if (run.rules.oneEncounterPerRoute) {
-      const existingCaptureOnRoute = captures.find(
-        (capture) => capture.routeId === selectedRoute.id
-      );
+      const existingCaptureOnRoute =
+        run.mode === "soul-link"
+          ? captures.find(
+              (capture) =>
+                capture.routeId === selectedRoute.id &&
+                capture.playerId === selectedPlayerId
+            )
+          : captures.find(
+              (capture) => capture.routeId === selectedRoute.id
+            );
 
       if (existingCaptureOnRoute) {
+        const playerName =
+          run.mode === "soul-link"
+            ? run.players.find((player) => player.id === selectedPlayerId)?.name
+            : null;
+
         setErrorMessage(
-          `Une capture existe déjà sur ${selectedRoute.name}.`
+          run.mode === "soul-link"
+            ? `${playerName ?? "Ce joueur"} a déjà une capture sur ${selectedRoute.name}.`
+            : `Une capture existe déjà sur ${selectedRoute.name}.`
         );
         return;
       }
@@ -245,6 +259,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       alors son partenaire devient "unusable".
     */
     if (
+      run?.rules.sharedDeathEnabled &&
       field === "lifeStatus" &&
       value === "dead" &&
       captureToUpdate.soulLinkId !== null
