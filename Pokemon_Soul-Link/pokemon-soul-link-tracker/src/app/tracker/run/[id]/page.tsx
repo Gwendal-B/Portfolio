@@ -219,8 +219,48 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
     addCapturedPokemon(newCapture);
 
+    if (run.mode === "soul-link" && run.rules.soulLinkEnabled) {
+      const matchingCapture = captures.find(
+        (capture) =>
+          capture.routeId === newCapture.routeId &&
+          capture.playerId !== newCapture.playerId &&
+          capture.soulLinkId === null &&
+          newCapture.soulLinkId === null
+      );
+
+      if (matchingCapture) {
+        const soulLinkId = `soul-link-${Date.now()}`;
+
+        const newSoulLink: SoulLink = {
+          id: soulLinkId,
+          runId: run.id,
+          pokemonAId: matchingCapture.id,
+          pokemonBId: newCapture.id,
+          active: true,
+          createdAt: now,
+        };
+
+        addSoulLink(newSoulLink);
+
+        updateCapturedPokemon({
+          ...matchingCapture,
+          soulLinkId: soulLinkId,
+          updatedAt: now,
+        });
+
+        updateCapturedPokemon({
+          ...newCapture,
+          soulLinkId: soulLinkId,
+          updatedAt: now,
+        });
+      }
+    }
+
     const updatedCaptures = getCapturedPokemonsByRunId(run.id);
+    const updatedSoulLinks = getSoulLinksByRunId(run.id);
+
     setCaptures(updatedCaptures);
+    setSoulLinks(updatedSoulLinks);
 
     setNickname("");
     setLifeStatus("alive");
