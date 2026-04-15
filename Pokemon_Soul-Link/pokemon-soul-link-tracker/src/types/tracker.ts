@@ -8,6 +8,7 @@ export interface CapturedPokemon {
   pokemonId: number;
   nickname: string;
   playerId: string;
+  routeId: string;
   routeName: string;
   lifeStatus: LifeStatus;
   storageStatus: StorageStatus;

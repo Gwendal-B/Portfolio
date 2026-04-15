@@ -135,6 +135,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       pokemonId: selectedPokemonId,
       nickname: nickname.trim(),
       playerId: selectedPlayerId,
+      routeId: trimmedRouteName.toLowerCase().replace(/\s+/g, "-"),
       routeName: trimmedRouteName,
       lifeStatus,
       storageStatus,

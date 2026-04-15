@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { ChallengeMode, Gen1Game, Player, Run, RunRules } from "../../../types/run";
 import { addRun } from "../../../lib/local-storage";
@@ -13,8 +13,32 @@ export default function NewRunPage() {
   const [game, setGame] = useState<Gen1Game>("Pokemon Rouge");
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
+  const [rules, setRules] = useState<RunRules>({
+    oneEncounterPerRoute: true,
+    faintEqualsDeath: true,
+    nicknameRequired: true,
+    soulLinkEnabled: false,
+    sharedDeathEnabled: false,
+    duplicateSpeciesClause: false,
+  });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (mode === "soul-link") {
+      setRules((previousRules) => ({
+        ...previousRules,
+        soulLinkEnabled: true,
+        sharedDeathEnabled: true,
+      }));
+    } else {
+      setRules((previousRules) => ({
+        ...previousRules,
+        soulLinkEnabled: false,
+        sharedDeathEnabled: false,
+      }));
+    }
+  }, [mode]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -68,16 +92,6 @@ export default function NewRunPage() {
             { id: "player-2", name: trimmedPlayerTwo },
           ]
         : [{ id: "player-1", name: trimmedPlayerOne }];
-
-    /*
-      Règles de base de la V1
-    */
-    const rules: RunRules = {
-      oneEncounterPerRoute: true,
-      faintEqualsDeath: true,
-      nicknameRequired: true,
-      soulLinkEnabled: mode === "soul-link",
-    };
 
     /*
       Objet final de la run
@@ -210,6 +224,82 @@ export default function NewRunPage() {
             </div>
           )}
 
+          <section className="rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+            <h2 className="text-xl font-semibold text-white">Règles personnalisées</h2>
+
+            <div className="mt-4 space-y-4 text-sm text-zinc-300">
+              <label className="flex items-center justify-between gap-4">
+                <span>Une seule rencontre par zone</span>
+                <input
+                  type="checkbox"
+                  checked={rules.oneEncounterPerRoute}
+                  onChange={(event) =>
+                    setRules((previousRules) => ({
+                      ...previousRules,
+                      oneEncounterPerRoute: event.target.checked,
+                    }))
+                  }
+                />
+              </label>
+
+              <label className="flex items-center justify-between gap-4">
+                <span>Un Pokémon K.O. est considéré comme mort</span>
+                <input
+                  type="checkbox"
+                  checked={rules.faintEqualsDeath}
+                  onChange={(event) =>
+                    setRules((previousRules) => ({
+                      ...previousRules,
+                      faintEqualsDeath: event.target.checked,
+                    }))
+                  }
+                />
+              </label>
+
+              <label className="flex items-center justify-between gap-4">
+                <span>Surnom obligatoire</span>
+                <input
+                  type="checkbox"
+                  checked={rules.nicknameRequired}
+                  onChange={(event) =>
+                    setRules((previousRules) => ({
+                      ...previousRules,
+                      nicknameRequired: event.target.checked,
+                    }))
+                  }
+                />
+              </label>
+
+              <label className="flex items-center justify-between gap-4">
+                <span>Clause anti-doublons</span>
+                <input
+                  type="checkbox"
+                  checked={rules.duplicateSpeciesClause}
+                  onChange={(event) =>
+                    setRules((previousRules) => ({
+                      ...previousRules,
+                      duplicateSpeciesClause: event.target.checked,
+                    }))
+                  }
+                />
+              </label>
+
+              {mode === "soul-link" && (
+                <>
+                  <label className="flex items-center justify-between gap-4">
+                    <span>Soul Link activé</span>
+                    <input type="checkbox" checked readOnly />
+                  </label>
+
+                  <label className="flex items-center justify-between gap-4">
+                    <span>Mort partagée automatique</span>
+                    <input type="checkbox" checked readOnly />
+                  </label>
+                </>
+              )}
+            </div>
+          </section>
+
           {errorMessage && (
             <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
               {errorMessage}
@@ -245,6 +335,34 @@ export default function NewRunPage() {
               <span className="font-medium text-white">Joueur 1 :</span>{" "}
               {playerOne || "Non renseigné"}
             </p>
+
+            <div className="pt-2">
+              <p className="font-medium text-white">Règles :</p>
+
+              <div className="mt-2 space-y-1 text-sm text-zinc-300">
+                <p>
+                  Une rencontre par zone :{" "}
+                  {rules.oneEncounterPerRoute ? "Oui" : "Non"}
+                </p>
+                <p>
+                  K.O. = mort : {rules.faintEqualsDeath ? "Oui" : "Non"}
+                </p>
+                <p>
+                  Surnom obligatoire : {rules.nicknameRequired ? "Oui" : "Non"}
+                </p>
+                <p>
+                  Clause anti-doublons :{" "}
+                  {rules.duplicateSpeciesClause ? "Oui" : "Non"}
+                </p>
+
+                {mode === "soul-link" && (
+                  <>
+                    <p>Soul Link activé : Oui</p>
+                    <p>Mort partagée automatique : Oui</p>
+                  </>
+                )}
+              </div>
+            </div>
 
             {mode === "soul-link" && (
               <p>
