@@ -18,6 +18,7 @@ import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../typ
 import type { Pokemon } from "../../../../types/pokemon";
 import type { SoulLink } from "../../../../types/soul-link";
 import StatusBadge from "../../../../components/ui/StatusBadge";
+import { kantoRoutes } from "../../../../data/routes/kanto";
 
 
 type RunDetailPageProps = {
@@ -35,7 +36,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [selectedPokemonId, setSelectedPokemonId] = useState<number>(1);
   const [nickname, setNickname] = useState("");
   const [selectedPlayerId, setSelectedPlayerId] = useState("player-1");
-  const [routeName, setRouteName] = useState("");
+  const [selectedRouteId, setSelectedRouteId] = useState("");
   const [lifeStatus, setLifeStatus] = useState<LifeStatus>("alive");
   const [storageStatus, setStorageStatus] = useState<StorageStatus>("team");
   const [errorMessage, setErrorMessage] = useState("");
@@ -66,6 +67,14 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const availableSoulLinkCaptures = useMemo(() => {
     return captures.filter((capture) => capture.soulLinkId === null);
   }, [captures]);
+
+  const availableRoutes = useMemo(() => {
+    if (!run) {
+      return [];
+    }
+
+    return kantoRoutes.filter((route) => route.availableIn.includes(run.game));
+  }, [run]);
 
   const playerOne = run?.players[0] ?? null;
   const playerTwo = run?.players[1] ?? null;
@@ -103,6 +112,14 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
         if (foundRun.players.length > 0) {
           setSelectedPlayerId(foundRun.players[0].id);
         }
+
+        const availableRoutesForRun = kantoRoutes.filter((route) =>
+          route.availableIn.includes(foundRun.game)
+        );
+
+        if (availableRoutesForRun.length > 0) {
+          setSelectedRouteId(availableRoutesForRun[0].id);
+        }
       }
 
       setIsLoading(false);
@@ -120,10 +137,17 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
     setErrorMessage("");
 
-    const trimmedRouteName = routeName.trim();
-
-    if (!trimmedRouteName) {
+    if (!selectedRouteId) {
       setErrorMessage("La zone de capture est obligatoire.");
+      return;
+    }
+
+    const selectedRoute = availableRoutes.find(
+      (route) => route.id === selectedRouteId
+    );
+
+    if (!selectedRoute) {
+      setErrorMessage("La zone sélectionnée est invalide.");
       return;
     }
 
@@ -135,8 +159,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       pokemonId: selectedPokemonId,
       nickname: nickname.trim(),
       playerId: selectedPlayerId,
-      routeId: trimmedRouteName.toLowerCase().replace(/\s+/g, "-"),
-      routeName: trimmedRouteName,
+      routeId: selectedRoute.id,
+      routeName: selectedRoute.name,
       lifeStatus,
       storageStatus,
       soulLinkId: null,
@@ -150,10 +174,13 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setCaptures(updatedCaptures);
 
     setNickname("");
-    setRouteName("");
     setLifeStatus("alive");
     setStorageStatus("team");
     setPokemonSearch("");
+
+    if (availableRoutes.length > 0) {
+      setSelectedRouteId(availableRoutes[0].id);
+    }
   }
 
   function handleUpdateCapture(
@@ -747,17 +774,22 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                 </div>
 
                 <div>
-                  <label htmlFor="routeName" className="mb-2 block text-sm font-medium">
+                  <label htmlFor="routeId" className="mb-2 block text-sm font-medium">
                     Zone de capture
                   </label>
-                  <input
-                    id="routeName"
-                    type="text"
-                    value={routeName}
-                    onChange={(event) => setRouteName(event.target.value)}
-                    placeholder="Ex : Route 2"
+
+                  <select
+                    id="routeId"
+                    value={selectedRouteId}
+                    onChange={(event) => setSelectedRouteId(event.target.value)}
                     className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  />
+                  >
+                    {availableRoutes.map((route) => (
+                      <option key={route.id} value={route.id}>
+                        {route.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
