@@ -14,9 +14,11 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-bold text-white">
+        <Link href="/"
+        className="text-lg font-bold tracking-tight text-white hover:text-blue-400 transition"
+        >
           PokéChallenge Tracker
         </Link>
 
