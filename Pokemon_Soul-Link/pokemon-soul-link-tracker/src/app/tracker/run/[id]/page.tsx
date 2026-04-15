@@ -151,6 +151,19 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       return;
     }
 
+    if (run.rules.oneEncounterPerRoute) {
+      const existingCaptureOnRoute = captures.find(
+        (capture) => capture.routeId === selectedRoute.id
+      );
+
+      if (existingCaptureOnRoute) {
+        setErrorMessage(
+          `Une capture existe déjà sur ${selectedRoute.name}.`
+        );
+        return;
+      }
+    }
+
     const now = new Date().toISOString();
 
     const newCapture: CapturedPokemon = {
