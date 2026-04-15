@@ -17,6 +17,7 @@ import type { Run } from "../../../../types/run";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
 import type { Pokemon } from "../../../../types/pokemon";
 import type { SoulLink } from "../../../../types/soul-link";
+import StatusBadge from "../../../../components/ui/StatusBadge";
 
 
 type RunDetailPageProps = {
@@ -399,7 +400,11 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
               {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`}
             </h3>
 
-            <p className="mt-1 text-sm text-zinc-400">
+            <div className="mt-2">
+              <StatusBadge status={capture.lifeStatus} />
+            </div>
+
+            <p className="mt-2 text-sm text-zinc-400">
               {capture.nickname ? `Surnom : ${capture.nickname}` : "Aucun surnom"}
             </p>
           </div>
@@ -408,7 +413,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             <img
               src={pokemon.spriteUrl}
               alt={pokemon.name}
-              className="h-24 w-24 shrink-0 object-contain [image-rendering:pixelated]"
+              className="h-24 w-30 shrink-0 object-contain [image-rendering:pixelated]"
             />
           )}
         </div>
@@ -449,7 +454,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                 <img
                   src={linkedPokemon.spriteUrl}
                   alt={linkedPokemon.name}
-                  className="h-20 w-20 shrink-0 object-contain [image-rendering:pixelated]"
+                  className="h-22 w-30 shrink-0 object-contain [image-rendering:pixelated]"
                 />
               )}
             </div>
@@ -530,13 +535,13 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
               return (
                 <div
                   key={capture.id}
-                  className="rounded-lg border border-zinc-800 bg-zinc-950 p-2"
+                  className="rounded-lg border border-zinc-800 bg-zinc-950 p-2 min-h-[140px]"
                 >
                   {pokemon ? (
                     <img
                       src={pokemon.spriteUrl}
                       alt={pokemon.name}
-                      className="mx-auto h-16 w-16 object-contain [image-rendering:pixelated]"
+                      className="mx-auto h-24 w-24 object-contain [image-rendering:pixelated]"
                     />
                   ) : (
                     <div className="flex h-16 items-center justify-center text-xs text-zinc-500">
@@ -560,7 +565,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     return (
       <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)_220px]">
+          <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
           <p className="text-zinc-400">Chargement de la run...</p>
           </div>
         </div>
@@ -572,7 +577,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     return (
       <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)_220px]">
+          <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
           <p className="text-zinc-400">Run introuvable.</p>
 
           <Link
@@ -590,11 +595,9 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-white">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)_220px]">
+        <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
           <aside className="hidden xl:block">
-            {run.mode === "soul-link" && playerOne
-              ? renderTeamPanel(playerOne.name, playerOneTeam)
-              : null}
+            {run.mode === "soul-link" && playerOne ? renderTeamPanel(playerOne.name, playerOneTeam) : null}
           </aside>
           <div>
             <header className="mb-8">
@@ -1024,9 +1027,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             )}
           </div>
           <aside className="hidden xl:block">
-            {run.mode === "soul-link" && playerTwo
-              ? renderTeamPanel(playerTwo.name, playerTwoTeam)
-              : null}
+            {run.mode === "soul-link" && playerTwo ? renderTeamPanel(playerTwo.name, playerTwoTeam) : null}
           </aside>
         </div>
       </div>
