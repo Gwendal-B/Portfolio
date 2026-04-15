@@ -1,4 +1,4 @@
-import type { Gen1Game } from "./run";
+import type { GameGroup } from "./run";
 
 export type Region =
   | "Kanto"
@@ -25,5 +25,5 @@ export interface GameRoute {
   name: string;
   region: Region;
   category: RouteCategory;
-  availableIn: Gen1Game[];
+  availableIn: GameGroup[];
 }

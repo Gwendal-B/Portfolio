@@ -1,13 +1,11 @@
 import type { GameRoute } from "../../types/route";
-import type { Gen1Game } from "../../types/run";
+import type { GameGroup } from "../../types/run";
 
 /**
  * Jeux disponibles dans la région de Kanto (Gen 1)
  */
-const kantoGames: Gen1Game[] = [
-  "Pokemon Rouge",
-  "Pokemon Bleu",
-  "Pokemon Jaune",
+const kantoGames: GameGroup[] = [
+  "Pokemon Rouge / Bleu / Jaune",
 ];
 
 /**

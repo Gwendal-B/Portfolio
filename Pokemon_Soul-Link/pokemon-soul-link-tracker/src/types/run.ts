@@ -1,8 +1,10 @@
 export type ChallengeMode = "nuzlocke" | "soul-link";
 
-export type GameGeneration = 1;
+export type GameGeneration = 1 | 2;
 
-export type Gen1Game = "Pokemon Rouge" | "Pokemon Bleu" | "Pokemon Jaune";
+export type GameGroup =
+  | "Pokemon Rouge / Bleu / Jaune"
+  | "Pokemon Or / Argent / Cristal";
 
 export interface Player {
   id: string;
@@ -23,7 +25,7 @@ export interface Run {
   name: string;
   mode: ChallengeMode;
   generation: GameGeneration;
-  game: Gen1Game;
+  game: GameGroup;
   players: Player[];
   rules: RunRules;
   createdAt: string;

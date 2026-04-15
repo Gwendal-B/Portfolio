@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { ChallengeMode, Gen1Game, Player, Run, RunRules } from "../../../types/run";
+import type { ChallengeMode, GameGroup, Player, Run, RunRules } from "../../../types/run";
 import { addRun } from "../../../lib/local-storage";
 
 export default function NewRunPage() {
@@ -10,7 +10,7 @@ export default function NewRunPage() {
 
   const [runName, setRunName] = useState("");
   const [mode, setMode] = useState<ChallengeMode>("nuzlocke");
-  const [game, setGame] = useState<Gen1Game>("Pokemon Rouge");
+  const [game, setGame] = useState<GameGroup>("Pokemon Rouge / Bleu / Jaune");
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
   const [rules, setRules] = useState<RunRules>({
@@ -177,12 +177,15 @@ export default function NewRunPage() {
             <select
               id="game"
               value={game}
-              onChange={(event) => setGame(event.target.value as Gen1Game)}
+              onChange={(event) => setGame(event.target.value as GameGroup)}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             >
-              <option value="Pokemon Rouge">Pokémon Rouge</option>
-              <option value="Pokemon Bleu">Pokémon Bleu</option>
-              <option value="Pokemon Jaune">Pokémon Jaune</option>
+              <option value="Pokemon Rouge / Bleu / Jaune">
+                Pokémon Rouge / Bleu / Jaune
+              </option>
+              <option value="Pokemon Or / Argent / Cristal">
+                Pokémon Or / Argent / Cristal
+              </option>
             </select>
           </div>
 
