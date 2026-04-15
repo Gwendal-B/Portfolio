@@ -137,6 +137,13 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
     setErrorMessage("");
 
+    const trimmedNickname = nickname.trim();
+
+    if (run.rules.nicknameRequired && !trimmedNickname) {
+      setErrorMessage("Le surnom est obligatoire pour cette run.");
+      return;
+    }
+
     if (!selectedRouteId) {
       setErrorMessage("La zone de capture est obligatoire.");
       return;
@@ -164,13 +171,28 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       }
     }
 
+    if (run.rules.duplicateSpeciesClause) {
+      const existingCaptureOfSameSpecies = captures.find(
+        (capture) => capture.pokemonId === selectedPokemonId
+      );
+
+      if (existingCaptureOfSameSpecies) {
+        const pokemon = pokemonById.get(selectedPokemonId);
+
+        setErrorMessage(
+          `${pokemon ? pokemon.name : "Ce Pokémon"} a déjà été capturé dans cette run.`
+        );
+        return;
+      }
+    }
+
     const now = new Date().toISOString();
 
     const newCapture: CapturedPokemon = {
       id: `capture-${Date.now()}`,
       runId: run.id,
       pokemonId: selectedPokemonId,
-      nickname: nickname.trim(),
+      nickname: trimmedNickname,
       playerId: selectedPlayerId,
       routeId: selectedRoute.id,
       routeName: selectedRoute.name,
