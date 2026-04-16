@@ -18,6 +18,11 @@ export default function PokedexPage() {
   // État pour le filtre par type
   const [selectedType, setSelectedType] = useState("Tous");
 
+  const [selectedGeneration, setSelectedGeneration] = useState("Toutes");
+
+  const shouldShowGenerationFilter =
+    selectedGameGroup === "Pokemon Or / Argent / Cristal";
+
   // 🔹 Pokémon disponibles selon le groupe de jeu
   const availablePokemon = useMemo(() => {
     const generationOnePokemon = gen1Pokemon as Pokemon[];
@@ -52,7 +57,12 @@ export default function PokedexPage() {
       selectedType === "Tous" ||
       pokemon.types.includes(selectedType);
 
-    return matchesSearch && matchesType;
+    const matchesGeneration =
+      !shouldShowGenerationFilter ||
+      selectedGeneration === "Toutes" ||
+      pokemon.generation === Number(selectedGeneration);
+
+    return matchesSearch && matchesType && matchesGeneration;
   });
 
   return (
@@ -79,9 +89,10 @@ export default function PokedexPage() {
             <select
               id="gameGroup"
               value={selectedGameGroup}
-              onChange={(event) =>
-                setSelectedGameGroup(event.target.value as GameGroup)
-              }
+              onChange={(event) => {
+                setSelectedGameGroup(event.target.value as GameGroup);
+                setSelectedGeneration("Toutes");
+              }}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             >
               <option value="Pokemon Rouge / Bleu / Jaune">
@@ -92,6 +103,28 @@ export default function PokedexPage() {
               </option>
             </select>
           </div>
+
+        {shouldShowGenerationFilter && (
+          <div className="w-full lg:w-56">
+            <label
+              htmlFor="generation"
+              className="mb-2 block text-sm font-medium text-zinc-300"
+            >
+              Génération
+            </label>
+
+            <select
+              id="generation"
+              value={selectedGeneration}
+              onChange={(event) => setSelectedGeneration(event.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+            >
+              <option value="Toutes">Toutes</option>
+              <option value="1">Génération 1</option>
+              <option value="2">Génération 2</option>
+            </select>
+          </div>
+        )}
 
           <div className="w-full lg:flex-1">
             <label
