@@ -1,5 +1,4 @@
-import gen1Pokemon from "../../../data/gen1-pokemon.json";
-import gen2Pokemon from "../../../data/gen2-pokemon.json";
+import { nationalPokedex, getPokemonById } from "../../../lib/pokedex";
 import type { Pokemon } from "../../../types/pokemon";
 import Link from "next/link";
 
@@ -35,18 +34,7 @@ export default async function PokemonDetailPage({
   */
   const pokemonId = Number(id);
 
-  /*
-    On fusionne les Pokémon des générations différentes
-  */
-  const pokedex = [
-    ...(gen1Pokemon as Pokemon[]),
-    ...(gen2Pokemon as Pokemon[]),
-  ];
-
-  /*
-    On cherche le Pokémon qui correspond à l'id
-  */
-  const pokemon = pokedex.find((entry) => entry.id === pokemonId);
+  const pokemon = getPokemonById(pokemonId);
 
   /*
     Si aucun Pokémon n'est trouvé, on affiche un message simple
