@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import gen1Pokemon from "../../data/gen1-pokemon.json";
 import type { Pokemon } from "../../types/pokemon";
+import gen2Pokemon from "../../data/gen2-pokemon.json";
+import type { GameGroup } from "../../types/run";
 import Link from "next/link";
 
 export default function PokedexPage() {
-  const pokemons = gen1Pokemon as Pokemon[];
+  // 🔹 État pour le groupe de jeu
+  const [selectedGameGroup, setSelectedGameGroup] =
+  useState<GameGroup>("Pokemon Rouge / Bleu / Jaune");
 
   // État pour la recherche
   const [search, setSearch] = useState("");
@@ -14,14 +18,32 @@ export default function PokedexPage() {
   // État pour le filtre par type
   const [selectedType, setSelectedType] = useState("Tous");
 
+  // 🔹 Pokémon disponibles selon le groupe de jeu
+  const availablePokemon = useMemo(() => {
+    const generationOnePokemon = gen1Pokemon as Pokemon[];
+    const generationTwoPokemon = gen2Pokemon as Pokemon[];
+
+    if (selectedGameGroup === "Pokemon Rouge / Bleu / Jaune") {
+      return generationOnePokemon;
+    }
+
+    if (selectedGameGroup === "Pokemon Or / Argent / Cristal") {
+      return [...generationOnePokemon, ...generationTwoPokemon];
+    }
+
+    return generationOnePokemon;
+  }, [selectedGameGroup]);
+
   // Récupération de tous les types uniques
-  const types = [
+  const availableTypes = [
     "Tous",
-    ...Array.from(new Set(pokemons.flatMap((p) => p.types))),
+    ...Array.from(
+      new Set(availablePokemon.flatMap((pokemon) => pokemon.types))
+    ).sort(),
   ];
 
   // Filtrage des Pokémon
-  const filteredPokemons = pokemons.filter((pokemon) => {
+  const filteredPokemons = availablePokemon.filter((pokemon) => {
     const matchesSearch = pokemon.name
       .toLowerCase()
       .includes(search.toLowerCase());
@@ -38,35 +60,78 @@ export default function PokedexPage() {
       <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
         {/* En-tête */}
         <header className="mb-8">
-          <h1 className="text-4xl font-bold">Pokédex – Génération 1</h1>
+          <h1 className="text-4xl font-bold">Pokédex</h1>
           <p className="mt-2 text-zinc-400">
-            Explore les Pokémon et filtre-les par nom ou par type.
+            Explore les Pokémon disponibles selon le groupe de jeu sélectionné.
           </p>
         </header>
 
         {/* Barre de recherche et filtre */}
-        <section className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          {/* Recherche */}
-          <input
-            type="text"
-            placeholder="Rechercher un Pokémon..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full md:w-1/2 rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        <section className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end">
+          <div className="w-full lg:w-80">
+            <label
+              htmlFor="gameGroup"
+              className="mb-2 block text-sm font-medium text-zinc-300"
+            >
+              Groupe de jeu
+            </label>
 
-          {/* Filtre par type */}
-          <select
-            value={selectedType}
-            onChange={(e) => setSelectedType(e.target.value)}
-            className="w-full md:w-1/4 rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {types.map((type) => (
-              <option key={type} value={type}>
-                {type}
+            <select
+              id="gameGroup"
+              value={selectedGameGroup}
+              onChange={(event) =>
+                setSelectedGameGroup(event.target.value as GameGroup)
+              }
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+            >
+              <option value="Pokemon Rouge / Bleu / Jaune">
+                Pokémon Rouge / Bleu / Jaune
               </option>
-            ))}
-          </select>
+              <option value="Pokemon Or / Argent / Cristal">
+                Pokémon Or / Argent / Cristal
+              </option>
+            </select>
+          </div>
+
+          <div className="w-full lg:flex-1">
+            <label
+              htmlFor="search"
+              className="mb-2 block text-sm font-medium text-zinc-300"
+            >
+              Rechercher un Pokémon
+            </label>
+
+            <input
+              id="search"
+              type="text"
+              placeholder="Rechercher un Pokémon..."
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+            />
+          </div>
+
+          <div className="w-full lg:w-64">
+            <label
+              htmlFor="type"
+              className="mb-2 block text-sm font-medium text-zinc-300"
+            >
+              Filtrer par type
+            </label>
+
+            <select
+              id="type"
+              value={selectedType}
+              onChange={(event) => setSelectedType(event.target.value)}
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+            >
+              {availableTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
         </section>
 
         {/* Nombre de résultats */}
