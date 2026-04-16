@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import gen1Pokemon from "../../../../data/gen1-pokemon.json";
 import gen2Pokemon from "../../../../data/gen2-pokemon.json";
+import gen3Pokemon from "../../../../data/gen3-pokemon.json";
 import {
   addCapturedPokemon,
   addSoulLink,
@@ -21,6 +22,7 @@ import type { SoulLink } from "../../../../types/soul-link";
 import StatusBadge from "../../../../components/ui/StatusBadge";
 import { kantoRoutes } from "../../../../data/routes/kanto";
 import { johtoRoutes } from "../../../../data/routes/johto";
+import { hoennRoutes } from "../../../../data/routes/hoenn";
 
 
 type RunDetailPageProps = {
@@ -52,6 +54,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const availablePokemon = useMemo(() => {
     const generationOnePokemon = gen1Pokemon as Pokemon[];
     const generationTwoPokemon = gen2Pokemon as Pokemon[];
+    const generationThreePokemon = gen3Pokemon as Pokemon[];
 
     if (!run) {
       return generationOnePokemon;
@@ -64,6 +67,15 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     if (run.game === "Pokemon Or / Argent / Cristal") {
       return [...generationOnePokemon, ...generationTwoPokemon];
     }
+
+    if (run.game === "Pokemon Rubis / Saphir / Émeraude") {
+      return [
+      ...generationOnePokemon,
+      ...generationTwoPokemon,
+      ...generationThreePokemon,
+    ];
+    }
+
 
     return generationOnePokemon;
   }, [run]);
@@ -93,7 +105,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       return [];
     }
 
-    const allRoutes = [...kantoRoutes, ...johtoRoutes];
+    const allRoutes = [...kantoRoutes, ...johtoRoutes, ...hoennRoutes];
 
     return allRoutes.filter((route) =>
       route.availableIn.includes(run.game)
@@ -137,7 +149,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
           setSelectedPlayerId(foundRun.players[0].id);
         }
 
-        const allRoutes = [...kantoRoutes, ...johtoRoutes];
+        const allRoutes = [...kantoRoutes, ...johtoRoutes,...hoennRoutes];
 
         const availableRoutesForRun = allRoutes.filter((route) =>
           route.availableIn.includes(foundRun.game)

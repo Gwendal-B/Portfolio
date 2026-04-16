@@ -15,6 +15,7 @@ export type RouteCategory =
   | "route"
   | "city"
   | "cave"
+  | "mountain"
   | "forest"
   | "sea"
   | "building"

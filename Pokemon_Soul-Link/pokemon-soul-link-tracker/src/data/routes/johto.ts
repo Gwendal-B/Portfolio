@@ -6,10 +6,10 @@ const johtoGames: GameGroup[] = [
 ];
 
 const numberedJohtoRoutes: GameRoute[] = Array.from(
-  { length: 46 },
+  { length: 18 },
   (_, index): GameRoute => ({
-    id: `johto-route-${index + 1}`,
-    name: `Route ${index + 1}`,
+    id: `johto-route-${index + 29}`,
+    name: `Route ${index + 29}`,
     region: "Johto",
     category: "route",
     availableIn: johtoGames,
@@ -17,9 +17,11 @@ const numberedJohtoRoutes: GameRoute[] = Array.from(
 );
 
 export const johtoRoutes: GameRoute[] = [
+  // 🌆 Villes et bourgs
+  // On les garde si une obtention y est possible
   {
     id: "bourg-geon",
-    name: "Bourg Geon",
+    name: "Bourg-Geon",
     region: "Johto",
     category: "city",
     availableIn: johtoGames,
@@ -39,7 +41,7 @@ export const johtoRoutes: GameRoute[] = [
     availableIn: johtoGames,
   },
   {
-    id: "ecorcea",
+    id: "ecorcekia",
     name: "Écorcia",
     region: "Johto",
     category: "city",
@@ -82,14 +84,16 @@ export const johtoRoutes: GameRoute[] = [
   },
   {
     id: "ebenelle",
-    name: "Ébenelle",
+    name: "Ébènelle",
     region: "Johto",
     category: "city",
     availableIn: johtoGames,
   },
 
+  // 🛣️ Routes Johto
   ...numberedJohtoRoutes,
 
+  // 🌲 Forêts / parcs
   {
     id: "bois-aux-chenes",
     name: "Bois aux Chênes",
@@ -98,10 +102,26 @@ export const johtoRoutes: GameRoute[] = [
     availableIn: johtoGames,
   },
   {
-    id: "tour-chétiflor",
-    name: "Tour Chétiflor",
+    id: "parc-national",
+    name: "Parc National",
     region: "Johto",
-    category: "building",
+    category: "forest",
+    availableIn: johtoGames,
+  },
+
+  // 🕳️ Grottes et zones souterraines
+  {
+    id: "antre-noire",
+    name: "Antre Noire",
+    region: "Johto",
+    category: "cave",
+    availableIn: johtoGames,
+  },
+  {
+    id: "ruines-alpha",
+    name: "Ruines d'Alpha",
+    region: "Johto",
+    category: "cave",
     availableIn: johtoGames,
   },
   {
@@ -112,50 +132,43 @@ export const johtoRoutes: GameRoute[] = [
     availableIn: johtoGames,
   },
   {
-    id: "ruines-alpha",
-    name: "Ruines d'Alpha",
+    id: "grotte-union",
+    name: "Grotte Union",
     region: "Johto",
-    category: "special",
+    category: "cave",
     availableIn: johtoGames,
   },
   {
-    id: "parc-national",
-    name: "Parc National",
-    region: "Johto",
-    category: "special",
-    availableIn: johtoGames,
-  },
-  {
-    id: "tour-cendree",
+    id: "tour-cendre",
     name: "Tour Cendrée",
     region: "Johto",
     category: "building",
     availableIn: johtoGames,
   },
   {
-    id: "tour-carillon",
-    name: "Tour Carillon",
+    id: "mont-creuset",
+    name: "Mont Creuset",
     region: "Johto",
-    category: "building",
+    category: "cave",
     availableIn: johtoGames,
   },
   {
-    id: "phare-oliville",
-    name: "Phare d'Oliville",
-    region: "Johto",
-    category: "building",
-    availableIn: johtoGames,
-  },
-  {
-    id: "ilebulle",
+    id: "tourb-iles",
     name: "Tourb'Îles",
     region: "Johto",
-    category: "sea",
+    category: "cave",
     availableIn: johtoGames,
   },
   {
-    id: "antre-noire",
-    name: "Antre Noire",
+    id: "chemin-glace",
+    name: "Chemin Glace",
+    region: "Johto",
+    category: "cave",
+    availableIn: johtoGames,
+  },
+  {
+    id: "taniere-dragon",
+    name: "Antre du Dragon",
     region: "Johto",
     category: "cave",
     availableIn: johtoGames,
@@ -165,6 +178,29 @@ export const johtoRoutes: GameRoute[] = [
     name: "Route Victoire",
     region: "Johto",
     category: "cave",
+    availableIn: johtoGames,
+  },
+  {
+    id: "mont-argent",
+    name: "Mont Argent",
+    region: "Johto",
+    category: "cave",
+    availableIn: johtoGames,
+  },
+
+  // 🏢 Tours et lieux spéciaux avec obtention possible
+  {
+    id: "tour-chetiflor",
+    name: "Tour Chétiflor",
+    region: "Johto",
+    category: "building",
+    availableIn: johtoGames,
+  },
+  {
+    id: "tour-carillon",
+    name: "Tour Carillon",
+    region: "Johto",
+    category: "building",
     availableIn: johtoGames,
   },
 ];

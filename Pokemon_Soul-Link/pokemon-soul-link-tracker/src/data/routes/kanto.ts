@@ -1,20 +1,15 @@
 import type { GameRoute } from "../../types/route";
 import type { GameGroup } from "../../types/run";
 
-/**
- * Jeux disponibles dans la région de Kanto (Gen 1)
- */
 const kantoGames: GameGroup[] = [
   "Pokemon Rouge / Bleu / Jaune",
+  "Pokemon Or / Argent / Cristal",
 ];
 
-/**
- * Routes numérotées de Kanto (Routes 1 à 25)
- */
 const numberedKantoRoutes: GameRoute[] = Array.from(
   { length: 25 },
   (_, index): GameRoute => ({
-    id: `route-${index + 1}`,
+    id: `kanto-route-${index + 1}`,
     name: `Route ${index + 1}`,
     region: "Kanto",
     category: "route",
@@ -22,11 +17,9 @@ const numberedKantoRoutes: GameRoute[] = Array.from(
   })
 );
 
-/**
- * Liste complète des lieux de Kanto
- */
 export const kantoRoutes: GameRoute[] = [
-  // 🌆 Villes et Bourgs
+  // 🌆 Villes et bourgs
+  // On les garde si une obtention y est possible
   {
     id: "bourg-palette",
     name: "Bourg Palette",
@@ -97,13 +90,6 @@ export const kantoRoutes: GameRoute[] = [
     category: "city",
     availableIn: kantoGames,
   },
-  {
-    id: "plateau-indigo",
-    name: "Plateau Indigo",
-    region: "Kanto",
-    category: "special",
-    availableIn: kantoGames,
-  },
 
   // 🛣️ Routes principales
   ...numberedKantoRoutes,
@@ -117,7 +103,7 @@ export const kantoRoutes: GameRoute[] = [
     availableIn: kantoGames,
   },
 
-  // 🕳️ Grottes et Montagnes
+  // 🕳️ Grottes et zones souterraines
   {
     id: "mont-selenite",
     name: "Mont Sélénite",
@@ -126,8 +112,22 @@ export const kantoRoutes: GameRoute[] = [
     availableIn: kantoGames,
   },
   {
-    id: "grotte",
-    name: "Grotte",
+    id: "tunnel-roche",
+    name: "Tunnel Roche",
+    region: "Kanto",
+    category: "cave",
+    availableIn: kantoGames,
+  },
+  {
+    id: "cave-taupiqueur",
+    name: "Cave Taupiqueur",
+    region: "Kanto",
+    category: "cave",
+    availableIn: kantoGames,
+  },
+  {
+    id: "caverne-azuree",
+    name: "Caverne Azurée",
     region: "Kanto",
     category: "cave",
     availableIn: kantoGames,
@@ -149,7 +149,7 @@ export const kantoRoutes: GameRoute[] = [
     availableIn: kantoGames,
   },
 
-  // 🏢 Bâtiments et lieux spéciaux
+  // 🏢 Bâtiments et lieux spéciaux avec obtention possible
   {
     id: "centrale",
     name: "Centrale",
@@ -167,13 +167,6 @@ export const kantoRoutes: GameRoute[] = [
   {
     id: "tour-pokemon",
     name: "Tour Pokémon",
-    region: "Kanto",
-    category: "building",
-    availableIn: kantoGames,
-  },
-  {
-    id: "silph-sarl",
-    name: "Sylphe SARL",
     region: "Kanto",
     category: "building",
     availableIn: kantoGames,
