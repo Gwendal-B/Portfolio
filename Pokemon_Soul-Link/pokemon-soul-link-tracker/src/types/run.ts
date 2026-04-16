@@ -1,10 +1,11 @@
 export type ChallengeMode = "nuzlocke" | "soul-link";
 
-export type GameGeneration = 1 | 2;
+export type GameGeneration = 1 | 2 | 3;
 
 export type GameGroup =
   | "Pokemon Rouge / Bleu / Jaune"
-  | "Pokemon Or / Argent / Cristal";
+  | "Pokemon Or / Argent / Cristal"
+  | "Pokemon Rubis / Saphir / Émeraude";
 
 export interface Player {
   id: string;

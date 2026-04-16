@@ -1,0 +1,2629 @@
+[
+  {
+    "id": 252,
+    "dexNumber": 252,
+    "name": "Arcko",
+    "generation": 3,
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 35,
+      "speed": 70
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png",
+    "evolutions": [
+      253
+    ]
+  },
+  {
+    "id": 253,
+    "dexNumber": 253,
+    "name": "Massko",
+    "generation": 3,
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 65,
+      "defense": 45,
+      "speed": 95
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/253.png",
+    "evolutions": [
+      254
+    ]
+  },
+  {
+    "id": 254,
+    "dexNumber": 254,
+    "name": "Jungko",
+    "generation": 3,
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 85,
+      "defense": 65,
+      "speed": 120
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png",
+    "evolutions": []
+  },
+  {
+    "id": 255,
+    "dexNumber": 255,
+    "name": "Poussifeu",
+    "generation": 3,
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 60,
+      "defense": 40,
+      "speed": 45
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/255.png",
+    "evolutions": [
+      256
+    ]
+  },
+  {
+    "id": 256,
+    "dexNumber": 256,
+    "name": "Galifeu",
+    "generation": 3,
+    "types": [
+      "Feu",
+      "Combat"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 85,
+      "defense": 60,
+      "speed": 55
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/256.png",
+    "evolutions": [
+      257
+    ]
+  },
+  {
+    "id": 257,
+    "dexNumber": 257,
+    "name": "Braségali",
+    "generation": 3,
+    "types": [
+      "Feu",
+      "Combat"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 120,
+      "defense": 70,
+      "speed": 80
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png",
+    "evolutions": []
+  },
+  {
+    "id": 258,
+    "dexNumber": 258,
+    "name": "Gobou",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 70,
+      "defense": 50,
+      "speed": 40
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png",
+    "evolutions": [
+      259
+    ]
+  },
+  {
+    "id": 259,
+    "dexNumber": 259,
+    "name": "Flobio",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 85,
+      "defense": 70,
+      "speed": 50
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/259.png",
+    "evolutions": [
+      260
+    ]
+  },
+  {
+    "id": 260,
+    "dexNumber": 260,
+    "name": "Laggron",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 110,
+      "defense": 90,
+      "speed": 60
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/260.png",
+    "evolutions": []
+  },
+  {
+    "id": 261,
+    "dexNumber": 261,
+    "name": "Medhyèna",
+    "generation": 3,
+    "types": [
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 55,
+      "defense": 35,
+      "speed": 35
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/261.png",
+    "evolutions": [
+      262
+    ]
+  },
+  {
+    "id": 262,
+    "dexNumber": 262,
+    "name": "Grahyèna",
+    "generation": 3,
+    "types": [
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 90,
+      "defense": 70,
+      "speed": 70
+    },
+    "captureRate": 127,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/262.png",
+    "evolutions": []
+  },
+  {
+    "id": 263,
+    "dexNumber": 263,
+    "name": "Zigzaton",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 38,
+      "attack": 30,
+      "defense": 41,
+      "speed": 60
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/263.png",
+    "evolutions": [
+      264
+    ]
+  },
+  {
+    "id": 264,
+    "dexNumber": 264,
+    "name": "Linéon",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 78,
+      "attack": 70,
+      "defense": 61,
+      "speed": 100
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/264.png",
+    "evolutions": [
+      862
+    ]
+  },
+  {
+    "id": 265,
+    "dexNumber": 265,
+    "name": "Chenipotte",
+    "generation": 3,
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 45,
+      "defense": 35,
+      "speed": 20
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/265.png",
+    "evolutions": [
+      266,
+      268
+    ]
+  },
+  {
+    "id": 266,
+    "dexNumber": 266,
+    "name": "Armulys",
+    "generation": 3,
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 35,
+      "defense": 55,
+      "speed": 15
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/266.png",
+    "evolutions": [
+      267
+    ]
+  },
+  {
+    "id": 267,
+    "dexNumber": 267,
+    "name": "Charmillon",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 70,
+      "defense": 50,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/267.png",
+    "evolutions": []
+  },
+  {
+    "id": 268,
+    "dexNumber": 268,
+    "name": "Blindalys",
+    "generation": 3,
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 35,
+      "defense": 55,
+      "speed": 15
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/268.png",
+    "evolutions": [
+      269
+    ]
+  },
+  {
+    "id": 269,
+    "dexNumber": 269,
+    "name": "Papinox",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 50,
+      "defense": 70,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/269.png",
+    "evolutions": []
+  },
+  {
+    "id": 270,
+    "dexNumber": 270,
+    "name": "Nénupiot",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 30,
+      "defense": 30,
+      "speed": 30
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/270.png",
+    "evolutions": [
+      271
+    ]
+  },
+  {
+    "id": 271,
+    "dexNumber": 271,
+    "name": "Lombre",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 50,
+      "defense": 50,
+      "speed": 50
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/271.png",
+    "evolutions": [
+      272
+    ]
+  },
+  {
+    "id": 272,
+    "dexNumber": 272,
+    "name": "Ludicolo",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 70,
+      "defense": 70,
+      "speed": 70
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/272.png",
+    "evolutions": []
+  },
+  {
+    "id": 273,
+    "dexNumber": 273,
+    "name": "Grainipiot",
+    "generation": 3,
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 40,
+      "defense": 50,
+      "speed": 30
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/273.png",
+    "evolutions": [
+      274
+    ]
+  },
+  {
+    "id": 274,
+    "dexNumber": 274,
+    "name": "Pifeuil",
+    "generation": 3,
+    "types": [
+      "Plante",
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 70,
+      "defense": 40,
+      "speed": 60
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/274.png",
+    "evolutions": [
+      275
+    ]
+  },
+  {
+    "id": 275,
+    "dexNumber": 275,
+    "name": "Tengalice",
+    "generation": 3,
+    "types": [
+      "Plante",
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 100,
+      "defense": 60,
+      "speed": 80
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/275.png",
+    "evolutions": []
+  },
+  {
+    "id": 276,
+    "dexNumber": 276,
+    "name": "Nirondelle",
+    "generation": 3,
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 55,
+      "defense": 30,
+      "speed": 85
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/276.png",
+    "evolutions": [
+      277
+    ]
+  },
+  {
+    "id": 277,
+    "dexNumber": 277,
+    "name": "Hélédelle",
+    "generation": 3,
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 85,
+      "defense": 60,
+      "speed": 125
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/277.png",
+    "evolutions": []
+  },
+  {
+    "id": 278,
+    "dexNumber": 278,
+    "name": "Goélise",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 30,
+      "defense": 30,
+      "speed": 85
+    },
+    "captureRate": 190,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/278.png",
+    "evolutions": [
+      279
+    ]
+  },
+  {
+    "id": 279,
+    "dexNumber": 279,
+    "name": "Bekipan",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 50,
+      "defense": 100,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/279.png",
+    "evolutions": []
+  },
+  {
+    "id": 280,
+    "dexNumber": 280,
+    "name": "Tarsal",
+    "generation": 3,
+    "types": [
+      "Psy",
+      "Fée"
+    ],
+    "stats": {
+      "hp": 28,
+      "attack": 25,
+      "defense": 25,
+      "speed": 40
+    },
+    "captureRate": 235,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/280.png",
+    "evolutions": [
+      281
+    ]
+  },
+  {
+    "id": 281,
+    "dexNumber": 281,
+    "name": "Kirlia",
+    "generation": 3,
+    "types": [
+      "Psy",
+      "Fée"
+    ],
+    "stats": {
+      "hp": 38,
+      "attack": 35,
+      "defense": 35,
+      "speed": 50
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/281.png",
+    "evolutions": [
+      282,
+      475
+    ]
+  },
+  {
+    "id": 282,
+    "dexNumber": 282,
+    "name": "Gardevoir",
+    "generation": 3,
+    "types": [
+      "Psy",
+      "Fée"
+    ],
+    "stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 65,
+      "speed": 80
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
+    "evolutions": []
+  },
+  {
+    "id": 283,
+    "dexNumber": 283,
+    "name": "Arakdo",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 30,
+      "defense": 32,
+      "speed": 65
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/283.png",
+    "evolutions": [
+      284
+    ]
+  },
+  {
+    "id": 284,
+    "dexNumber": 284,
+    "name": "Maskadra",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 60,
+      "defense": 62,
+      "speed": 80
+    },
+    "captureRate": 75,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/284.png",
+    "evolutions": []
+  },
+  {
+    "id": 285,
+    "dexNumber": 285,
+    "name": "Balignon",
+    "generation": 3,
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 40,
+      "defense": 60,
+      "speed": 35
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/285.png",
+    "evolutions": [
+      286
+    ]
+  },
+  {
+    "id": 286,
+    "dexNumber": 286,
+    "name": "Chapignon",
+    "generation": 3,
+    "types": [
+      "Plante",
+      "Combat"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 130,
+      "defense": 80,
+      "speed": 70
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/286.png",
+    "evolutions": []
+  },
+  {
+    "id": 287,
+    "dexNumber": 287,
+    "name": "Parecool",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 60,
+      "defense": 60,
+      "speed": 30
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/287.png",
+    "evolutions": [
+      288
+    ]
+  },
+  {
+    "id": 288,
+    "dexNumber": 288,
+    "name": "Vigoroth",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 80,
+      "defense": 80,
+      "speed": 90
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/288.png",
+    "evolutions": [
+      289
+    ]
+  },
+  {
+    "id": 289,
+    "dexNumber": 289,
+    "name": "Monaflèmit",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 150,
+      "attack": 160,
+      "defense": 100,
+      "speed": 100
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/289.png",
+    "evolutions": []
+  },
+  {
+    "id": 290,
+    "dexNumber": 290,
+    "name": "Ningale",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 31,
+      "attack": 45,
+      "defense": 90,
+      "speed": 40
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/290.png",
+    "evolutions": [
+      291,
+      292
+    ]
+  },
+  {
+    "id": 291,
+    "dexNumber": 291,
+    "name": "Ninjask",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 61,
+      "attack": 90,
+      "defense": 45,
+      "speed": 160
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/291.png",
+    "evolutions": []
+  },
+  {
+    "id": 292,
+    "dexNumber": 292,
+    "name": "Munja",
+    "generation": 3,
+    "types": [
+      "Insecte",
+      "Spectre"
+    ],
+    "stats": {
+      "hp": 1,
+      "attack": 90,
+      "defense": 45,
+      "speed": 40
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/292.png",
+    "evolutions": []
+  },
+  {
+    "id": 293,
+    "dexNumber": 293,
+    "name": "Chuchmur",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 64,
+      "attack": 51,
+      "defense": 23,
+      "speed": 28
+    },
+    "captureRate": 190,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/293.png",
+    "evolutions": [
+      294
+    ]
+  },
+  {
+    "id": 294,
+    "dexNumber": 294,
+    "name": "Ramboum",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 84,
+      "attack": 71,
+      "defense": 43,
+      "speed": 48
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/294.png",
+    "evolutions": [
+      295
+    ]
+  },
+  {
+    "id": 295,
+    "dexNumber": 295,
+    "name": "Brouhabam",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 104,
+      "attack": 91,
+      "defense": 63,
+      "speed": 68
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/295.png",
+    "evolutions": []
+  },
+  {
+    "id": 296,
+    "dexNumber": 296,
+    "name": "Makuhita",
+    "generation": 3,
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 72,
+      "attack": 60,
+      "defense": 30,
+      "speed": 25
+    },
+    "captureRate": 180,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/296.png",
+    "evolutions": [
+      297
+    ]
+  },
+  {
+    "id": 297,
+    "dexNumber": 297,
+    "name": "Hariyama",
+    "generation": 3,
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 144,
+      "attack": 120,
+      "defense": 60,
+      "speed": 50
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/297.png",
+    "evolutions": []
+  },
+  {
+    "id": 298,
+    "dexNumber": 298,
+    "name": "Azurill",
+    "generation": 3,
+    "types": [
+      "Normal",
+      "Fée"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 20,
+      "defense": 40,
+      "speed": 20
+    },
+    "captureRate": 150,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/298.png",
+    "evolutions": [
+      183
+    ]
+  },
+  {
+    "id": 299,
+    "dexNumber": 299,
+    "name": "Tarinor",
+    "generation": 3,
+    "types": [
+      "Roche"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 45,
+      "defense": 135,
+      "speed": 30
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/299.png",
+    "evolutions": [
+      476
+    ]
+  },
+  {
+    "id": 300,
+    "dexNumber": 300,
+    "name": "Skitty",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 45,
+      "defense": 45,
+      "speed": 50
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/300.png",
+    "evolutions": [
+      301
+    ]
+  },
+  {
+    "id": 301,
+    "dexNumber": 301,
+    "name": "Delcatty",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 65,
+      "defense": 65,
+      "speed": 90
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/301.png",
+    "evolutions": []
+  },
+  {
+    "id": 302,
+    "dexNumber": 302,
+    "name": "Ténéfix",
+    "generation": 3,
+    "types": [
+      "Ténèbres",
+      "Spectre"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 75,
+      "defense": 75,
+      "speed": 50
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png",
+    "evolutions": []
+  },
+  {
+    "id": 303,
+    "dexNumber": 303,
+    "name": "Mysdibule",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Fée"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 85,
+      "defense": 85,
+      "speed": 50
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/303.png",
+    "evolutions": []
+  },
+  {
+    "id": 304,
+    "dexNumber": 304,
+    "name": "Galekid",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Roche"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 70,
+      "defense": 100,
+      "speed": 30
+    },
+    "captureRate": 180,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png",
+    "evolutions": [
+      305
+    ]
+  },
+  {
+    "id": 305,
+    "dexNumber": 305,
+    "name": "Galegon",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Roche"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 90,
+      "defense": 140,
+      "speed": 40
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/305.png",
+    "evolutions": [
+      306
+    ]
+  },
+  {
+    "id": 306,
+    "dexNumber": 306,
+    "name": "Galeking",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Roche"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 110,
+      "defense": 180,
+      "speed": 50
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/306.png",
+    "evolutions": []
+  },
+  {
+    "id": 307,
+    "dexNumber": 307,
+    "name": "Méditikka",
+    "generation": 3,
+    "types": [
+      "Combat",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 40,
+      "defense": 55,
+      "speed": 60
+    },
+    "captureRate": 180,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/307.png",
+    "evolutions": [
+      308
+    ]
+  },
+  {
+    "id": 308,
+    "dexNumber": 308,
+    "name": "Charmina",
+    "generation": 3,
+    "types": [
+      "Combat",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 60,
+      "defense": 75,
+      "speed": 80
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/308.png",
+    "evolutions": []
+  },
+  {
+    "id": 309,
+    "dexNumber": 309,
+    "name": "Dynavolt",
+    "generation": 3,
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 40,
+      "speed": 65
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/309.png",
+    "evolutions": [
+      310
+    ]
+  },
+  {
+    "id": 310,
+    "dexNumber": 310,
+    "name": "Élecsprint",
+    "generation": 3,
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 75,
+      "defense": 60,
+      "speed": 105
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/310.png",
+    "evolutions": []
+  },
+  {
+    "id": 311,
+    "dexNumber": 311,
+    "name": "Posipi",
+    "generation": 3,
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 50,
+      "defense": 40,
+      "speed": 95
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/311.png",
+    "evolutions": []
+  },
+  {
+    "id": 312,
+    "dexNumber": 312,
+    "name": "Négapi",
+    "generation": 3,
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 40,
+      "defense": 50,
+      "speed": 95
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/312.png",
+    "evolutions": []
+  },
+  {
+    "id": 313,
+    "dexNumber": 313,
+    "name": "Muciole",
+    "generation": 3,
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 73,
+      "defense": 75,
+      "speed": 85
+    },
+    "captureRate": 150,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/313.png",
+    "evolutions": []
+  },
+  {
+    "id": 314,
+    "dexNumber": 314,
+    "name": "Lumivole",
+    "generation": 3,
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 47,
+      "defense": 75,
+      "speed": 85
+    },
+    "captureRate": 150,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/314.png",
+    "evolutions": []
+  },
+  {
+    "id": 315,
+    "dexNumber": 315,
+    "name": "Rosélia",
+    "generation": 3,
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 60,
+      "defense": 45,
+      "speed": 65
+    },
+    "captureRate": 150,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/315.png",
+    "evolutions": [
+      407
+    ]
+  },
+  {
+    "id": 316,
+    "dexNumber": 316,
+    "name": "Gloupti",
+    "generation": 3,
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 43,
+      "defense": 53,
+      "speed": 40
+    },
+    "captureRate": 225,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/316.png",
+    "evolutions": [
+      317
+    ]
+  },
+  {
+    "id": 317,
+    "dexNumber": 317,
+    "name": "Avaltout",
+    "generation": 3,
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 73,
+      "defense": 83,
+      "speed": 55
+    },
+    "captureRate": 75,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/317.png",
+    "evolutions": []
+  },
+  {
+    "id": 318,
+    "dexNumber": 318,
+    "name": "Carvanha",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 90,
+      "defense": 20,
+      "speed": 65
+    },
+    "captureRate": 225,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/318.png",
+    "evolutions": [
+      319
+    ]
+  },
+  {
+    "id": 319,
+    "dexNumber": 319,
+    "name": "Sharpedo",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 120,
+      "defense": 40,
+      "speed": 95
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/319.png",
+    "evolutions": []
+  },
+  {
+    "id": 320,
+    "dexNumber": 320,
+    "name": "Wailmer",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 130,
+      "attack": 70,
+      "defense": 35,
+      "speed": 60
+    },
+    "captureRate": 125,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/320.png",
+    "evolutions": [
+      321
+    ]
+  },
+  {
+    "id": 321,
+    "dexNumber": 321,
+    "name": "Wailord",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 170,
+      "attack": 90,
+      "defense": 45,
+      "speed": 60
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/321.png",
+    "evolutions": []
+  },
+  {
+    "id": 322,
+    "dexNumber": 322,
+    "name": "Chamallot",
+    "generation": 3,
+    "types": [
+      "Feu",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 60,
+      "defense": 40,
+      "speed": 35
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/322.png",
+    "evolutions": [
+      323
+    ]
+  },
+  {
+    "id": 323,
+    "dexNumber": 323,
+    "name": "Camérupt",
+    "generation": 3,
+    "types": [
+      "Feu",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 100,
+      "defense": 70,
+      "speed": 40
+    },
+    "captureRate": 150,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/323.png",
+    "evolutions": []
+  },
+  {
+    "id": 324,
+    "dexNumber": 324,
+    "name": "Chartor",
+    "generation": 3,
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 85,
+      "defense": 140,
+      "speed": 20
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/324.png",
+    "evolutions": []
+  },
+  {
+    "id": 325,
+    "dexNumber": 325,
+    "name": "Spoink",
+    "generation": 3,
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 25,
+      "defense": 35,
+      "speed": 60
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/325.png",
+    "evolutions": [
+      326
+    ]
+  },
+  {
+    "id": 326,
+    "dexNumber": 326,
+    "name": "Groret",
+    "generation": 3,
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 45,
+      "defense": 65,
+      "speed": 80
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/326.png",
+    "evolutions": []
+  },
+  {
+    "id": 327,
+    "dexNumber": 327,
+    "name": "Spinda",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 60,
+      "defense": 60,
+      "speed": 60
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/327.png",
+    "evolutions": []
+  },
+  {
+    "id": 328,
+    "dexNumber": 328,
+    "name": "Kraknoix",
+    "generation": 3,
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 100,
+      "defense": 45,
+      "speed": 10
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/328.png",
+    "evolutions": [
+      329
+    ]
+  },
+  {
+    "id": 329,
+    "dexNumber": 329,
+    "name": "Vibraninf",
+    "generation": 3,
+    "types": [
+      "Sol",
+      "Dragon"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 70,
+      "defense": 50,
+      "speed": 70
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/329.png",
+    "evolutions": [
+      330
+    ]
+  },
+  {
+    "id": 330,
+    "dexNumber": 330,
+    "name": "Libégon",
+    "generation": 3,
+    "types": [
+      "Sol",
+      "Dragon"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 100,
+      "defense": 80,
+      "speed": 100
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/330.png",
+    "evolutions": []
+  },
+  {
+    "id": 331,
+    "dexNumber": 331,
+    "name": "Cacnea",
+    "generation": 3,
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 85,
+      "defense": 40,
+      "speed": 35
+    },
+    "captureRate": 190,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/331.png",
+    "evolutions": [
+      332
+    ]
+  },
+  {
+    "id": 332,
+    "dexNumber": 332,
+    "name": "Cacturne",
+    "generation": 3,
+    "types": [
+      "Plante",
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 115,
+      "defense": 60,
+      "speed": 55
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/332.png",
+    "evolutions": []
+  },
+  {
+    "id": 333,
+    "dexNumber": 333,
+    "name": "Tylton",
+    "generation": 3,
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 40,
+      "defense": 60,
+      "speed": 50
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/333.png",
+    "evolutions": [
+      334
+    ]
+  },
+  {
+    "id": 334,
+    "dexNumber": 334,
+    "name": "Altaria",
+    "generation": 3,
+    "types": [
+      "Dragon",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 70,
+      "defense": 90,
+      "speed": 80
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/334.png",
+    "evolutions": []
+  },
+  {
+    "id": 335,
+    "dexNumber": 335,
+    "name": "Mangriff",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 73,
+      "attack": 115,
+      "defense": 60,
+      "speed": 90
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/335.png",
+    "evolutions": []
+  },
+  {
+    "id": 336,
+    "dexNumber": 336,
+    "name": "Séviper",
+    "generation": 3,
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 73,
+      "attack": 100,
+      "defense": 60,
+      "speed": 65
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/336.png",
+    "evolutions": []
+  },
+  {
+    "id": 337,
+    "dexNumber": 337,
+    "name": "Séléroc",
+    "generation": 3,
+    "types": [
+      "Roche",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 55,
+      "defense": 65,
+      "speed": 70
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/337.png",
+    "evolutions": []
+  },
+  {
+    "id": 338,
+    "dexNumber": 338,
+    "name": "Solaroc",
+    "generation": 3,
+    "types": [
+      "Roche",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 95,
+      "defense": 85,
+      "speed": 70
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/338.png",
+    "evolutions": []
+  },
+  {
+    "id": 339,
+    "dexNumber": 339,
+    "name": "Barloche",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 48,
+      "defense": 43,
+      "speed": 60
+    },
+    "captureRate": 190,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/339.png",
+    "evolutions": [
+      340
+    ]
+  },
+  {
+    "id": 340,
+    "dexNumber": 340,
+    "name": "Barbicha",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 110,
+      "attack": 78,
+      "defense": 73,
+      "speed": 60
+    },
+    "captureRate": 75,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/340.png",
+    "evolutions": []
+  },
+  {
+    "id": 341,
+    "dexNumber": 341,
+    "name": "Écrapince",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 43,
+      "attack": 80,
+      "defense": 65,
+      "speed": 35
+    },
+    "captureRate": 205,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/341.png",
+    "evolutions": [
+      342
+    ]
+  },
+  {
+    "id": 342,
+    "dexNumber": 342,
+    "name": "Colhomard",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 63,
+      "attack": 120,
+      "defense": 85,
+      "speed": 55
+    },
+    "captureRate": 155,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/342.png",
+    "evolutions": []
+  },
+  {
+    "id": 343,
+    "dexNumber": 343,
+    "name": "Balbuto",
+    "generation": 3,
+    "types": [
+      "Sol",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 40,
+      "defense": 55,
+      "speed": 55
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/343.png",
+    "evolutions": [
+      344
+    ]
+  },
+  {
+    "id": 344,
+    "dexNumber": 344,
+    "name": "Kaorine",
+    "generation": 3,
+    "types": [
+      "Sol",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 70,
+      "defense": 105,
+      "speed": 75
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/344.png",
+    "evolutions": []
+  },
+  {
+    "id": 345,
+    "dexNumber": 345,
+    "name": "Lilia",
+    "generation": 3,
+    "types": [
+      "Roche",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 66,
+      "attack": 41,
+      "defense": 77,
+      "speed": 23
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/345.png",
+    "evolutions": [
+      346
+    ]
+  },
+  {
+    "id": 346,
+    "dexNumber": 346,
+    "name": "Vacilys",
+    "generation": 3,
+    "types": [
+      "Roche",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 86,
+      "attack": 81,
+      "defense": 97,
+      "speed": 43
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/346.png",
+    "evolutions": []
+  },
+  {
+    "id": 347,
+    "dexNumber": 347,
+    "name": "Anorith",
+    "generation": 3,
+    "types": [
+      "Roche",
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 95,
+      "defense": 50,
+      "speed": 75
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/347.png",
+    "evolutions": [
+      348
+    ]
+  },
+  {
+    "id": 348,
+    "dexNumber": 348,
+    "name": "Armaldo",
+    "generation": 3,
+    "types": [
+      "Roche",
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 125,
+      "defense": 100,
+      "speed": 45
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/348.png",
+    "evolutions": []
+  },
+  {
+    "id": 349,
+    "dexNumber": 349,
+    "name": "Barpau",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 20,
+      "attack": 15,
+      "defense": 20,
+      "speed": 80
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/349.png",
+    "evolutions": [
+      350
+    ]
+  },
+  {
+    "id": 350,
+    "dexNumber": 350,
+    "name": "Milobellus",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 60,
+      "defense": 79,
+      "speed": 81
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png",
+    "evolutions": []
+  },
+  {
+    "id": 351,
+    "dexNumber": 351,
+    "name": "Morphéo",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 70,
+      "defense": 70,
+      "speed": 70
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/351.png",
+    "evolutions": []
+  },
+  {
+    "id": 352,
+    "dexNumber": 352,
+    "name": "Kecleon",
+    "generation": 3,
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 90,
+      "defense": 70,
+      "speed": 40
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/352.png",
+    "evolutions": []
+  },
+  {
+    "id": 353,
+    "dexNumber": 353,
+    "name": "Polichombr",
+    "generation": 3,
+    "types": [
+      "Spectre"
+    ],
+    "stats": {
+      "hp": 44,
+      "attack": 75,
+      "defense": 35,
+      "speed": 45
+    },
+    "captureRate": 225,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/353.png",
+    "evolutions": [
+      354
+    ]
+  },
+  {
+    "id": 354,
+    "dexNumber": 354,
+    "name": "Branette",
+    "generation": 3,
+    "types": [
+      "Spectre"
+    ],
+    "stats": {
+      "hp": 64,
+      "attack": 115,
+      "defense": 65,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/354.png",
+    "evolutions": []
+  },
+  {
+    "id": 355,
+    "dexNumber": 355,
+    "name": "Skelénox",
+    "generation": 3,
+    "types": [
+      "Spectre"
+    ],
+    "stats": {
+      "hp": 20,
+      "attack": 40,
+      "defense": 90,
+      "speed": 25
+    },
+    "captureRate": 190,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/355.png",
+    "evolutions": [
+      356
+    ]
+  },
+  {
+    "id": 356,
+    "dexNumber": 356,
+    "name": "Téraclope",
+    "generation": 3,
+    "types": [
+      "Spectre"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 70,
+      "defense": 130,
+      "speed": 25
+    },
+    "captureRate": 90,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/356.png",
+    "evolutions": [
+      477
+    ]
+  },
+  {
+    "id": 357,
+    "dexNumber": 357,
+    "name": "Tropius",
+    "generation": 3,
+    "types": [
+      "Plante",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 99,
+      "attack": 68,
+      "defense": 83,
+      "speed": 51
+    },
+    "captureRate": 200,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/357.png",
+    "evolutions": []
+  },
+  {
+    "id": 358,
+    "dexNumber": 358,
+    "name": "Éoko",
+    "generation": 3,
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 50,
+      "defense": 80,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/358.png",
+    "evolutions": []
+  },
+  {
+    "id": 359,
+    "dexNumber": 359,
+    "name": "Absol",
+    "generation": 3,
+    "types": [
+      "Ténèbres"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 130,
+      "defense": 60,
+      "speed": 75
+    },
+    "captureRate": 30,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
+    "evolutions": []
+  },
+  {
+    "id": 360,
+    "dexNumber": 360,
+    "name": "Okéoké",
+    "generation": 3,
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 23,
+      "defense": 48,
+      "speed": 23
+    },
+    "captureRate": 125,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/360.png",
+    "evolutions": [
+      202
+    ]
+  },
+  {
+    "id": 361,
+    "dexNumber": 361,
+    "name": "Stalgamin",
+    "generation": 3,
+    "types": [
+      "Glace"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 50,
+      "defense": 50,
+      "speed": 50
+    },
+    "captureRate": 190,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/361.png",
+    "evolutions": [
+      362,
+      478
+    ]
+  },
+  {
+    "id": 362,
+    "dexNumber": 362,
+    "name": "Oniglali",
+    "generation": 3,
+    "types": [
+      "Glace"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 80,
+      "defense": 80,
+      "speed": 80
+    },
+    "captureRate": 75,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/362.png",
+    "evolutions": []
+  },
+  {
+    "id": 363,
+    "dexNumber": 363,
+    "name": "Obalie",
+    "generation": 3,
+    "types": [
+      "Glace",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 40,
+      "defense": 50,
+      "speed": 25
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/363.png",
+    "evolutions": [
+      364
+    ]
+  },
+  {
+    "id": 364,
+    "dexNumber": 364,
+    "name": "Phogleur",
+    "generation": 3,
+    "types": [
+      "Glace",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 60,
+      "defense": 70,
+      "speed": 45
+    },
+    "captureRate": 120,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/364.png",
+    "evolutions": [
+      365
+    ]
+  },
+  {
+    "id": 365,
+    "dexNumber": 365,
+    "name": "Kaimorse",
+    "generation": 3,
+    "types": [
+      "Glace",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 110,
+      "attack": 80,
+      "defense": 90,
+      "speed": 65
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/365.png",
+    "evolutions": []
+  },
+  {
+    "id": 366,
+    "dexNumber": 366,
+    "name": "Coquiperl",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 64,
+      "defense": 85,
+      "speed": 32
+    },
+    "captureRate": 255,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/366.png",
+    "evolutions": [
+      367,
+      368
+    ]
+  },
+  {
+    "id": 367,
+    "dexNumber": 367,
+    "name": "Serpang",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 104,
+      "defense": 105,
+      "speed": 52
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/367.png",
+    "evolutions": []
+  },
+  {
+    "id": 368,
+    "dexNumber": 368,
+    "name": "Rosabyss",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 84,
+      "defense": 105,
+      "speed": 52
+    },
+    "captureRate": 60,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/368.png",
+    "evolutions": []
+  },
+  {
+    "id": 369,
+    "dexNumber": 369,
+    "name": "Relicanth",
+    "generation": 3,
+    "types": [
+      "Eau",
+      "Roche"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 90,
+      "defense": 130,
+      "speed": 55
+    },
+    "captureRate": 25,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/369.png",
+    "evolutions": []
+  },
+  {
+    "id": 370,
+    "dexNumber": 370,
+    "name": "Lovdisc",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 43,
+      "attack": 30,
+      "defense": 55,
+      "speed": 97
+    },
+    "captureRate": 225,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/370.png",
+    "evolutions": []
+  },
+  {
+    "id": 371,
+    "dexNumber": 371,
+    "name": "Draby",
+    "generation": 3,
+    "types": [
+      "Dragon"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 75,
+      "defense": 60,
+      "speed": 50
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/371.png",
+    "evolutions": [
+      372
+    ]
+  },
+  {
+    "id": 372,
+    "dexNumber": 372,
+    "name": "Drackhaus",
+    "generation": 3,
+    "types": [
+      "Dragon"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 95,
+      "defense": 100,
+      "speed": 50
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/372.png",
+    "evolutions": [
+      373
+    ]
+  },
+  {
+    "id": 373,
+    "dexNumber": 373,
+    "name": "Drattak",
+    "generation": 3,
+    "types": [
+      "Dragon",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 135,
+      "defense": 80,
+      "speed": 100
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
+    "evolutions": []
+  },
+  {
+    "id": 374,
+    "dexNumber": 374,
+    "name": "Terhal",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 55,
+      "defense": 80,
+      "speed": 30
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/374.png",
+    "evolutions": [
+      375
+    ]
+  },
+  {
+    "id": 375,
+    "dexNumber": 375,
+    "name": "Métang",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 75,
+      "defense": 100,
+      "speed": 50
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/375.png",
+    "evolutions": [
+      376
+    ]
+  },
+  {
+    "id": 376,
+    "dexNumber": 376,
+    "name": "Métalosse",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 135,
+      "defense": 130,
+      "speed": 70
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png",
+    "evolutions": []
+  },
+  {
+    "id": 377,
+    "dexNumber": 377,
+    "name": "Regirock",
+    "generation": 3,
+    "types": [
+      "Roche"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 100,
+      "defense": 200,
+      "speed": 50
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/377.png",
+    "evolutions": []
+  },
+  {
+    "id": 378,
+    "dexNumber": 378,
+    "name": "Regice",
+    "generation": 3,
+    "types": [
+      "Glace"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 50,
+      "defense": 100,
+      "speed": 50
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/378.png",
+    "evolutions": []
+  },
+  {
+    "id": 379,
+    "dexNumber": 379,
+    "name": "Registeel",
+    "generation": 3,
+    "types": [
+      "Acier"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 75,
+      "defense": 150,
+      "speed": 50
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/379.png",
+    "evolutions": []
+  },
+  {
+    "id": 380,
+    "dexNumber": 380,
+    "name": "Latias",
+    "generation": 3,
+    "types": [
+      "Dragon",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 80,
+      "defense": 90,
+      "speed": 110
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/380.png",
+    "evolutions": []
+  },
+  {
+    "id": 381,
+    "dexNumber": 381,
+    "name": "Latios",
+    "generation": 3,
+    "types": [
+      "Dragon",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 90,
+      "defense": 80,
+      "speed": 110
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/381.png",
+    "evolutions": []
+  },
+  {
+    "id": 382,
+    "dexNumber": 382,
+    "name": "Kyogre",
+    "generation": 3,
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 100,
+      "defense": 90,
+      "speed": 90
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png",
+    "evolutions": []
+  },
+  {
+    "id": 383,
+    "dexNumber": 383,
+    "name": "Groudon",
+    "generation": 3,
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 150,
+      "defense": 140,
+      "speed": 90
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png",
+    "evolutions": []
+  },
+  {
+    "id": 384,
+    "dexNumber": 384,
+    "name": "Rayquaza",
+    "generation": 3,
+    "types": [
+      "Dragon",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 105,
+      "attack": 150,
+      "defense": 90,
+      "speed": 95
+    },
+    "captureRate": 45,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
+    "evolutions": []
+  },
+  {
+    "id": 385,
+    "dexNumber": 385,
+    "name": "Jirachi",
+    "generation": 3,
+    "types": [
+      "Acier",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 100,
+      "defense": 100,
+      "speed": 100
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/385.png",
+    "evolutions": []
+  },
+  {
+    "id": 386,
+    "dexNumber": 386,
+    "name": "Deoxys",
+    "generation": 3,
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 150,
+      "defense": 50,
+      "speed": 150
+    },
+    "captureRate": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
+    "evolutions": []
+  }
+]
