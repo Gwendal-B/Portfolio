@@ -76,10 +76,18 @@ export function saveCapturedPokemons(captures: CapturedPokemon[]): void {
   localStorage.setItem(CAPTURES_STORAGE_KEY, JSON.stringify(captures));
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 export function addCapturedPokemon(capture: CapturedPokemon): void {
   saveCapturedPokemons([...getCapturedPokemons(), capture]);
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 export function updateCapturedPokemon(updatedCapture: CapturedPokemon): void {
   const existing = getCapturedPokemons();
   saveCapturedPokemons(
@@ -88,8 +96,8 @@ export function updateCapturedPokemon(updatedCapture: CapturedPokemon): void {
 }
 
 /**
- * Supprime une capture et nettoie les références soul link associées.
- * Si la capture était liée, le partenaire est libéré et le soul link supprimé.
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
  */
 export function deleteCapturedPokemon(captureId: string): void {
   const allCaptures = getCapturedPokemons();
@@ -147,6 +155,10 @@ export function saveSoulLinks(soulLinks: SoulLink[]): void {
   localStorage.setItem(SOUL_LINKS_STORAGE_KEY, JSON.stringify(soulLinks));
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 export function addSoulLink(soulLink: SoulLink): void {
   saveSoulLinks([...getSoulLinks(), soulLink]);
 }

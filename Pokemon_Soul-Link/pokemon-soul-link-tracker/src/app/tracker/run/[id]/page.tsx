@@ -25,6 +25,8 @@ import TeamPanel from "../../../../components/tracker/TeamPanel";
 import RunStatsBar from "../../../../components/tracker/RunStatsBar";
 import { loadTrackerState, saveTrackerState } from "../../../../lib/local-storage";
 import { deleteCapture } from "../../../../domain/capture/capture.service";
+import { createAutomaticSoulLinkForNewCapture } from "../../../../domain/soul-link/soul-link.service";
+import { updateCaptureStatus } from "../../../../domain/capture/update-capture.service";
 
 type RunDetailPageProps = {
   params: Promise<{ id: string }>;
@@ -99,32 +101,16 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
     addCapturedPokemon(newCapture);
 
-    // Soul Link automatique : cherche un partenaire sur la même zone
     if (run.mode === "soul-link" && run.rules.soulLinkEnabled) {
-      const currentCaptures = getCapturedPokemonsByRunId(run.id);
-      const matchingCapture = currentCaptures.find(
-        (c) =>
-          c.routeId === newCapture.routeId &&
-          c.playerId !== newCapture.playerId &&
-          c.soulLinkId === null &&
-          c.id !== newCapture.id
+      const state = loadTrackerState();
+
+      const updatedState = createAutomaticSoulLinkForNewCapture(
+        state,
+        run.id,
+        newCapture
       );
 
-      if (matchingCapture) {
-        const soulLinkId = `soul-link-${Date.now()}`;
-        const newSoulLink: SoulLink = {
-          id: soulLinkId,
-          runId: run.id,
-          pokemonAId: matchingCapture.id,
-          pokemonBId: newCapture.id,
-          active: true,
-          createdAt: now,
-        };
-
-        addSoulLink(newSoulLink);
-        updateCapturedPokemon({ ...matchingCapture, soulLinkId, updatedAt: now });
-        updateCapturedPokemon({ ...newCapture, soulLinkId, updatedAt: now });
-      }
+      saveTrackerState(updatedState);
     }
 
     refreshData(run.id);
@@ -136,37 +122,19 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     field: "lifeStatus" | "storageStatus",
     value: LifeStatus | StorageStatus
   ) {
-    const captureToUpdate = captures.find((c) => c.id === captureId);
-    if (!captureToUpdate) return;
+    if (!run) return;
 
-    const now = new Date().toISOString();
-    const updatedCapture: CapturedPokemon = {
-      ...captureToUpdate,
-      [field]: value,
-      updatedAt: now,
-    };
+    const state = loadTrackerState();
 
-    updateCapturedPokemon(updatedCapture);
+    const newState = updateCaptureStatus(
+      state,
+      captureId,
+      field,
+      value,
+      run.rules.sharedDeathEnabled
+    );
 
-    // Soul Link : mort partagée automatique
-    if (
-      run?.rules.sharedDeathEnabled &&
-      field === "lifeStatus" &&
-      value === "dead" &&
-      captureToUpdate.soulLinkId !== null
-    ) {
-      const soulLink = soulLinks.find((link) => link.id === captureToUpdate.soulLinkId);
-
-      if (soulLink) {
-        const linkedCaptureId =
-          soulLink.pokemonAId === captureId ? soulLink.pokemonBId : soulLink.pokemonAId;
-        const linkedCapture = captures.find((c) => c.id === linkedCaptureId);
-
-        if (linkedCapture && linkedCapture.lifeStatus !== "dead") {
-          updateCapturedPokemon({ ...linkedCapture, lifeStatus: "unusable", updatedAt: now });
-        }
-      }
-    }
+    saveTrackerState(newState);
 
     refreshData(runId);
   }
