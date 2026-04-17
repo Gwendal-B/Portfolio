@@ -15,4 +15,5 @@ export interface Pokemon {
   captureRate: number;
   spriteUrl: string;
   evolutions: number[];
+  abilities?: string[];
 }

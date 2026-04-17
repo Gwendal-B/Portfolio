@@ -21,6 +21,8 @@ export default function NewRunPage() {
     soulLinkEnabled: false,
     sharedDeathEnabled: false,
     duplicateSpeciesClause: false,
+    showAbilities: true,
+    showNatures: false,
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -291,6 +293,34 @@ export default function NewRunPage() {
                 />
               </label>
 
+              <label className="flex items-center justify-between gap-4">
+                <span>Afficher les talents</span>
+                <input
+                  type="checkbox"
+                  checked={rules.showAbilities}
+                  onChange={(event) =>
+                    setRules((previousRules) => ({
+                      ...previousRules,
+                      showAbilities: event.target.checked,
+                    }))
+                  }
+                />
+              </label>
+
+              <label className="flex items-center justify-between gap-4">
+                <span>Afficher les natures</span>
+                <input
+                  type="checkbox"
+                  checked={rules.showNatures}
+                  onChange={(event) =>
+                    setRules((previousRules) => ({
+                      ...previousRules,
+                      showNatures: event.target.checked,
+                    }))
+                  }
+                />
+              </label>
+
               {mode === "soul-link" && (
                 <>
                   <label className="flex items-center justify-between gap-4">
@@ -365,6 +395,13 @@ export default function NewRunPage() {
                 <p>
                   Clause anti-doublons :{" "}
                   {rules.duplicateSpeciesClause ? "Oui" : "Non"}
+                </p>
+
+                <p>
+                  Afficher les talents : {rules.showAbilities ? "Oui" : "Non"}
+                </p>
+                <p>
+                  Afficher les natures : {rules.showNatures ? "Oui" : "Non"}
                 </p>
 
                 {mode === "soul-link" && (

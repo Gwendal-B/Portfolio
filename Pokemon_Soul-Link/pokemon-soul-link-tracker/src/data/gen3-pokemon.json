@@ -17,7 +17,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png",
     "evolutions": [
       253
-    ]
+    ],
+    "abilities": ["Engrais"]
   },
   {
     "id": 253,
@@ -37,7 +38,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/253.png",
     "evolutions": [
       254
-    ]
+    ],
+    "abilities": ["Engrais"]
   },
   {
     "id": 254,
@@ -55,7 +57,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Engrais"]
   },
   {
     "id": 255,
@@ -75,7 +78,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/255.png",
     "evolutions": [
       256
-    ]
+    ],
+    "abilities": ["Brasier"]
   },
   {
     "id": 256,
@@ -96,7 +100,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/256.png",
     "evolutions": [
       257
-    ]
+    ],
+    "abilities": ["Brasier"]
   },
   {
     "id": 257,
@@ -115,7 +120,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Brasier"]
   },
   {
     "id": 258,
@@ -135,7 +141,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png",
     "evolutions": [
       259
-    ]
+    ],
+    "abilities": ["Torrent"]
   },
   {
     "id": 259,
@@ -156,7 +163,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/259.png",
     "evolutions": [
       260
-    ]
+    ],
+    "abilities": ["Torrent"]
   },
   {
     "id": 260,
@@ -175,7 +183,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/260.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Torrent"]
   },
   {
     "id": 261,
@@ -195,7 +204,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/261.png",
     "evolutions": [
       262
-    ]
+    ],
+    "abilities": ["Intimidation", "Fuite"]
   },
   {
     "id": 262,
@@ -213,7 +223,8 @@
     },
     "captureRate": 127,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/262.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Intimidation", "Fuite"]
   },
   {
     "id": 263,
@@ -233,7 +244,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/263.png",
     "evolutions": [
       264
-    ]
+    ],
+    "abilities": ["Ramassage", "Gloutonnerie"]
   },
   {
     "id": 264,
@@ -253,7 +265,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/264.png",
     "evolutions": [
       862
-    ]
+    ],
+    "abilities": ["Ramassage", "Gloutonnerie"]
   },
   {
     "id": 265,
@@ -274,7 +287,8 @@
     "evolutions": [
       266,
       268
-    ]
+    ],
+    "abilities": ["Écran Poudre"]
   },
   {
     "id": 266,
@@ -294,7 +308,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/266.png",
     "evolutions": [
       267
-    ]
+    ],
+    "abilities": ["Mue"]
   },
   {
     "id": 267,
@@ -313,7 +328,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/267.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Œil Composé"]
   },
   {
     "id": 268,
@@ -333,7 +349,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/268.png",
     "evolutions": [
       269
-    ]
+    ],
+    "abilities": ["Mue"]
   },
   {
     "id": 269,
@@ -352,7 +369,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/269.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Écran Poudre"]
   },
   {
     "id": 270,
@@ -373,7 +391,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/270.png",
     "evolutions": [
       271
-    ]
+    ],
+    "abilities": ["Glissade", "Cuvette"]
   },
   {
     "id": 271,
@@ -394,7 +413,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/271.png",
     "evolutions": [
       272
-    ]
+    ],
+    "abilities": ["Glissade", "Cuvette"]
   },
   {
     "id": 272,
@@ -413,7 +433,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/272.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade", "Cuvette"]
   },
   {
     "id": 273,
@@ -433,7 +454,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/273.png",
     "evolutions": [
       274
-    ]
+    ],
+    "abilities": ["Chlorophylle"]
   },
   {
     "id": 274,
@@ -454,7 +476,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/274.png",
     "evolutions": [
       275
-    ]
+    ],
+    "abilities": ["Chlorophylle"]
   },
   {
     "id": 275,
@@ -473,7 +496,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/275.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Chlorophylle"]
   },
   {
     "id": 276,
@@ -494,7 +518,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/276.png",
     "evolutions": [
       277
-    ]
+    ],
+    "abilities": ["Cran"]
   },
   {
     "id": 277,
@@ -513,7 +538,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/277.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Cran"]
   },
   {
     "id": 278,
@@ -534,7 +560,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/278.png",
     "evolutions": [
       279
-    ]
+    ],
+    "abilities": ["Regard Vif"]
   },
   {
     "id": 279,
@@ -553,7 +580,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/279.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Regard Vif"]
   },
   {
     "id": 280,
@@ -574,7 +602,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/280.png",
     "evolutions": [
       281
-    ]
+    ],
+    "abilities": ["Synchro", "Calque"]
   },
   {
     "id": 281,
@@ -596,7 +625,8 @@
     "evolutions": [
       282,
       475
-    ]
+    ],
+    "abilities": ["Synchro", "Calque"]
   },
   {
     "id": 282,
@@ -615,7 +645,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Synchro", "Calque"]
   },
   {
     "id": 283,
@@ -636,7 +667,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/283.png",
     "evolutions": [
       284
-    ]
+    ],
+    "abilities": ["Glissade"]
   },
   {
     "id": 284,
@@ -655,7 +687,8 @@
     },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/284.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade"]
   },
   {
     "id": 285,
@@ -675,7 +708,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/285.png",
     "evolutions": [
       286
-    ]
+    ],
+    "abilities": ["Pose Spore"]
   },
   {
     "id": 286,
@@ -694,7 +728,8 @@
     },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/286.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Pose Spore"]
   },
   {
     "id": 287,
@@ -714,7 +749,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/287.png",
     "evolutions": [
       288
-    ]
+    ],
+    "abilities": ["Absentéisme"]
   },
   {
     "id": 288,
@@ -734,7 +770,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/288.png",
     "evolutions": [
       289
-    ]
+    ],
+    "abilities": ["Absentéisme"]
   },
   {
     "id": 289,
@@ -752,7 +789,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/289.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Absentéisme"]
   },
   {
     "id": 290,
@@ -774,7 +812,8 @@
     "evolutions": [
       291,
       292
-    ]
+    ],
+    "abilities": ["Œil Composé"]
   },
   {
     "id": 291,
@@ -793,7 +832,8 @@
     },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/291.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Turbo"]
   },
   {
     "id": 292,
@@ -812,7 +852,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/292.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Garde Mystik"]
   },
   {
     "id": 293,
@@ -832,7 +873,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/293.png",
     "evolutions": [
       294
-    ]
+    ],
+    "abilities": ["Anti-Bruit"]
   },
   {
     "id": 294,
@@ -852,7 +894,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/294.png",
     "evolutions": [
       295
-    ]
+    ],
+    "abilities": ["Anti-Bruit"]
   },
   {
     "id": 295,
@@ -870,7 +913,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/295.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Anti-Bruit"]
   },
   {
     "id": 296,
@@ -890,7 +934,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/296.png",
     "evolutions": [
       297
-    ]
+    ],
+    "abilities": ["Isograisse", "Cran"]
   },
   {
     "id": 297,
@@ -908,7 +953,8 @@
     },
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/297.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Isograisse", "Cran"]
   },
   {
     "id": 298,
@@ -929,7 +975,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/298.png",
     "evolutions": [
       183
-    ]
+    ],
+    "abilities": ["Isograisse", "Coloforce"]
   },
   {
     "id": 299,
@@ -949,7 +996,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/299.png",
     "evolutions": [
       476
-    ]
+    ],
+    "abilities": ["Fermeté", "Magnépiège"]
   },
   {
     "id": 300,
@@ -969,7 +1017,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/300.png",
     "evolutions": [
       301
-    ]
+    ],
+    "abilities": ["Joli Sourire"]
   },
   {
     "id": 301,
@@ -987,7 +1036,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/301.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Joli Sourire"]
   },
   {
     "id": 302,
@@ -1006,7 +1056,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Regard Vif"]
   },
   {
     "id": 303,
@@ -1025,7 +1076,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/303.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Hyper Cutter", "Intimidation"]
   },
   {
     "id": 304,
@@ -1046,7 +1098,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/304.png",
     "evolutions": [
       305
-    ]
+    ],
+    "abilities": ["Tête de Roc", "Fermeté"]
   },
   {
     "id": 305,
@@ -1067,7 +1120,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/305.png",
     "evolutions": [
       306
-    ]
+    ],
+    "abilities": ["Tête de Roc", "Fermeté"]
   },
   {
     "id": 306,
@@ -1086,7 +1140,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/306.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Tête de Roc", "Fermeté"]
   },
   {
     "id": 307,
@@ -1107,7 +1162,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/307.png",
     "evolutions": [
       308
-    ]
+    ],
+    "abilities": ["Attention", "Synchro"]
   },
   {
     "id": 308,
@@ -1126,7 +1182,8 @@
     },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/308.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Attention", "Synchro"]
   },
   {
     "id": 309,
@@ -1146,7 +1203,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/309.png",
     "evolutions": [
       310
-    ]
+    ],
+    "abilities": ["Statik", "Paratonnerre"]
   },
   {
     "id": 310,
@@ -1164,7 +1222,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/310.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Statik", "Paratonnerre"]
   },
   {
     "id": 311,
@@ -1182,7 +1241,8 @@
     },
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/311.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Plus"]
   },
   {
     "id": 312,
@@ -1200,7 +1260,8 @@
     },
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/312.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Minus"]
   },
   {
     "id": 313,
@@ -1218,7 +1279,8 @@
     },
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/313.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lumiattirance"]
   },
   {
     "id": 314,
@@ -1236,7 +1298,8 @@
     },
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/314.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lumiattirance"]
   },
   {
     "id": 315,
@@ -1257,7 +1320,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/315.png",
     "evolutions": [
       407
-    ]
+    ],
+    "abilities": ["Médic Nature", "Point Poison"]
   },
   {
     "id": 316,
@@ -1277,7 +1341,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/316.png",
     "evolutions": [
       317
-    ]
+    ],
+    "abilities": ["Glue", "Liquide Suintant"]
   },
   {
     "id": 317,
@@ -1295,7 +1360,8 @@
     },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/317.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glue", "Liquide Suintant"]
   },
   {
     "id": 318,
@@ -1316,7 +1382,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/318.png",
     "evolutions": [
       319
-    ]
+    ],
+    "abilities": ["Peau Dure"]
   },
   {
     "id": 319,
@@ -1335,7 +1402,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/319.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Peau Dure"]
   },
   {
     "id": 320,
@@ -1355,7 +1423,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/320.png",
     "evolutions": [
       321
-    ]
+    ],
+    "abilities": ["Ignifu-Voile"]
   },
   {
     "id": 321,
@@ -1373,7 +1442,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/321.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Ignifu-Voile"]
   },
   {
     "id": 322,
@@ -1394,7 +1464,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/322.png",
     "evolutions": [
       323
-    ]
+    ],
+    "abilities": ["Benêt", "Torche"]
   },
   {
     "id": 323,
@@ -1413,7 +1484,8 @@
     },
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/323.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Benêt", "Torche"]
   },
   {
     "id": 324,
@@ -1431,7 +1503,8 @@
     },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/324.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Sécheresse"]
   },
   {
     "id": 325,
@@ -1451,7 +1524,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/325.png",
     "evolutions": [
       326
-    ]
+    ],
+    "abilities": ["Isograisse", "Tempo Perso"]
   },
   {
     "id": 326,
@@ -1469,7 +1543,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/326.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Isograisse", "Tempo Perso"]
   },
   {
     "id": 327,
@@ -1487,7 +1562,8 @@
     },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/327.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Tempo Perso"]
   },
   {
     "id": 328,
@@ -1507,7 +1583,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/328.png",
     "evolutions": [
       329
-    ]
+    ],
+    "abilities": ["Hyper Cutter", "Voile Sable"]
   },
   {
     "id": 329,
@@ -1528,7 +1605,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/329.png",
     "evolutions": [
       330
-    ]
+    ],
+    "abilities": ["Hyper Cutter", "Voile Sable"]
   },
   {
     "id": 330,
@@ -1547,7 +1625,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/330.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Hyper Cutter", "Voile Sable"]
   },
   {
     "id": 331,
@@ -1567,7 +1646,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/331.png",
     "evolutions": [
       332
-    ]
+    ],
+    "abilities": ["Voile Sable"]
   },
   {
     "id": 332,
@@ -1586,7 +1666,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/332.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Voile Sable"]
   },
   {
     "id": 333,
@@ -1607,7 +1688,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/333.png",
     "evolutions": [
       334
-    ]
+    ],
+    "abilities": ["Médic Nature"]
   },
   {
     "id": 334,
@@ -1626,7 +1708,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/334.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Médic Nature"]
   },
   {
     "id": 335,
@@ -1644,7 +1727,8 @@
     },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/335.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Immunité"]
   },
   {
     "id": 336,
@@ -1662,7 +1746,8 @@
     },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/336.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Mue"]
   },
   {
     "id": 337,
@@ -1681,7 +1766,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/337.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 338,
@@ -1700,7 +1786,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/338.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 339,
@@ -1721,7 +1808,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/339.png",
     "evolutions": [
       340
-    ]
+    ],
+    "abilities": ["Glissade", "Anticipation"]
   },
   {
     "id": 340,
@@ -1740,7 +1828,8 @@
     },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/340.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade", "Anticipation"]
   },
   {
     "id": 341,
@@ -1760,7 +1849,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/341.png",
     "evolutions": [
       342
-    ]
+    ],
+    "abilities": ["Hyper Cutter", "Coque Armure"]
   },
   {
     "id": 342,
@@ -1779,7 +1869,8 @@
     },
     "captureRate": 155,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/342.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Hyper Cutter", "Coque Armure"]
   },
   {
     "id": 343,
@@ -1800,7 +1891,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/343.png",
     "evolutions": [
       344
-    ]
+    ],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 344,
@@ -1819,7 +1911,8 @@
     },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/344.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 345,
@@ -1840,7 +1933,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/345.png",
     "evolutions": [
       346
-    ]
+    ],
+    "abilities": ["Ventouse"]
   },
   {
     "id": 346,
@@ -1859,7 +1953,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/346.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Ventouse"]
   },
   {
     "id": 347,
@@ -1880,7 +1975,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/347.png",
     "evolutions": [
       348
-    ]
+    ],
+    "abilities": ["Glissade"]
   },
   {
     "id": 348,
@@ -1899,7 +1995,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/348.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade"]
   },
   {
     "id": 349,
@@ -1919,7 +2016,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/349.png",
     "evolutions": [
       350
-    ]
+    ],
+    "abilities": ["Glissade"]
   },
   {
     "id": 350,
@@ -1937,7 +2035,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade"]
   },
   {
     "id": 351,
@@ -1955,7 +2054,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/351.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Météo"]
   },
   {
     "id": 352,
@@ -1973,7 +2073,8 @@
     },
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/352.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Changement de Couleur"]
   },
   {
     "id": 353,
@@ -1993,7 +2094,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/353.png",
     "evolutions": [
       354
-    ]
+    ],
+    "abilities": ["Insomnie", "Fouille"]
   },
   {
     "id": 354,
@@ -2011,7 +2113,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/354.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Insomnie", "Fouille"]
   },
   {
     "id": 355,
@@ -2031,7 +2134,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/355.png",
     "evolutions": [
       356
-    ]
+    ],
+    "abilities": ["Pression"]
   },
   {
     "id": 356,
@@ -2051,7 +2155,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/356.png",
     "evolutions": [
       477
-    ]
+    ],
+    "abilities": ["Pression"]
   },
   {
     "id": 357,
@@ -2070,7 +2175,8 @@
     },
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/357.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Chlorophylle"]
   },
   {
     "id": 358,
@@ -2088,7 +2194,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/358.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 359,
@@ -2106,7 +2213,8 @@
     },
     "captureRate": 30,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Pression"]
   },
   {
     "id": 360,
@@ -2126,7 +2234,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/360.png",
     "evolutions": [
       202
-    ]
+    ],
+    "abilities": ["Marque Ombre"]
   },
   {
     "id": 361,
@@ -2147,7 +2256,8 @@
     "evolutions": [
       362,
       478
-    ]
+    ],
+    "abilities": ["Attention"]
   },
   {
     "id": 362,
@@ -2165,7 +2275,8 @@
     },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/362.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Attention"]
   },
   {
     "id": 363,
@@ -2186,7 +2297,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/363.png",
     "evolutions": [
       364
-    ]
+    ],
+    "abilities": ["Isograisse"]
   },
   {
     "id": 364,
@@ -2207,7 +2319,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/364.png",
     "evolutions": [
       365
-    ]
+    ],
+    "abilities": ["Isograisse"]
   },
   {
     "id": 365,
@@ -2226,7 +2339,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/365.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Isograisse"]
   },
   {
     "id": 366,
@@ -2247,7 +2361,8 @@
     "evolutions": [
       367,
       368
-    ]
+    ],
+    "abilities": ["Coque Armure"]
   },
   {
     "id": 367,
@@ -2265,7 +2380,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/367.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade"]
   },
   {
     "id": 368,
@@ -2283,7 +2399,8 @@
     },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/368.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade"]
   },
   {
     "id": 369,
@@ -2302,7 +2419,8 @@
     },
     "captureRate": 25,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/369.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Tête de Roc"]
   },
   {
     "id": 370,
@@ -2320,7 +2438,8 @@
     },
     "captureRate": 225,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/370.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Glissade"]
   },
   {
     "id": 371,
@@ -2340,7 +2459,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/371.png",
     "evolutions": [
       372
-    ]
+    ],
+    "abilities": ["Intimidation"]
   },
   {
     "id": 372,
@@ -2360,7 +2480,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/372.png",
     "evolutions": [
       373
-    ]
+    ],
+    "abilities": ["Intimidation"]
   },
   {
     "id": 373,
@@ -2379,7 +2500,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Intimidation"]
   },
   {
     "id": 374,
@@ -2400,7 +2522,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/374.png",
     "evolutions": [
       375
-    ]
+    ],
+    "abilities": ["Corps Sain"]
   },
   {
     "id": 375,
@@ -2421,7 +2544,8 @@
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/375.png",
     "evolutions": [
       376
-    ]
+    ],
+    "abilities": ["Corps Sain"]
   },
   {
     "id": 376,
@@ -2440,7 +2564,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Corps Sain"]
   },
   {
     "id": 377,
@@ -2458,7 +2583,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/377.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Corps Sain"]
   },
   {
     "id": 378,
@@ -2476,7 +2602,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/378.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Corps Sain"]
   },
   {
     "id": 379,
@@ -2494,7 +2621,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/379.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Corps Sain"]
   },
   {
     "id": 380,
@@ -2513,7 +2641,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/380.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 381,
@@ -2532,7 +2661,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/381.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Lévitation"]
   },
   {
     "id": 382,
@@ -2550,7 +2680,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Crachin"]
   },
   {
     "id": 383,
@@ -2568,7 +2699,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Sécheresse"]
   },
   {
     "id": 384,
@@ -2587,7 +2719,8 @@
     },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Air Lock"]
   },
   {
     "id": 385,
@@ -2606,7 +2739,8 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/385.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Sérénité"]
   },
   {
     "id": 386,
@@ -2624,6 +2758,7 @@
     },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
-    "evolutions": []
+    "evolutions": [],
+    "abilities": ["Pression"]
   }
 ]

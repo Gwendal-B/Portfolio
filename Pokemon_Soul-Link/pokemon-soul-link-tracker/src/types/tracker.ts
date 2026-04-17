@@ -15,4 +15,6 @@ export interface CapturedPokemon {
   soulLinkId: string | null;
   createdAt: string;
   updatedAt: string;
+  ability: string | null;
+  nature: string | null;
 }

@@ -37,6 +37,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [selectedRouteId, setSelectedRouteId] = useState("");
   const [lifeStatus, setLifeStatus] = useState<LifeStatus>("alive");
   const [storageStatus, setStorageStatus] = useState<StorageStatus>("team");
+  const [selectedAbility, setSelectedAbility] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [pokemonSearch, setPokemonSearch] = useState("");
   const [soulLinks, setSoulLinks] = useState<SoulLink[]>([]);
@@ -54,6 +55,12 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const pokemonById = useMemo(() => {
     return new Map(availablePokemon.map((pokemon) => [pokemon.id, pokemon]));
   }, [availablePokemon]);
+
+  const selectedPokemon = useMemo(() => {
+    return pokemonById.get(selectedPokemonId) ?? null;
+  }, [pokemonById, selectedPokemonId]);
+
+  const availableAbilities = selectedPokemon?.abilities ?? [];
 
   const filteredPokemons = useMemo(() => {
     const normalizedSearch = pokemonSearch.trim().toLowerCase();
@@ -134,6 +141,30 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     loadRun();
   }, [params]);
 
+  useEffect(() => {
+    if (!run?.rules.showAbilities) {
+      setSelectedAbility("");
+      return;
+    }
+
+    if (availableAbilities.length === 1) {
+      setSelectedAbility(availableAbilities[0]);
+      return;
+    }
+
+    if (
+      availableAbilities.length > 1 &&
+      !availableAbilities.includes(selectedAbility)
+    ) {
+      setSelectedAbility(availableAbilities[0]);
+      return;
+    }
+
+    if (availableAbilities.length === 0) {
+      setSelectedAbility("");
+    }
+  }, [run, availableAbilities, selectedAbility]);
+
   function handleAddCapture(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -147,6 +178,15 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
     if (!selectedPokemonId) {
       setErrorMessage("Le Pokémon à capturer est obligatoire.");
+      return;
+    }
+
+    if (
+      run.rules.showAbilities &&
+      availableAbilities.length > 0 &&
+      !selectedAbility
+    ) {
+      setErrorMessage("Le talent est obligatoire pour cette capture.");
       return;
     }
 
@@ -226,6 +266,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       soulLinkId: null,
       createdAt: now,
       updatedAt: now,
+      ability: run.rules.showAbilities ? selectedAbility || null : null,
+      nature: null,
     };
 
     addCapturedPokemon(newCapture);
@@ -277,6 +319,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setLifeStatus("alive");
     setStorageStatus("team");
     setPokemonSearch("");
+    setSelectedAbility("");
 
     if (availablePokemon.length > 0) {
       setSelectedPokemonId(availablePokemon[0].id);
@@ -563,6 +606,13 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             <span className="font-medium text-white">Zone :</span>{" "}
             {capture.routeName}
           </p>
+
+          {run?.rules.showAbilities && (
+            <p>
+              <span className="font-medium text-white">Talent :</span>{" "}
+              {capture.ability ?? "Non renseigné"}
+            </p>
+          )}
         </div>
 
         {linkedCapture && (
@@ -687,6 +737,12 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                   <p className="mt-2 truncate text-center text-xs text-zinc-300">
                     {capture.nickname || pokemon?.name || "Pokémon"}
                   </p>
+
+                  {run?.rules.showAbilities && (
+                    <p className="mt-1 truncate text-center text-[11px] text-zinc-500">
+                      {capture.ability ?? "Talent inconnu"}
+                    </p>
+                  )}
                 </div>
               );
             })}
@@ -861,6 +917,38 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                     className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
                   />
                 </div>
+
+                {run.rules.showAbilities && (
+                  <div>
+                    <label htmlFor="ability" className="mb-2 block text-sm font-medium">
+                      Talent
+                    </label>
+
+                    <select
+                      id="ability"
+                      value={selectedAbility}
+                      onChange={(event) => setSelectedAbility(event.target.value)}
+                      disabled={availableAbilities.length === 0}
+                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {availableAbilities.length === 0 ? (
+                        <option value="">Aucun talent renseigné</option>
+                      ) : (
+                        <>
+                          {availableAbilities.length > 1 && (
+                            <option value="">Sélectionner un talent</option>
+                          )}
+
+                          {availableAbilities.map((ability) => (
+                            <option key={ability} value={ability}>
+                              {ability}
+                            </option>
+                          ))}
+                        </>
+                      )}
+                    </select>
+                  </div>
+                )}
 
                 <div>
                   <label htmlFor="playerId" className="mb-2 block text-sm font-medium">

@@ -19,6 +19,8 @@ export interface RunRules {
   soulLinkEnabled: boolean;
   sharedDeathEnabled: boolean;
   duplicateSpeciesClause: boolean;
+  showAbilities: boolean;
+  showNatures: boolean;
 }
 
 export interface Run {
