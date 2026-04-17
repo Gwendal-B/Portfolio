@@ -56,14 +56,16 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   }, [availablePokemon]);
 
   const filteredPokemons = useMemo(() => {
-    const search = pokemonSearch.trim().toLowerCase();
+    const normalizedSearch = pokemonSearch.trim().toLowerCase();
 
-    if (!search) {
+    if (!normalizedSearch) {
       return [];
     }
 
     return availablePokemon
-      .filter((pokemon) => pokemon.name.toLowerCase().includes(search))
+      .filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(normalizedSearch)
+      )
       .slice(0, 10);
   }, [availablePokemon, pokemonSearch]);
 
@@ -98,8 +100,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
   useEffect(() => {
     async function loadRun() {
-      const resolvedParams = await params;
-      const currentRunId = resolvedParams.id;
+      const { id: currentRunId } = await params;
 
       setRunId(currentRunId);
 
@@ -143,6 +144,11 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setErrorMessage("");
 
     const trimmedNickname = nickname.trim();
+
+    if (!selectedPokemonId) {
+      setErrorMessage("Le Pokémon à capturer est obligatoire.");
+      return;
+    }
 
     if (run.rules.nicknameRequired && !trimmedNickname) {
       setErrorMessage("Le surnom est obligatoire pour cette run.");
@@ -271,6 +277,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setLifeStatus("alive");
     setStorageStatus("team");
     setPokemonSearch("");
+
+    if (availablePokemon.length > 0) {
+      setSelectedPokemonId(availablePokemon[0].id);
+    }
 
     if (availableRoutes.length > 0) {
       setSelectedRouteId(availableRoutes[0].id);
@@ -476,6 +486,8 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     // Rafraîchir l'état
     setSoulLinks(getSoulLinksByRunId(run.id));
     setCaptures(getCapturedPokemonsByRunId(run.id));
+    setSelectedCaptureAId("");
+    setSelectedCaptureBId("");
   }
 
   function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
@@ -998,7 +1010,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
                 <button
                   type="button"
-                  onClick={() => setShowManualSoulLink((prev) => !prev)}
+                  onClick={() => {
+                    setShowManualSoulLink((prev) => !prev);
+                    setSoulLinkErrorMessage("");
+                  }}
                   className="mt-4 rounded-lg border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm font-medium text-purple-300 transition hover:bg-purple-500/20"
                 >
                   {showManualSoulLink

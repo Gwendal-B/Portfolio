@@ -88,6 +88,13 @@ export const hoennRoutes: GameRoute[] = [
     availableIn: hoennGames,
   },
   {
+    id: "vergazon",
+    name: "Vergazon",
+    region: "Hoenn",
+    category: "city",
+    availableIn: hoennGames,
+  },
+  {
     id: "algatia",
     name: "Algatia",
     region: "Hoenn",
@@ -120,13 +127,6 @@ export const hoennRoutes: GameRoute[] = [
     name: "Éternara",
     region: "Hoenn",
     category: "city",
-    availableIn: hoennGames,
-  },
-  {
-    id: "ligue-pokemon-hoenn",
-    name: "Ligue Pokémon",
-    region: "Hoenn",
-    category: "building",
     availableIn: hoennGames,
   },
 
@@ -196,13 +196,6 @@ export const hoennRoutes: GameRoute[] = [
     availableIn: hoennGames,
   },
   {
-    id: "tour-cendres",
-    name: "Tour Cendres",
-    region: "Hoenn",
-    category: "building",
-    availableIn: hoennGames,
-  },
-  {
     id: "epave",
     name: "Épave",
     region: "Hoenn",
@@ -214,13 +207,6 @@ export const hoennRoutes: GameRoute[] = [
     name: "Mont Mémoria",
     region: "Hoenn",
     category: "special",
-    availableIn: hoennGames,
-  },
-  {
-    id: "centre-meteo",
-    name: "Centre Météo",
-    region: "Hoenn",
-    category: "building",
     availableIn: hoennGames,
   },
   {
