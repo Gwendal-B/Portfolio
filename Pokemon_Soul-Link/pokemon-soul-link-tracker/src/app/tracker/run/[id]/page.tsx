@@ -5,14 +5,9 @@ import Link from "next/link";
 import { getPokemonForGameGroup } from "../../../../lib/pokedex-helpers";
 import { getRoutesForGameGroup } from "../../../../lib/routes";
 import {
-  addCapturedPokemon,
-  addSoulLink,
-  deleteCapturedPokemon,
   getCapturedPokemonsByRunId,
   getRunById,
   getSoulLinksByRunId,
-  updateCapturedPokemon,
-  deleteSoulLink,
   exportRunAsJson,
 } from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
@@ -23,12 +18,13 @@ import AddCaptureForm from "../../../../components/tracker/AddCaptureForm";
 import SoulLinkPanel from "../../../../components/tracker/SoulLinkPanel";
 import TeamPanel from "../../../../components/tracker/TeamPanel";
 import RunStatsBar from "../../../../components/tracker/RunStatsBar";
-import { loadTrackerState, saveTrackerState } from "../../../../lib/local-storage";
-import { deleteCapture } from "../../../../domain/capture/capture.service";
-import { createAutomaticSoulLinkForNewCapture } from "../../../../domain/soul-link/soul-link.service";
-import { updateCaptureStatus } from "../../../../domain/capture/update-capture.service";
-import { createManualSoulLink } from "../../../../domain/soul-link/soul-link.service";
-import { deleteSoulLinkById } from "../../../../domain/soul-link/soul-link.service";
+import {
+  addRunCapture,
+  updateRunCapture,
+  deleteRunCapture,
+  createRunSoulLink,
+  deleteRunSoulLink,
+} from "../../../../domain/tracker.service";
 
 type RunDetailPageProps = {
   params: Promise<{ id: string }>;
@@ -88,35 +84,20 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
   // ——— Handlers captures ———
 
-  function handleAddCapture(
+    function handleAddCapture(
     captureData: Omit<CapturedPokemon, "id" | "createdAt" | "updatedAt">
   ): string | null {
     if (!run) return "Run introuvable.";
 
-    const now = new Date().toISOString();
-    const newCapture: CapturedPokemon = {
-      ...captureData,
-      id: `capture-${Date.now()}`,
-      createdAt: now,
-      updatedAt: now,
-    };
-
-    addCapturedPokemon(newCapture);
-
-    if (run.mode === "soul-link" && run.rules.soulLinkEnabled) {
-      const state = loadTrackerState();
-
-      const updatedState = createAutomaticSoulLinkForNewCapture(
-        state,
-        run.id,
-        newCapture
-      );
-
-      saveTrackerState(updatedState);
-    }
+    const error = addRunCapture(
+      run.mode,
+      run.rules.soulLinkEnabled,
+      run.id,
+      captureData
+    );
 
     refreshData(run.id);
-    return null;
+    return error;
   }
 
   function handleUpdateCapture(
@@ -126,27 +107,18 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   ) {
     if (!run) return;
 
-    const state = loadTrackerState();
-
-    const newState = updateCaptureStatus(
-      state,
+    updateRunCapture(
       captureId,
       field,
       value,
       run.rules.sharedDeathEnabled
     );
 
-    saveTrackerState(newState);
-
     refreshData(runId);
   }
 
   function handleDeleteCapture(captureId: string) {
-    const state = loadTrackerState();
-
-    const newState = deleteCapture(state, captureId);
-
-    saveTrackerState(newState);
+    deleteRunCapture(captureId);
 
     setDeleteConfirmCaptureId(null);
     refreshData(runId);
@@ -157,27 +129,20 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   function handleCreateSoulLink(captureAId: string, captureBId: string): string | null {
     if (!run) return "Run introuvable.";
 
-    const state = loadTrackerState();
+    const error = createRunSoulLink(run.id, captureAId, captureBId);
 
-    const result = createManualSoulLink(state, run.id, captureAId, captureBId);
-
-    if (result.error) {
-      return result.error;
+    if (error) {
+      return error;
     }
 
-    saveTrackerState(result.state);
     refreshData(run.id);
-
     return null;
   }
 
   function handleDeleteSoulLink(soulLinkId: string) {
     if (!run) return;
 
-    const state = loadTrackerState();
-    const newState = deleteSoulLinkById(state, soulLinkId);
-
-    saveTrackerState(newState);
+    deleteRunSoulLink(soulLinkId);
     refreshData(run.id);
   }
 

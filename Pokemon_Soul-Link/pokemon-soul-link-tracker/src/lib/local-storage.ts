@@ -88,57 +88,6 @@ export function saveCapturedPokemons(captures: CapturedPokemon[]): void {
   localStorage.setItem(CAPTURES_STORAGE_KEY, JSON.stringify(captures));
 }
 
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function addCapturedPokemon(capture: CapturedPokemon): void {
-  saveCapturedPokemons([...getCapturedPokemons(), capture]);
-}
-
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function updateCapturedPokemon(updatedCapture: CapturedPokemon): void {
-  const existing = getCapturedPokemons();
-  saveCapturedPokemons(
-    existing.map((c) => (c.id === updatedCapture.id ? updatedCapture : c))
-  );
-}
-
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function deleteCapturedPokemon(captureId: string): void {
-  const allCaptures = getCapturedPokemons();
-  const captureToDelete = allCaptures.find((c) => c.id === captureId);
-
-  if (!captureToDelete) return;
-
-  const now = new Date().toISOString();
-
-  if (captureToDelete.soulLinkId) {
-    const soulLinks = getSoulLinks();
-    const soulLink = soulLinks.find((link) => link.id === captureToDelete.soulLinkId);
-
-    if (soulLink) {
-      const partnerId =
-        soulLink.pokemonAId === captureId ? soulLink.pokemonBId : soulLink.pokemonAId;
-      const partner = allCaptures.find((c) => c.id === partnerId);
-
-      if (partner) {
-        updateCapturedPokemon({ ...partner, soulLinkId: null, updatedAt: now });
-      }
-
-      deleteSoulLink(soulLink.id);
-    }
-  }
-
-  saveCapturedPokemons(allCaptures.filter((c) => c.id !== captureId));
-}
-
 export function getCapturedPokemonsByRunId(runId: string): CapturedPokemon[] {
   return getCapturedPokemons().filter((capture) => capture.runId === runId);
 }
@@ -167,24 +116,8 @@ export function saveSoulLinks(soulLinks: SoulLink[]): void {
   localStorage.setItem(SOUL_LINKS_STORAGE_KEY, JSON.stringify(soulLinks));
 }
 
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function addSoulLink(soulLink: SoulLink): void {
-  saveSoulLinks([...getSoulLinks(), soulLink]);
-}
-
 export function getSoulLinksByRunId(runId: string): SoulLink[] {
   return getSoulLinks().filter((soulLink) => soulLink.runId === runId);
-}
-
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function deleteSoulLink(soulLinkId: string): void {
-  saveSoulLinks(getSoulLinks().filter((link) => link.id !== soulLinkId));
 }
 
 /*
