@@ -41,10 +41,12 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [errorMessage, setErrorMessage] = useState("");
   const [pokemonSearch, setPokemonSearch] = useState("");
   const [soulLinks, setSoulLinks] = useState<SoulLink[]>([]);
+
   const [selectedCaptureAId, setSelectedCaptureAId] = useState("");
   const [selectedCaptureBId, setSelectedCaptureBId] = useState("");
   const [soulLinkErrorMessage, setSoulLinkErrorMessage] = useState("");
   const [showManualSoulLink, setShowManualSoulLink] = useState(false);
+  const [selectedAbilityFilter, setSelectedAbilityFilter] = useState("Tous");
 
   const availablePokemon = useMemo(() => {
     if (!run) return [];
@@ -86,15 +88,42 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     return getRoutesForGameGroup(run.game);
   }, [run]);
 
+  const availableAbilityFilters = useMemo(() => {
+    if (!run?.rules.showAbilities) {
+      return ["Tous"];
+    }
+
+    return [
+      "Tous",
+      ...Array.from(
+        new Set(
+          captures
+            .map((capture) => capture.ability)
+            .filter((ability): ability is string => Boolean(ability))
+        )
+      ).sort(),
+    ];
+  }, [captures, run]);
+
+  const filteredCaptures = useMemo(() => {
+    if (!run?.rules.showAbilities || selectedAbilityFilter === "Tous") {
+      return captures;
+    }
+
+    return captures.filter(
+      (capture) => capture.ability === selectedAbilityFilter
+    );
+  }, [captures, run, selectedAbilityFilter]);
+
   const playerOne = run?.players[0] ?? null;
   const playerTwo = run?.players[1] ?? null;
 
   const playerOneCaptures = playerOne
-    ? captures.filter((capture) => capture.playerId === playerOne.id)
+    ? filteredCaptures.filter((capture) => capture.playerId === playerOne.id)
     : [];
 
   const playerTwoCaptures = playerTwo
-    ? captures.filter((capture) => capture.playerId === playerTwo.id)
+    ? filteredCaptures.filter((capture) => capture.playerId === playerTwo.id)
     : [];
 
   const playerOneTeam = playerOneCaptures.filter(
@@ -117,6 +146,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       if (foundRun) {
         setCaptures(getCapturedPokemonsByRunId(currentRunId));
         setSoulLinks(getSoulLinksByRunId(currentRunId));
+        setSelectedAbilityFilter("Tous");
 
         const availablePokemonForRun = getPokemonForGameGroup(foundRun.game);
 
@@ -1036,11 +1066,37 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             </section>
 
             <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-              <div className="flex items-center justify-between gap-4">
-                <h2 className="text-xl font-semibold">Captures</h2>
-                <p className="text-sm text-zinc-400">
-                  Total : <span className="font-medium text-white">{captures.length}</span>
-                </p>
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold">Captures</h2>
+                  <p className="text-sm text-zinc-400">
+                    Total : <span className="font-medium text-white">{filteredCaptures.length}</span>
+                  </p>
+                </div>
+
+                {run.rules.showAbilities && (
+                  <div className="w-full md:w-72">
+                    <label
+                      htmlFor="abilityFilter"
+                      className="mb-2 block text-sm font-medium text-zinc-300"
+                    >
+                      Filtrer par talent
+                    </label>
+
+                    <select
+                      id="abilityFilter"
+                      value={selectedAbilityFilter}
+                      onChange={(event) => setSelectedAbilityFilter(event.target.value)}
+                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                    >
+                      {availableAbilityFilters.map((ability) => (
+                        <option key={ability} value={ability}>
+                          {ability}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
               </div>
 
               {captures.length === 0 ? (
@@ -1079,7 +1135,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                 </div>
               ) : (
                 <div className="mt-6 space-y-4">
-                  {captures.map((capture) => renderCaptureCard(capture))}
+                  {filteredCaptures.map((capture) => renderCaptureCard(capture))}
                 </div>
               )}
             </section>
