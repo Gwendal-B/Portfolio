@@ -23,6 +23,8 @@ import AddCaptureForm from "../../../../components/tracker/AddCaptureForm";
 import SoulLinkPanel from "../../../../components/tracker/SoulLinkPanel";
 import TeamPanel from "../../../../components/tracker/TeamPanel";
 import RunStatsBar from "../../../../components/tracker/RunStatsBar";
+import { loadTrackerState, saveTrackerState } from "../../../../lib/local-storage";
+import { deleteCapture } from "../../../../domain/capture/capture.service";
 
 type RunDetailPageProps = {
   params: Promise<{ id: string }>;
@@ -170,7 +172,12 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   }
 
   function handleDeleteCapture(captureId: string) {
-    deleteCapturedPokemon(captureId);
+    const state = loadTrackerState();
+
+    const newState = deleteCapture(state, captureId);
+
+    saveTrackerState(newState);
+
     setDeleteConfirmCaptureId(null);
     refreshData(runId);
   }

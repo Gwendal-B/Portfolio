@@ -1,6 +1,7 @@
 import type { Run } from "../types/run";
 import type { CapturedPokemon } from "../types/tracker";
 import type { SoulLink } from "../types/soul-link";
+import type { TrackerState } from "../types/tracker";
 
 const RUNS_STORAGE_KEY = "pokemon-soul-link-runs";
 const CAPTURES_STORAGE_KEY = "pokemon-soul-link-captures";
@@ -235,4 +236,18 @@ export function importRunFromJson(data: RunExportData): string {
   saveSoulLinks([...getSoulLinks(), ...newSoulLinks]);
 
   return newRunId;
+}
+
+export function loadTrackerState(): TrackerState {
+  return {
+    runs: getRuns(),
+    captures: getCapturedPokemons(),
+    soulLinks: getSoulLinks(),
+  };
+}
+
+export function saveTrackerState(state: TrackerState): void {
+  saveRuns(state.runs);
+  saveCapturedPokemons(state.captures);
+  saveSoulLinks(state.soulLinks);
 }
