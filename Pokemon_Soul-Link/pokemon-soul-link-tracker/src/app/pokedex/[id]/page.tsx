@@ -1,5 +1,4 @@
 import { nationalPokedex, getPokemonById } from "../../../lib/pokedex";
-import type { Pokemon } from "../../../types/pokemon";
 import Link from "next/link";
 
 /*
@@ -120,7 +119,9 @@ export default async function PokemonDetailPage({
                 <p>
                   Évolutions :{" "}
                   {pokemon.evolutions.length > 0
-                    ? pokemon.evolutions.join(", ")
+                    ? pokemon.evolutions
+                        .map((evolutionId) => getPokemonById(evolutionId)?.name ?? `#${evolutionId}`)
+                        .join(", ")
                     : "Aucune"}
                 </p>
               </div>

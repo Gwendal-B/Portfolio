@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import gen1Pokemon from "../../data/gen1-pokemon.json";
-import type { Pokemon } from "../../types/pokemon";
 import gen2Pokemon from "../../data/gen2-pokemon.json";
+import gen3Pokemon from "../../data/gen3-pokemon.json";
+import type { Pokemon } from "../../types/pokemon";
 import type { GameGroup } from "../../types/run";
 import Link from "next/link";
 
@@ -21,12 +22,14 @@ export default function PokedexPage() {
   const [selectedGeneration, setSelectedGeneration] = useState("Toutes");
 
   const shouldShowGenerationFilter =
-    selectedGameGroup === "Pokemon Or / Argent / Cristal";
+    selectedGameGroup === "Pokemon Or / Argent / Cristal" ||
+    selectedGameGroup === "Pokemon Rubis / Saphir / Émeraude";
 
   // 🔹 Pokémon disponibles selon le groupe de jeu
   const availablePokemon = useMemo(() => {
     const generationOnePokemon = gen1Pokemon as Pokemon[];
     const generationTwoPokemon = gen2Pokemon as Pokemon[];
+    const generationThreePokemon = gen3Pokemon as Pokemon[];
 
     if (selectedGameGroup === "Pokemon Rouge / Bleu / Jaune") {
       return generationOnePokemon;
@@ -34,6 +37,14 @@ export default function PokedexPage() {
 
     if (selectedGameGroup === "Pokemon Or / Argent / Cristal") {
       return [...generationOnePokemon, ...generationTwoPokemon];
+    }
+
+    if (selectedGameGroup === "Pokemon Rubis / Saphir / Émeraude") {
+      return [
+        ...generationOnePokemon,
+        ...generationTwoPokemon,
+        ...generationThreePokemon,
+      ];
     }
 
     return generationOnePokemon;
@@ -101,6 +112,9 @@ export default function PokedexPage() {
               <option value="Pokemon Or / Argent / Cristal">
                 Pokémon Or / Argent / Cristal
               </option>
+              <option value="Pokemon Rubis / Saphir / Émeraude">
+                Pokémon Rubis / Saphir / Émeraude
+              </option>
             </select>
           </div>
 
@@ -122,6 +136,7 @@ export default function PokedexPage() {
               <option value="Toutes">Toutes</option>
               <option value="1">Génération 1</option>
               <option value="2">Génération 2</option>
+              <option value="2">Génération 3</option>
             </select>
           </div>
         )}
