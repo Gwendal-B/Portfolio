@@ -15,6 +15,7 @@ import {
   deleteSoulLink,
 } from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
+import { NATURES } from "../../../../lib/natures";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
 import type { SoulLink } from "../../../../types/soul-link";
 import StatusBadge from "../../../../components/ui/StatusBadge";
@@ -38,6 +39,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [lifeStatus, setLifeStatus] = useState<LifeStatus>("alive");
   const [storageStatus, setStorageStatus] = useState<StorageStatus>("team");
   const [selectedAbility, setSelectedAbility] = useState("");
+  const [selectedNature, setSelectedNature] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [pokemonSearch, setPokemonSearch] = useState("");
   const [soulLinks, setSoulLinks] = useState<SoulLink[]>([]);
@@ -47,6 +49,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [soulLinkErrorMessage, setSoulLinkErrorMessage] = useState("");
   const [showManualSoulLink, setShowManualSoulLink] = useState(false);
   const [selectedAbilityFilter, setSelectedAbilityFilter] = useState("Tous");
+  const [selectedNatureFilter, setSelectedNatureFilter] = useState("Toutes");
 
   const availablePokemon = useMemo(() => {
     if (!run) return [];
@@ -105,15 +108,38 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     ];
   }, [captures, run]);
 
-  const filteredCaptures = useMemo(() => {
-    if (!run?.rules.showAbilities || selectedAbilityFilter === "Tous") {
-      return captures;
+  const availableNatureFilters = useMemo(() => {
+    if (!run?.rules.showNatures) {
+      return ["Toutes"];
     }
 
-    return captures.filter(
-      (capture) => capture.ability === selectedAbilityFilter
-    );
-  }, [captures, run, selectedAbilityFilter]);
+    return [
+      "Toutes",
+      ...Array.from(
+        new Set(
+          captures
+            .map((capture) => capture.nature)
+            .filter((nature): nature is string => Boolean(nature))
+        )
+      ).sort(),
+    ];
+  }, [captures, run]);
+
+  const filteredCaptures = useMemo(() => {
+    return captures.filter((capture) => {
+      const matchesAbility =
+        !run?.rules.showAbilities ||
+        selectedAbilityFilter === "Tous" ||
+        capture.ability === selectedAbilityFilter;
+
+      const matchesNature =
+        !run?.rules.showNatures ||
+        selectedNatureFilter === "Toutes" ||
+        capture.nature === selectedNatureFilter;
+
+      return matchesAbility && matchesNature;
+    });
+  }, [captures, run, selectedAbilityFilter, selectedNatureFilter]);
 
   const playerOne = run?.players[0] ?? null;
   const playerTwo = run?.players[1] ?? null;
@@ -147,6 +173,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
         setCaptures(getCapturedPokemonsByRunId(currentRunId));
         setSoulLinks(getSoulLinksByRunId(currentRunId));
         setSelectedAbilityFilter("Tous");
+        setSelectedNatureFilter("Toutes");
 
         const availablePokemonForRun = getPokemonForGameGroup(foundRun.game);
 
@@ -195,6 +222,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     }
   }, [run, availableAbilities, selectedAbility]);
 
+  useEffect(() => {
+    setSelectedNature("");
+  }, [selectedPokemonId]);
+
   function handleAddCapture(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -217,6 +248,11 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       !selectedAbility
     ) {
       setErrorMessage("Le talent est obligatoire pour cette capture.");
+      return;
+    }
+
+    if (run.rules.showNatures && !selectedNature) {
+      setErrorMessage("La nature est obligatoire pour cette capture.");
       return;
     }
 
@@ -297,7 +333,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
       createdAt: now,
       updatedAt: now,
       ability: run.rules.showAbilities ? selectedAbility || null : null,
-      nature: null,
+      nature: run.rules.showNatures ? selectedNature || null : null,
     };
 
     addCapturedPokemon(newCapture);
@@ -350,6 +386,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     setStorageStatus("team");
     setPokemonSearch("");
     setSelectedAbility("");
+    setSelectedNature("");
 
     if (availablePokemon.length > 0) {
       setSelectedPokemonId(availablePokemon[0].id);
@@ -643,6 +680,13 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
               {capture.ability ?? "Non renseigné"}
             </p>
           )}
+
+          {run?.rules.showNatures && (
+            <p>
+              <span className="font-medium text-white">Nature :</span>{" "}
+              {capture.nature ?? "Non renseignée"}
+            </p>
+          )}
         </div>
 
         {linkedCapture && (
@@ -771,6 +815,12 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                   {run?.rules.showAbilities && (
                     <p className="mt-1 truncate text-center text-[11px] text-zinc-500">
                       {capture.ability ?? "Talent inconnu"}
+                    </p>
+                  )}
+
+                  {run?.rules.showNatures && (
+                    <p className="mt-1 truncate text-center text-[11px] text-zinc-500">
+                      {capture.nature ?? "Nature inconnue"}
                     </p>
                   )}
                 </div>
@@ -980,6 +1030,29 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                   </div>
                 )}
 
+                {run.rules.showNatures && (
+                  <div>
+                    <label htmlFor="nature" className="mb-2 block text-sm font-medium">
+                      Nature
+                    </label>
+
+                    <select
+                      id="nature"
+                      value={selectedNature}
+                      onChange={(event) => setSelectedNature(event.target.value)}
+                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                    >
+                      <option value="">Sélectionner une nature</option>
+
+                      {NATURES.map((nature) => (
+                        <option key={nature.name} value={nature.name}>
+                          {nature.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
                 <div>
                   <label htmlFor="playerId" className="mb-2 block text-sm font-medium">
                     Joueur
@@ -1074,29 +1147,55 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                   </p>
                 </div>
 
-                {run.rules.showAbilities && (
-                  <div className="w-full md:w-72">
-                    <label
-                      htmlFor="abilityFilter"
-                      className="mb-2 block text-sm font-medium text-zinc-300"
-                    >
-                      Filtrer par talent
-                    </label>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {run.rules.showAbilities && (
+                    <div className="w-full md:w-64">
+                      <label
+                        htmlFor="abilityFilter"
+                        className="mb-2 block text-sm font-medium text-zinc-300"
+                      >
+                        Filtrer par talent
+                      </label>
 
-                    <select
-                      id="abilityFilter"
-                      value={selectedAbilityFilter}
-                      onChange={(event) => setSelectedAbilityFilter(event.target.value)}
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                    >
-                      {availableAbilityFilters.map((ability) => (
-                        <option key={ability} value={ability}>
-                          {ability}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
+                      <select
+                        id="abilityFilter"
+                        value={selectedAbilityFilter}
+                        onChange={(event) => setSelectedAbilityFilter(event.target.value)}
+                        className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                      >
+                        {availableAbilityFilters.map((ability) => (
+                          <option key={ability} value={ability}>
+                            {ability}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  {run.rules.showNatures && (
+                    <div className="w-full md:w-64">
+                      <label
+                        htmlFor="natureFilter"
+                        className="mb-2 block text-sm font-medium text-zinc-300"
+                      >
+                        Filtrer par nature
+                      </label>
+
+                      <select
+                        id="natureFilter"
+                        value={selectedNatureFilter}
+                        onChange={(event) => setSelectedNatureFilter(event.target.value)}
+                        className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                      >
+                        {availableNatureFilters.map((nature) => (
+                          <option key={nature} value={nature}>
+                            {nature}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {captures.length === 0 ? (
