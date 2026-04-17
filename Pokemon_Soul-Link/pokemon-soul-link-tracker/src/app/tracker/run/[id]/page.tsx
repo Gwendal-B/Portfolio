@@ -27,6 +27,8 @@ import { loadTrackerState, saveTrackerState } from "../../../../lib/local-storag
 import { deleteCapture } from "../../../../domain/capture/capture.service";
 import { createAutomaticSoulLinkForNewCapture } from "../../../../domain/soul-link/soul-link.service";
 import { updateCaptureStatus } from "../../../../domain/capture/update-capture.service";
+import { createManualSoulLink } from "../../../../domain/soul-link/soul-link.service";
+import { deleteSoulLinkById } from "../../../../domain/soul-link/soul-link.service";
 
 type RunDetailPageProps = {
   params: Promise<{ id: string }>;
@@ -155,44 +157,27 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   function handleCreateSoulLink(captureAId: string, captureBId: string): string | null {
     if (!run) return "Run introuvable.";
 
-    const now = new Date().toISOString();
-    const soulLinkId = `soul-link-${Date.now()}`;
-    const captureA = captures.find((c) => c.id === captureAId);
-    const captureB = captures.find((c) => c.id === captureBId);
+    const state = loadTrackerState();
 
-    if (!captureA || !captureB) return "Captures introuvables.";
+    const result = createManualSoulLink(state, run.id, captureAId, captureBId);
 
-    const newSoulLink: SoulLink = {
-      id: soulLinkId,
-      runId: run.id,
-      pokemonAId: captureA.id,
-      pokemonBId: captureB.id,
-      active: true,
-      createdAt: now,
-    };
+    if (result.error) {
+      return result.error;
+    }
 
-    addSoulLink(newSoulLink);
-    updateCapturedPokemon({ ...captureA, soulLinkId, updatedAt: now });
-    updateCapturedPokemon({ ...captureB, soulLinkId, updatedAt: now });
-
+    saveTrackerState(result.state);
     refreshData(run.id);
+
     return null;
   }
 
   function handleDeleteSoulLink(soulLinkId: string) {
     if (!run) return;
 
-    const soulLinkToDelete = soulLinks.find((link) => link.id === soulLinkId);
-    if (!soulLinkToDelete) return;
+    const state = loadTrackerState();
+    const newState = deleteSoulLinkById(state, soulLinkId);
 
-    const now = new Date().toISOString();
-    const captureA = captures.find((c) => c.id === soulLinkToDelete.pokemonAId);
-    const captureB = captures.find((c) => c.id === soulLinkToDelete.pokemonBId);
-
-    if (captureA) updateCapturedPokemon({ ...captureA, soulLinkId: null, updatedAt: now });
-    if (captureB) updateCapturedPokemon({ ...captureB, soulLinkId: null, updatedAt: now });
-
-    deleteSoulLink(soulLinkId);
+    saveTrackerState(newState);
     refreshData(run.id);
   }
 
