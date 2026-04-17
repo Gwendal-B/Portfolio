@@ -2,9 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import gen1Pokemon from "../../../../data/gen1-pokemon.json";
-import gen2Pokemon from "../../../../data/gen2-pokemon.json";
-import gen3Pokemon from "../../../../data/gen3-pokemon.json";
+import { getPokemonForGameGroup } from "../../../../lib/pokedex-helpers";
+import { getRoutesForGameGroup } from "../../../../lib/routes";
 import {
   addCapturedPokemon,
   addSoulLink,
@@ -17,13 +16,8 @@ import {
 } from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
-import type { Pokemon } from "../../../../types/pokemon";
 import type { SoulLink } from "../../../../types/soul-link";
 import StatusBadge from "../../../../components/ui/StatusBadge";
-import { kantoRoutes } from "../../../../data/routes/kanto";
-import { johtoRoutes } from "../../../../data/routes/johto";
-import { hoennRoutes } from "../../../../data/routes/hoenn";
-
 
 type RunDetailPageProps = {
   params: Promise<{
@@ -37,7 +31,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [captures, setCaptures] = useState<CapturedPokemon[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [selectedPokemonId, setSelectedPokemonId] = useState<number>(1);
+  const [selectedPokemonId, setSelectedPokemonId] = useState<number>(0);
   const [nickname, setNickname] = useState("");
   const [selectedPlayerId, setSelectedPlayerId] = useState("player-1");
   const [selectedRouteId, setSelectedRouteId] = useState("");
@@ -52,32 +46,9 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [showManualSoulLink, setShowManualSoulLink] = useState(false);
 
   const availablePokemon = useMemo(() => {
-    const generationOnePokemon = gen1Pokemon as Pokemon[];
-    const generationTwoPokemon = gen2Pokemon as Pokemon[];
-    const generationThreePokemon = gen3Pokemon as Pokemon[];
+    if (!run) return [];
 
-    if (!run) {
-      return generationOnePokemon;
-    }
-
-    if (run.game === "Pokemon Rouge / Bleu / Jaune") {
-      return generationOnePokemon;
-    }
-
-    if (run.game === "Pokemon Or / Argent / Cristal") {
-      return [...generationOnePokemon, ...generationTwoPokemon];
-    }
-
-    if (run.game === "Pokemon Rubis / Saphir / Émeraude") {
-      return [
-      ...generationOnePokemon,
-      ...generationTwoPokemon,
-      ...generationThreePokemon,
-    ];
-    }
-
-
-    return generationOnePokemon;
+    return getPokemonForGameGroup(run.game);
   }, [run]);
 
   const pokemonById = useMemo(() => {
@@ -101,15 +72,9 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   }, [captures]);
 
   const availableRoutes = useMemo(() => {
-    if (!run) {
-      return [];
-    }
+    if (!run) return [];
 
-    const allRoutes = [...kantoRoutes, ...johtoRoutes, ...hoennRoutes];
-
-    return allRoutes.filter((route) =>
-      route.availableIn.includes(run.game)
-    );
+    return getRoutesForGameGroup(run.game);
   }, [run]);
 
   const playerOne = run?.players[0] ?? null;
@@ -145,15 +110,17 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
         setCaptures(getCapturedPokemonsByRunId(currentRunId));
         setSoulLinks(getSoulLinksByRunId(currentRunId));
 
+        const availablePokemonForRun = getPokemonForGameGroup(foundRun.game);
+
+        if (availablePokemonForRun.length > 0) {
+          setSelectedPokemonId(availablePokemonForRun[0].id);
+        }
+
         if (foundRun.players.length > 0) {
           setSelectedPlayerId(foundRun.players[0].id);
         }
 
-        const allRoutes = [...kantoRoutes, ...johtoRoutes,...hoennRoutes];
-
-        const availableRoutesForRun = allRoutes.filter((route) =>
-          route.availableIn.includes(foundRun.game)
-        );
+        const availableRoutesForRun = getRoutesForGameGroup(foundRun.game);
 
         if (availableRoutesForRun.length > 0) {
           setSelectedRouteId(availableRoutesForRun[0].id);

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { ChallengeMode, GameGroup, Player, Run, RunRules } from "../../../types/run";
 import { addRun } from "../../../lib/local-storage";
+import { getPrimaryGenerationForGameGroup } from "../../../lib/game-groups";
 
 export default function NewRunPage() {
   const router = useRouter();
@@ -100,7 +101,7 @@ export default function NewRunPage() {
       id: runId,
       name: trimmedRunName,
       mode,
-      generation: 1,
+      generation: getPrimaryGenerationForGameGroup(game),
       game,
       players,
       rules,
@@ -185,6 +186,9 @@ export default function NewRunPage() {
               </option>
               <option value="Pokemon Or / Argent / Cristal">
                 Pokémon Or / Argent / Cristal
+              </option>
+              <option value="Pokemon Rubis / Saphir / Émeraude">
+                Pokémon Rubis / Saphir / Émeraude
               </option>
             </select>
           </div>
@@ -332,6 +336,11 @@ export default function NewRunPage() {
 
             <p>
               <span className="font-medium text-white">Jeu :</span> {game}
+            </p>
+
+            <p>
+              <span className="font-medium text-white">Génération :</span>{" "}
+              {getPrimaryGenerationForGameGroup(game)}
             </p>
 
             <p>
