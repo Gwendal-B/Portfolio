@@ -31,6 +31,10 @@ export function saveRuns(runs: Run[]): void {
   localStorage.setItem(RUNS_STORAGE_KEY, JSON.stringify(runs));
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 export function addRun(run: Run): void {
   const existingRuns = getRuns();
   saveRuns([...existingRuns, run]);
@@ -40,11 +44,19 @@ export function getRunById(runId: string): Run | undefined {
   return getRuns().find((run) => run.id === runId);
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 export function updateRun(updatedRun: Run): void {
   const existingRuns = getRuns();
   saveRuns(existingRuns.map((run) => (run.id === updatedRun.id ? updatedRun : run)));
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 /** Supprime une run et toutes ses données associées (captures + soul links). */
 export function deleteRunWithCascade(runId: string): void {
   saveSoulLinks(getSoulLinks().filter((link) => link.runId !== runId));
@@ -167,6 +179,10 @@ export function getSoulLinksByRunId(runId: string): SoulLink[] {
   return getSoulLinks().filter((soulLink) => soulLink.runId === runId);
 }
 
+/**
+ * ⚠️ LEGACY - À ne plus utiliser
+ * Utiliser les services du domaine à la place
+ */
 export function deleteSoulLink(soulLinkId: string): void {
   saveSoulLinks(getSoulLinks().filter((link) => link.id !== soulLinkId));
 }
