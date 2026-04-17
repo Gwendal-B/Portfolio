@@ -43,16 +43,6 @@ export default function NewRunPage() {
     }
   }, [mode]);
 
-  useEffect(() => {
-    const generation = getPrimaryGenerationForGameGroup(game);
-
-    setRules((prev) => ({
-      ...prev,
-      showAbilities: generation >= 3,
-      showNatures: generation >= 3,
-    }));
-  }, [game]);
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 

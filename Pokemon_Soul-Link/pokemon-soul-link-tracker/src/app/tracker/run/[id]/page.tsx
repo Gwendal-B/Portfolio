@@ -13,185 +13,65 @@ import {
   getSoulLinksByRunId,
   updateCapturedPokemon,
   deleteSoulLink,
+  exportRunAsJson,
 } from "../../../../lib/local-storage";
 import type { Run } from "../../../../types/run";
-import { NATURES } from "../../../../lib/natures";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
 import type { SoulLink } from "../../../../types/soul-link";
-import StatusBadge from "../../../../components/ui/StatusBadge";
-import NatureBadge from "../../../../components/ui/NatureBadge";
-import AbilityBadge from "../../../../components/ui/AbilityBadge";
+import CaptureCard from "../../../../components/tracker/CaptureCard";
+import AddCaptureForm from "../../../../components/tracker/AddCaptureForm";
+import SoulLinkPanel from "../../../../components/tracker/SoulLinkPanel";
+import TeamPanel from "../../../../components/tracker/TeamPanel";
+import RunStatsBar from "../../../../components/tracker/RunStatsBar";
 
 type RunDetailPageProps = {
-  params: Promise<{
-    id: string;
-  }>;
+  params: Promise<{ id: string }>;
+};
+
+const MODE_LABELS: Record<string, string> = {
+  nuzlocke: "Nuzlocke",
+  "soul-link": "Soul Link",
 };
 
 export default function RunDetailPage({ params }: RunDetailPageProps) {
   const [runId, setRunId] = useState("");
   const [run, setRun] = useState<Run | null>(null);
   const [captures, setCaptures] = useState<CapturedPokemon[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [selectedPokemonId, setSelectedPokemonId] = useState<number>(0);
-  const [nickname, setNickname] = useState("");
-  const [selectedPlayerId, setSelectedPlayerId] = useState("player-1");
-  const [selectedRouteId, setSelectedRouteId] = useState("");
-  const [lifeStatus, setLifeStatus] = useState<LifeStatus>("alive");
-  const [storageStatus, setStorageStatus] = useState<StorageStatus>("team");
-  const [selectedAbility, setSelectedAbility] = useState("");
-  const [selectedNature, setSelectedNature] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [pokemonSearch, setPokemonSearch] = useState("");
   const [soulLinks, setSoulLinks] = useState<SoulLink[]>([]);
-
-  const [selectedCaptureAId, setSelectedCaptureAId] = useState("");
-  const [selectedCaptureBId, setSelectedCaptureBId] = useState("");
-  const [soulLinkErrorMessage, setSoulLinkErrorMessage] = useState("");
-  const [showManualSoulLink, setShowManualSoulLink] = useState(false);
-  const [selectedAbilityFilter, setSelectedAbilityFilter] = useState("Tous");
-  const [selectedNatureFilter, setSelectedNatureFilter] = useState("Toutes");
+  const [isLoading, setIsLoading] = useState(true);
+  const [deleteConfirmCaptureId, setDeleteConfirmCaptureId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"captures" | "box" | "dead">("captures");
 
   const availablePokemon = useMemo(() => {
     if (!run) return [];
-
     return getPokemonForGameGroup(run.game);
   }, [run]);
 
-  const pokemonById = useMemo(() => {
-    return new Map(availablePokemon.map((pokemon) => [pokemon.id, pokemon]));
-  }, [availablePokemon]);
-
-  const selectedPokemon = useMemo(() => {
-    return pokemonById.get(selectedPokemonId) ?? null;
-  }, [pokemonById, selectedPokemonId]);
-
-  const availableAbilities = selectedPokemon?.abilities ?? [];
-
-  const filteredPokemons = useMemo(() => {
-    const normalizedSearch = pokemonSearch.trim().toLowerCase();
-
-    if (!normalizedSearch) {
-      return [];
-    }
-
-    return availablePokemon
-      .filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(normalizedSearch)
-      )
-      .slice(0, 10);
-  }, [availablePokemon, pokemonSearch]);
-
-  const availableSoulLinkCaptures = useMemo(() => {
-    return captures.filter((capture) => capture.soulLinkId === null);
-  }, [captures]);
+  const pokemonById = useMemo(
+    () => new Map(availablePokemon.map((p) => [p.id, p])),
+    [availablePokemon]
+  );
 
   const availableRoutes = useMemo(() => {
     if (!run) return [];
-
     return getRoutesForGameGroup(run.game);
   }, [run]);
 
-  const availableAbilityFilters = useMemo(() => {
-    if (!run?.rules.showAbilities) {
-      return ["Tous"];
-    }
-
-    return [
-      "Tous",
-      ...Array.from(
-        new Set(
-          captures
-            .map((capture) => capture.ability)
-            .filter((ability): ability is string => Boolean(ability))
-        )
-      ).sort(),
-    ];
-  }, [captures, run]);
-
-  const availableNatureFilters = useMemo(() => {
-    if (!run?.rules.showNatures) {
-      return ["Toutes"];
-    }
-
-    return [
-      "Toutes",
-      ...Array.from(
-        new Set(
-          captures
-            .map((capture) => capture.nature)
-            .filter((nature): nature is string => Boolean(nature))
-        )
-      ).sort(),
-    ];
-  }, [captures, run]);
-
-  const filteredCaptures = useMemo(() => {
-    return captures.filter((capture) => {
-      const matchesAbility =
-        !run?.rules.showAbilities ||
-        selectedAbilityFilter === "Tous" ||
-        capture.ability === selectedAbilityFilter;
-
-      const matchesNature =
-        !run?.rules.showNatures ||
-        selectedNatureFilter === "Toutes" ||
-        capture.nature === selectedNatureFilter;
-
-      return matchesAbility && matchesNature;
-    });
-  }, [captures, run, selectedAbilityFilter, selectedNatureFilter]);
-
-  const playerOne = run?.players[0] ?? null;
-  const playerTwo = run?.players[1] ?? null;
-
-  const playerOneCaptures = playerOne
-    ? filteredCaptures.filter((capture) => capture.playerId === playerOne.id)
-    : [];
-
-  const playerTwoCaptures = playerTwo
-    ? filteredCaptures.filter((capture) => capture.playerId === playerTwo.id)
-    : [];
-
-  const playerOneTeam = playerOneCaptures.filter(
-    (capture) => capture.storageStatus === "team"
-  );
-
-  const playerTwoTeam = playerTwoCaptures.filter(
-    (capture) => capture.storageStatus === "team"
-  );
+  function refreshData(currentRunId: string) {
+    setCaptures(getCapturedPokemonsByRunId(currentRunId));
+    setSoulLinks(getSoulLinksByRunId(currentRunId));
+  }
 
   useEffect(() => {
     async function loadRun() {
       const { id: currentRunId } = await params;
-
       setRunId(currentRunId);
 
       const foundRun = getRunById(currentRunId) ?? null;
       setRun(foundRun);
 
       if (foundRun) {
-        setCaptures(getCapturedPokemonsByRunId(currentRunId));
-        setSoulLinks(getSoulLinksByRunId(currentRunId));
-        setSelectedAbilityFilter("Tous");
-        setSelectedNatureFilter("Toutes");
-
-        const availablePokemonForRun = getPokemonForGameGroup(foundRun.game);
-
-        if (availablePokemonForRun.length > 0) {
-          setSelectedPokemonId(availablePokemonForRun[0].id);
-        }
-
-        if (foundRun.players.length > 0) {
-          setSelectedPlayerId(foundRun.players[0].id);
-        }
-
-        const availableRoutesForRun = getRoutesForGameGroup(foundRun.game);
-
-        if (availableRoutesForRun.length > 0) {
-          setSelectedRouteId(availableRoutesForRun[0].id);
-        }
+        refreshData(currentRunId);
       }
 
       setIsLoading(false);
@@ -200,158 +80,36 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     loadRun();
   }, [params]);
 
-  useEffect(() => {
-    if (!run?.rules.showAbilities) {
-      setSelectedAbility("");
-      return;
-    }
+  // ——— Handlers captures ———
 
-    if (availableAbilities.length === 1) {
-      setSelectedAbility(availableAbilities[0]);
-      return;
-    }
-
-    if (
-      availableAbilities.length > 1 &&
-      !availableAbilities.includes(selectedAbility)
-    ) {
-      setSelectedAbility(availableAbilities[0]);
-      return;
-    }
-
-    if (availableAbilities.length === 0) {
-      setSelectedAbility("");
-    }
-  }, [run, availableAbilities, selectedAbility]);
-
-  useEffect(() => {
-    setSelectedNature("");
-  }, [selectedPokemonId]);
-
-  function handleAddCapture(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    if (!run) {
-      return;
-    }
-
-    setErrorMessage("");
-
-    const trimmedNickname = nickname.trim();
-
-    if (!selectedPokemonId) {
-      setErrorMessage("Le Pokémon à capturer est obligatoire.");
-      return;
-    }
-
-    if (
-      run.rules.showAbilities &&
-      availableAbilities.length > 0 &&
-      !selectedAbility
-    ) {
-      setErrorMessage("Le talent est obligatoire pour cette capture.");
-      return;
-    }
-
-    if (run.rules.showNatures && !selectedNature) {
-      setErrorMessage("La nature est obligatoire pour cette capture.");
-      return;
-    }
-
-    if (run.rules.nicknameRequired && !trimmedNickname) {
-      setErrorMessage("Le surnom est obligatoire pour cette run.");
-      return;
-    }
-
-    if (!selectedRouteId) {
-      setErrorMessage("La zone de capture est obligatoire.");
-      return;
-    }
-
-    const selectedRoute = availableRoutes.find(
-      (route) => route.id === selectedRouteId
-    );
-
-    if (!selectedRoute) {
-      setErrorMessage("La zone sélectionnée est invalide.");
-      return;
-    }
-
-    if (run.rules.oneEncounterPerRoute) {
-      const existingCaptureOnRoute =
-        run.mode === "soul-link"
-          ? captures.find(
-              (capture) =>
-                capture.routeId === selectedRoute.id &&
-                capture.playerId === selectedPlayerId
-            )
-          : captures.find(
-              (capture) => capture.routeId === selectedRoute.id
-            );
-
-      if (existingCaptureOnRoute) {
-        const playerName =
-          run.mode === "soul-link"
-            ? run.players.find((player) => player.id === selectedPlayerId)?.name
-            : null;
-
-        setErrorMessage(
-          run.mode === "soul-link"
-            ? `${playerName ?? "Ce joueur"} a déjà une capture sur ${selectedRoute.name}.`
-            : `Une capture existe déjà sur ${selectedRoute.name}.`
-        );
-        return;
-      }
-    }
-
-    if (run.rules.duplicateSpeciesClause) {
-      const existingCaptureOfSameSpecies = captures.find(
-        (capture) => capture.pokemonId === selectedPokemonId
-      );
-
-      if (existingCaptureOfSameSpecies) {
-        const pokemon = pokemonById.get(selectedPokemonId);
-
-        setErrorMessage(
-          `${pokemon ? pokemon.name : "Ce Pokémon"} a déjà été capturé dans cette run.`
-        );
-        return;
-      }
-    }
+  function handleAddCapture(
+    captureData: Omit<CapturedPokemon, "id" | "createdAt" | "updatedAt">
+  ): string | null {
+    if (!run) return "Run introuvable.";
 
     const now = new Date().toISOString();
-
     const newCapture: CapturedPokemon = {
+      ...captureData,
       id: `capture-${Date.now()}`,
-      runId: run.id,
-      pokemonId: selectedPokemonId,
-      nickname: trimmedNickname,
-      playerId: selectedPlayerId,
-      routeId: selectedRoute.id,
-      routeName: selectedRoute.name,
-      lifeStatus,
-      storageStatus,
-      soulLinkId: null,
       createdAt: now,
       updatedAt: now,
-      ability: run.rules.showAbilities ? selectedAbility || null : null,
-      nature: run.rules.showNatures ? selectedNature || null : null,
     };
 
     addCapturedPokemon(newCapture);
 
+    // Soul Link automatique : cherche un partenaire sur la même zone
     if (run.mode === "soul-link" && run.rules.soulLinkEnabled) {
-      const matchingCapture = captures.find(
-        (capture) =>
-          capture.routeId === newCapture.routeId &&
-          capture.playerId !== newCapture.playerId &&
-          capture.soulLinkId === null &&
-          newCapture.soulLinkId === null
+      const currentCaptures = getCapturedPokemonsByRunId(run.id);
+      const matchingCapture = currentCaptures.find(
+        (c) =>
+          c.routeId === newCapture.routeId &&
+          c.playerId !== newCapture.playerId &&
+          c.soulLinkId === null &&
+          c.id !== newCapture.id
       );
 
       if (matchingCapture) {
         const soulLinkId = `soul-link-${Date.now()}`;
-
         const newSoulLink: SoulLink = {
           id: soulLinkId,
           runId: run.id,
@@ -362,41 +120,13 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
         };
 
         addSoulLink(newSoulLink);
-
-        updateCapturedPokemon({
-          ...matchingCapture,
-          soulLinkId: soulLinkId,
-          updatedAt: now,
-        });
-
-        updateCapturedPokemon({
-          ...newCapture,
-          soulLinkId: soulLinkId,
-          updatedAt: now,
-        });
+        updateCapturedPokemon({ ...matchingCapture, soulLinkId, updatedAt: now });
+        updateCapturedPokemon({ ...newCapture, soulLinkId, updatedAt: now });
       }
     }
 
-    const updatedCaptures = getCapturedPokemonsByRunId(run.id);
-    const updatedSoulLinks = getSoulLinksByRunId(run.id);
-
-    setCaptures(updatedCaptures);
-    setSoulLinks(updatedSoulLinks);
-
-    setNickname("");
-    setLifeStatus("alive");
-    setStorageStatus("team");
-    setPokemonSearch("");
-    setSelectedAbility("");
-    setSelectedNature("");
-
-    if (availablePokemon.length > 0) {
-      setSelectedPokemonId(availablePokemon[0].id);
-    }
-
-    if (availableRoutes.length > 0) {
-      setSelectedRouteId(availableRoutes[0].id);
-    }
+    refreshData(run.id);
+    return null;
   }
 
   function handleUpdateCapture(
@@ -404,14 +134,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     field: "lifeStatus" | "storageStatus",
     value: LifeStatus | StorageStatus
   ) {
-    const captureToUpdate = captures.find((capture) => capture.id === captureId);
-
-    if (!captureToUpdate) {
-      return;
-    }
+    const captureToUpdate = captures.find((c) => c.id === captureId);
+    if (!captureToUpdate) return;
 
     const now = new Date().toISOString();
-
     const updatedCapture: CapturedPokemon = {
       ...captureToUpdate,
       [field]: value,
@@ -420,101 +146,46 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
 
     updateCapturedPokemon(updatedCapture);
 
-    /*
-      Automatisation Soul Link :
-      si une capture liée passe à "dead",
-      alors son partenaire devient "unusable".
-    */
+    // Soul Link : mort partagée automatique
     if (
       run?.rules.sharedDeathEnabled &&
       field === "lifeStatus" &&
       value === "dead" &&
       captureToUpdate.soulLinkId !== null
     ) {
-      const soulLink = soulLinks.find(
-        (link) => link.id === captureToUpdate.soulLinkId
-      );
+      const soulLink = soulLinks.find((link) => link.id === captureToUpdate.soulLinkId);
 
       if (soulLink) {
         const linkedCaptureId =
-          soulLink.pokemonAId === captureToUpdate.id
-            ? soulLink.pokemonBId
-            : soulLink.pokemonAId;
-
-        const linkedCapture = captures.find(
-          (capture) => capture.id === linkedCaptureId
-        );
+          soulLink.pokemonAId === captureId ? soulLink.pokemonBId : soulLink.pokemonAId;
+        const linkedCapture = captures.find((c) => c.id === linkedCaptureId);
 
         if (linkedCapture && linkedCapture.lifeStatus !== "dead") {
-          const updatedLinkedCapture: CapturedPokemon = {
-            ...linkedCapture,
-            lifeStatus: "unusable",
-            updatedAt: now,
-          };
-
-          updateCapturedPokemon(updatedLinkedCapture);
+          updateCapturedPokemon({ ...linkedCapture, lifeStatus: "unusable", updatedAt: now });
         }
       }
     }
 
-    const updatedCaptures = getCapturedPokemonsByRunId(runId);
-    setCaptures(updatedCaptures);
+    refreshData(runId);
   }
 
   function handleDeleteCapture(captureId: string) {
-    const confirmed = window.confirm(
-      "Es-tu sûr de vouloir supprimer cette capture ?"
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
     deleteCapturedPokemon(captureId);
-
-    const updatedCaptures = getCapturedPokemonsByRunId(runId);
-    setCaptures(updatedCaptures);
+    setDeleteConfirmCaptureId(null);
+    refreshData(runId);
   }
 
-  function handleCreateSoulLink(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  // ——— Handlers Soul Link ———
 
-    if (!run) {
-      return;
-    }
-
-    setSoulLinkErrorMessage("");
-
-    if (run.mode !== "soul-link") {
-      setSoulLinkErrorMessage("Cette run n'est pas en mode Soul Link.");
-      return;
-    }
-
-    if (!selectedCaptureAId || !selectedCaptureBId) {
-      setSoulLinkErrorMessage("Tu dois sélectionner deux captures.");
-      return;
-    }
-
-    if (selectedCaptureAId === selectedCaptureBId) {
-      setSoulLinkErrorMessage("Tu ne peux pas lier une capture avec elle-même.");
-      return;
-    }
-
-    const captureA = captures.find((capture) => capture.id === selectedCaptureAId);
-    const captureB = captures.find((capture) => capture.id === selectedCaptureBId);
-
-    if (!captureA || !captureB) {
-      setSoulLinkErrorMessage("Impossible de retrouver les captures sélectionnées.");
-      return;
-    }
-
-    if (captureA.playerId === captureB.playerId) {
-      setSoulLinkErrorMessage("Les deux captures doivent appartenir à deux joueurs différents.");
-      return;
-    }
+  function handleCreateSoulLink(captureAId: string, captureBId: string): string | null {
+    if (!run) return "Run introuvable.";
 
     const now = new Date().toISOString();
     const soulLinkId = `soul-link-${Date.now()}`;
+    const captureA = captures.find((c) => c.id === captureAId);
+    const captureB = captures.find((c) => c.id === captureBId);
+
+    if (!captureA || !captureB) return "Captures introuvables.";
 
     const newSoulLink: SoulLink = {
       id: soulLinkId,
@@ -526,321 +197,121 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
     };
 
     addSoulLink(newSoulLink);
+    updateCapturedPokemon({ ...captureA, soulLinkId, updatedAt: now });
+    updateCapturedPokemon({ ...captureB, soulLinkId, updatedAt: now });
 
-    const updatedCaptureA: CapturedPokemon = {
-      ...captureA,
-      soulLinkId,
-      updatedAt: now,
-    };
-
-    const updatedCaptureB: CapturedPokemon = {
-      ...captureB,
-      soulLinkId,
-      updatedAt: now,
-    };
-
-    updateCapturedPokemon(updatedCaptureA);
-    updateCapturedPokemon(updatedCaptureB);
-
-    setSoulLinks(getSoulLinksByRunId(run.id));
-    setCaptures(getCapturedPokemonsByRunId(run.id));
-    setSelectedCaptureAId("");
-    setSelectedCaptureBId("");
+    refreshData(run.id);
+    return null;
   }
 
   function handleDeleteSoulLink(soulLinkId: string) {
-    const confirmed = window.confirm(
-      "Es-tu sûr de vouloir supprimer ce Soul Link ?"
-    );
+    if (!run) return;
 
-    if (!confirmed || !run) {
-      return;
-    }
-
-    const soulLinkToDelete = soulLinks.find(
-      (link) => link.id === soulLinkId
-    );
-
-    if (!soulLinkToDelete) {
-      return;
-    }
+    const soulLinkToDelete = soulLinks.find((link) => link.id === soulLinkId);
+    if (!soulLinkToDelete) return;
 
     const now = new Date().toISOString();
+    const captureA = captures.find((c) => c.id === soulLinkToDelete.pokemonAId);
+    const captureB = captures.find((c) => c.id === soulLinkToDelete.pokemonBId);
 
-    // Mettre à jour les captures associées
-    const captureA = captures.find(
-      (capture) => capture.id === soulLinkToDelete.pokemonAId
-    );
+    if (captureA) updateCapturedPokemon({ ...captureA, soulLinkId: null, updatedAt: now });
+    if (captureB) updateCapturedPokemon({ ...captureB, soulLinkId: null, updatedAt: now });
 
-    const captureB = captures.find(
-      (capture) => capture.id === soulLinkToDelete.pokemonBId
-    );
-
-    if (captureA) {
-      updateCapturedPokemon({
-        ...captureA,
-        soulLinkId: null,
-        updatedAt: now,
-      });
-    }
-
-    if (captureB) {
-      updateCapturedPokemon({
-        ...captureB,
-        soulLinkId: null,
-        updatedAt: now,
-      });
-    }
-
-    // Supprimer le Soul Link
     deleteSoulLink(soulLinkId);
-
-    // Rafraîchir l'état
-    setSoulLinks(getSoulLinksByRunId(run.id));
-    setCaptures(getCapturedPokemonsByRunId(run.id));
-    setSelectedCaptureAId("");
-    setSelectedCaptureBId("");
+    refreshData(run.id);
   }
+
+  function handleExport() {
+    if (!run) return;
+    const data = exportRunAsJson(run.id);
+    if (!data) return;
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${run.name.replace(/\s+/g, "-").toLowerCase()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // ——— Computed ———
 
   function getLinkedCapture(capture: CapturedPokemon): CapturedPokemon | null {
-    if (!capture.soulLinkId) {
-      return null;
-    }
-
+    if (!capture.soulLinkId) return null;
     const soulLink = soulLinks.find((link) => link.id === capture.soulLinkId);
-
-    if (!soulLink) {
-      return null;
-    }
-
-    const linkedCaptureId =
-      soulLink.pokemonAId === capture.id
-        ? soulLink.pokemonBId
-        : soulLink.pokemonAId;
-
-    return captures.find((currentCapture) => currentCapture.id === linkedCaptureId) ?? null;
+    if (!soulLink) return null;
+    const linkedId = soulLink.pokemonAId === capture.id ? soulLink.pokemonBId : soulLink.pokemonAId;
+    return captures.find((c) => c.id === linkedId) ?? null;
   }
+
+  const playerOne = run?.players[0] ?? null;
+  const playerTwo = run?.players[1] ?? null;
+
+  const aliveCaptures = captures.filter((c) => c.lifeStatus === "alive");
+  const deadCaptures = captures.filter((c) => c.lifeStatus === "dead" || c.lifeStatus === "unusable");
+  const boxCaptures = aliveCaptures.filter((c) => c.storageStatus === "box");
+  const teamCaptures = aliveCaptures.filter((c) => c.storageStatus === "team");
+
+  const playerOneTeam = playerOne
+    ? teamCaptures.filter((c) => c.playerId === playerOne.id)
+    : teamCaptures;
+
+  const playerTwoTeam = playerTwo
+    ? teamCaptures.filter((c) => c.playerId === playerTwo.id)
+    : [];
+
+  // Captures à afficher selon l'onglet actif
+  const tabCaptures =
+    activeTab === "captures"
+      ? aliveCaptures.filter((c) => c.storageStatus === "team")
+      : activeTab === "box"
+      ? boxCaptures
+      : deadCaptures;
+
+  // ——— Render helpers ———
 
   function renderCaptureCard(capture: CapturedPokemon) {
     const pokemon = pokemonById.get(capture.pokemonId);
-    const player = run?.players.find(
-      (currentPlayer) => currentPlayer.id === capture.playerId
-    );
-    const linkedCapture = getLinkedCapture(capture);
-    const linkedPokemon = linkedCapture
-      ? pokemonById.get(linkedCapture.pokemonId)
-      : null;
-    const linkedPlayer = linkedCapture
-      ? run?.players.find(
-          (currentPlayer) => currentPlayer.id === linkedCapture.playerId
-        )
-      : null;
+    const player = run?.players.find((p) => p.id === capture.playerId);
+    const linked = getLinkedCapture(capture);
+    const linkedPokemon = linked ? pokemonById.get(linked.pokemonId) : undefined;
+    const linkedPlayer = linked
+      ? run?.players.find((p) => p.id === linked.playerId)
+      : undefined;
 
     return (
-      <article
+      <CaptureCard
         key={capture.id}
-        className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <h3 className="text-lg font-semibold text-white">
-              {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`}
-            </h3>
-
-            <div className="mt-2">
-              <StatusBadge status={capture.lifeStatus} />
-            </div>
-
-            <p className="mt-2 text-sm text-zinc-400">
-              {capture.nickname ? `Surnom : ${capture.nickname}` : "Aucun surnom"}
-            </p>
-          </div>
-
-          {pokemon && (
-            <img
-              src={pokemon.spriteUrl}
-              alt={pokemon.name}
-              className="h-24 w-30 shrink-0 object-contain [image-rendering:pixelated]"
-            />
-          )}
-        </div>
-
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-zinc-300">
-          <p>
-            <span className="font-medium text-white">Joueur :</span>{" "}
-            {player ? player.name : capture.playerId}
-          </p>
-
-          <p>
-            <span className="font-medium text-white">Zone :</span>{" "}
-            {capture.routeName}
-          </p>
-
-          {run?.rules.showAbilities && (
-            <div>
-              <p className="mb-1 font-medium text-white">Talent :</p>
-              <span className="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
-                {capture.ability ?? "Non renseigné"}
-              </span>
-            </div>
-          )}
-
-          {run?.rules.showNatures && (
-            <div>
-              <p className="mb-1 font-medium text-white">Nature :</p>
-              <NatureBadge nature={capture.nature} />
-            </div>
-          )}
-        </div>
-
-        {linkedCapture && (
-          <div className="mt-4 rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-3">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-purple-300">
-                  Soul Link
-                </p>
-
-                <div className="mt-2 space-y-1 text-sm text-zinc-200">
-                  <p>
-                    <span className="font-medium text-white">Partenaire :</span>{" "}
-                    {linkedPokemon ? linkedPokemon.name : "Inconnu"}
-                  </p>
-                  <p>
-                    <span className="font-medium text-white">Joueur :</span>{" "}
-                    {linkedPlayer ? linkedPlayer.name : "Inconnu"}
-                  </p>
-                </div>
-              </div>
-
-              {linkedPokemon && (
-                <img
-                  src={linkedPokemon.spriteUrl}
-                  alt={linkedPokemon.name}
-                  className="h-22 w-30 shrink-0 object-contain [image-rendering:pixelated]"
-                />
-              )}
-            </div>
-          </div>
-        )}
-
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <div>
-            <label className="mb-1 block text-sm font-medium text-white">
-              Statut
-            </label>
-            <select
-              value={capture.lifeStatus}
-              onChange={(event) =>
-                handleUpdateCapture(
-                  capture.id,
-                  "lifeStatus",
-                  event.target.value as LifeStatus
-                )
-              }
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
-            >
-              <option value="alive">Vivant</option>
-              <option value="dead">Mort</option>
-              <option value="unusable">Inutilisable</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="mb-1 block text-sm font-medium text-white">
-              Emplacement
-            </label>
-            <select
-              value={capture.storageStatus}
-              onChange={(event) =>
-                handleUpdateCapture(
-                  capture.id,
-                  "storageStatus",
-                  event.target.value as StorageStatus
-                )
-              }
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white outline-none transition focus:border-zinc-500"
-            >
-              <option value="team">Équipe</option>
-              <option value="box">Boîte</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <button
-            type="button"
-            onClick={() => handleDeleteCapture(capture.id)}
-            className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
-          >
-            Supprimer la capture
-          </button>
-        </div>
-      </article>
+        capture={capture}
+        pokemon={pokemon}
+        player={player}
+        linkedCapture={linked}
+        linkedPokemon={linkedPokemon}
+        linkedPlayer={linkedPlayer}
+        run={run!}
+        onUpdateCapture={handleUpdateCapture}
+        onDeleteCapture={handleDeleteCapture}
+        showDeleteConfirm={deleteConfirmCaptureId === capture.id}
+        onRequestDelete={(id) => {
+          if (deleteConfirmCaptureId === id) {
+            handleDeleteCapture(id);
+          } else {
+            setDeleteConfirmCaptureId(id);
+          }
+        }}
+        onCancelDelete={() => setDeleteConfirmCaptureId(null)}
+      />
     );
   }
 
-  function renderTeamPanel(
-    title: string,
-    teamCaptures: CapturedPokemon[]
-  ) {
-    return (
-      <div className="sticky top-24 rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
-        <h2 className="text-lg font-semibold text-white">{title}</h2>
-
-        {teamCaptures.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-400">Aucun Pokémon en équipe.</p>
-        ) : (
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            {teamCaptures.map((capture) => {
-              const pokemon = pokemonById.get(capture.pokemonId);
-
-              return (
-                <div
-                  key={capture.id}
-                  className="rounded-lg border border-zinc-800 bg-zinc-950 p-2 min-h-[140px]"
-                >
-                  {pokemon ? (
-                    <img
-                      src={pokemon.spriteUrl}
-                      alt={pokemon.name}
-                      className="mx-auto h-24 w-24 object-contain [image-rendering:pixelated]"
-                    />
-                  ) : (
-                    <div className="flex h-16 items-center justify-center text-xs text-zinc-500">
-                      Inconnu
-                    </div>
-                  )}
-
-                  <p className="mt-2 truncate text-center text-xs text-zinc-300">
-                    {capture.nickname || pokemon?.name || "Pokémon"}
-                  </p>
-
-                  <div className="mt-2 flex flex-col items-center gap-1">
-                    {run?.rules.showAbilities && (
-                      <AbilityBadge ability={capture.ability} />
-                    )}
-
-                    {run?.rules.showNatures && (
-                      <NatureBadge nature={capture.nature} />
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    );
-  }
+  // ——— States ———
 
   if (isLoading) {
     return (
       <main className="min-h-screen px-6 py-12 text-white">
-        <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-          <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
-          <p className="text-zinc-400">Chargement de la run...</p>
-          </div>
+        <div className="mx-auto max-w-6xl">
+          <p className="text-zinc-400">Chargement de la run…</p>
         </div>
       </main>
     );
@@ -849,592 +320,192 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   if (!run) {
     return (
       <main className="min-h-screen px-6 py-12 text-white">
-        <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-          <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
+        <div className="mx-auto max-w-6xl">
           <p className="text-zinc-400">Run introuvable.</p>
-
           <Link
-            href="/tracker/new"
+            href="/tracker"
             className="mt-4 inline-block rounded-lg bg-zinc-800 px-4 py-2 text-sm hover:bg-zinc-700"
           >
-            Créer une nouvelle run
+            ← Retour à mes runs
           </Link>
-          </div>
         </div>
       </main>
     );
   }
 
+  // ——— Main render ———
+
   return (
     <main className="min-h-screen px-6 py-12 text-white">
       <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-        <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)_280px]">
+        <div className="grid gap-6 xl:grid-cols-[260px_minmax(0,1fr)_260px]">
+
+          {/* Panneau gauche — équipe joueur 1 */}
           <aside className="hidden xl:block">
-            {run.mode === "soul-link" && playerOne ? renderTeamPanel(playerOne.name, playerOneTeam) : null}
+            {playerOne && (
+              <TeamPanel
+                title={playerOne.name}
+                teamCaptures={playerOneTeam}
+                pokemonById={pokemonById}
+                run={run}
+              />
+            )}
           </aside>
+
+          {/* Contenu principal */}
           <div>
+            {/* En-tête */}
             <header className="mb-8">
-              <Link
-                href="/tracker/new"
-                className="text-sm text-zinc-400 hover:text-white"
-              >
-                ← Retour à la création de run
+              <Link href="/tracker" className="text-sm text-zinc-400 hover:text-white">
+                ← Mes runs
               </Link>
 
-              <p className="mt-6 text-sm uppercase tracking-[0.2em] text-zinc-400">
-                Tracker
-              </p>
-
-              <h1 className="mt-2 text-4xl font-bold">{run.name}</h1>
-
-              <p className="mt-3 text-zinc-400">
-                Tu peux maintenant ajouter et suivre les Pokémon capturés dans cette run.
-              </p>
-            </header>
-
-            <section className="grid gap-6 md:grid-cols-2">
-              <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-                <h2 className="text-xl font-semibold">Informations générales</h2>
-
-                <div className="mt-4 space-y-3 text-zinc-300">
-                  <p>
-                    <span className="font-medium text-white">Nom :</span> {run.name}
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">
+                    {MODE_LABELS[run.mode] ?? run.mode}
                   </p>
-                  <p>
-                    <span className="font-medium text-white">Mode :</span> {run.mode}
-                  </p>
-                  <p>
-                    <span className="font-medium text-white">Jeu :</span> {run.game}
-                  </p>
-                  <p>
-                    <span className="font-medium text-white">Génération :</span> {run.generation}
+                  <h1 className="mt-1 text-4xl font-bold">{run.name}</h1>
+                  <p className="mt-2 text-zinc-400">
+                    {run.game} · Gén. {run.generation} · {run.players.map((p) => p.name).join(" & ")}
                   </p>
                 </div>
-              </article>
-
-              <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-                <h2 className="text-xl font-semibold">Joueurs</h2>
-
-                <div className="mt-4 space-y-3 text-zinc-300">
-                  {run.players.map((player) => (
-                    <p key={player.id}>
-                      <span className="font-medium text-white">{player.id} :</span>{" "}
-                      {player.name}
-                    </p>
-                  ))}
-                </div>
-              </article>
-            </section>
-
-            <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-              <h2 className="text-xl font-semibold">Ajouter une capture</h2>
-
-              <form onSubmit={handleAddCapture} className="mt-6 grid gap-4 md:grid-cols-2">
-                <div>
-                  <label htmlFor="pokemonSearch" className="mb-2 block text-sm font-medium">
-                    Rechercher un Pokémon
-                  </label>
-
-                  <input
-                    id="pokemonSearch"
-                    type="text"
-                    value={pokemonSearch}
-                    onChange={(event) => setPokemonSearch(event.target.value)}
-                    placeholder="Ex : Bulbizarre"
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  />
-
-                  <div className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-3 text-sm text-zinc-400">
-                    Pokémon sélectionné :{" "}
-                    <span className="font-medium text-white">
-                      {pokemonById.get(selectedPokemonId)?.name ?? "Aucun"}
-                    </span>
-                  </div>
-
-                  {pokemonSearch.trim() !== "" && (
-                    <div className="mt-3 max-h-48 overflow-y-auto rounded-lg border border-zinc-800 bg-zinc-950">
-                      {filteredPokemons.length === 0 ? (
-                        <p className="px-4 py-3 text-sm text-zinc-400">
-                          Aucun Pokémon trouvé.
-                        </p>
-                      ) : (
-                        filteredPokemons.map((pokemon) => (
-                          <button
-                            key={pokemon.id}
-                            type="button"
-                            onClick={() => {
-                              setSelectedPokemonId(pokemon.id);
-                              setPokemonSearch("");
-                            }}
-                            className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-zinc-900 ${
-                              selectedPokemonId === pokemon.id
-                                ? "bg-zinc-900 text-white"
-                                : "text-zinc-300"
-                            }`}
-                          >
-                            <span>
-                              #{String(pokemon.dexNumber).padStart(3, "0")} - {pokemon.name}
-                            </span>
-
-                            {selectedPokemonId === pokemon.id && (
-                              <span className="text-xs text-blue-400">Sélectionné</span>
-                            )}
-                          </button>
-                        ))
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="nickname" className="mb-2 block text-sm font-medium">
-                    Surnom
-                  </label>
-                  <input
-                    id="nickname"
-                    type="text"
-                    value={nickname}
-                    onChange={(event) => setNickname(event.target.value)}
-                    placeholder="Ex : Sparky"
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  />
-                </div>
-
-                {run.rules.showAbilities && (
-                  <div>
-                    <label htmlFor="ability" className="mb-2 block text-sm font-medium">
-                      Talent
-                    </label>
-
-                    <select
-                      id="ability"
-                      value={selectedAbility}
-                      onChange={(event) => setSelectedAbility(event.target.value)}
-                      disabled={availableAbilities.length === 0}
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
-                    >
-                      {availableAbilities.length === 0 ? (
-                        <option value="">Aucun talent renseigné</option>
-                      ) : (
-                        <>
-                          {availableAbilities.length > 1 && (
-                            <option value="">Sélectionner un talent</option>
-                          )}
-
-                          {availableAbilities.map((ability) => (
-                            <option key={ability} value={ability}>
-                              {ability}
-                            </option>
-                          ))}
-                        </>
-                      )}
-                    </select>
-                  </div>
-                )}
-
-                {run.rules.showNatures && (
-                  <div>
-                    <label htmlFor="nature" className="mb-2 block text-sm font-medium">
-                      Nature
-                    </label>
-
-                    <select
-                      id="nature"
-                      value={selectedNature}
-                      onChange={(event) => setSelectedNature(event.target.value)}
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                    >
-                      <option value="">Sélectionner une nature</option>
-
-                      {NATURES.map((nature) => (
-                        <option key={nature.name} value={nature.name}>
-                          {nature.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
-                <div>
-                  <label htmlFor="playerId" className="mb-2 block text-sm font-medium">
-                    Joueur
-                  </label>
-                  <select
-                    id="playerId"
-                    value={selectedPlayerId}
-                    onChange={(event) => setSelectedPlayerId(event.target.value)}
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  >
-                    {run.players.map((player) => (
-                      <option key={player.id} value={player.id}>
-                        {player.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="routeId" className="mb-2 block text-sm font-medium">
-                    Zone de capture
-                  </label>
-
-                  <select
-                    id="routeId"
-                    value={selectedRouteId}
-                    onChange={(event) => setSelectedRouteId(event.target.value)}
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  >
-                    {availableRoutes.map((route) => (
-                      <option key={route.id} value={route.id}>
-                        {route.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="lifeStatus" className="mb-2 block text-sm font-medium">
-                    Statut
-                  </label>
-                  <select
-                    id="lifeStatus"
-                    value={lifeStatus}
-                    onChange={(event) => setLifeStatus(event.target.value as LifeStatus)}
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  >
-                    <option value="alive">Vivant</option>
-                    <option value="dead">Mort</option>
-                    <option value="unusable">Inutilisable</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="storageStatus" className="mb-2 block text-sm font-medium">
-                    Emplacement
-                  </label>
-                  <select
-                    id="storageStatus"
-                    value={storageStatus}
-                    onChange={(event) => setStorageStatus(event.target.value as StorageStatus)}
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                  >
-                    <option value="team">Équipe</option>
-                    <option value="box">Boîte</option>
-                  </select>
-                </div>
-
-                {errorMessage && (
-                  <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-                    {errorMessage}
-                  </p>
-                )}
-
-                <div className="md:col-span-2">
-                  <button
-                    type="submit"
-                    className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
-                  >
-                    Ajouter la capture
-                  </button>
-                </div>
-              </form>
-            </section>
-
-            <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h2 className="text-xl font-semibold">Captures</h2>
-                  <p className="text-sm text-zinc-400">
-                    Total : <span className="font-medium text-white">{filteredCaptures.length}</span>
-                  </p>
-                </div>
-
-                {(run.rules.showAbilities || run.rules.showNatures) && (
-                  <div className="grid gap-4 md:grid-cols-2">
-                    {run.rules.showAbilities && (
-                      <div className="min-w-0">
-                        <label
-                          htmlFor="abilityFilter"
-                          className="mb-2 block text-sm font-medium text-zinc-300"
-                        >
-                          Filtrer par talent
-                        </label>
-
-                        <select
-                          id="abilityFilter"
-                          value={selectedAbilityFilter}
-                          onChange={(event) => setSelectedAbilityFilter(event.target.value)}
-                          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                        >
-                          {availableAbilityFilters.map((ability) => (
-                            <option key={ability} value={ability}>
-                              {ability}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    )}
-
-                    {run.rules.showNatures && (
-                      <div className="min-w-0">
-                        <label
-                          htmlFor="natureFilter"
-                          className="mb-2 block text-sm font-medium text-zinc-300"
-                        >
-                          Filtrer par nature
-                        </label>
-
-                        <select
-                          id="natureFilter"
-                          value={selectedNatureFilter}
-                          onChange={(event) => setSelectedNatureFilter(event.target.value)}
-                          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                        >
-                          {availableNatureFilters.map((nature) => (
-                            <option key={nature} value={nature}>
-                              {nature}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {captures.length === 0 ? (
-                <p className="mt-4 text-zinc-400">
-                  Aucune capture enregistrée pour le moment.
-                </p>
-              ) : run.mode === "soul-link" ? (
-                <div className="mt-6 grid gap-6 lg:grid-cols-2">
-                  <div>
-                    <h3 className="mb-4 text-lg font-semibold text-white">
-                      {playerOne ? playerOne.name : "Joueur 1"}
-                    </h3>
-
-                    <div className="space-y-4">
-                      {playerOneCaptures.length === 0 ? (
-                        <p className="text-sm text-zinc-400">Aucune capture.</p>
-                      ) : (
-                        playerOneCaptures.map((capture) => renderCaptureCard(capture))
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="mb-4 text-lg font-semibold text-white">
-                      {playerTwo ? playerTwo.name : "Joueur 2"}
-                    </h3>
-
-                    <div className="space-y-4">
-                      {playerTwoCaptures.length === 0 ? (
-                        <p className="text-sm text-zinc-400">Aucune capture.</p>
-                      ) : (
-                        playerTwoCaptures.map((capture) => renderCaptureCard(capture))
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="mt-6 space-y-4">
-                  {filteredCaptures.map((capture) => renderCaptureCard(capture))}
-                </div>
-              )}
-            </section>
-            {run.mode === "soul-link" && (
-              <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-                <h2 className="text-xl font-semibold">Créer un lien Soul Link</h2>
-
-                <p className="mt-3 text-zinc-400">
-                  Les liens Soul Link sont créés automatiquement lorsque les deux joueurs
-                  capturent un Pokémon dans la même zone.
-                </p>
-
-                <p className="mt-2 text-sm text-zinc-500">
-                  Tu peux également créer un lien manuellement si nécessaire.
-                </p>
 
                 <button
                   type="button"
-                  onClick={() => {
-                    setShowManualSoulLink((prev) => !prev);
-                    setSoulLinkErrorMessage("");
-                  }}
-                  className="mt-4 rounded-lg border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm font-medium text-purple-300 transition hover:bg-purple-500/20"
+                  onClick={handleExport}
+                  className="shrink-0 rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-2 text-sm font-medium text-zinc-300 transition hover:bg-zinc-800"
                 >
-                  {showManualSoulLink
-                    ? "Masquer le lien manuel"
-                    : "Créer un lien manuellement"}
+                  Exporter la run
                 </button>
+              </div>
+            </header>
 
-                {showManualSoulLink && (
-                  <form
-                    onSubmit={handleCreateSoulLink}
-                    className="mt-6 grid gap-4 md:grid-cols-2"
+            {/* Stats globales */}
+            <RunStatsBar captures={captures} />
+
+            {/* Formulaire d'ajout */}
+            <AddCaptureForm
+              run={run}
+              availablePokemon={availablePokemon}
+              availableRoutes={availableRoutes}
+              captures={captures}
+              onAddCapture={handleAddCapture}
+            />
+
+            {/* Onglets captures */}
+            <section className="mt-8">
+              <div className="flex gap-1 rounded-xl border border-zinc-800 bg-zinc-900 p-1">
+                {(
+                  [
+                    { key: "captures", label: `Équipe (${playerOneTeam.length + playerTwoTeam.length})` },
+                    { key: "box", label: `Boîte (${boxCaptures.length})` },
+                    { key: "dead", label: `Morts (${deadCaptures.length})` },
+                  ] as const
+                ).map(({ key, label }) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setActiveTab(key)}
+                    className={`flex-1 rounded-lg py-2 text-sm font-medium transition ${
+                      activeTab === key
+                        ? "bg-zinc-800 text-white"
+                        : "text-zinc-400 hover:text-white"
+                    }`}
                   >
-                  <div>
-                    <label
-                      htmlFor="selectedCaptureAId"
-                      className="mb-2 block text-sm font-medium"
-                    >
-                      Capture du joueur A
-                    </label>
+                    {label}
+                  </button>
+                ))}
+              </div>
 
-                    <select
-                      id="selectedCaptureAId"
-                      value={selectedCaptureAId}
-                      onChange={(event) => setSelectedCaptureAId(event.target.value)}
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                    >
-                      <option value="">Sélectionner une capture</option>
-                      {availableSoulLinkCaptures.map((capture) => {
-                        const pokemon = pokemonById.get(capture.pokemonId);
-                        const player = run.players.find(
-                          (currentPlayer) => currentPlayer.id === capture.playerId
-                        );
-
-                        return (
-                          <option key={capture.id} value={capture.id}>
-                            {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
-                            {player ? player.name : capture.playerId} — {capture.routeName}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="selectedCaptureBId"
-                      className="mb-2 block text-sm font-medium"
-                    >
-                      Capture du joueur B
-                    </label>
-
-                    <select
-                      id="selectedCaptureBId"
-                      value={selectedCaptureBId}
-                      onChange={(event) => setSelectedCaptureBId(event.target.value)}
-                      className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                    >
-                      <option value="">Sélectionner une capture</option>
-                      {availableSoulLinkCaptures.map((capture) => {
-                        const pokemon = pokemonById.get(capture.pokemonId);
-                        const player = run.players.find(
-                          (currentPlayer) => currentPlayer.id === capture.playerId
-                        );
-
-                        return (
-                          <option key={capture.id} value={capture.id}>
-                            {pokemon ? pokemon.name : `Pokémon #${capture.pokemonId}`} —{" "}
-                            {player ? player.name : capture.playerId} — {capture.routeName}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-
-                  {soulLinkErrorMessage && (
-                    <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-                      {soulLinkErrorMessage}
-                    </p>
+              {tabCaptures.length === 0 ? (
+                <p className="mt-6 text-zinc-400">
+                  {activeTab === "captures"
+                    ? "Aucun Pokémon en équipe."
+                    : activeTab === "box"
+                    ? "Aucun Pokémon en boîte."
+                    : "Aucun mort dans cette run pour le moment."}
+                </p>
+              ) : run.mode === "soul-link" && activeTab === "captures" ? (
+                // Vue Soul Link : colonnes par joueur
+                <div className="mt-6 grid gap-6 lg:grid-cols-2">
+                  {[playerOne, playerTwo].map((player) =>
+                    player ? (
+                      <div key={player.id}>
+                        <h3 className="mb-4 text-base font-semibold text-zinc-300">
+                          {player.name}
+                        </h3>
+                        <div className="space-y-4">
+                          {tabCaptures
+                            .filter((c) => c.playerId === player.id)
+                            .map(renderCaptureCard)}
+                          {tabCaptures.filter((c) => c.playerId === player.id).length === 0 && (
+                            <p className="text-sm text-zinc-500">Aucune capture.</p>
+                          )}
+                        </div>
+                      </div>
+                    ) : null
                   )}
-
-                  <div className="md:col-span-2">
-                    <button
-                      type="submit"
-                      className="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition hover:bg-purple-700"
-                    >
-                      Créer le lien
-                    </button>
-                  </div>
-                </form>
-                )}
-              </section>
-            )}
-            {run.mode === "soul-link" && (
-              <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-                <div className="flex items-center justify-between gap-4">
-                  <h2 className="text-xl font-semibold">Liens Soul Link</h2>
-                  <p className="text-sm text-zinc-400">
-                    Total : <span className="font-medium text-white">{soulLinks.length}</span>
-                  </p>
                 </div>
+              ) : (
+                <div className="mt-6 space-y-4">
+                  {tabCaptures.map(renderCaptureCard)}
+                </div>
+              )}
+            </section>
 
-                {soulLinks.length === 0 ? (
-                  <p className="mt-4 text-zinc-400">
-                    Aucun lien Soul Link enregistré pour le moment.
-                  </p>
+            {/* Soul Link panel */}
+            {run.mode === "soul-link" && (
+              <SoulLinkPanel
+                run={run}
+                captures={captures}
+                soulLinks={soulLinks}
+                pokemonById={pokemonById}
+                onCreateSoulLink={handleCreateSoulLink}
+                onDeleteSoulLink={handleDeleteSoulLink}
+              />
+            )}
+          </div>
+
+          {/* Panneau droit — équipe joueur 2 (ou rien) */}
+          <aside className="hidden xl:block">
+            {run.mode === "soul-link" && playerTwo ? (
+              <TeamPanel
+                title={playerTwo.name}
+                teamCaptures={playerTwoTeam}
+                pokemonById={pokemonById}
+                run={run}
+              />
+            ) : run.mode === "nuzlocke" && playerOne ? (
+              // En nuzlocke, panneau droit = boîte
+              <div className="sticky top-24 rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
+                <h2 className="text-lg font-semibold text-white">Boîte</h2>
+                <p className="mt-1 text-xs text-zinc-500">{boxCaptures.length} Pokémon</p>
+                {boxCaptures.length === 0 ? (
+                  <p className="mt-3 text-sm text-zinc-400">Aucun Pokémon en boîte.</p>
                 ) : (
-                  <div className="mt-6 space-y-4">
-                    {soulLinks.map((soulLink) => {
-                      const captureA = captures.find((capture) => capture.id === soulLink.pokemonAId);
-                      const captureB = captures.find((capture) => capture.id === soulLink.pokemonBId);
-
-                      const pokemonA = captureA ? pokemonById.get(captureA.pokemonId) : null;
-                      const pokemonB = captureB ? pokemonById.get(captureB.pokemonId) : null;
-
-                      const playerA = captureA
-                        ? run.players.find((player) => player.id === captureA.playerId)
-                        : null;
-
-                      const playerB = captureB
-                        ? run.players.find((player) => player.id === captureB.playerId)
-                        : null;
-
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    {boxCaptures.map((capture) => {
+                      const pokemon = pokemonById.get(capture.pokemonId);
                       return (
-                        <article
-                          key={soulLink.id}
-                          className="rounded-xl border border-zinc-800 bg-zinc-950 p-4"
-                        >
-                          <p className="text-sm text-zinc-400">
-                            Lien actif : {soulLink.active ? "Oui" : "Non"}
+                        <div key={capture.id} className="rounded-lg border border-zinc-800 bg-zinc-950 p-2 text-center">
+                          {pokemon && (
+                            <img
+                              src={pokemon.spriteUrl}
+                              alt={pokemon.name}
+                              className="mx-auto h-16 w-16 object-contain [image-rendering:pixelated]"
+                            />
+                          )}
+                          <p className="mt-1 truncate text-xs text-zinc-300">
+                            {capture.nickname || pokemon?.name || "?"}
                           </p>
-
-                          <div className="mt-3 grid gap-4 md:grid-cols-2">
-                            <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-                              <p className="font-semibold text-white">
-                                {pokemonA ? pokemonA.name : "Capture inconnue"}
-                              </p>
-                              <p className="mt-2 text-sm text-zinc-300">
-                                Joueur : {playerA ? playerA.name : "Inconnu"}
-                              </p>
-                              <p className="text-sm text-zinc-300">
-                                Zone : {captureA ? captureA.routeName : "Inconnue"}
-                              </p>
-                            </div>
-
-                            <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-                              <p className="font-semibold text-white">
-                                {pokemonB ? pokemonB.name : "Capture inconnue"}
-                              </p>
-                              <p className="mt-2 text-sm text-zinc-300">
-                                Joueur : {playerB ? playerB.name : "Inconnu"}
-                              </p>
-                              <p className="text-sm text-zinc-300">
-                                Zone : {captureB ? captureB.routeName : "Inconnue"}
-                              </p>
-                            </div>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteSoulLink(soulLink.id)}
-                            className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
-                          >
-                            Supprimer le Soul Link
-                          </button>
-                        </article>
+                        </div>
                       );
                     })}
                   </div>
                 )}
-              </section>
-            )}
-          </div>
-          <aside className="hidden xl:block">
-            {run.mode === "soul-link" && playerTwo ? renderTeamPanel(playerTwo.name, playerTwoTeam) : null}
+              </div>
+            ) : null}
           </aside>
         </div>
       </div>

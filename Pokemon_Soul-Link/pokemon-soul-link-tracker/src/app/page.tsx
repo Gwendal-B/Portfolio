@@ -17,13 +17,27 @@ export default function HomePage() {
             PokéChallenge Tracker est une plateforme pensée pour centraliser les
             règles des challenges Pokémon et suivre tes runs localement. Tu peux
             consulter les modes comme le Nuzlocke ou le Soul Link, explorer le
-            Pokédex 1G et gérer tes captures dans un tracker interactif.
+            Pokédex et gérer tes captures dans un tracker interactif.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/rules"
+              href="/tracker/new"
               className="rounded-xl bg-blue-600 px-6 py-3 text-center font-medium text-white transition hover:bg-blue-700"
+            >
+              Créer une run
+            </Link>
+
+            <Link
+              href="/tracker"
+              className="rounded-xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-center font-medium text-white transition hover:bg-zinc-800"
+            >
+              Mes runs
+            </Link>
+
+            <Link
+              href="/rules"
+              className="rounded-xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-center font-medium text-white transition hover:bg-zinc-800"
             >
               Voir les règles
             </Link>
@@ -32,14 +46,7 @@ export default function HomePage() {
               href="/pokedex"
               className="rounded-xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-center font-medium text-white transition hover:bg-zinc-800"
             >
-              Ouvrir le Pokédex
-            </Link>
-
-            <Link
-              href="/tracker/new"
-              className="rounded-xl border border-zinc-700 bg-zinc-950 px-6 py-3 text-center font-medium text-white transition hover:bg-zinc-800"
-            >
-              Créer une run
+              Pokédex
             </Link>
           </div>
         </section>
@@ -54,18 +61,18 @@ export default function HomePage() {
           </article>
 
           <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-            <h2 className="text-xl font-semibold">Pokédex 1G</h2>
+            <h2 className="text-xl font-semibold">Pokédex multi-gen</h2>
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-              Consulte les Pokémon de la première génération avec leurs types,
-              statistiques de base, évolutions et taux de capture.
+              Consulte les Pokémon des générations 1, 2 et 3 avec leurs types,
+              statistiques, évolutions et taux de capture.
             </p>
           </article>
 
           <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
             <h2 className="text-xl font-semibold">Tracker local</h2>
             <p className="mt-3 text-sm leading-6 text-zinc-400">
-              Crée une run, ajoute tes captures, modifie leurs statuts et gère
-              les liens Soul Link directement dans ton navigateur.
+              Crée une run, ajoute tes captures, modifie leurs statuts, gère
+              les liens Soul Link et exporte ta run en JSON.
             </p>
           </article>
         </section>

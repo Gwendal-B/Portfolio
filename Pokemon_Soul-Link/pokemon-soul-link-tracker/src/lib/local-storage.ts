@@ -13,16 +13,9 @@ const SOUL_LINKS_STORAGE_KEY = "pokemon-soul-link-soul-links";
 */
 
 export function getRuns(): Run[] {
-  if (typeof window === "undefined") {
-    return [];
-  }
-
+  if (typeof window === "undefined") return [];
   const storedRuns = localStorage.getItem(RUNS_STORAGE_KEY);
-
-  if (!storedRuns) {
-    return [];
-  }
-
+  if (!storedRuns) return [];
   try {
     const parsedRuns = JSON.parse(storedRuns) as Run[];
     return Array.isArray(parsedRuns) ? parsedRuns : [];
@@ -33,22 +26,29 @@ export function getRuns(): Run[] {
 }
 
 export function saveRuns(runs: Run[]): void {
-  if (typeof window === "undefined") {
-    return;
-  }
-
+  if (typeof window === "undefined") return;
   localStorage.setItem(RUNS_STORAGE_KEY, JSON.stringify(runs));
 }
 
 export function addRun(run: Run): void {
   const existingRuns = getRuns();
-  const updatedRuns = [...existingRuns, run];
-  saveRuns(updatedRuns);
+  saveRuns([...existingRuns, run]);
 }
 
 export function getRunById(runId: string): Run | undefined {
-  const runs = getRuns();
-  return runs.find((run) => run.id === runId);
+  return getRuns().find((run) => run.id === runId);
+}
+
+export function updateRun(updatedRun: Run): void {
+  const existingRuns = getRuns();
+  saveRuns(existingRuns.map((run) => (run.id === updatedRun.id ? updatedRun : run)));
+}
+
+/** Supprime une run et toutes ses données associées (captures + soul links). */
+export function deleteRunWithCascade(runId: string): void {
+  saveSoulLinks(getSoulLinks().filter((link) => link.runId !== runId));
+  saveCapturedPokemons(getCapturedPokemons().filter((c) => c.runId !== runId));
+  saveRuns(getRuns().filter((run) => run.id !== runId));
 }
 
 /*
@@ -58,16 +58,9 @@ export function getRunById(runId: string): Run | undefined {
 */
 
 export function getCapturedPokemons(): CapturedPokemon[] {
-  if (typeof window === "undefined") {
-    return [];
-  }
-
+  if (typeof window === "undefined") return [];
   const storedCaptures = localStorage.getItem(CAPTURES_STORAGE_KEY);
-
-  if (!storedCaptures) {
-    return [];
-  }
-
+  if (!storedCaptures) return [];
   try {
     const parsedCaptures = JSON.parse(storedCaptures) as CapturedPokemon[];
     return Array.isArray(parsedCaptures) ? parsedCaptures : [];
@@ -78,42 +71,55 @@ export function getCapturedPokemons(): CapturedPokemon[] {
 }
 
 export function saveCapturedPokemons(captures: CapturedPokemon[]): void {
-  if (typeof window === "undefined") {
-    return;
-  }
-
+  if (typeof window === "undefined") return;
   localStorage.setItem(CAPTURES_STORAGE_KEY, JSON.stringify(captures));
 }
 
 export function addCapturedPokemon(capture: CapturedPokemon): void {
-  const existingCaptures = getCapturedPokemons();
-  const updatedCaptures = [...existingCaptures, capture];
-  saveCapturedPokemons(updatedCaptures);
+  saveCapturedPokemons([...getCapturedPokemons(), capture]);
 }
 
 export function updateCapturedPokemon(updatedCapture: CapturedPokemon): void {
-  const existingCaptures = getCapturedPokemons();
-
-  const updatedCaptures = existingCaptures.map((capture) =>
-    capture.id === updatedCapture.id ? updatedCapture : capture
+  const existing = getCapturedPokemons();
+  saveCapturedPokemons(
+    existing.map((c) => (c.id === updatedCapture.id ? updatedCapture : c))
   );
-
-  saveCapturedPokemons(updatedCaptures);
 }
 
+/**
+ * Supprime une capture et nettoie les références soul link associées.
+ * Si la capture était liée, le partenaire est libéré et le soul link supprimé.
+ */
 export function deleteCapturedPokemon(captureId: string): void {
-  const existingCaptures = getCapturedPokemons();
+  const allCaptures = getCapturedPokemons();
+  const captureToDelete = allCaptures.find((c) => c.id === captureId);
 
-  const updatedCaptures = existingCaptures.filter(
-    (capture) => capture.id !== captureId
-  );
+  if (!captureToDelete) return;
 
-  saveCapturedPokemons(updatedCaptures);
+  const now = new Date().toISOString();
+
+  if (captureToDelete.soulLinkId) {
+    const soulLinks = getSoulLinks();
+    const soulLink = soulLinks.find((link) => link.id === captureToDelete.soulLinkId);
+
+    if (soulLink) {
+      const partnerId =
+        soulLink.pokemonAId === captureId ? soulLink.pokemonBId : soulLink.pokemonAId;
+      const partner = allCaptures.find((c) => c.id === partnerId);
+
+      if (partner) {
+        updateCapturedPokemon({ ...partner, soulLinkId: null, updatedAt: now });
+      }
+
+      deleteSoulLink(soulLink.id);
+    }
+  }
+
+  saveCapturedPokemons(allCaptures.filter((c) => c.id !== captureId));
 }
 
 export function getCapturedPokemonsByRunId(runId: string): CapturedPokemon[] {
-  const captures = getCapturedPokemons();
-  return captures.filter((capture) => capture.runId === runId);
+  return getCapturedPokemons().filter((capture) => capture.runId === runId);
 }
 
 /*
@@ -123,16 +129,9 @@ export function getCapturedPokemonsByRunId(runId: string): CapturedPokemon[] {
 */
 
 export function getSoulLinks(): SoulLink[] {
-  if (typeof window === "undefined") {
-    return [];
-  }
-
+  if (typeof window === "undefined") return [];
   const storedSoulLinks = localStorage.getItem(SOUL_LINKS_STORAGE_KEY);
-
-  if (!storedSoulLinks) {
-    return [];
-  }
-
+  if (!storedSoulLinks) return [];
   try {
     const parsedSoulLinks = JSON.parse(storedSoulLinks) as SoulLink[];
     return Array.isArray(parsedSoulLinks) ? parsedSoulLinks : [];
@@ -143,30 +142,97 @@ export function getSoulLinks(): SoulLink[] {
 }
 
 export function saveSoulLinks(soulLinks: SoulLink[]): void {
-  if (typeof window === "undefined") {
-    return;
-  }
-
+  if (typeof window === "undefined") return;
   localStorage.setItem(SOUL_LINKS_STORAGE_KEY, JSON.stringify(soulLinks));
 }
 
 export function addSoulLink(soulLink: SoulLink): void {
-  const existingSoulLinks = getSoulLinks();
-  const updatedSoulLinks = [...existingSoulLinks, soulLink];
-  saveSoulLinks(updatedSoulLinks);
+  saveSoulLinks([...getSoulLinks(), soulLink]);
 }
 
 export function getSoulLinksByRunId(runId: string): SoulLink[] {
-  const soulLinks = getSoulLinks();
-  return soulLinks.filter((soulLink) => soulLink.runId === runId);
+  return getSoulLinks().filter((soulLink) => soulLink.runId === runId);
 }
 
 export function deleteSoulLink(soulLinkId: string): void {
-  const existingSoulLinks = getSoulLinks();
+  saveSoulLinks(getSoulLinks().filter((link) => link.id !== soulLinkId));
+}
 
-  const updatedSoulLinks = existingSoulLinks.filter(
-    (link) => link.id !== soulLinkId
-  );
+/*
+  ========================
+  EXPORT / IMPORT
+  ========================
+*/
 
-  saveSoulLinks(updatedSoulLinks);
+export interface RunExportData {
+  version: 1;
+  exportedAt: string;
+  run: Run;
+  captures: CapturedPokemon[];
+  soulLinks: SoulLink[];
+}
+
+/** Exporte une run complète (run + captures + soul links) en objet JSON. */
+export function exportRunAsJson(runId: string): RunExportData | null {
+  const run = getRunById(runId);
+  if (!run) return null;
+
+  return {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    run,
+    captures: getCapturedPokemonsByRunId(runId),
+    soulLinks: getSoulLinksByRunId(runId),
+  };
+}
+
+/**
+ * Importe une run depuis un objet RunExportData.
+ * Génère de nouveaux IDs pour éviter tout conflit avec les runs existantes.
+ */
+export function importRunFromJson(data: RunExportData): string {
+  const now = new Date().toISOString();
+  const newRunId = `run-${Date.now()}`;
+  const uid = () => Math.random().toString(36).slice(2, 7);
+
+  const captureIdMap = new Map<string, string>();
+  const newCaptures: CapturedPokemon[] = data.captures.map((capture) => {
+    const newId = `capture-${Date.now()}-${uid()}`;
+    captureIdMap.set(capture.id, newId);
+    return { ...capture, id: newId, runId: newRunId, soulLinkId: null };
+  });
+
+  const soulLinkIdMap = new Map<string, string>();
+  const newSoulLinks: SoulLink[] = data.soulLinks.map((link) => {
+    const newId = `soul-link-${Date.now()}-${uid()}`;
+    soulLinkIdMap.set(link.id, newId);
+    return {
+      ...link,
+      id: newId,
+      runId: newRunId,
+      pokemonAId: captureIdMap.get(link.pokemonAId) ?? link.pokemonAId,
+      pokemonBId: captureIdMap.get(link.pokemonBId) ?? link.pokemonBId,
+    };
+  });
+
+  const finalCaptures = newCaptures.map((capture) => {
+    const original = data.captures.find((c) => captureIdMap.get(c.id) === capture.id);
+    if (original?.soulLinkId) {
+      return { ...capture, soulLinkId: soulLinkIdMap.get(original.soulLinkId) ?? null };
+    }
+    return capture;
+  });
+
+  addRun({
+    ...data.run,
+    id: newRunId,
+    name: `${data.run.name} (importée)`,
+    createdAt: now,
+    updatedAt: now,
+  });
+
+  saveCapturedPokemons([...getCapturedPokemons(), ...finalCaptures]);
+  saveSoulLinks([...getSoulLinks(), ...newSoulLinks]);
+
+  return newRunId;
 }
