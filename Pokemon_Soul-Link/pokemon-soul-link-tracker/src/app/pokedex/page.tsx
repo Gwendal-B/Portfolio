@@ -1,85 +1,45 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import gen1Pokemon from "../../data/gen1-pokemon.json";
-import gen2Pokemon from "../../data/gen2-pokemon.json";
-import gen3Pokemon from "../../data/gen3-pokemon.json";
-import type { Pokemon } from "../../types/pokemon";
+import {
+  getPokemonForGameGroup,
+  getAvailableTypesForPokemon,
+  filterPokemonList,
+} from "../../lib/pokedex-helpers";
+import { getGenerationsForGameGroup } from "../../lib/game-groups";
 import type { GameGroup } from "../../types/run";
 import Link from "next/link";
 
 export default function PokedexPage() {
-  // 🔹 État pour le groupe de jeu
   const [selectedGameGroup, setSelectedGameGroup] =
-  useState<GameGroup>("Pokemon Rouge / Bleu / Jaune");
+    useState<GameGroup>("Pokemon Rouge / Bleu / Jaune");
 
-  // État pour la recherche
   const [search, setSearch] = useState("");
-
-  // État pour le filtre par type
   const [selectedType, setSelectedType] = useState("Tous");
-
   const [selectedGeneration, setSelectedGeneration] = useState("Toutes");
 
+  const availableGenerations =
+    getGenerationsForGameGroup(selectedGameGroup);
+
   const shouldShowGenerationFilter =
-    selectedGameGroup === "Pokemon Or / Argent / Cristal" ||
-    selectedGameGroup === "Pokemon Rubis / Saphir / Émeraude";
+    availableGenerations.length > 1;
 
-  // 🔹 Pokémon disponibles selon le groupe de jeu
   const availablePokemon = useMemo(() => {
-    const generationOnePokemon = gen1Pokemon as Pokemon[];
-    const generationTwoPokemon = gen2Pokemon as Pokemon[];
-    const generationThreePokemon = gen3Pokemon as Pokemon[];
-
-    if (selectedGameGroup === "Pokemon Rouge / Bleu / Jaune") {
-      return generationOnePokemon;
-    }
-
-    if (selectedGameGroup === "Pokemon Or / Argent / Cristal") {
-      return [...generationOnePokemon, ...generationTwoPokemon];
-    }
-
-    if (selectedGameGroup === "Pokemon Rubis / Saphir / Émeraude") {
-      return [
-        ...generationOnePokemon,
-        ...generationTwoPokemon,
-        ...generationThreePokemon,
-      ];
-    }
-
-    return generationOnePokemon;
+    return getPokemonForGameGroup(selectedGameGroup);
   }, [selectedGameGroup]);
 
-  // Récupération de tous les types uniques
-  const availableTypes = [
-    "Tous",
-    ...Array.from(
-      new Set(availablePokemon.flatMap((pokemon) => pokemon.types))
-    ).sort(),
-  ];
+  const availableTypes = getAvailableTypesForPokemon(availablePokemon);
 
-  // Filtrage des Pokémon
-  const filteredPokemons = availablePokemon.filter((pokemon) => {
-    const matchesSearch = pokemon.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const matchesType =
-      selectedType === "Tous" ||
-      pokemon.types.includes(selectedType);
-
-    const matchesGeneration =
-      !shouldShowGenerationFilter ||
-      selectedGeneration === "Toutes" ||
-      pokemon.generation === Number(selectedGeneration);
-
-    return matchesSearch && matchesType && matchesGeneration;
+  const filteredPokemons = filterPokemonList(availablePokemon, {
+    search,
+    selectedType,
+    selectedGeneration,
+    availableGenerations,
   });
 
   return (
     <main className="min-h-screen px-6 py-12 text-white">
       <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-        {/* En-tête */}
         <header className="mb-8">
           <h1 className="text-4xl font-bold">Pokédex</h1>
           <p className="mt-2 text-zinc-400">
@@ -87,7 +47,6 @@ export default function PokedexPage() {
           </p>
         </header>
 
-        {/* Barre de recherche et filtre */}
         <section className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end">
           <div className="w-full lg:w-80">
             <label
@@ -103,6 +62,7 @@ export default function PokedexPage() {
               onChange={(event) => {
                 setSelectedGameGroup(event.target.value as GameGroup);
                 setSelectedGeneration("Toutes");
+                setSelectedType("Tous");
               }}
               className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             >
@@ -118,28 +78,30 @@ export default function PokedexPage() {
             </select>
           </div>
 
-        {shouldShowGenerationFilter && (
-          <div className="w-full lg:w-56">
-            <label
-              htmlFor="generation"
-              className="mb-2 block text-sm font-medium text-zinc-300"
-            >
-              Génération
-            </label>
+          {shouldShowGenerationFilter && (
+            <div className="w-full lg:w-56">
+              <label
+                htmlFor="generation"
+                className="mb-2 block text-sm font-medium text-zinc-300"
+              >
+                Génération
+              </label>
 
-            <select
-              id="generation"
-              value={selectedGeneration}
-              onChange={(event) => setSelectedGeneration(event.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-            >
-              <option value="Toutes">Toutes</option>
-              <option value="1">Génération 1</option>
-              <option value="2">Génération 2</option>
-              <option value="2">Génération 3</option>
-            </select>
-          </div>
-        )}
+              <select
+                id="generation"
+                value={selectedGeneration}
+                onChange={(event) => setSelectedGeneration(event.target.value)}
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+              >
+                <option value="Toutes">Toutes</option>
+                {availableGenerations.map((generation) => (
+                  <option key={generation} value={String(generation)}>
+                    Génération {generation}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div className="w-full lg:flex-1">
             <label
@@ -182,7 +144,6 @@ export default function PokedexPage() {
           </div>
         </section>
 
-        {/* Nombre de résultats */}
         <p className="mb-4 text-sm text-zinc-400">
           Pokémon affichés :{" "}
           <span className="font-semibold text-white">
@@ -190,7 +151,6 @@ export default function PokedexPage() {
           </span>
         </p>
 
-        {/* Grille des Pokémon */}
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredPokemons.map((pokemon) => (
             <Link
@@ -216,7 +176,6 @@ export default function PokedexPage() {
                   />
                 </div>
 
-                {/* Types */}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {pokemon.types.map((type) => (
                     <span
@@ -228,7 +187,6 @@ export default function PokedexPage() {
                   ))}
                 </div>
 
-                {/* Statistiques */}
                 <div className="mt-4 grid grid-cols-2 gap-2 text-sm text-zinc-300">
                   <p>PV : {pokemon.stats.hp}</p>
                   <p>ATQ : {pokemon.stats.attack}</p>
