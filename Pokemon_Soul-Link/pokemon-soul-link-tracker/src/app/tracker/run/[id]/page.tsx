@@ -19,6 +19,8 @@ import { NATURES } from "../../../../lib/natures";
 import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../../../types/tracker";
 import type { SoulLink } from "../../../../types/soul-link";
 import StatusBadge from "../../../../components/ui/StatusBadge";
+import NatureBadge from "../../../../components/ui/NatureBadge";
+import AbilityBadge from "../../../../components/ui/AbilityBadge";
 
 type RunDetailPageProps = {
   params: Promise<{
@@ -675,17 +677,19 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
           </p>
 
           {run?.rules.showAbilities && (
-            <p>
-              <span className="font-medium text-white">Talent :</span>{" "}
-              {capture.ability ?? "Non renseigné"}
-            </p>
+            <div>
+              <p className="mb-1 font-medium text-white">Talent :</p>
+              <span className="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+                {capture.ability ?? "Non renseigné"}
+              </span>
+            </div>
           )}
 
           {run?.rules.showNatures && (
-            <p>
-              <span className="font-medium text-white">Nature :</span>{" "}
-              {capture.nature ?? "Non renseignée"}
-            </p>
+            <div>
+              <p className="mb-1 font-medium text-white">Nature :</p>
+              <NatureBadge nature={capture.nature} />
+            </div>
           )}
         </div>
 
@@ -812,17 +816,15 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                     {capture.nickname || pokemon?.name || "Pokémon"}
                   </p>
 
-                  {run?.rules.showAbilities && (
-                    <p className="mt-1 truncate text-center text-[11px] text-zinc-500">
-                      {capture.ability ?? "Talent inconnu"}
-                    </p>
-                  )}
+                  <div className="mt-2 flex flex-col items-center gap-1">
+                    {run?.rules.showAbilities && (
+                      <AbilityBadge ability={capture.ability} />
+                    )}
 
-                  {run?.rules.showNatures && (
-                    <p className="mt-1 truncate text-center text-[11px] text-zinc-500">
-                      {capture.nature ?? "Nature inconnue"}
-                    </p>
-                  )}
+                    {run?.rules.showNatures && (
+                      <NatureBadge nature={capture.nature} />
+                    )}
+                  </div>
                 </div>
               );
             })}
@@ -1139,7 +1141,7 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             </section>
 
             <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="flex flex-col gap-4">
                 <div>
                   <h2 className="text-xl font-semibold">Captures</h2>
                   <p className="text-sm text-zinc-400">
@@ -1147,55 +1149,57 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                   </p>
                 </div>
 
-                <div className="grid gap-4 md:grid-cols-2">
-                  {run.rules.showAbilities && (
-                    <div className="w-full md:w-64">
-                      <label
-                        htmlFor="abilityFilter"
-                        className="mb-2 block text-sm font-medium text-zinc-300"
-                      >
-                        Filtrer par talent
-                      </label>
+                {(run.rules.showAbilities || run.rules.showNatures) && (
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {run.rules.showAbilities && (
+                      <div className="min-w-0">
+                        <label
+                          htmlFor="abilityFilter"
+                          className="mb-2 block text-sm font-medium text-zinc-300"
+                        >
+                          Filtrer par talent
+                        </label>
 
-                      <select
-                        id="abilityFilter"
-                        value={selectedAbilityFilter}
-                        onChange={(event) => setSelectedAbilityFilter(event.target.value)}
-                        className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                      >
-                        {availableAbilityFilters.map((ability) => (
-                          <option key={ability} value={ability}>
-                            {ability}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
+                        <select
+                          id="abilityFilter"
+                          value={selectedAbilityFilter}
+                          onChange={(event) => setSelectedAbilityFilter(event.target.value)}
+                          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                        >
+                          {availableAbilityFilters.map((ability) => (
+                            <option key={ability} value={ability}>
+                              {ability}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
 
-                  {run.rules.showNatures && (
-                    <div className="w-full md:w-64">
-                      <label
-                        htmlFor="natureFilter"
-                        className="mb-2 block text-sm font-medium text-zinc-300"
-                      >
-                        Filtrer par nature
-                      </label>
+                    {run.rules.showNatures && (
+                      <div className="min-w-0">
+                        <label
+                          htmlFor="natureFilter"
+                          className="mb-2 block text-sm font-medium text-zinc-300"
+                        >
+                          Filtrer par nature
+                        </label>
 
-                      <select
-                        id="natureFilter"
-                        value={selectedNatureFilter}
-                        onChange={(event) => setSelectedNatureFilter(event.target.value)}
-                        className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
-                      >
-                        {availableNatureFilters.map((nature) => (
-                          <option key={nature} value={nature}>
-                            {nature}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-                </div>
+                        <select
+                          id="natureFilter"
+                          value={selectedNatureFilter}
+                          onChange={(event) => setSelectedNatureFilter(event.target.value)}
+                          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
+                        >
+                          {availableNatureFilters.map((nature) => (
+                            <option key={nature} value={nature}>
+                              {nature}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {captures.length === 0 ? (
