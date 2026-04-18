@@ -7,6 +7,7 @@ import type { Pokemon } from "../../types/pokemon";
 import type { GameRoute } from "../../types/route";
 import { NATURES } from "../../lib/natures";
 import { getGameMechanics } from "../../lib/game-mechanics";
+import { getStandardAbilities } from "../../lib/pokedex-helpers";
 
 interface AddCaptureFormProps {
   run: Run;
@@ -42,7 +43,9 @@ export default function AddCaptureForm({
   );
 
   const selectedPokemon = pokemonById.get(selectedPokemonId) ?? null;
-  const availableAbilities = selectedPokemon?.abilities ?? [];
+  const availableAbilities = selectedPokemon
+    ? getStandardAbilities(selectedPokemon)
+    : [];
 
   const mechanics = getGameMechanics(run.game);
 
@@ -64,23 +67,32 @@ export default function AddCaptureForm({
       return;
     }
 
+    if (availableAbilities.length === 0) {
+      setSelectedAbility("");
+      return;
+    }
+
     if (availableAbilities.length === 1) {
       setSelectedAbility(availableAbilities[0]);
-    } else if (
-      availableAbilities.length > 1 &&
-      !availableAbilities.includes(selectedAbility)
-    ) {
-      setSelectedAbility(availableAbilities[0] ?? "");
-    } else if (availableAbilities.length === 0) {
+      return;
+    }
+
+    // Si plusieurs talents, on garde si valide, sinon reset
+    if (!availableAbilities.includes(selectedAbility)) {
       setSelectedAbility("");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPokemonId, canUseAbilities]);
 
   // Reset nature quand pokémon change
   useEffect(() => {
-    setSelectedNature("");
-  }, [selectedPokemonId]);
+    if (!canUseNatures) {
+      setSelectedNature("");
+      return;
+    }
+
+    // reset uniquement si invalide
+    if (!selectedNature) return;
+  }, [selectedPokemonId, canUseNatures]);
 
   function resetForm() {
     setNickname("");
@@ -187,11 +199,23 @@ export default function AddCaptureForm({
     resetForm();
   }
 
+  const isFormValid =
+    selectedPokemonId !== 0 &&
+    selectedRouteId !== "" &&
+    (!run.rules.nicknameRequired || nickname.trim() !== "") &&
+    (!canUseAbilities || availableAbilities.length === 0 || selectedAbility !== "") &&
+    (!canUseNatures || selectedNature !== "");
+
   return (
     <section className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
       <h2 className="text-xl font-semibold">Ajouter une capture</h2>
 
       <form onSubmit={handleSubmit} className="mt-6 grid gap-4 md:grid-cols-2">
+        {errorMessage && (
+          <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300 animate-fade-in">
+            {errorMessage}
+          </p>
+        )}
         {/* Recherche Pokémon */}
         <div className="md:col-span-2">
           <label htmlFor="pokemonSearch" className="mb-2 block text-sm font-medium">
@@ -208,7 +232,7 @@ export default function AddCaptureForm({
               className="flex-1 rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
             />
 
-            <div className="flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm shrink-0">
+            <div className="flex items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-3 text-sm shrink-0">
               {selectedPokemon ? (
                 <>
                   <img
@@ -216,7 +240,19 @@ export default function AddCaptureForm({
                     alt={selectedPokemon.name}
                     className="h-8 w-8 object-contain [image-rendering:pixelated]"
                   />
-                  <span className="font-medium text-white">{selectedPokemon.name}</span>
+                  <div className="min-w-0">
+                    <p className="font-medium text-white">{selectedPokemon.name}</p>
+                    <div className="mt-1 flex flex-wrap gap-1">
+                      {selectedPokemon.types.map((type) => (
+                        <span
+                          key={type}
+                          className="rounded bg-zinc-700 px-2 py-0.5 text-xs text-white"
+                        >
+                          {type}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </>
               ) : (
                 <span className="text-zinc-400">Aucun</span>
@@ -393,16 +429,15 @@ export default function AddCaptureForm({
           </select>
         </div>
 
-        {errorMessage && (
-          <p className="md:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-            {errorMessage}
-          </p>
-        )}
-
         <div className="md:col-span-2">
           <button
             type="submit"
-            className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
+            disabled={!isFormValid}
+            className={`rounded-lg px-6 py-3 font-medium text-white transition ${
+              isFormValid
+                ? "bg-blue-600 hover:bg-blue-700"
+                : "cursor-not-allowed bg-zinc-700 text-zinc-300"
+            }`}
           >
             Ajouter la capture
           </button>

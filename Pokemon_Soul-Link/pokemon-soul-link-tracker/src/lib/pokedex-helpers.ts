@@ -53,3 +53,15 @@ export function filterPokemonList(
     return matchesSearch && matchesType && matchesGeneration;
   });
 }
+
+export function getStandardAbilities(pokemon: Pokemon): string[] {
+  if (!pokemon.abilities) {
+    return [];
+  }
+
+  if (Array.isArray(pokemon.abilities)) {
+    return pokemon.abilities;
+  }
+
+  return pokemon.abilities.standard;
+}

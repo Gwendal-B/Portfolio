@@ -14,6 +14,11 @@ export interface PokemonStats {
   specialDefense?: number;
 }
 
+export interface PokemonAbilities {
+  standard: string[];
+  hidden?: string[];
+}
+
 export interface Pokemon {
   id: number;
   dexNumber: number;
@@ -25,5 +30,5 @@ export interface Pokemon {
   captureRate: number;
   spriteUrl: string;
   evolutions: number[];
-  abilities?: string[];
+  abilities?: string[] | PokemonAbilities;
 }

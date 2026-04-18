@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import type { ChallengeMode, GameGroup, Player, Run, RunRules } from "../../../types/run";
 import { addRun } from "../../../lib/local-storage";
 import { getPrimaryGenerationForGameGroup } from "../../../lib/game-groups";
+import { getDefaultRunRules } from "../../../lib/default-run-rules";
 
 export default function NewRunPage() {
   const router = useRouter();
@@ -14,34 +15,25 @@ export default function NewRunPage() {
   const [game, setGame] = useState<GameGroup>("Pokemon Rouge / Bleu / Jaune");
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
-  const [rules, setRules] = useState<RunRules>({
-    oneEncounterPerRoute: true,
-    faintEqualsDeath: true,
-    nicknameRequired: true,
-    soulLinkEnabled: false,
-    sharedDeathEnabled: false,
-    duplicateSpeciesClause: false,
-    showAbilities: true,
-    showNatures: false,
-  });
+  const [rules, setRules] = useState<RunRules>(
+    getDefaultRunRules("Pokemon Rouge / Bleu / Jaune", "nuzlocke")
+  );
 
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    if (mode === "soul-link") {
-      setRules((previousRules) => ({
+    setRules((previousRules) => {
+      const defaults = getDefaultRunRules(game, mode);
+
+      return {
         ...previousRules,
-        soulLinkEnabled: true,
-        sharedDeathEnabled: true,
-      }));
-    } else {
-      setRules((previousRules) => ({
-        ...previousRules,
-        soulLinkEnabled: false,
-        sharedDeathEnabled: false,
-      }));
-    }
-  }, [mode]);
+        soulLinkEnabled: defaults.soulLinkEnabled,
+        sharedDeathEnabled: defaults.sharedDeathEnabled,
+        showAbilities: defaults.showAbilities,
+        showNatures: defaults.showNatures,
+      };
+    });
+  }, [game, mode]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -191,6 +183,9 @@ export default function NewRunPage() {
               </option>
               <option value="Pokemon Rubis / Saphir / Émeraude">
                 Pokémon Rubis / Saphir / Émeraude
+              </option>
+              <option value="Pokemon Rouge Feu / Vert Feuille">
+                Pokémon Rouge Feu / Vert Feuille
               </option>
             </select>
           </div>
