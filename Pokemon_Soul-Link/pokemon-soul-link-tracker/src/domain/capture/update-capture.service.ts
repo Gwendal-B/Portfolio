@@ -34,38 +34,47 @@ export function updateCaptureStatus(
     sharedDeathEnabled &&
     field === "lifeStatus" &&
     value === "dead" &&
-    captureToUpdate.soulLinkId !== null
+    captureToUpdate.soulLinkId
   ) {
     const soulLink = state.soulLinks.find(
       (link) => link.id === captureToUpdate.soulLinkId
     );
 
-    if (!soulLink) {
+    if (soulLink) {
+      const linkedCaptureId =
+        soulLink.pokemonAId === captureId
+          ? soulLink.pokemonBId
+          : soulLink.pokemonAId;
+
+      // 1. rendre le partenaire inutilisable
+      const capturesWithSharedDeath = updatedCaptures.map((capture) => {
+        if (capture.id === linkedCaptureId && capture.lifeStatus !== "dead") {
+          return {
+            ...capture,
+            lifeStatus: "unusable" as const,
+            updatedAt: now,
+          };
+        }
+        return capture;
+      });
+
+      // 2. désactiver le Soul Link
+      const updatedSoulLinks = state.soulLinks.map((link) => {
+        if (link.id === soulLink.id) {
+          return {
+            ...link,
+            active: false,
+          };
+        }
+        return link;
+      });
+
       return {
         ...state,
-        captures: updatedCaptures,
+        captures: capturesWithSharedDeath,
+        soulLinks: updatedSoulLinks,
       };
     }
-
-    const linkedCaptureId =
-      soulLink.pokemonAId === captureId ? soulLink.pokemonBId : soulLink.pokemonAId;
-
-    const capturesWithLinkedUpdate = updatedCaptures.map((capture) => {
-      if (capture.id === linkedCaptureId && capture.lifeStatus !== "dead") {
-        return {
-          ...capture,
-          lifeStatus: "unusable" as const,
-          updatedAt: now,
-        };
-      }
-
-      return capture;
-    });
-
-    return {
-      ...state,
-      captures: capturesWithLinkedUpdate,
-    };
   }
 
   return {

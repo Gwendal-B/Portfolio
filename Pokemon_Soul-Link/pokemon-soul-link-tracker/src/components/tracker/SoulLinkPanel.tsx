@@ -207,24 +207,23 @@ export default function SoulLinkPanel({
               const playerB = captureB ? run.players.find((p) => p.id === captureB.playerId) : null;
               const isDeleting = deleteConfirmId === soulLink.id;
 
-              const isBroken =
-                (captureA?.lifeStatus === "dead" || captureA?.lifeStatus === "unusable") ||
-                (captureB?.lifeStatus === "dead" || captureB?.lifeStatus === "unusable");
-
+              const isBroken = !soulLink.active;
               return (
                 <article
                   key={soulLink.id}
                   className={`rounded-xl border p-4 ${
                     isBroken
                       ? "border-red-500/20 bg-red-500/5"
-                      : "border-purple-500/20 bg-purple-500/5"
+                      : "border-green-500/20 bg-purple-500/5"
                   }`}
                 >
-                  {isBroken && (
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-red-400">
-                      Lien brisé
-                    </p>
-                  )}
+                  <p
+                    className={`mb-3 text-xs font-semibold uppercase tracking-wide ${
+                      isBroken ? "text-red-400" : "text-green-400"
+                    }`}
+                  >
+                    {isBroken ? "Lien brisé" : "Lien actif"}
+                  </p>
 
                   <div className="grid gap-3 md:grid-cols-2">
                     {[
