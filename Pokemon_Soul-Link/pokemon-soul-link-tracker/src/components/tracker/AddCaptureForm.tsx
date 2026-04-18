@@ -6,6 +6,7 @@ import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../types/tra
 import type { Pokemon } from "../../types/pokemon";
 import type { GameRoute } from "../../types/route";
 import { NATURES } from "../../lib/natures";
+import { getGameMechanics } from "../../lib/game-mechanics";
 
 interface AddCaptureFormProps {
   run: Run;
@@ -43,6 +44,11 @@ export default function AddCaptureForm({
   const selectedPokemon = pokemonById.get(selectedPokemonId) ?? null;
   const availableAbilities = selectedPokemon?.abilities ?? [];
 
+  const mechanics = getGameMechanics(run.game);
+
+  const canUseAbilities = mechanics.abilities && run.rules.showAbilities;
+  const canUseNatures = mechanics.natures && run.rules.showNatures;
+
   const filteredPokemons = useMemo(() => {
     const q = pokemonSearch.trim().toLowerCase();
     if (!q) return [];
@@ -53,19 +59,23 @@ export default function AddCaptureForm({
 
   // Sync ability quand le pokémon change
   useEffect(() => {
-    if (!run.rules.showAbilities) {
+    if (!canUseAbilities) {
       setSelectedAbility("");
       return;
     }
+
     if (availableAbilities.length === 1) {
       setSelectedAbility(availableAbilities[0]);
-    } else if (availableAbilities.length > 1 && !availableAbilities.includes(selectedAbility)) {
+    } else if (
+      availableAbilities.length > 1 &&
+      !availableAbilities.includes(selectedAbility)
+    ) {
       setSelectedAbility(availableAbilities[0] ?? "");
     } else if (availableAbilities.length === 0) {
       setSelectedAbility("");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPokemonId, run.rules.showAbilities]);
+  }, [selectedPokemonId, canUseAbilities]);
 
   // Reset nature quand pokémon change
   useEffect(() => {
@@ -95,12 +105,12 @@ export default function AddCaptureForm({
       return;
     }
 
-    if (run.rules.showAbilities && availableAbilities.length > 0 && !selectedAbility) {
+    if (canUseAbilities && availableAbilities.length > 0 && !selectedAbility) {
       setErrorMessage("Le talent est obligatoire pour cette capture.");
       return;
     }
 
-    if (run.rules.showNatures && !selectedNature) {
+    if (canUseNatures && !selectedNature) {
       setErrorMessage("La nature est obligatoire pour cette capture.");
       return;
     }
@@ -165,8 +175,8 @@ export default function AddCaptureForm({
       lifeStatus,
       storageStatus,
       soulLinkId: null,
-      ability: run.rules.showAbilities ? selectedAbility || null : null,
-      nature: run.rules.showNatures ? selectedNature || null : null,
+      ability: canUseAbilities ? selectedAbility || null : null,
+      nature: canUseNatures ? selectedNature || null : null,
     });
 
     if (error) {
@@ -298,7 +308,7 @@ export default function AddCaptureForm({
         </div>
 
         {/* Talent */}
-        {run.rules.showAbilities && (
+        {canUseAbilities && (
           <div>
             <label htmlFor="ability" className="mb-2 block text-sm font-medium">
               Talent
@@ -329,7 +339,7 @@ export default function AddCaptureForm({
         )}
 
         {/* Nature */}
-        {run.rules.showNatures && (
+        {canUseNatures && (
           <div>
             <label htmlFor="nature" className="mb-2 block text-sm font-medium">
               Nature
