@@ -5,11 +5,9 @@ import { ALL_POKEMON } from "./pokemon-data";
 import { gen3KantoAbilitiesByDexNumber } from "../data/gen3-kanto-abilities";
 
 export function getPokemonForGameGroup(gameGroup: GameGroup): Pokemon[] {
-  const allowedGenerations = getGenerationsForGameGroup(gameGroup);
-
-  return ALL_POKEMON.filter((pokemon) =>
-    allowedGenerations.includes(pokemon.generation)
-  );
+  return ALL_POKEMON
+    .filter((pokemon) => pokemon.gameGroups.includes(gameGroup))
+    .map((pokemon) => enrichPokemonWithGameData(pokemon, gameGroup));
 }
 
 export function getAvailableTypesForPokemon(pokemonList: Pokemon[]): string[] {
