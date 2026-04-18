@@ -2,6 +2,7 @@ import type { Pokemon } from "../types/pokemon";
 import type { GameGroup } from "../types/run";
 import { getGenerationsForGameGroup } from "./game-groups";
 import { ALL_POKEMON } from "./pokemon-data";
+import { gen3KantoAbilitiesByDexNumber } from "../data/gen3-kanto-abilities";
 
 export function getPokemonForGameGroup(gameGroup: GameGroup): Pokemon[] {
   const allowedGenerations = getGenerationsForGameGroup(gameGroup);
@@ -64,4 +65,23 @@ export function getStandardAbilities(pokemon: Pokemon): string[] {
   }
 
   return pokemon.abilities.standard;
+}
+
+export function enrichPokemonWithGameData(
+  pokemon: Pokemon,
+  game: GameGroup
+): Pokemon {
+  // RFVF → injecter talents Kanto
+  if (game === "Pokemon Rouge Feu / Vert Feuille") {
+    const abilities = gen3KantoAbilitiesByDexNumber[pokemon.dexNumber];
+
+    if (abilities) {
+      return {
+        ...pokemon,
+        abilities,
+      };
+    }
+  }
+
+  return pokemon;
 }
