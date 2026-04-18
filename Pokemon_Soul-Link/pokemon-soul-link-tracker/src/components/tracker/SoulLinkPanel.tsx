@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Run } from "../../types/run";
 import type { CapturedPokemon } from "../../types/tracker";
 import type { SoulLink } from "../../types/soul-link";
@@ -29,7 +29,23 @@ export default function SoulLinkPanel({
   const [errorMessage, setErrorMessage] = useState("");
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
+  useEffect(() => {
+    setCaptureBId("");
+    setErrorMessage("");
+  }, [captureAId]);
+
   const unlinkedCaptures = captures.filter((c) => c.soulLinkId === null);
+
+  const availableCapturesA = unlinkedCaptures;
+
+  const availableCapturesB = unlinkedCaptures.filter((c) => {
+    if (!captureAId) return true;
+
+    const captureA = unlinkedCaptures.find((c) => c.id === captureAId);
+    if (!captureA) return true;
+
+    return c.playerId !== captureA.playerId && c.id !== captureAId;
+  });
 
   function handleCreateSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -79,6 +95,11 @@ export default function SoulLinkPanel({
     return `${name} — ${player?.name ?? capture.playerId} — ${capture.routeName}`;
   }
 
+  const isValidLink =
+    captureAId !== "" &&
+    captureBId !== "" &&
+    captureAId !== captureBId;
+
   return (
     <>
       {/* Créer un lien manuellement */}
@@ -116,7 +137,7 @@ export default function SoulLinkPanel({
                 className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
               >
                 <option value="">Sélectionner une capture</option>
-                {unlinkedCaptures.map((capture) => (
+                {availableCapturesA.map((capture) => (
                   <option key={capture.id} value={capture.id}>
                     {captureLabel(capture)}
                   </option>
@@ -135,7 +156,7 @@ export default function SoulLinkPanel({
                 className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-white outline-none transition focus:border-zinc-500"
               >
                 <option value="">Sélectionner une capture</option>
-                {unlinkedCaptures.map((capture) => (
+                {availableCapturesB.map((capture) => (
                   <option key={capture.id} value={capture.id}>
                     {captureLabel(capture)}
                   </option>
@@ -152,7 +173,12 @@ export default function SoulLinkPanel({
             <div className="md:col-span-2">
               <button
                 type="submit"
-                className="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition hover:bg-purple-700"
+                disabled={!isValidLink}
+                className={`rounded-lg px-6 py-3 font-medium text-white transition ${
+                  isValidLink
+                    ? "bg-purple-600 hover:bg-purple-700"
+                    : "bg-zinc-700 cursor-not-allowed text-zinc-300"
+                }`}
               >
                 Créer le lien
               </button>
