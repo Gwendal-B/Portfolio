@@ -6,6 +6,7 @@ import type { ChallengeMode, GameGroup, Player, Run, RunRules } from "../../../t
 import { addRun } from "../../../lib/local-storage";
 import { getPrimaryGenerationForGameGroup } from "../../../lib/game-groups";
 import { getDefaultRunRules } from "../../../lib/default-run-rules";
+import { getGameMechanics } from "../../../lib/game-mechanics";
 
 export default function NewRunPage() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export default function NewRunPage() {
   const [runName, setRunName] = useState("");
   const [mode, setMode] = useState<ChallengeMode>("nuzlocke");
   const [game, setGame] = useState<GameGroup>("Pokemon Rouge / Bleu / Jaune");
+  const mechanics = getGameMechanics(game);
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
   const [rules, setRules] = useState<RunRules>(
@@ -274,20 +276,7 @@ export default function NewRunPage() {
                 />
               </label>
 
-              <label className="flex items-center justify-between gap-4">
-                <span>Clause anti-doublons</span>
-                <input
-                  type="checkbox"
-                  checked={rules.duplicateSpeciesClause}
-                  onChange={(event) =>
-                    setRules((previousRules) => ({
-                      ...previousRules,
-                      duplicateSpeciesClause: event.target.checked,
-                    }))
-                  }
-                />
-              </label>
-
+            {mechanics.abilities && (
               <label className="flex items-center justify-between gap-4">
                 <span>Afficher les talents</span>
                 <input
@@ -301,7 +290,9 @@ export default function NewRunPage() {
                   }
                 />
               </label>
+            )}
 
+            {mechanics.natures && (
               <label className="flex items-center justify-between gap-4">
                 <span>Afficher les natures</span>
                 <input
@@ -315,6 +306,7 @@ export default function NewRunPage() {
                   }
                 />
               </label>
+            )}
 
               {mode === "soul-link" && (
                 <>

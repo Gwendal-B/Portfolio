@@ -2,6 +2,7 @@ import type { CapturedPokemon, LifeStatus, StorageStatus } from "../../types/tra
 import type { Pokemon } from "../../types/pokemon";
 import type { Player, Run } from "../../types/run";
 import StatusBadge from "../ui/StatusBadge";
+import PokemonTypeBadge from "../ui/PokemonTypeBadge";
 
 interface CaptureCardProps {
   capture: CapturedPokemon;
@@ -47,6 +48,14 @@ export default function CaptureCard({
 
           {capture.nickname && pokemon && (
             <p className="text-sm text-zinc-500">{pokemon.name}</p>
+          )}
+
+          {pokemon?.types && pokemon.types.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {pokemon.types.map((type) => (
+                <PokemonTypeBadge key={type} type={type} />
+              ))}
+            </div>
           )}
 
           <div className="mt-2">

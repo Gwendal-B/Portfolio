@@ -261,12 +261,39 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
   // ——— Main render ———
 
   return (
-    <main className="min-h-screen px-6 py-12 text-white">
-      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-        <div className="grid gap-6 xl:grid-cols-[260px_minmax(0,1fr)_260px]">
+    <main className="min-h-screen px-6 py-10 text-white">
+      <div className="mx-auto w-full max-w-[1600px]">
+        {/* Bandeau infos run */}
+        <header className="mx-auto mb-8 flex max-w-[550px] items-start justify-between gap-6">
+          <div>
+            <Link href="/tracker" className="text-sm text-zinc-400 hover:text-white">
+              ← Mes runs
+            </Link>
 
-          {/* Panneau gauche — équipe joueur 1 */}
-          <aside className="hidden xl:block">
+            <p className="mt-4 text-xs uppercase tracking-[0.18em] text-zinc-500">
+              {MODE_LABELS[run.mode] ?? run.mode}
+            </p>
+
+            <h1 className="mt-1 text-4xl font-bold">{run.name}</h1>
+
+            <p className="mt-2 text-sm text-zinc-400">
+              {run.game} · Gén. {run.generation} · {run.players.map((p) => p.name).join(" & ")}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleExport}
+            className="mt-10 shrink-0 rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-2 text-sm font-medium text-zinc-300 transition hover:bg-zinc-800"
+          >
+            Exporter la run
+          </button>
+        </header>
+
+        {/* Dashboard haut */}
+        <section className="mx-auto grid max-w-[1460px] items-start gap-6 xl:grid-cols-[430px_minmax(600px,1fr)_430px]">
+          {/* Panneau gauche */}
+          <aside>
             {playerOne && (
               <TeamPanel
                 title={playerOne.name}
@@ -277,39 +304,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
             )}
           </aside>
 
-          {/* Contenu principal */}
-          <div>
-            {/* En-tête */}
-            <header className="mb-8">
-              <Link href="/tracker" className="text-sm text-zinc-400 hover:text-white">
-                ← Mes runs
-              </Link>
-
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">
-                    {MODE_LABELS[run.mode] ?? run.mode}
-                  </p>
-                  <h1 className="mt-1 text-4xl font-bold">{run.name}</h1>
-                  <p className="mt-2 text-zinc-400">
-                    {run.game} · Gén. {run.generation} · {run.players.map((p) => p.name).join(" & ")}
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleExport}
-                  className="shrink-0 rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-2 text-sm font-medium text-zinc-300 transition hover:bg-zinc-800"
-                >
-                  Exporter la run
-                </button>
-              </div>
-            </header>
-
-            {/* Stats globales */}
+          {/* Centre */}
+          <div className="space-y-6">
             <RunStatsBar captures={captures} />
 
-            {/* Formulaire d'ajout */}
             <AddCaptureForm
               run={run}
               availablePokemon={availablePokemon}
@@ -317,83 +315,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
               captures={captures}
               onAddCapture={handleAddCapture}
             />
-
-            {/* Onglets captures */}
-            <section className="mt-8">
-              <div className="flex gap-1 rounded-xl border border-zinc-800 bg-zinc-900 p-1">
-                {(
-                  [
-                    { key: "captures", label: `Équipe (${playerOneTeam.length + playerTwoTeam.length})` },
-                    { key: "box", label: `Boîte (${boxCaptures.length})` },
-                    { key: "dead", label: `Morts (${deadCaptures.length})` },
-                  ] as const
-                ).map(({ key, label }) => (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => setActiveTab(key)}
-                    className={`flex-1 rounded-lg py-2 text-sm font-medium transition ${
-                      activeTab === key
-                        ? "bg-zinc-800 text-white"
-                        : "text-zinc-400 hover:text-white"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-
-              {tabCaptures.length === 0 ? (
-                <p className="mt-6 text-zinc-400">
-                  {activeTab === "captures"
-                    ? "Aucun Pokémon en équipe."
-                    : activeTab === "box"
-                    ? "Aucun Pokémon en boîte."
-                    : "Aucun mort dans cette run pour le moment."}
-                </p>
-              ) : run.mode === "soul-link" && activeTab === "captures" ? (
-                // Vue Soul Link : colonnes par joueur
-                <div className="mt-6 grid gap-6 lg:grid-cols-2">
-                  {[playerOne, playerTwo].map((player) =>
-                    player ? (
-                      <div key={player.id}>
-                        <h3 className="mb-4 text-base font-semibold text-zinc-300">
-                          {player.name}
-                        </h3>
-                        <div className="space-y-4">
-                          {tabCaptures
-                            .filter((c) => c.playerId === player.id)
-                            .map(renderCaptureCard)}
-                          {tabCaptures.filter((c) => c.playerId === player.id).length === 0 && (
-                            <p className="text-sm text-zinc-500">Aucune capture.</p>
-                          )}
-                        </div>
-                      </div>
-                    ) : null
-                  )}
-                </div>
-              ) : (
-                <div className="mt-6 space-y-4">
-                  {tabCaptures.map(renderCaptureCard)}
-                </div>
-              )}
-            </section>
-
-            {/* Soul Link panel */}
-            {run.mode === "soul-link" && (
-              <SoulLinkPanel
-                run={run}
-                captures={captures}
-                soulLinks={soulLinks}
-                pokemonById={pokemonById}
-                onCreateSoulLink={handleCreateSoulLink}
-                onDeleteSoulLink={handleDeleteSoulLink}
-              />
-            )}
           </div>
 
-          {/* Panneau droit — équipe joueur 2 (ou rien) */}
-          <aside className="hidden xl:block">
+          {/* Panneau droit */}
+          <aside>
             {run.mode === "soul-link" && playerTwo ? (
               <TeamPanel
                 title={playerTwo.name}
@@ -402,7 +327,6 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                 run={run}
               />
             ) : run.mode === "nuzlocke" && playerOne ? (
-              // En nuzlocke, panneau droit = boîte
               <div className="sticky top-24 rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
                 <h2 className="text-lg font-semibold text-white">Boîte</h2>
                 <p className="mt-1 text-xs text-zinc-500">{boxCaptures.length} Pokémon</p>
@@ -413,7 +337,10 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
                     {boxCaptures.map((capture) => {
                       const pokemon = pokemonById.get(capture.pokemonId);
                       return (
-                        <div key={capture.id} className="rounded-lg border border-zinc-800 bg-zinc-950 p-2 text-center">
+                        <div
+                          key={capture.id}
+                          className="rounded-lg border border-zinc-800 bg-zinc-950 p-2 text-center"
+                        >
                           {pokemon && (
                             <img
                               src={pokemon.spriteUrl}
@@ -432,7 +359,82 @@ export default function RunDetailPage({ params }: RunDetailPageProps) {
               </div>
             ) : null}
           </aside>
-        </div>
+        </section>
+
+        {/* Contenu bas */}
+        <section className="mx-auto mt-10 max-w-[1460px] space-y-8">
+          {/* Onglets captures */}
+          <section>
+            <div className="flex gap-1 rounded-xl border border-zinc-800 bg-zinc-900 p-1">
+              {(
+                [
+                  { key: "captures", label: `Équipe (${playerOneTeam.length + playerTwoTeam.length})` },
+                  { key: "box", label: `Boîte (${boxCaptures.length})` },
+                  { key: "dead", label: `Morts (${deadCaptures.length})` },
+                ] as const
+              ).map(({ key, label }) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setActiveTab(key)}
+                  className={`flex-1 rounded-lg py-2 text-sm font-medium transition ${
+                    activeTab === key
+                      ? "bg-zinc-800 text-white"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {tabCaptures.length === 0 ? (
+              <p className="mt-6 text-zinc-400">
+                {activeTab === "captures"
+                  ? "Aucun Pokémon en équipe."
+                  : activeTab === "box"
+                  ? "Aucun Pokémon en boîte."
+                  : "Aucun mort dans cette run pour le moment."}
+              </p>
+            ) : run.mode === "soul-link" && activeTab === "captures" ? (
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
+                {[playerOne, playerTwo].map((player) =>
+                  player ? (
+                    <div key={player.id}>
+                      <h3 className="mb-4 text-base font-semibold text-zinc-300">
+                        {player.name}
+                      </h3>
+                      <div className="space-y-4">
+                        {tabCaptures
+                          .filter((c) => c.playerId === player.id)
+                          .map(renderCaptureCard)}
+                        {tabCaptures.filter((c) => c.playerId === player.id).length === 0 && (
+                          <p className="text-sm text-zinc-500">Aucune capture.</p>
+                        )}
+                      </div>
+                    </div>
+                  ) : null
+                )}
+              </div>
+            ) : (
+              <div className="mt-6 space-y-4">
+                {tabCaptures.map(renderCaptureCard)}
+              </div>
+            )}
+          </section>
+
+          {/* Soul Link panel */}
+          {run.mode === "soul-link" && (
+            <SoulLinkPanel
+              run={run}
+              captures={captures}
+              soulLinks={soulLinks}
+              pokemonById={pokemonById}
+              onCreateSoulLink={handleCreateSoulLink}
+              onDeleteSoulLink={handleDeleteSoulLink}
+            />
+          )}
+        </section>
       </div>
     </main>
   );
