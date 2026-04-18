@@ -4,6 +4,9 @@
     "dexNumber": 252,
     "name": "Arcko",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante"
     ],
@@ -18,13 +21,18 @@
     "evolutions": [
       253
     ],
-    "abilities": ["Engrais"]
+    "abilities": [
+      "Engrais"
+    ]
   },
   {
     "id": 253,
     "dexNumber": 253,
     "name": "Massko",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante"
     ],
@@ -39,13 +47,18 @@
     "evolutions": [
       254
     ],
-    "abilities": ["Engrais"]
+    "abilities": [
+      "Engrais"
+    ]
   },
   {
     "id": 254,
     "dexNumber": 254,
     "name": "Jungko",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante"
     ],
@@ -58,13 +71,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/254.png",
     "evolutions": [],
-    "abilities": ["Engrais"]
+    "abilities": [
+      "Engrais"
+    ]
   },
   {
     "id": 255,
     "dexNumber": 255,
     "name": "Poussifeu",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Feu"
     ],
@@ -79,13 +97,18 @@
     "evolutions": [
       256
     ],
-    "abilities": ["Brasier"]
+    "abilities": [
+      "Brasier"
+    ]
   },
   {
     "id": 256,
     "dexNumber": 256,
     "name": "Galifeu",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Feu",
       "Combat"
@@ -101,13 +124,18 @@
     "evolutions": [
       257
     ],
-    "abilities": ["Brasier"]
+    "abilities": [
+      "Brasier"
+    ]
   },
   {
     "id": 257,
     "dexNumber": 257,
     "name": "Braségali",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Feu",
       "Combat"
@@ -121,13 +149,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png",
     "evolutions": [],
-    "abilities": ["Brasier"]
+    "abilities": [
+      "Brasier"
+    ]
   },
   {
     "id": 258,
     "dexNumber": 258,
     "name": "Gobou",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -142,13 +175,18 @@
     "evolutions": [
       259
     ],
-    "abilities": ["Torrent"]
+    "abilities": [
+      "Torrent"
+    ]
   },
   {
     "id": 259,
     "dexNumber": 259,
     "name": "Flobio",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Sol"
@@ -164,13 +202,18 @@
     "evolutions": [
       260
     ],
-    "abilities": ["Torrent"]
+    "abilities": [
+      "Torrent"
+    ]
   },
   {
     "id": 260,
     "dexNumber": 260,
     "name": "Laggron",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Sol"
@@ -184,13 +227,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/260.png",
     "evolutions": [],
-    "abilities": ["Torrent"]
+    "abilities": [
+      "Torrent"
+    ]
   },
   {
     "id": 261,
     "dexNumber": 261,
     "name": "Medhyèna",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Ténèbres"
     ],
@@ -205,13 +253,19 @@
     "evolutions": [
       262
     ],
-    "abilities": ["Intimidation", "Fuite"]
+    "abilities": [
+      "Intimidation",
+      "Fuite"
+    ]
   },
   {
     "id": 262,
     "dexNumber": 262,
     "name": "Grahyèna",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Ténèbres"
     ],
@@ -224,13 +278,19 @@
     "captureRate": 127,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/262.png",
     "evolutions": [],
-    "abilities": ["Intimidation", "Fuite"]
+    "abilities": [
+      "Intimidation",
+      "Fuite"
+    ]
   },
   {
     "id": 263,
     "dexNumber": 263,
     "name": "Zigzaton",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -245,13 +305,19 @@
     "evolutions": [
       264
     ],
-    "abilities": ["Ramassage", "Gloutonnerie"]
+    "abilities": [
+      "Ramassage",
+      "Gloutonnerie"
+    ]
   },
   {
     "id": 264,
     "dexNumber": 264,
     "name": "Linéon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -266,13 +332,19 @@
     "evolutions": [
       862
     ],
-    "abilities": ["Ramassage", "Gloutonnerie"]
+    "abilities": [
+      "Ramassage",
+      "Gloutonnerie"
+    ]
   },
   {
     "id": 265,
     "dexNumber": 265,
     "name": "Chenipotte",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte"
     ],
@@ -288,13 +360,18 @@
       266,
       268
     ],
-    "abilities": ["Écran Poudre"]
+    "abilities": [
+      "Écran Poudre"
+    ]
   },
   {
     "id": 266,
     "dexNumber": 266,
     "name": "Armulys",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte"
     ],
@@ -309,13 +386,18 @@
     "evolutions": [
       267
     ],
-    "abilities": ["Mue"]
+    "abilities": [
+      "Mue"
+    ]
   },
   {
     "id": 267,
     "dexNumber": 267,
     "name": "Charmillon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Vol"
@@ -329,13 +411,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/267.png",
     "evolutions": [],
-    "abilities": ["Œil Composé"]
+    "abilities": [
+      "Œil Composé"
+    ]
   },
   {
     "id": 268,
     "dexNumber": 268,
     "name": "Blindalys",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte"
     ],
@@ -350,13 +437,18 @@
     "evolutions": [
       269
     ],
-    "abilities": ["Mue"]
+    "abilities": [
+      "Mue"
+    ]
   },
   {
     "id": 269,
     "dexNumber": 269,
     "name": "Papinox",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Poison"
@@ -370,13 +462,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/269.png",
     "evolutions": [],
-    "abilities": ["Écran Poudre"]
+    "abilities": [
+      "Écran Poudre"
+    ]
   },
   {
     "id": 270,
     "dexNumber": 270,
     "name": "Nénupiot",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Plante"
@@ -392,13 +489,19 @@
     "evolutions": [
       271
     ],
-    "abilities": ["Glissade", "Cuvette"]
+    "abilities": [
+      "Glissade",
+      "Cuvette"
+    ]
   },
   {
     "id": 271,
     "dexNumber": 271,
     "name": "Lombre",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Plante"
@@ -414,13 +517,19 @@
     "evolutions": [
       272
     ],
-    "abilities": ["Glissade", "Cuvette"]
+    "abilities": [
+      "Glissade",
+      "Cuvette"
+    ]
   },
   {
     "id": 272,
     "dexNumber": 272,
     "name": "Ludicolo",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Plante"
@@ -434,13 +543,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/272.png",
     "evolutions": [],
-    "abilities": ["Glissade", "Cuvette"]
+    "abilities": [
+      "Glissade",
+      "Cuvette"
+    ]
   },
   {
     "id": 273,
     "dexNumber": 273,
     "name": "Grainipiot",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante"
     ],
@@ -455,13 +570,18 @@
     "evolutions": [
       274
     ],
-    "abilities": ["Chlorophylle"]
+    "abilities": [
+      "Chlorophylle"
+    ]
   },
   {
     "id": 274,
     "dexNumber": 274,
     "name": "Pifeuil",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante",
       "Ténèbres"
@@ -477,13 +597,18 @@
     "evolutions": [
       275
     ],
-    "abilities": ["Chlorophylle"]
+    "abilities": [
+      "Chlorophylle"
+    ]
   },
   {
     "id": 275,
     "dexNumber": 275,
     "name": "Tengalice",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante",
       "Ténèbres"
@@ -497,13 +622,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/275.png",
     "evolutions": [],
-    "abilities": ["Chlorophylle"]
+    "abilities": [
+      "Chlorophylle"
+    ]
   },
   {
     "id": 276,
     "dexNumber": 276,
     "name": "Nirondelle",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal",
       "Vol"
@@ -519,13 +649,18 @@
     "evolutions": [
       277
     ],
-    "abilities": ["Cran"]
+    "abilities": [
+      "Cran"
+    ]
   },
   {
     "id": 277,
     "dexNumber": 277,
     "name": "Hélédelle",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal",
       "Vol"
@@ -539,13 +674,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/277.png",
     "evolutions": [],
-    "abilities": ["Cran"]
+    "abilities": [
+      "Cran"
+    ]
   },
   {
     "id": 278,
     "dexNumber": 278,
     "name": "Goélise",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Vol"
@@ -561,13 +701,18 @@
     "evolutions": [
       279
     ],
-    "abilities": ["Regard Vif"]
+    "abilities": [
+      "Regard Vif"
+    ]
   },
   {
     "id": 279,
     "dexNumber": 279,
     "name": "Bekipan",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Vol"
@@ -581,13 +726,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/279.png",
     "evolutions": [],
-    "abilities": ["Regard Vif"]
+    "abilities": [
+      "Regard Vif"
+    ]
   },
   {
     "id": 280,
     "dexNumber": 280,
     "name": "Tarsal",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy",
       "Fée"
@@ -603,13 +753,19 @@
     "evolutions": [
       281
     ],
-    "abilities": ["Synchro", "Calque"]
+    "abilities": [
+      "Synchro",
+      "Calque"
+    ]
   },
   {
     "id": 281,
     "dexNumber": 281,
     "name": "Kirlia",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy",
       "Fée"
@@ -626,13 +782,19 @@
       282,
       475
     ],
-    "abilities": ["Synchro", "Calque"]
+    "abilities": [
+      "Synchro",
+      "Calque"
+    ]
   },
   {
     "id": 282,
     "dexNumber": 282,
     "name": "Gardevoir",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy",
       "Fée"
@@ -646,13 +808,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png",
     "evolutions": [],
-    "abilities": ["Synchro", "Calque"]
+    "abilities": [
+      "Synchro",
+      "Calque"
+    ]
   },
   {
     "id": 283,
     "dexNumber": 283,
     "name": "Arakdo",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Eau"
@@ -668,13 +836,18 @@
     "evolutions": [
       284
     ],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 284,
     "dexNumber": 284,
     "name": "Maskadra",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Vol"
@@ -688,13 +861,18 @@
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/284.png",
     "evolutions": [],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 285,
     "dexNumber": 285,
     "name": "Balignon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante"
     ],
@@ -709,13 +887,18 @@
     "evolutions": [
       286
     ],
-    "abilities": ["Pose Spore"]
+    "abilities": [
+      "Pose Spore"
+    ]
   },
   {
     "id": 286,
     "dexNumber": 286,
     "name": "Chapignon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante",
       "Combat"
@@ -729,13 +912,18 @@
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/286.png",
     "evolutions": [],
-    "abilities": ["Pose Spore"]
+    "abilities": [
+      "Pose Spore"
+    ]
   },
   {
     "id": 287,
     "dexNumber": 287,
     "name": "Parecool",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -750,13 +938,18 @@
     "evolutions": [
       288
     ],
-    "abilities": ["Absentéisme"]
+    "abilities": [
+      "Absentéisme"
+    ]
   },
   {
     "id": 288,
     "dexNumber": 288,
     "name": "Vigoroth",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -771,13 +964,18 @@
     "evolutions": [
       289
     ],
-    "abilities": ["Absentéisme"]
+    "abilities": [
+      "Absentéisme"
+    ]
   },
   {
     "id": 289,
     "dexNumber": 289,
     "name": "Monaflèmit",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -790,13 +988,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/289.png",
     "evolutions": [],
-    "abilities": ["Absentéisme"]
+    "abilities": [
+      "Absentéisme"
+    ]
   },
   {
     "id": 290,
     "dexNumber": 290,
     "name": "Ningale",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Sol"
@@ -813,13 +1016,18 @@
       291,
       292
     ],
-    "abilities": ["Œil Composé"]
+    "abilities": [
+      "Œil Composé"
+    ]
   },
   {
     "id": 291,
     "dexNumber": 291,
     "name": "Ninjask",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Vol"
@@ -833,13 +1041,18 @@
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/291.png",
     "evolutions": [],
-    "abilities": ["Turbo"]
+    "abilities": [
+      "Turbo"
+    ]
   },
   {
     "id": 292,
     "dexNumber": 292,
     "name": "Munja",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte",
       "Spectre"
@@ -853,13 +1066,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/292.png",
     "evolutions": [],
-    "abilities": ["Garde Mystik"]
+    "abilities": [
+      "Garde Mystik"
+    ]
   },
   {
     "id": 293,
     "dexNumber": 293,
     "name": "Chuchmur",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -874,13 +1092,18 @@
     "evolutions": [
       294
     ],
-    "abilities": ["Anti-Bruit"]
+    "abilities": [
+      "Anti-Bruit"
+    ]
   },
   {
     "id": 294,
     "dexNumber": 294,
     "name": "Ramboum",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -895,13 +1118,18 @@
     "evolutions": [
       295
     ],
-    "abilities": ["Anti-Bruit"]
+    "abilities": [
+      "Anti-Bruit"
+    ]
   },
   {
     "id": 295,
     "dexNumber": 295,
     "name": "Brouhabam",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -914,13 +1142,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/295.png",
     "evolutions": [],
-    "abilities": ["Anti-Bruit"]
+    "abilities": [
+      "Anti-Bruit"
+    ]
   },
   {
     "id": 296,
     "dexNumber": 296,
     "name": "Makuhita",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Combat"
     ],
@@ -935,13 +1168,19 @@
     "evolutions": [
       297
     ],
-    "abilities": ["Isograisse", "Cran"]
+    "abilities": [
+      "Isograisse",
+      "Cran"
+    ]
   },
   {
     "id": 297,
     "dexNumber": 297,
     "name": "Hariyama",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Combat"
     ],
@@ -954,13 +1193,19 @@
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/297.png",
     "evolutions": [],
-    "abilities": ["Isograisse", "Cran"]
+    "abilities": [
+      "Isograisse",
+      "Cran"
+    ]
   },
   {
     "id": 298,
     "dexNumber": 298,
     "name": "Azurill",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal",
       "Fée"
@@ -976,13 +1221,19 @@
     "evolutions": [
       183
     ],
-    "abilities": ["Isograisse", "Coloforce"]
+    "abilities": [
+      "Isograisse",
+      "Coloforce"
+    ]
   },
   {
     "id": 299,
     "dexNumber": 299,
     "name": "Tarinor",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche"
     ],
@@ -997,13 +1248,19 @@
     "evolutions": [
       476
     ],
-    "abilities": ["Fermeté", "Magnépiège"]
+    "abilities": [
+      "Fermeté",
+      "Magnépiège"
+    ]
   },
   {
     "id": 300,
     "dexNumber": 300,
     "name": "Skitty",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -1018,13 +1275,18 @@
     "evolutions": [
       301
     ],
-    "abilities": ["Joli Sourire"]
+    "abilities": [
+      "Joli Sourire"
+    ]
   },
   {
     "id": 301,
     "dexNumber": 301,
     "name": "Delcatty",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -1037,13 +1299,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/301.png",
     "evolutions": [],
-    "abilities": ["Joli Sourire"]
+    "abilities": [
+      "Joli Sourire"
+    ]
   },
   {
     "id": 302,
     "dexNumber": 302,
     "name": "Ténéfix",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Ténèbres",
       "Spectre"
@@ -1057,13 +1324,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/302.png",
     "evolutions": [],
-    "abilities": ["Regard Vif"]
+    "abilities": [
+      "Regard Vif"
+    ]
   },
   {
     "id": 303,
     "dexNumber": 303,
     "name": "Mysdibule",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Fée"
@@ -1077,13 +1349,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/303.png",
     "evolutions": [],
-    "abilities": ["Hyper Cutter", "Intimidation"]
+    "abilities": [
+      "Hyper Cutter",
+      "Intimidation"
+    ]
   },
   {
     "id": 304,
     "dexNumber": 304,
     "name": "Galekid",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Roche"
@@ -1099,13 +1377,19 @@
     "evolutions": [
       305
     ],
-    "abilities": ["Tête de Roc", "Fermeté"]
+    "abilities": [
+      "Tête de Roc",
+      "Fermeté"
+    ]
   },
   {
     "id": 305,
     "dexNumber": 305,
     "name": "Galegon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Roche"
@@ -1121,13 +1405,19 @@
     "evolutions": [
       306
     ],
-    "abilities": ["Tête de Roc", "Fermeté"]
+    "abilities": [
+      "Tête de Roc",
+      "Fermeté"
+    ]
   },
   {
     "id": 306,
     "dexNumber": 306,
     "name": "Galeking",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Roche"
@@ -1141,13 +1431,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/306.png",
     "evolutions": [],
-    "abilities": ["Tête de Roc", "Fermeté"]
+    "abilities": [
+      "Tête de Roc",
+      "Fermeté"
+    ]
   },
   {
     "id": 307,
     "dexNumber": 307,
     "name": "Méditikka",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Combat",
       "Psy"
@@ -1163,13 +1459,19 @@
     "evolutions": [
       308
     ],
-    "abilities": ["Attention", "Synchro"]
+    "abilities": [
+      "Attention",
+      "Synchro"
+    ]
   },
   {
     "id": 308,
     "dexNumber": 308,
     "name": "Charmina",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Combat",
       "Psy"
@@ -1183,13 +1485,19 @@
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/308.png",
     "evolutions": [],
-    "abilities": ["Attention", "Synchro"]
+    "abilities": [
+      "Attention",
+      "Synchro"
+    ]
   },
   {
     "id": 309,
     "dexNumber": 309,
     "name": "Dynavolt",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Électrik"
     ],
@@ -1204,13 +1512,19 @@
     "evolutions": [
       310
     ],
-    "abilities": ["Statik", "Paratonnerre"]
+    "abilities": [
+      "Statik",
+      "Paratonnerre"
+    ]
   },
   {
     "id": 310,
     "dexNumber": 310,
     "name": "Élecsprint",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Électrik"
     ],
@@ -1223,13 +1537,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/310.png",
     "evolutions": [],
-    "abilities": ["Statik", "Paratonnerre"]
+    "abilities": [
+      "Statik",
+      "Paratonnerre"
+    ]
   },
   {
     "id": 311,
     "dexNumber": 311,
     "name": "Posipi",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Électrik"
     ],
@@ -1242,13 +1562,18 @@
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/311.png",
     "evolutions": [],
-    "abilities": ["Plus"]
+    "abilities": [
+      "Plus"
+    ]
   },
   {
     "id": 312,
     "dexNumber": 312,
     "name": "Négapi",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Électrik"
     ],
@@ -1261,13 +1586,18 @@
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/312.png",
     "evolutions": [],
-    "abilities": ["Minus"]
+    "abilities": [
+      "Minus"
+    ]
   },
   {
     "id": 313,
     "dexNumber": 313,
     "name": "Muciole",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte"
     ],
@@ -1280,13 +1610,18 @@
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/313.png",
     "evolutions": [],
-    "abilities": ["Lumiattirance"]
+    "abilities": [
+      "Lumiattirance"
+    ]
   },
   {
     "id": 314,
     "dexNumber": 314,
     "name": "Lumivole",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Insecte"
     ],
@@ -1299,13 +1634,18 @@
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/314.png",
     "evolutions": [],
-    "abilities": ["Lumiattirance"]
+    "abilities": [
+      "Lumiattirance"
+    ]
   },
   {
     "id": 315,
     "dexNumber": 315,
     "name": "Rosélia",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante",
       "Poison"
@@ -1321,13 +1661,19 @@
     "evolutions": [
       407
     ],
-    "abilities": ["Médic Nature", "Point Poison"]
+    "abilities": [
+      "Médic Nature",
+      "Point Poison"
+    ]
   },
   {
     "id": 316,
     "dexNumber": 316,
     "name": "Gloupti",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Poison"
     ],
@@ -1342,13 +1688,19 @@
     "evolutions": [
       317
     ],
-    "abilities": ["Glue", "Liquide Suintant"]
+    "abilities": [
+      "Glue",
+      "Liquide Suintant"
+    ]
   },
   {
     "id": 317,
     "dexNumber": 317,
     "name": "Avaltout",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Poison"
     ],
@@ -1361,13 +1713,19 @@
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/317.png",
     "evolutions": [],
-    "abilities": ["Glue", "Liquide Suintant"]
+    "abilities": [
+      "Glue",
+      "Liquide Suintant"
+    ]
   },
   {
     "id": 318,
     "dexNumber": 318,
     "name": "Carvanha",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Ténèbres"
@@ -1383,13 +1741,18 @@
     "evolutions": [
       319
     ],
-    "abilities": ["Peau Dure"]
+    "abilities": [
+      "Peau Dure"
+    ]
   },
   {
     "id": 319,
     "dexNumber": 319,
     "name": "Sharpedo",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Ténèbres"
@@ -1403,13 +1766,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/319.png",
     "evolutions": [],
-    "abilities": ["Peau Dure"]
+    "abilities": [
+      "Peau Dure"
+    ]
   },
   {
     "id": 320,
     "dexNumber": 320,
     "name": "Wailmer",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -1424,13 +1792,18 @@
     "evolutions": [
       321
     ],
-    "abilities": ["Ignifu-Voile"]
+    "abilities": [
+      "Ignifu-Voile"
+    ]
   },
   {
     "id": 321,
     "dexNumber": 321,
     "name": "Wailord",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -1443,13 +1816,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/321.png",
     "evolutions": [],
-    "abilities": ["Ignifu-Voile"]
+    "abilities": [
+      "Ignifu-Voile"
+    ]
   },
   {
     "id": 322,
     "dexNumber": 322,
     "name": "Chamallot",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Feu",
       "Sol"
@@ -1465,13 +1843,19 @@
     "evolutions": [
       323
     ],
-    "abilities": ["Benêt", "Torche"]
+    "abilities": [
+      "Benêt",
+      "Torche"
+    ]
   },
   {
     "id": 323,
     "dexNumber": 323,
     "name": "Camérupt",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Feu",
       "Sol"
@@ -1485,13 +1869,19 @@
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/323.png",
     "evolutions": [],
-    "abilities": ["Benêt", "Torche"]
+    "abilities": [
+      "Benêt",
+      "Torche"
+    ]
   },
   {
     "id": 324,
     "dexNumber": 324,
     "name": "Chartor",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Feu"
     ],
@@ -1504,13 +1894,18 @@
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/324.png",
     "evolutions": [],
-    "abilities": ["Sécheresse"]
+    "abilities": [
+      "Sécheresse"
+    ]
   },
   {
     "id": 325,
     "dexNumber": 325,
     "name": "Spoink",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy"
     ],
@@ -1525,13 +1920,19 @@
     "evolutions": [
       326
     ],
-    "abilities": ["Isograisse", "Tempo Perso"]
+    "abilities": [
+      "Isograisse",
+      "Tempo Perso"
+    ]
   },
   {
     "id": 326,
     "dexNumber": 326,
     "name": "Groret",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy"
     ],
@@ -1544,13 +1945,19 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/326.png",
     "evolutions": [],
-    "abilities": ["Isograisse", "Tempo Perso"]
+    "abilities": [
+      "Isograisse",
+      "Tempo Perso"
+    ]
   },
   {
     "id": 327,
     "dexNumber": 327,
     "name": "Spinda",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -1563,13 +1970,18 @@
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/327.png",
     "evolutions": [],
-    "abilities": ["Tempo Perso"]
+    "abilities": [
+      "Tempo Perso"
+    ]
   },
   {
     "id": 328,
     "dexNumber": 328,
     "name": "Kraknoix",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Sol"
     ],
@@ -1584,13 +1996,19 @@
     "evolutions": [
       329
     ],
-    "abilities": ["Hyper Cutter", "Voile Sable"]
+    "abilities": [
+      "Hyper Cutter",
+      "Voile Sable"
+    ]
   },
   {
     "id": 329,
     "dexNumber": 329,
     "name": "Vibraninf",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Sol",
       "Dragon"
@@ -1606,13 +2024,19 @@
     "evolutions": [
       330
     ],
-    "abilities": ["Hyper Cutter", "Voile Sable"]
+    "abilities": [
+      "Hyper Cutter",
+      "Voile Sable"
+    ]
   },
   {
     "id": 330,
     "dexNumber": 330,
     "name": "Libégon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Sol",
       "Dragon"
@@ -1626,13 +2050,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/330.png",
     "evolutions": [],
-    "abilities": ["Hyper Cutter", "Voile Sable"]
+    "abilities": [
+      "Hyper Cutter",
+      "Voile Sable"
+    ]
   },
   {
     "id": 331,
     "dexNumber": 331,
     "name": "Cacnea",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante"
     ],
@@ -1647,13 +2077,18 @@
     "evolutions": [
       332
     ],
-    "abilities": ["Voile Sable"]
+    "abilities": [
+      "Voile Sable"
+    ]
   },
   {
     "id": 332,
     "dexNumber": 332,
     "name": "Cacturne",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante",
       "Ténèbres"
@@ -1667,13 +2102,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/332.png",
     "evolutions": [],
-    "abilities": ["Voile Sable"]
+    "abilities": [
+      "Voile Sable"
+    ]
   },
   {
     "id": 333,
     "dexNumber": 333,
     "name": "Tylton",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal",
       "Vol"
@@ -1689,13 +2129,18 @@
     "evolutions": [
       334
     ],
-    "abilities": ["Médic Nature"]
+    "abilities": [
+      "Médic Nature"
+    ]
   },
   {
     "id": 334,
     "dexNumber": 334,
     "name": "Altaria",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon",
       "Vol"
@@ -1709,13 +2154,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/334.png",
     "evolutions": [],
-    "abilities": ["Médic Nature"]
+    "abilities": [
+      "Médic Nature"
+    ]
   },
   {
     "id": 335,
     "dexNumber": 335,
     "name": "Mangriff",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -1728,13 +2178,18 @@
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/335.png",
     "evolutions": [],
-    "abilities": ["Immunité"]
+    "abilities": [
+      "Immunité"
+    ]
   },
   {
     "id": 336,
     "dexNumber": 336,
     "name": "Séviper",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Poison"
     ],
@@ -1747,13 +2202,18 @@
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/336.png",
     "evolutions": [],
-    "abilities": ["Mue"]
+    "abilities": [
+      "Mue"
+    ]
   },
   {
     "id": 337,
     "dexNumber": 337,
     "name": "Séléroc",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche",
       "Psy"
@@ -1767,13 +2227,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/337.png",
     "evolutions": [],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 338,
     "dexNumber": 338,
     "name": "Solaroc",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche",
       "Psy"
@@ -1787,13 +2252,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/338.png",
     "evolutions": [],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 339,
     "dexNumber": 339,
     "name": "Barloche",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Sol"
@@ -1809,13 +2279,19 @@
     "evolutions": [
       340
     ],
-    "abilities": ["Glissade", "Anticipation"]
+    "abilities": [
+      "Glissade",
+      "Anticipation"
+    ]
   },
   {
     "id": 340,
     "dexNumber": 340,
     "name": "Barbicha",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Sol"
@@ -1829,13 +2305,19 @@
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/340.png",
     "evolutions": [],
-    "abilities": ["Glissade", "Anticipation"]
+    "abilities": [
+      "Glissade",
+      "Anticipation"
+    ]
   },
   {
     "id": 341,
     "dexNumber": 341,
     "name": "Écrapince",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -1850,13 +2332,19 @@
     "evolutions": [
       342
     ],
-    "abilities": ["Hyper Cutter", "Coque Armure"]
+    "abilities": [
+      "Hyper Cutter",
+      "Coque Armure"
+    ]
   },
   {
     "id": 342,
     "dexNumber": 342,
     "name": "Colhomard",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Ténèbres"
@@ -1870,13 +2358,19 @@
     "captureRate": 155,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/342.png",
     "evolutions": [],
-    "abilities": ["Hyper Cutter", "Coque Armure"]
+    "abilities": [
+      "Hyper Cutter",
+      "Coque Armure"
+    ]
   },
   {
     "id": 343,
     "dexNumber": 343,
     "name": "Balbuto",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Sol",
       "Psy"
@@ -1892,13 +2386,18 @@
     "evolutions": [
       344
     ],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 344,
     "dexNumber": 344,
     "name": "Kaorine",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Sol",
       "Psy"
@@ -1912,13 +2411,18 @@
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/344.png",
     "evolutions": [],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 345,
     "dexNumber": 345,
     "name": "Lilia",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche",
       "Plante"
@@ -1934,13 +2438,18 @@
     "evolutions": [
       346
     ],
-    "abilities": ["Ventouse"]
+    "abilities": [
+      "Ventouse"
+    ]
   },
   {
     "id": 346,
     "dexNumber": 346,
     "name": "Vacilys",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche",
       "Plante"
@@ -1954,13 +2463,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/346.png",
     "evolutions": [],
-    "abilities": ["Ventouse"]
+    "abilities": [
+      "Ventouse"
+    ]
   },
   {
     "id": 347,
     "dexNumber": 347,
     "name": "Anorith",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche",
       "Insecte"
@@ -1976,13 +2490,18 @@
     "evolutions": [
       348
     ],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 348,
     "dexNumber": 348,
     "name": "Armaldo",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche",
       "Insecte"
@@ -1996,13 +2515,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/348.png",
     "evolutions": [],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 349,
     "dexNumber": 349,
     "name": "Barpau",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2017,13 +2541,18 @@
     "evolutions": [
       350
     ],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 350,
     "dexNumber": 350,
     "name": "Milobellus",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2036,13 +2565,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/350.png",
     "evolutions": [],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 351,
     "dexNumber": 351,
     "name": "Morphéo",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -2055,13 +2589,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/351.png",
     "evolutions": [],
-    "abilities": ["Météo"]
+    "abilities": [
+      "Météo"
+    ]
   },
   {
     "id": 352,
     "dexNumber": 352,
     "name": "Kecleon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Normal"
     ],
@@ -2074,13 +2613,18 @@
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/352.png",
     "evolutions": [],
-    "abilities": ["Changement de Couleur"]
+    "abilities": [
+      "Changement de Couleur"
+    ]
   },
   {
     "id": 353,
     "dexNumber": 353,
     "name": "Polichombr",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Spectre"
     ],
@@ -2095,13 +2639,19 @@
     "evolutions": [
       354
     ],
-    "abilities": ["Insomnie", "Fouille"]
+    "abilities": [
+      "Insomnie",
+      "Fouille"
+    ]
   },
   {
     "id": 354,
     "dexNumber": 354,
     "name": "Branette",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Spectre"
     ],
@@ -2114,13 +2664,19 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/354.png",
     "evolutions": [],
-    "abilities": ["Insomnie", "Fouille"]
+    "abilities": [
+      "Insomnie",
+      "Fouille"
+    ]
   },
   {
     "id": 355,
     "dexNumber": 355,
     "name": "Skelénox",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Spectre"
     ],
@@ -2135,13 +2691,18 @@
     "evolutions": [
       356
     ],
-    "abilities": ["Pression"]
+    "abilities": [
+      "Pression"
+    ]
   },
   {
     "id": 356,
     "dexNumber": 356,
     "name": "Téraclope",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Spectre"
     ],
@@ -2156,13 +2717,18 @@
     "evolutions": [
       477
     ],
-    "abilities": ["Pression"]
+    "abilities": [
+      "Pression"
+    ]
   },
   {
     "id": 357,
     "dexNumber": 357,
     "name": "Tropius",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Plante",
       "Vol"
@@ -2176,13 +2742,18 @@
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/357.png",
     "evolutions": [],
-    "abilities": ["Chlorophylle"]
+    "abilities": [
+      "Chlorophylle"
+    ]
   },
   {
     "id": 358,
     "dexNumber": 358,
     "name": "Éoko",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy"
     ],
@@ -2195,13 +2766,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/358.png",
     "evolutions": [],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 359,
     "dexNumber": 359,
     "name": "Absol",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Ténèbres"
     ],
@@ -2214,13 +2790,18 @@
     "captureRate": 30,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/359.png",
     "evolutions": [],
-    "abilities": ["Pression"]
+    "abilities": [
+      "Pression"
+    ]
   },
   {
     "id": 360,
     "dexNumber": 360,
     "name": "Okéoké",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy"
     ],
@@ -2235,13 +2816,18 @@
     "evolutions": [
       202
     ],
-    "abilities": ["Marque Ombre"]
+    "abilities": [
+      "Marque Ombre"
+    ]
   },
   {
     "id": 361,
     "dexNumber": 361,
     "name": "Stalgamin",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Glace"
     ],
@@ -2257,13 +2843,18 @@
       362,
       478
     ],
-    "abilities": ["Attention"]
+    "abilities": [
+      "Attention"
+    ]
   },
   {
     "id": 362,
     "dexNumber": 362,
     "name": "Oniglali",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Glace"
     ],
@@ -2276,13 +2867,18 @@
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/362.png",
     "evolutions": [],
-    "abilities": ["Attention"]
+    "abilities": [
+      "Attention"
+    ]
   },
   {
     "id": 363,
     "dexNumber": 363,
     "name": "Obalie",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Glace",
       "Eau"
@@ -2298,13 +2894,18 @@
     "evolutions": [
       364
     ],
-    "abilities": ["Isograisse"]
+    "abilities": [
+      "Isograisse"
+    ]
   },
   {
     "id": 364,
     "dexNumber": 364,
     "name": "Phogleur",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Glace",
       "Eau"
@@ -2320,13 +2921,18 @@
     "evolutions": [
       365
     ],
-    "abilities": ["Isograisse"]
+    "abilities": [
+      "Isograisse"
+    ]
   },
   {
     "id": 365,
     "dexNumber": 365,
     "name": "Kaimorse",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Glace",
       "Eau"
@@ -2340,13 +2946,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/365.png",
     "evolutions": [],
-    "abilities": ["Isograisse"]
+    "abilities": [
+      "Isograisse"
+    ]
   },
   {
     "id": 366,
     "dexNumber": 366,
     "name": "Coquiperl",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2362,13 +2973,18 @@
       367,
       368
     ],
-    "abilities": ["Coque Armure"]
+    "abilities": [
+      "Coque Armure"
+    ]
   },
   {
     "id": 367,
     "dexNumber": 367,
     "name": "Serpang",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2381,13 +2997,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/367.png",
     "evolutions": [],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 368,
     "dexNumber": 368,
     "name": "Rosabyss",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2400,13 +3021,18 @@
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/368.png",
     "evolutions": [],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 369,
     "dexNumber": 369,
     "name": "Relicanth",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau",
       "Roche"
@@ -2420,13 +3046,18 @@
     "captureRate": 25,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/369.png",
     "evolutions": [],
-    "abilities": ["Tête de Roc"]
+    "abilities": [
+      "Tête de Roc"
+    ]
   },
   {
     "id": 370,
     "dexNumber": 370,
     "name": "Lovdisc",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2439,13 +3070,18 @@
     "captureRate": 225,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/370.png",
     "evolutions": [],
-    "abilities": ["Glissade"]
+    "abilities": [
+      "Glissade"
+    ]
   },
   {
     "id": 371,
     "dexNumber": 371,
     "name": "Draby",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon"
     ],
@@ -2460,13 +3096,18 @@
     "evolutions": [
       372
     ],
-    "abilities": ["Intimidation"]
+    "abilities": [
+      "Intimidation"
+    ]
   },
   {
     "id": 372,
     "dexNumber": 372,
     "name": "Drackhaus",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon"
     ],
@@ -2481,13 +3122,18 @@
     "evolutions": [
       373
     ],
-    "abilities": ["Intimidation"]
+    "abilities": [
+      "Intimidation"
+    ]
   },
   {
     "id": 373,
     "dexNumber": 373,
     "name": "Drattak",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon",
       "Vol"
@@ -2501,13 +3147,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png",
     "evolutions": [],
-    "abilities": ["Intimidation"]
+    "abilities": [
+      "Intimidation"
+    ]
   },
   {
     "id": 374,
     "dexNumber": 374,
     "name": "Terhal",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Psy"
@@ -2523,13 +3174,18 @@
     "evolutions": [
       375
     ],
-    "abilities": ["Corps Sain"]
+    "abilities": [
+      "Corps Sain"
+    ]
   },
   {
     "id": 375,
     "dexNumber": 375,
     "name": "Métang",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Psy"
@@ -2545,13 +3201,18 @@
     "evolutions": [
       376
     ],
-    "abilities": ["Corps Sain"]
+    "abilities": [
+      "Corps Sain"
+    ]
   },
   {
     "id": 376,
     "dexNumber": 376,
     "name": "Métalosse",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Psy"
@@ -2565,13 +3226,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png",
     "evolutions": [],
-    "abilities": ["Corps Sain"]
+    "abilities": [
+      "Corps Sain"
+    ]
   },
   {
     "id": 377,
     "dexNumber": 377,
     "name": "Regirock",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Roche"
     ],
@@ -2584,13 +3250,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/377.png",
     "evolutions": [],
-    "abilities": ["Corps Sain"]
+    "abilities": [
+      "Corps Sain"
+    ]
   },
   {
     "id": 378,
     "dexNumber": 378,
     "name": "Regice",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Glace"
     ],
@@ -2603,13 +3274,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/378.png",
     "evolutions": [],
-    "abilities": ["Corps Sain"]
+    "abilities": [
+      "Corps Sain"
+    ]
   },
   {
     "id": 379,
     "dexNumber": 379,
     "name": "Registeel",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier"
     ],
@@ -2622,13 +3298,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/379.png",
     "evolutions": [],
-    "abilities": ["Corps Sain"]
+    "abilities": [
+      "Corps Sain"
+    ]
   },
   {
     "id": 380,
     "dexNumber": 380,
     "name": "Latias",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon",
       "Psy"
@@ -2642,13 +3323,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/380.png",
     "evolutions": [],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 381,
     "dexNumber": 381,
     "name": "Latios",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon",
       "Psy"
@@ -2662,13 +3348,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/381.png",
     "evolutions": [],
-    "abilities": ["Lévitation"]
+    "abilities": [
+      "Lévitation"
+    ]
   },
   {
     "id": 382,
     "dexNumber": 382,
     "name": "Kyogre",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Eau"
     ],
@@ -2681,13 +3372,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png",
     "evolutions": [],
-    "abilities": ["Crachin"]
+    "abilities": [
+      "Crachin"
+    ]
   },
   {
     "id": 383,
     "dexNumber": 383,
     "name": "Groudon",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Sol"
     ],
@@ -2700,13 +3396,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png",
     "evolutions": [],
-    "abilities": ["Sécheresse"]
+    "abilities": [
+      "Sécheresse"
+    ]
   },
   {
     "id": 384,
     "dexNumber": 384,
     "name": "Rayquaza",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Dragon",
       "Vol"
@@ -2720,13 +3421,18 @@
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
     "evolutions": [],
-    "abilities": ["Air Lock"]
+    "abilities": [
+      "Air Lock"
+    ]
   },
   {
     "id": 385,
     "dexNumber": 385,
     "name": "Jirachi",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Acier",
       "Psy"
@@ -2740,13 +3446,18 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/385.png",
     "evolutions": [],
-    "abilities": ["Sérénité"]
+    "abilities": [
+      "Sérénité"
+    ]
   },
   {
     "id": 386,
     "dexNumber": 386,
     "name": "Deoxys",
     "generation": 3,
+    "gameGroups": [
+      "Pokemon Rubis / Saphir / Émeraude"
+    ],
     "types": [
       "Psy"
     ],
@@ -2759,6 +3470,8 @@
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/386.png",
     "evolutions": [],
-    "abilities": ["Pression"]
+    "abilities": [
+      "Pression"
+    ]
   }
 ]

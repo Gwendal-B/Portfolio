@@ -5,7 +5,8 @@ export type GameGeneration = 1 | 2 | 3;
 export type GameGroup =
   | "Pokemon Rouge / Bleu / Jaune"
   | "Pokemon Or / Argent / Cristal"
-  | "Pokemon Rubis / Saphir / Émeraude";
+  | "Pokemon Rubis / Saphir / Émeraude"
+  | "Pokemon Rouge Feu / Vert Feuille";
 
 export interface Player {
   id: string;

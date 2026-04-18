@@ -1,10 +1,17 @@
+import type { GameGroup } from "./run";
+
 export interface PokemonStats {
   hp: number;
   attack: number;
   defense: number;
-  specialAttack: number;
-  specialDefense: number;
   speed: number;
+
+  // Gen 1
+  special?: number;
+
+  // Gen 2+
+  specialAttack?: number;
+  specialDefense?: number;
 }
 
 export interface Pokemon {
@@ -12,6 +19,7 @@ export interface Pokemon {
   dexNumber: number;
   name: string;
   generation: number;
+  gameGroups: GameGroup[];
   types: string[];
   stats: PokemonStats;
   captureRate: number;

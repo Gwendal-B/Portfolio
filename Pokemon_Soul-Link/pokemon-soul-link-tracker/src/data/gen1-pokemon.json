@@ -4,30 +4,67 @@
     "dexNumber": 1,
     "name": "Bulbizarre",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 45, "attack": 49, "defense": 49, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "speed": 45
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-    "evolutions": [2]
+    "evolutions": [
+      2
+    ]
   },
   {
     "id": 2,
     "dexNumber": 2,
     "name": "Herbizarre",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 60, "attack": 62, "defense": 63, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 62,
+      "defense": 63,
+      "speed": 60
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
-    "evolutions": [3]
+    "evolutions": [
+      3
+    ]
   },
   {
     "id": 3,
     "dexNumber": 3,
     "name": "Florizarre",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 80, "attack": 82, "defense": 83, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 82,
+      "defense": 83,
+      "speed": 80
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
     "evolutions": []
@@ -37,30 +74,65 @@
     "dexNumber": 4,
     "name": "Salamèche",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 39, "attack": 52, "defense": 43, "speed": 65 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "speed": 65
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-    "evolutions": [5]
+    "evolutions": [
+      5
+    ]
   },
   {
     "id": 5,
     "dexNumber": 5,
     "name": "Reptincel",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 58, "attack": 64, "defense": 58, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 58,
+      "attack": 64,
+      "defense": 58,
+      "speed": 80
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
-    "evolutions": [6]
+    "evolutions": [
+      6
+    ]
   },
   {
     "id": 6,
     "dexNumber": 6,
     "name": "Dracaufeu",
     "generation": 1,
-    "types": ["Feu", "Vol"],
-    "stats": { "hp": 78, "attack": 84, "defense": 78, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 78,
+      "attack": 84,
+      "defense": 78,
+      "speed": 100
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
     "evolutions": []
@@ -70,30 +142,64 @@
     "dexNumber": 7,
     "name": "Carapuce",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 44, "attack": 48, "defense": 65, "speed": 43 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 44,
+      "attack": 48,
+      "defense": 65,
+      "speed": 43
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
-    "evolutions": [8]
+    "evolutions": [
+      8
+    ]
   },
   {
     "id": 8,
     "dexNumber": 8,
     "name": "Carabaffe",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 59, "attack": 63, "defense": 80, "speed": 58 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 59,
+      "attack": 63,
+      "defense": 80,
+      "speed": 58
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
-    "evolutions": [9]
+    "evolutions": [
+      9
+    ]
   },
   {
     "id": 9,
     "dexNumber": 9,
     "name": "Tortank",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 79, "attack": 83, "defense": 100, "speed": 78 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 79,
+      "attack": 83,
+      "defense": 100,
+      "speed": 78
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
     "evolutions": []
@@ -103,30 +209,65 @@
     "dexNumber": 10,
     "name": "Chenipan",
     "generation": 1,
-    "types": ["Insecte"],
-    "stats": { "hp": 45, "attack": 30, "defense": 35, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 30,
+      "defense": 35,
+      "speed": 45
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
-    "evolutions": [11]
+    "evolutions": [
+      11
+    ]
   },
   {
     "id": 11,
     "dexNumber": 11,
     "name": "Chrysacier",
     "generation": 1,
-    "types": ["Insecte"],
-    "stats": { "hp": 50, "attack": 20, "defense": 55, "speed": 30 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 20,
+      "defense": 55,
+      "speed": 30
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
-    "evolutions": [12]
+    "evolutions": [
+      12
+    ]
   },
   {
     "id": 12,
     "dexNumber": 12,
     "name": "Papilusion",
     "generation": 1,
-    "types": ["Insecte", "Vol"],
-    "stats": { "hp": 60, "attack": 45, "defense": 50, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 45,
+      "defense": 50,
+      "speed": 70
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
     "evolutions": []
@@ -136,30 +277,67 @@
     "dexNumber": 13,
     "name": "Aspicot",
     "generation": 1,
-    "types": ["Insecte", "Poison"],
-    "stats": { "hp": 40, "attack": 35, "defense": 30, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 35,
+      "defense": 30,
+      "speed": 50
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png",
-    "evolutions": [14]
+    "evolutions": [
+      14
+    ]
   },
   {
     "id": 14,
     "dexNumber": 14,
     "name": "Coconfort",
     "generation": 1,
-    "types": ["Insecte", "Poison"],
-    "stats": { "hp": 45, "attack": 25, "defense": 50, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 25,
+      "defense": 50,
+      "speed": 35
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png",
-    "evolutions": [15]
+    "evolutions": [
+      15
+    ]
   },
   {
     "id": 15,
     "dexNumber": 15,
     "name": "Dardargnan",
     "generation": 1,
-    "types": ["Insecte", "Poison"],
-    "stats": { "hp": 65, "attack": 90, "defense": 40, "speed": 75 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 90,
+      "defense": 40,
+      "speed": 75
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png",
     "evolutions": []
@@ -169,30 +347,67 @@
     "dexNumber": 16,
     "name": "Roucool",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 40, "attack": 45, "defense": 40, "speed": 56 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 40,
+      "speed": 56
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png",
-    "evolutions": [17]
+    "evolutions": [
+      17
+    ]
   },
   {
     "id": 17,
     "dexNumber": 17,
     "name": "Roucoups",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 63, "attack": 60, "defense": 55, "speed": 71 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 63,
+      "attack": 60,
+      "defense": 55,
+      "speed": 71
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png",
-    "evolutions": [18]
+    "evolutions": [
+      18
+    ]
   },
   {
     "id": 18,
     "dexNumber": 18,
     "name": "Roucarnage",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 83, "attack": 80, "defense": 75, "speed": 101 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 83,
+      "attack": 80,
+      "defense": 75,
+      "speed": 101
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png",
     "evolutions": []
@@ -202,19 +417,41 @@
     "dexNumber": 19,
     "name": "Rattata",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 30, "attack": 56, "defense": 35, "speed": 72 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 56,
+      "defense": 35,
+      "speed": 72
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png",
-    "evolutions": [20]
+    "evolutions": [
+      20
+    ]
   },
   {
     "id": 20,
     "dexNumber": 20,
     "name": "Rattatac",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 55, "attack": 81, "defense": 60, "speed": 97 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 81,
+      "defense": 60,
+      "speed": 97
+    },
     "captureRate": 127,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png",
     "evolutions": []
@@ -224,19 +461,43 @@
     "dexNumber": 21,
     "name": "Piafabec",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 40, "attack": 60, "defense": 30, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 60,
+      "defense": 30,
+      "speed": 70
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png",
-    "evolutions": [22]
+    "evolutions": [
+      22
+    ]
   },
   {
     "id": 22,
     "dexNumber": 22,
     "name": "Rapasdepic",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 65, "attack": 90, "defense": 65, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 90,
+      "defense": 65,
+      "speed": 100
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png",
     "evolutions": []
@@ -246,19 +507,41 @@
     "dexNumber": 23,
     "name": "Abo",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 35, "attack": 60, "defense": 44, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 60,
+      "defense": 44,
+      "speed": 55
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png",
-    "evolutions": [24]
+    "evolutions": [
+      24
+    ]
   },
   {
     "id": 24,
     "dexNumber": 24,
     "name": "Arbok",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 60, "attack": 85, "defense": 69, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 85,
+      "defense": 69,
+      "speed": 80
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png",
     "evolutions": []
@@ -268,19 +551,41 @@
     "dexNumber": 25,
     "name": "Pikachu",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 35, "attack": 55, "defense": 40, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 55,
+      "defense": 40,
+      "speed": 90
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-    "evolutions": [26]
+    "evolutions": [
+      26
+    ]
   },
   {
     "id": 26,
     "dexNumber": 26,
     "name": "Raichu",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 60, "attack": 90, "defense": 55, "speed": 110 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 90,
+      "defense": 55,
+      "speed": 110
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png",
     "evolutions": []
@@ -290,19 +595,41 @@
     "dexNumber": 27,
     "name": "Sabelette",
     "generation": 1,
-    "types": ["Sol"],
-    "stats": { "hp": 50, "attack": 75, "defense": 85, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 75,
+      "defense": 85,
+      "speed": 40
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png",
-    "evolutions": [28]
+    "evolutions": [
+      28
+    ]
   },
   {
     "id": 28,
     "dexNumber": 28,
     "name": "Sablaireau",
     "generation": 1,
-    "types": ["Sol"],
-    "stats": { "hp": 75, "attack": 100, "defense": 110, "speed": 65 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 100,
+      "defense": 110,
+      "speed": 65
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png",
     "evolutions": []
@@ -312,30 +639,65 @@
     "dexNumber": 29,
     "name": "Nidoran♀",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 55, "attack": 47, "defense": 52, "speed": 41 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 47,
+      "defense": 52,
+      "speed": 41
+    },
     "captureRate": 235,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png",
-    "evolutions": [30]
+    "evolutions": [
+      30
+    ]
   },
   {
     "id": 30,
     "dexNumber": 30,
     "name": "Nidorina",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 70, "attack": 62, "defense": 67, "speed": 56 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 62,
+      "defense": 67,
+      "speed": 56
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png",
-    "evolutions": [31]
+    "evolutions": [
+      31
+    ]
   },
   {
     "id": 31,
     "dexNumber": 31,
     "name": "Nidoqueen",
     "generation": 1,
-    "types": ["Poison", "Sol"],
-    "stats": { "hp": 90, "attack": 92, "defense": 87, "speed": 76 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 92,
+      "defense": 87,
+      "speed": 76
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/31.png",
     "evolutions": []
@@ -345,30 +707,65 @@
     "dexNumber": 32,
     "name": "Nidoran♂",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 46, "attack": 57, "defense": 40, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 46,
+      "attack": 57,
+      "defense": 40,
+      "speed": 50
+    },
     "captureRate": 235,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/32.png",
-    "evolutions": [33]
+    "evolutions": [
+      33
+    ]
   },
   {
     "id": 33,
     "dexNumber": 33,
     "name": "Nidorino",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 61, "attack": 72, "defense": 57, "speed": 65 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 61,
+      "attack": 72,
+      "defense": 57,
+      "speed": 65
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/33.png",
-    "evolutions": [34]
+    "evolutions": [
+      34
+    ]
   },
   {
     "id": 34,
     "dexNumber": 34,
     "name": "Nidoking",
     "generation": 1,
-    "types": ["Poison", "Sol"],
-    "stats": { "hp": 81, "attack": 102, "defense": 77, "speed": 85 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 81,
+      "attack": 102,
+      "defense": 77,
+      "speed": 85
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/34.png",
     "evolutions": []
@@ -378,19 +775,41 @@
     "dexNumber": 35,
     "name": "Mélofée",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 70, "attack": 45, "defense": 48, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 45,
+      "defense": 48,
+      "speed": 35
+    },
     "captureRate": 150,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png",
-    "evolutions": [36]
+    "evolutions": [
+      36
+    ]
   },
   {
     "id": 36,
     "dexNumber": 36,
     "name": "Mélodelfe",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 95, "attack": 70, "defense": 73, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 70,
+      "defense": 73,
+      "speed": 60
+    },
     "captureRate": 25,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/36.png",
     "evolutions": []
@@ -400,19 +819,41 @@
     "dexNumber": 37,
     "name": "Goupix",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 38, "attack": 41, "defense": 40, "speed": 65 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 38,
+      "attack": 41,
+      "defense": 40,
+      "speed": 65
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png",
-    "evolutions": [38]
+    "evolutions": [
+      38
+    ]
   },
   {
     "id": 38,
     "dexNumber": 38,
     "name": "Feunard",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 73, "attack": 76, "defense": 75, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 73,
+      "attack": 76,
+      "defense": 75,
+      "speed": 100
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png",
     "evolutions": []
@@ -422,19 +863,41 @@
     "dexNumber": 39,
     "name": "Rondoudou",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 115, "attack": 45, "defense": 20, "speed": 20 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 115,
+      "attack": 45,
+      "defense": 20,
+      "speed": 20
+    },
     "captureRate": 170,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png",
-    "evolutions": [40]
+    "evolutions": [
+      40
+    ]
   },
   {
     "id": 40,
     "dexNumber": 40,
     "name": "Grodoudou",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 140, "attack": 70, "defense": 45, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 140,
+      "attack": 70,
+      "defense": 45,
+      "speed": 45
+    },
     "captureRate": 50,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/40.png",
     "evolutions": []
@@ -444,19 +907,43 @@
     "dexNumber": 41,
     "name": "Nosferapti",
     "generation": 1,
-    "types": ["Poison", "Vol"],
-    "stats": { "hp": 40, "attack": 45, "defense": 35, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 35,
+      "speed": 55
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/41.png",
-    "evolutions": [42]
+    "evolutions": [
+      42
+    ]
   },
   {
     "id": 42,
     "dexNumber": 42,
     "name": "Nosferalto",
     "generation": 1,
-    "types": ["Poison", "Vol"],
-    "stats": { "hp": 75, "attack": 80, "defense": 70, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 80,
+      "defense": 70,
+      "speed": 90
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png",
     "evolutions": []
@@ -466,30 +953,67 @@
     "dexNumber": 43,
     "name": "Mystherbe",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 45, "attack": 50, "defense": 55, "speed": 30 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 50,
+      "defense": 55,
+      "speed": 30
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png",
-    "evolutions": [44]
+    "evolutions": [
+      44
+    ]
   },
   {
     "id": 44,
     "dexNumber": 44,
     "name": "Ortide",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 60, "attack": 65, "defense": 70, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 65,
+      "defense": 70,
+      "speed": 40
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/44.png",
-    "evolutions": [45]
+    "evolutions": [
+      45
+    ]
   },
   {
     "id": 45,
     "dexNumber": 45,
     "name": "Rafflesia",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 75, "attack": 80, "defense": 85, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 80,
+      "defense": 85,
+      "speed": 50
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png",
     "evolutions": []
@@ -499,19 +1023,43 @@
     "dexNumber": 46,
     "name": "Paras",
     "generation": 1,
-    "types": ["Insecte", "Plante"],
-    "stats": { "hp": 35, "attack": 70, "defense": 55, "speed": 25 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 70,
+      "defense": 55,
+      "speed": 25
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/46.png",
-    "evolutions": [47]
+    "evolutions": [
+      47
+    ]
   },
   {
     "id": 47,
     "dexNumber": 47,
     "name": "Parasect",
     "generation": 1,
-    "types": ["Insecte", "Plante"],
-    "stats": { "hp": 60, "attack": 95, "defense": 80, "speed": 30 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Plante"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 95,
+      "defense": 80,
+      "speed": 30
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png",
     "evolutions": []
@@ -521,19 +1069,43 @@
     "dexNumber": 48,
     "name": "Mimitoss",
     "generation": 1,
-    "types": ["Insecte", "Poison"],
-    "stats": { "hp": 60, "attack": 55, "defense": 50, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 55,
+      "defense": 50,
+      "speed": 45
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/48.png",
-    "evolutions": [49]
+    "evolutions": [
+      49
+    ]
   },
   {
     "id": 49,
     "dexNumber": 49,
     "name": "Aéromite",
     "generation": 1,
-    "types": ["Insecte", "Poison"],
-    "stats": { "hp": 70, "attack": 65, "defense": 60, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 65,
+      "defense": 60,
+      "speed": 90
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png",
     "evolutions": []
@@ -543,19 +1115,41 @@
     "dexNumber": 50,
     "name": "Taupiqueur",
     "generation": 1,
-    "types": ["Sol"],
-    "stats": { "hp": 10, "attack": 55, "defense": 25, "speed": 95 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 10,
+      "attack": 55,
+      "defense": 25,
+      "speed": 95
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png",
-    "evolutions": [51]
+    "evolutions": [
+      51
+    ]
   },
   {
     "id": 51,
     "dexNumber": 51,
     "name": "Triopikeur",
     "generation": 1,
-    "types": ["Sol"],
-    "stats": { "hp": 35, "attack": 100, "defense": 50, "speed": 120 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 100,
+      "defense": 50,
+      "speed": 120
+    },
     "captureRate": 50,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/51.png",
     "evolutions": []
@@ -565,19 +1159,41 @@
     "dexNumber": 52,
     "name": "Miaouss",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 40, "attack": 45, "defense": 35, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 35,
+      "speed": 90
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png",
-    "evolutions": [53]
+    "evolutions": [
+      53
+    ]
   },
   {
     "id": 53,
     "dexNumber": 53,
     "name": "Persian",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 65, "attack": 70, "defense": 60, "speed": 115 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 70,
+      "defense": 60,
+      "speed": 115
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png",
     "evolutions": []
@@ -587,19 +1203,41 @@
     "dexNumber": 54,
     "name": "Psykokwak",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 50, "attack": 52, "defense": 48, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 52,
+      "defense": 48,
+      "speed": 55
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png",
-    "evolutions": [55]
+    "evolutions": [
+      55
+    ]
   },
   {
     "id": 55,
     "dexNumber": 55,
     "name": "Akwakwak",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 80, "attack": 82, "defense": 78, "speed": 85 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 82,
+      "defense": 78,
+      "speed": 85
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png",
     "evolutions": []
@@ -609,19 +1247,41 @@
     "dexNumber": 56,
     "name": "Férosinge",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 40, "attack": 80, "defense": 35, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 80,
+      "defense": 35,
+      "speed": 70
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/56.png",
-    "evolutions": [57]
+    "evolutions": [
+      57
+    ]
   },
   {
     "id": 57,
     "dexNumber": 57,
     "name": "Colossinge",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 65, "attack": 105, "defense": 60, "speed": 95 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 105,
+      "defense": 60,
+      "speed": 95
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png",
     "evolutions": []
@@ -631,19 +1291,41 @@
     "dexNumber": 58,
     "name": "Caninos",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 55, "attack": 70, "defense": 45, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 70,
+      "defense": 45,
+      "speed": 60
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/58.png",
-    "evolutions": [59]
+    "evolutions": [
+      59
+    ]
   },
   {
     "id": 59,
     "dexNumber": 59,
     "name": "Arcanin",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 90, "attack": 110, "defense": 80, "speed": 95 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 110,
+      "defense": 80,
+      "speed": 95
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/59.png",
     "evolutions": []
@@ -653,30 +1335,65 @@
     "dexNumber": 60,
     "name": "Ptitard",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 40, "attack": 50, "defense": 40, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 50,
+      "defense": 40,
+      "speed": 90
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png",
-    "evolutions": [61]
+    "evolutions": [
+      61
+    ]
   },
   {
     "id": 61,
     "dexNumber": 61,
     "name": "Têtarte",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 65, "attack": 65, "defense": 65, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 65,
+      "defense": 65,
+      "speed": 90
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png",
-    "evolutions": [62]
+    "evolutions": [
+      62
+    ]
   },
   {
     "id": 62,
     "dexNumber": 62,
     "name": "Tartard",
     "generation": 1,
-    "types": ["Eau", "Combat"],
-    "stats": { "hp": 90, "attack": 95, "defense": 95, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Combat"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 95,
+      "defense": 95,
+      "speed": 70
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png",
     "evolutions": []
@@ -686,30 +1403,64 @@
     "dexNumber": 63,
     "name": "Abra",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 25, "attack": 20, "defense": 15, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 25,
+      "attack": 20,
+      "defense": 15,
+      "speed": 90
+    },
     "captureRate": 200,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png",
-    "evolutions": [64]
+    "evolutions": [
+      64
+    ]
   },
   {
     "id": 64,
     "dexNumber": 64,
     "name": "Kadabra",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 40, "attack": 35, "defense": 30, "speed": 105 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 35,
+      "defense": 30,
+      "speed": 105
+    },
     "captureRate": 100,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png",
-    "evolutions": [65]
+    "evolutions": [
+      65
+    ]
   },
   {
     "id": 65,
     "dexNumber": 65,
     "name": "Alakazam",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 55, "attack": 50, "defense": 45, "speed": 120 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 50,
+      "defense": 45,
+      "speed": 120
+    },
     "captureRate": 50,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
     "evolutions": []
@@ -719,30 +1470,64 @@
     "dexNumber": 66,
     "name": "Machoc",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 70, "attack": 80, "defense": 50, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 80,
+      "defense": 50,
+      "speed": 35
+    },
     "captureRate": 180,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png",
-    "evolutions": [67]
+    "evolutions": [
+      67
+    ]
   },
   {
     "id": 67,
     "dexNumber": 67,
     "name": "Machopeur",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 80, "attack": 100, "defense": 70, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 100,
+      "defense": 70,
+      "speed": 45
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/67.png",
-    "evolutions": [68]
+    "evolutions": [
+      68
+    ]
   },
   {
     "id": 68,
     "dexNumber": 68,
     "name": "Mackogneur",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 90, "attack": 130, "defense": 80, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 130,
+      "defense": 80,
+      "speed": 55
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/68.png",
     "evolutions": []
@@ -752,30 +1537,67 @@
     "dexNumber": 69,
     "name": "Chétiflor",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 50, "attack": 75, "defense": 35, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 75,
+      "defense": 35,
+      "speed": 40
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/69.png",
-    "evolutions": [70]
+    "evolutions": [
+      70
+    ]
   },
   {
     "id": 70,
     "dexNumber": 70,
     "name": "Boustiflor",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 65, "attack": 90, "defense": 50, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 90,
+      "defense": 50,
+      "speed": 55
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/70.png",
-    "evolutions": [71]
+    "evolutions": [
+      71
+    ]
   },
   {
     "id": 71,
     "dexNumber": 71,
     "name": "Empiflor",
     "generation": 1,
-    "types": ["Plante", "Poison"],
-    "stats": { "hp": 80, "attack": 105, "defense": 65, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 105,
+      "defense": 65,
+      "speed": 70
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png",
     "evolutions": []
@@ -785,19 +1607,43 @@
     "dexNumber": 72,
     "name": "Tentacool",
     "generation": 1,
-    "types": ["Eau", "Poison"],
-    "stats": { "hp": 40, "attack": 40, "defense": 35, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 40,
+      "defense": 35,
+      "speed": 70
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png",
-    "evolutions": [73]
+    "evolutions": [
+      73
+    ]
   },
   {
     "id": 73,
     "dexNumber": 73,
     "name": "Tentacruel",
     "generation": 1,
-    "types": ["Eau", "Poison"],
-    "stats": { "hp": 80, "attack": 70, "defense": 65, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 70,
+      "defense": 65,
+      "speed": 100
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png",
     "evolutions": []
@@ -807,30 +1653,67 @@
     "dexNumber": 74,
     "name": "Racaillou",
     "generation": 1,
-    "types": ["Roche", "Sol"],
-    "stats": { "hp": 40, "attack": 80, "defense": 100, "speed": 20 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 80,
+      "defense": 100,
+      "speed": 20
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/74.png",
-    "evolutions": [75]
+    "evolutions": [
+      75
+    ]
   },
   {
     "id": 75,
     "dexNumber": 75,
     "name": "Gravalanch",
     "generation": 1,
-    "types": ["Roche", "Sol"],
-    "stats": { "hp": 55, "attack": 95, "defense": 115, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 95,
+      "defense": 115,
+      "speed": 35
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png",
-    "evolutions": [76]
+    "evolutions": [
+      76
+    ]
   },
   {
     "id": 76,
     "dexNumber": 76,
     "name": "Grolem",
     "generation": 1,
-    "types": ["Roche", "Sol"],
-    "stats": { "hp": 80, "attack": 120, "defense": 130, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 120,
+      "defense": 130,
+      "speed": 45
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png",
     "evolutions": []
@@ -840,19 +1723,41 @@
     "dexNumber": 77,
     "name": "Ponyta",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 50, "attack": 85, "defense": 55, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 85,
+      "defense": 55,
+      "speed": 90
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png",
-    "evolutions": [78]
+    "evolutions": [
+      78
+    ]
   },
   {
     "id": 78,
     "dexNumber": 78,
     "name": "Galopa",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 65, "attack": 100, "defense": 70, "speed": 105 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 100,
+      "defense": 70,
+      "speed": 105
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png",
     "evolutions": []
@@ -862,19 +1767,43 @@
     "dexNumber": 79,
     "name": "Ramoloss",
     "generation": 1,
-    "types": ["Eau", "Psy"],
-    "stats": { "hp": 90, "attack": 65, "defense": 65, "speed": 15 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 65,
+      "defense": 65,
+      "speed": 15
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png",
-    "evolutions": [80]
+    "evolutions": [
+      80
+    ]
   },
   {
     "id": 80,
     "dexNumber": 80,
     "name": "Flagadoss",
     "generation": 1,
-    "types": ["Eau", "Psy"],
-    "stats": { "hp": 95, "attack": 75, "defense": 110, "speed": 30 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 75,
+      "defense": 110,
+      "speed": 30
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/80.png",
     "evolutions": []
@@ -884,29 +1813,63 @@
     "dexNumber": 81,
     "name": "Magnéti",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 25, "attack": 35, "defense": 70, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 25,
+      "attack": 35,
+      "defense": 70,
+      "speed": 45
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/81.png",
-    "evolutions": [82]
+    "evolutions": [
+      82
+    ]
   },
   {
     "id": 82,
     "dexNumber": 82,
     "name": "Magnéton",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 50, "attack": 60, "defense": 95, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 60,
+      "defense": 95,
+      "speed": 70
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png",
     "evolutions": []
-  },{
+  },
+  {
     "id": 83,
     "dexNumber": 83,
     "name": "Canarticho",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 52, "attack": 90, "defense": 55, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 52,
+      "attack": 90,
+      "defense": 55,
+      "speed": 60
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png",
     "evolutions": []
@@ -916,19 +1879,43 @@
     "dexNumber": 84,
     "name": "Doduo",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 35, "attack": 85, "defense": 45, "speed": 75 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 85,
+      "defense": 45,
+      "speed": 75
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/84.png",
-    "evolutions": [85]
+    "evolutions": [
+      85
+    ]
   },
   {
     "id": 85,
     "dexNumber": 85,
     "name": "Dodrio",
     "generation": 1,
-    "types": ["Normal", "Vol"],
-    "stats": { "hp": 60, "attack": 110, "defense": 70, "speed": 110 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 110,
+      "defense": 70,
+      "speed": 110
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png",
     "evolutions": []
@@ -938,19 +1925,42 @@
     "dexNumber": 86,
     "name": "Otaria",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 65, "attack": 45, "defense": 55, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 45,
+      "defense": 55,
+      "speed": 45
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png",
-    "evolutions": [87]
+    "evolutions": [
+      87
+    ]
   },
   {
     "id": 87,
     "dexNumber": 87,
     "name": "Lamantine",
     "generation": 1,
-    "types": ["Eau", "Glace"],
-    "stats": { "hp": 90, "attack": 70, "defense": 80, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Glace"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 70,
+      "defense": 80,
+      "speed": 70
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png",
     "evolutions": []
@@ -960,19 +1970,41 @@
     "dexNumber": 88,
     "name": "Tadmorv",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 80, "attack": 80, "defense": 50, "speed": 25 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 80,
+      "defense": 50,
+      "speed": 25
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/88.png",
-    "evolutions": [89]
+    "evolutions": [
+      89
+    ]
   },
   {
     "id": 89,
     "dexNumber": 89,
     "name": "Grotadmorv",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 105, "attack": 105, "defense": 75, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 105,
+      "attack": 105,
+      "defense": 75,
+      "speed": 50
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/89.png",
     "evolutions": []
@@ -982,19 +2014,42 @@
     "dexNumber": 90,
     "name": "Kokiyas",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 30, "attack": 65, "defense": 100, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 65,
+      "defense": 100,
+      "speed": 40
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/90.png",
-    "evolutions": [91]
+    "evolutions": [
+      91
+    ]
   },
   {
     "id": 91,
     "dexNumber": 91,
     "name": "Crustabri",
     "generation": 1,
-    "types": ["Eau", "Glace"],
-    "stats": { "hp": 50, "attack": 95, "defense": 180, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Glace"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 95,
+      "defense": 180,
+      "speed": 70
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png",
     "evolutions": []
@@ -1004,30 +2059,67 @@
     "dexNumber": 92,
     "name": "Fantominus",
     "generation": 1,
-    "types": ["Spectre", "Poison"],
-    "stats": { "hp": 30, "attack": 35, "defense": 30, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Spectre",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 35,
+      "defense": 30,
+      "speed": 80
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png",
-    "evolutions": [93]
+    "evolutions": [
+      93
+    ]
   },
   {
     "id": 93,
     "dexNumber": 93,
     "name": "Spectrum",
     "generation": 1,
-    "types": ["Spectre", "Poison"],
-    "stats": { "hp": 45, "attack": 50, "defense": 45, "speed": 95 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Spectre",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 50,
+      "defense": 45,
+      "speed": 95
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png",
-    "evolutions": [94]
+    "evolutions": [
+      94
+    ]
   },
   {
     "id": 94,
     "dexNumber": 94,
     "name": "Ectoplasma",
     "generation": 1,
-    "types": ["Spectre", "Poison"],
-    "stats": { "hp": 60, "attack": 65, "defense": 60, "speed": 110 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Spectre",
+      "Poison"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 65,
+      "defense": 60,
+      "speed": 110
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
     "evolutions": []
@@ -1037,8 +2129,19 @@
     "dexNumber": 95,
     "name": "Onix",
     "generation": 1,
-    "types": ["Roche", "Sol"],
-    "stats": { "hp": 35, "attack": 45, "defense": 160, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Sol"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 45,
+      "defense": 160,
+      "speed": 70
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png",
     "evolutions": []
@@ -1048,19 +2151,41 @@
     "dexNumber": 96,
     "name": "Soporifik",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 60, "attack": 48, "defense": 45, "speed": 42 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 48,
+      "defense": 45,
+      "speed": 42
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/96.png",
-    "evolutions": [97]
+    "evolutions": [
+      97
+    ]
   },
   {
     "id": 97,
     "dexNumber": 97,
     "name": "Hypnomade",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 85, "attack": 73, "defense": 70, "speed": 67 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 85,
+      "attack": 73,
+      "defense": 70,
+      "speed": 67
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/97.png",
     "evolutions": []
@@ -1070,40 +2195,85 @@
     "dexNumber": 98,
     "name": "Krabby",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 30, "attack": 105, "defense": 90, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 105,
+      "defense": 90,
+      "speed": 50
+    },
     "captureRate": 225,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png",
-    "evolutions": [99]
+    "evolutions": [
+      99
+    ]
   },
   {
     "id": 99,
     "dexNumber": 99,
     "name": "Krabboss",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 55, "attack": 130, "defense": 115, "speed": 75 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 130,
+      "defense": 115,
+      "speed": 75
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/99.png",
     "evolutions": []
-  },{
+  },
+  {
     "id": 100,
     "dexNumber": 100,
     "name": "Voltorbe",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 40, "attack": 30, "defense": 50, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 30,
+      "defense": 50,
+      "speed": 100
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png",
-    "evolutions": [101]
+    "evolutions": [
+      101
+    ]
   },
   {
     "id": 101,
     "dexNumber": 101,
     "name": "Électrode",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 60, "attack": 50, "defense": 70, "speed": 150 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 50,
+      "defense": 70,
+      "speed": 150
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png",
     "evolutions": []
@@ -1113,19 +2283,43 @@
     "dexNumber": 102,
     "name": "Noeunoeuf",
     "generation": 1,
-    "types": ["Plante", "Psy"],
-    "stats": { "hp": 60, "attack": 40, "defense": 80, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 40,
+      "defense": 80,
+      "speed": 40
+    },
     "captureRate": 90,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/102.png",
-    "evolutions": [103]
+    "evolutions": [
+      103
+    ]
   },
   {
     "id": 103,
     "dexNumber": 103,
     "name": "Noadkoko",
     "generation": 1,
-    "types": ["Plante", "Psy"],
-    "stats": { "hp": 95, "attack": 95, "defense": 85, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 95,
+      "defense": 85,
+      "speed": 55
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/103.png",
     "evolutions": []
@@ -1135,19 +2329,41 @@
     "dexNumber": 104,
     "name": "Osselait",
     "generation": 1,
-    "types": ["Sol"],
-    "stats": { "hp": 50, "attack": 50, "defense": 95, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 50,
+      "defense": 95,
+      "speed": 35
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png",
-    "evolutions": [105]
+    "evolutions": [
+      105
+    ]
   },
   {
     "id": 105,
     "dexNumber": 105,
     "name": "Ossatueur",
     "generation": 1,
-    "types": ["Sol"],
-    "stats": { "hp": 60, "attack": 80, "defense": 110, "speed": 45 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 80,
+      "defense": 110,
+      "speed": 45
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/105.png",
     "evolutions": []
@@ -1157,8 +2373,18 @@
     "dexNumber": 106,
     "name": "Kicklee",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 50, "attack": 120, "defense": 53, "speed": 87 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 120,
+      "defense": 53,
+      "speed": 87
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/106.png",
     "evolutions": []
@@ -1168,8 +2394,18 @@
     "dexNumber": 107,
     "name": "Tygnon",
     "generation": 1,
-    "types": ["Combat"],
-    "stats": { "hp": 50, "attack": 105, "defense": 79, "speed": 76 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Combat"
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 105,
+      "defense": 79,
+      "speed": 76
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png",
     "evolutions": []
@@ -1179,8 +2415,18 @@
     "dexNumber": 108,
     "name": "Excelangue",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 90, "attack": 55, "defense": 75, "speed": 30 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 55,
+      "defense": 75,
+      "speed": 30
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/108.png",
     "evolutions": []
@@ -1190,19 +2436,41 @@
     "dexNumber": 109,
     "name": "Smogo",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 40, "attack": 65, "defense": 95, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 65,
+      "defense": 95,
+      "speed": 35
+    },
     "captureRate": 190,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/109.png",
-    "evolutions": [110]
+    "evolutions": [
+      110
+    ]
   },
   {
     "id": 110,
     "dexNumber": 110,
     "name": "Smogogo",
     "generation": 1,
-    "types": ["Poison"],
-    "stats": { "hp": 65, "attack": 90, "defense": 120, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Poison"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 90,
+      "defense": 120,
+      "speed": 60
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/110.png",
     "evolutions": []
@@ -1212,19 +2480,43 @@
     "dexNumber": 111,
     "name": "Rhinocorne",
     "generation": 1,
-    "types": ["Sol", "Roche"],
-    "stats": { "hp": 80, "attack": 85, "defense": 95, "speed": 25 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol",
+      "Roche"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 85,
+      "defense": 95,
+      "speed": 25
+    },
     "captureRate": 120,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/111.png",
-    "evolutions": [112]
+    "evolutions": [
+      112
+    ]
   },
   {
     "id": 112,
     "dexNumber": 112,
     "name": "Rhinoféros",
     "generation": 1,
-    "types": ["Sol", "Roche"],
-    "stats": { "hp": 105, "attack": 130, "defense": 120, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Sol",
+      "Roche"
+    ],
+    "stats": {
+      "hp": 105,
+      "attack": 130,
+      "defense": 120,
+      "speed": 40
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
     "evolutions": []
@@ -1234,8 +2526,18 @@
     "dexNumber": 113,
     "name": "Leveinard",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 250, "attack": 5, "defense": 5, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 250,
+      "attack": 5,
+      "defense": 5,
+      "speed": 50
+    },
     "captureRate": 30,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/113.png",
     "evolutions": []
@@ -1245,8 +2547,18 @@
     "dexNumber": 114,
     "name": "Saquedeneu",
     "generation": 1,
-    "types": ["Plante"],
-    "stats": { "hp": 65, "attack": 55, "defense": 115, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Plante"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 55,
+      "defense": 115,
+      "speed": 60
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/114.png",
     "evolutions": []
@@ -1256,8 +2568,18 @@
     "dexNumber": 115,
     "name": "Kangourex",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 105, "attack": 95, "defense": 80, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 105,
+      "attack": 95,
+      "defense": 80,
+      "speed": 90
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png",
     "evolutions": []
@@ -1267,19 +2589,41 @@
     "dexNumber": 116,
     "name": "Hypotrempe",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 30, "attack": 40, "defense": 70, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 40,
+      "defense": 70,
+      "speed": 60
+    },
     "captureRate": 225,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/116.png",
-    "evolutions": [117]
+    "evolutions": [
+      117
+    ]
   },
   {
     "id": 117,
     "dexNumber": 117,
     "name": "Hypocéan",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 55, "attack": 65, "defense": 95, "speed": 85 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 65,
+      "defense": 95,
+      "speed": 85
+    },
     "captureRate": 75,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/117.png",
     "evolutions": []
@@ -1289,19 +2633,41 @@
     "dexNumber": 118,
     "name": "Poissirène",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 45, "attack": 67, "defense": 60, "speed": 63 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 45,
+      "attack": 67,
+      "defense": 60,
+      "speed": 63
+    },
     "captureRate": 225,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png",
-    "evolutions": [119]
+    "evolutions": [
+      119
+    ]
   },
   {
     "id": 119,
     "dexNumber": 119,
     "name": "Poissoroy",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 80, "attack": 92, "defense": 65, "speed": 68 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 92,
+      "defense": 65,
+      "speed": 68
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/119.png",
     "evolutions": []
@@ -1311,19 +2677,42 @@
     "dexNumber": 120,
     "name": "Stari",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 30, "attack": 45, "defense": 55, "speed": 85 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 45,
+      "defense": 55,
+      "speed": 85
+    },
     "captureRate": 225,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/120.png",
-    "evolutions": [121]
+    "evolutions": [
+      121
+    ]
   },
   {
     "id": 121,
     "dexNumber": 121,
     "name": "Staross",
     "generation": 1,
-    "types": ["Eau", "Psy"],
-    "stats": { "hp": 60, "attack": 75, "defense": 85, "speed": 115 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 75,
+      "defense": 85,
+      "speed": 115
+    },
     "captureRate": 60,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png",
     "evolutions": []
@@ -1333,8 +2722,18 @@
     "dexNumber": 122,
     "name": "M. Mime",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 40, "attack": 45, "defense": 65, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 40,
+      "attack": 45,
+      "defense": 65,
+      "speed": 90
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png",
     "evolutions": []
@@ -1344,8 +2743,19 @@
     "dexNumber": 123,
     "name": "Insécateur",
     "generation": 1,
-    "types": ["Insecte", "Vol"],
-    "stats": { "hp": 70, "attack": 110, "defense": 80, "speed": 105 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 110,
+      "defense": 80,
+      "speed": 105
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/123.png",
     "evolutions": []
@@ -1355,8 +2765,19 @@
     "dexNumber": 124,
     "name": "Lippoutou",
     "generation": 1,
-    "types": ["Glace", "Psy"],
-    "stats": { "hp": 65, "attack": 50, "defense": 35, "speed": 95 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Glace",
+      "Psy"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 50,
+      "defense": 35,
+      "speed": 95
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/124.png",
     "evolutions": []
@@ -1366,8 +2787,18 @@
     "dexNumber": 125,
     "name": "Élektek",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 65, "attack": 83, "defense": 57, "speed": 105 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 83,
+      "defense": 57,
+      "speed": 105
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png",
     "evolutions": []
@@ -1377,8 +2808,18 @@
     "dexNumber": 126,
     "name": "Magmar",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 65, "attack": 95, "defense": 57, "speed": 93 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 95,
+      "defense": 57,
+      "speed": 93
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png",
     "evolutions": []
@@ -1388,8 +2829,18 @@
     "dexNumber": 127,
     "name": "Scarabrute",
     "generation": 1,
-    "types": ["Insecte"],
-    "stats": { "hp": 65, "attack": 125, "defense": 100, "speed": 85 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Insecte"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 125,
+      "defense": 100,
+      "speed": 85
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png",
     "evolutions": []
@@ -1399,8 +2850,18 @@
     "dexNumber": 128,
     "name": "Tauros",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 75, "attack": 100, "defense": 95, "speed": 110 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 100,
+      "defense": 95,
+      "speed": 110
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png",
     "evolutions": []
@@ -1410,19 +2871,42 @@
     "dexNumber": 129,
     "name": "Magicarpe",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 20, "attack": 10, "defense": 55, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 20,
+      "attack": 10,
+      "defense": 55,
+      "speed": 80
+    },
     "captureRate": 255,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png",
-    "evolutions": [130]
+    "evolutions": [
+      130
+    ]
   },
   {
     "id": 130,
     "dexNumber": 130,
     "name": "Léviator",
     "generation": 1,
-    "types": ["Eau", "Vol"],
-    "stats": { "hp": 95, "attack": 125, "defense": 79, "speed": 81 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 125,
+      "defense": 79,
+      "speed": 81
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
     "evolutions": []
@@ -1432,8 +2916,19 @@
     "dexNumber": 131,
     "name": "Lokhlass",
     "generation": 1,
-    "types": ["Eau", "Glace"],
-    "stats": { "hp": 130, "attack": 85, "defense": 80, "speed": 60 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau",
+      "Glace"
+    ],
+    "stats": {
+      "hp": 130,
+      "attack": 85,
+      "defense": 80,
+      "speed": 60
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
     "evolutions": []
@@ -1443,8 +2938,18 @@
     "dexNumber": 132,
     "name": "Métamorph",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 48, "attack": 48, "defense": 48, "speed": 48 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 48,
+      "attack": 48,
+      "defense": 48,
+      "speed": 48
+    },
     "captureRate": 35,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
     "evolutions": []
@@ -1454,19 +2959,43 @@
     "dexNumber": 133,
     "name": "Évoli",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 55, "attack": 55, "defense": 50, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 55,
+      "defense": 50,
+      "speed": 55
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
-    "evolutions": [134, 135, 136]
+    "evolutions": [
+      134,
+      135,
+      136
+    ]
   },
   {
     "id": 134,
     "dexNumber": 134,
     "name": "Aquali",
     "generation": 1,
-    "types": ["Eau"],
-    "stats": { "hp": 130, "attack": 65, "defense": 60, "speed": 65 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Eau"
+    ],
+    "stats": {
+      "hp": 130,
+      "attack": 65,
+      "defense": 60,
+      "speed": 65
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png",
     "evolutions": []
@@ -1476,8 +3005,18 @@
     "dexNumber": 135,
     "name": "Voltali",
     "generation": 1,
-    "types": ["Électrik"],
-    "stats": { "hp": 65, "attack": 65, "defense": 60, "speed": 130 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 65,
+      "defense": 60,
+      "speed": 130
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png",
     "evolutions": []
@@ -1487,8 +3026,18 @@
     "dexNumber": 136,
     "name": "Pyroli",
     "generation": 1,
-    "types": ["Feu"],
-    "stats": { "hp": 65, "attack": 130, "defense": 60, "speed": 65 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 130,
+      "defense": 60,
+      "speed": 65
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png",
     "evolutions": []
@@ -1498,8 +3047,18 @@
     "dexNumber": 137,
     "name": "Porygon",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 65, "attack": 60, "defense": 70, "speed": 40 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 60,
+      "defense": 70,
+      "speed": 40
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png",
     "evolutions": []
@@ -1509,19 +3068,43 @@
     "dexNumber": 138,
     "name": "Amonita",
     "generation": 1,
-    "types": ["Roche", "Eau"],
-    "stats": { "hp": 35, "attack": 40, "defense": 100, "speed": 35 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 35,
+      "attack": 40,
+      "defense": 100,
+      "speed": 35
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png",
-    "evolutions": [139]
+    "evolutions": [
+      139
+    ]
   },
   {
     "id": 139,
     "dexNumber": 139,
     "name": "Amonistar",
     "generation": 1,
-    "types": ["Roche", "Eau"],
-    "stats": { "hp": 70, "attack": 60, "defense": 125, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 60,
+      "defense": 125,
+      "speed": 55
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png",
     "evolutions": []
@@ -1531,19 +3114,43 @@
     "dexNumber": 140,
     "name": "Kabuto",
     "generation": 1,
-    "types": ["Roche", "Eau"],
-    "stats": { "hp": 30, "attack": 80, "defense": 90, "speed": 55 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 30,
+      "attack": 80,
+      "defense": 90,
+      "speed": 55
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png",
-    "evolutions": [141]
+    "evolutions": [
+      141
+    ]
   },
   {
     "id": 141,
     "dexNumber": 141,
     "name": "Kabutops",
     "generation": 1,
-    "types": ["Roche", "Eau"],
-    "stats": { "hp": 60, "attack": 115, "defense": 105, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Eau"
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 115,
+      "defense": 105,
+      "speed": 80
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png",
     "evolutions": []
@@ -1553,8 +3160,19 @@
     "dexNumber": 142,
     "name": "Ptéra",
     "generation": 1,
-    "types": ["Roche", "Vol"],
-    "stats": { "hp": 80, "attack": 105, "defense": 65, "speed": 130 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Roche",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 105,
+      "defense": 65,
+      "speed": 130
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png",
     "evolutions": []
@@ -1564,8 +3182,18 @@
     "dexNumber": 143,
     "name": "Ronflex",
     "generation": 1,
-    "types": ["Normal"],
-    "stats": { "hp": 160, "attack": 110, "defense": 65, "speed": 30 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Normal"
+    ],
+    "stats": {
+      "hp": 160,
+      "attack": 110,
+      "defense": 65,
+      "speed": 30
+    },
     "captureRate": 25,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png",
     "evolutions": []
@@ -1575,8 +3203,19 @@
     "dexNumber": 144,
     "name": "Artikodin",
     "generation": 1,
-    "types": ["Glace", "Vol"],
-    "stats": { "hp": 90, "attack": 85, "defense": 100, "speed": 85 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Glace",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 85,
+      "defense": 100,
+      "speed": 85
+    },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png",
     "evolutions": []
@@ -1586,8 +3225,19 @@
     "dexNumber": 145,
     "name": "Électhor",
     "generation": 1,
-    "types": ["Électrik", "Vol"],
-    "stats": { "hp": 90, "attack": 90, "defense": 85, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Électrik",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 90,
+      "defense": 85,
+      "speed": 100
+    },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
     "evolutions": []
@@ -1597,8 +3247,19 @@
     "dexNumber": 146,
     "name": "Sulfura",
     "generation": 1,
-    "types": ["Feu", "Vol"],
-    "stats": { "hp": 90, "attack": 100, "defense": 90, "speed": 90 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Feu",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 100,
+      "defense": 90,
+      "speed": 90
+    },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
     "evolutions": []
@@ -1608,30 +3269,65 @@
     "dexNumber": 147,
     "name": "Minidraco",
     "generation": 1,
-    "types": ["Dragon"],
-    "stats": { "hp": 41, "attack": 64, "defense": 45, "speed": 50 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Dragon"
+    ],
+    "stats": {
+      "hp": 41,
+      "attack": 64,
+      "defense": 45,
+      "speed": 50
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png",
-    "evolutions": [148]
+    "evolutions": [
+      148
+    ]
   },
   {
     "id": 148,
     "dexNumber": 148,
     "name": "Draco",
     "generation": 1,
-    "types": ["Dragon"],
-    "stats": { "hp": 61, "attack": 84, "defense": 65, "speed": 70 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Dragon"
+    ],
+    "stats": {
+      "hp": 61,
+      "attack": 84,
+      "defense": 65,
+      "speed": 70
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png",
-    "evolutions": [149]
+    "evolutions": [
+      149
+    ]
   },
   {
     "id": 149,
     "dexNumber": 149,
     "name": "Dracolosse",
     "generation": 1,
-    "types": ["Dragon", "Vol"],
-    "stats": { "hp": 91, "attack": 134, "defense": 95, "speed": 80 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Dragon",
+      "Vol"
+    ],
+    "stats": {
+      "hp": 91,
+      "attack": 134,
+      "defense": 95,
+      "speed": 80
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png",
     "evolutions": []
@@ -1641,8 +3337,18 @@
     "dexNumber": 150,
     "name": "Mewtwo",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 106, "attack": 110, "defense": 90, "speed": 130 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 106,
+      "attack": 110,
+      "defense": 90,
+      "speed": 130
+    },
     "captureRate": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
     "evolutions": []
@@ -1652,8 +3358,18 @@
     "dexNumber": 151,
     "name": "Mew",
     "generation": 1,
-    "types": ["Psy"],
-    "stats": { "hp": 100, "attack": 100, "defense": 100, "speed": 100 },
+    "gameGroups": [
+      "Pokemon Rouge / Bleu / Jaune"
+    ],
+    "types": [
+      "Psy"
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 100,
+      "defense": 100,
+      "speed": 100
+    },
     "captureRate": 45,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
     "evolutions": []

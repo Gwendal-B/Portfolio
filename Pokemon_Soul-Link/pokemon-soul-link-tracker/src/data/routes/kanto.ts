@@ -4,6 +4,7 @@ import type { GameGroup } from "../../types/run";
 const kantoGames: GameGroup[] = [
   "Pokemon Rouge / Bleu / Jaune",
   "Pokemon Or / Argent / Cristal",
+  "Pokemon Rouge Feu / Vert Feuille"
 ];
 
 const numberedKantoRoutes: GameRoute[] = Array.from(
