@@ -7,6 +7,7 @@ import {
 } from "../../../lib/pokemon-type-chart";
 import { enrichPokemonWithGameData } from "../../../lib/pokedex-helpers";
 import { getPokemonGifUrl } from "../../../lib/pokemon-assets";
+import PokemonSprite from "../../../components/ui/PokemonSprite";
 /*
   Cette page est une route dynamique.
   Le [id] dans le nom du dossier veut dire :
@@ -219,12 +220,13 @@ export default async function PokemonDetailPage({
             </div>
 
             {/* Colonne droite */}
-            <div className="rounded-3xl border border-zinc-900 p-6 space-y-4">
-              <div className="flex items-center justify-center h-40 w-full">
-                <img 
-                src={getPokemonGifUrl(pokemon.dexNumber)} 
-                alt={pokemon.name} 
-                className="max-h-full max-w-full object-contain"
+            <div className="rounded-3xl border border-zinc-900 p-6">
+              <div className="flex h-40 w-full items-center justify-center">
+                <PokemonSprite
+                  dexNumber={pokemon.dexNumber}
+                  name={pokemon.name}
+                  spriteUrl={pokemon.spriteUrl}
+                  className="max-h-full max-w-full object-contain"
                 />
               </div>
             </div>

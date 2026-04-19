@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { ChallengeMode, GameGroup, Player, Run, RunRules } from "../../../types/run";
-import { addRun } from "../../../lib/local-storage";
 import { getPrimaryGenerationForGameGroup } from "../../../lib/game-groups";
 import { getDefaultRunRules } from "../../../lib/default-run-rules";
 import { getGameMechanics } from "../../../lib/game-mechanics";
+import { getRuns, saveRuns } from "../../../lib/local-storage";
 
 export default function NewRunPage() {
   const router = useRouter();
@@ -108,7 +108,8 @@ export default function NewRunPage() {
     /*
       Sauvegarde dans le localStorage
     */
-    addRun(newRun);
+    const existingRuns = getRuns();
+    saveRuns([...existingRuns, newRun]);
 
     /*
       Redirection vers la page de la run

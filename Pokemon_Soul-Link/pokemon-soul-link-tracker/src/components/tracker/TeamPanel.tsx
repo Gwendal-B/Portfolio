@@ -2,6 +2,7 @@ import type { CapturedPokemon } from "../../types/tracker";
 import type { Pokemon } from "../../types/pokemon";
 import type { Run } from "../../types/run";
 import PokemonTypeBadge from "../ui/PokemonTypeBadge";
+import PokemonSprite from "../ui/PokemonSprite";
 
 interface TeamPanelProps {
   title: string;
@@ -28,43 +29,39 @@ export default function TeamPanel({ title, teamCaptures, pokemonById, run }: Tea
             return (
               <div
                 key={capture.id}
-                className="rounded-xl border border-zinc-800 bg-zinc-950 p-3 min-h-[195px] flex flex-col items-center justify-start"
+                className="rounded-xl border border-zinc-800 bg-zinc-950 p-4 min-h-[185px] grid grid-rows-[72px_32px_40px] items-start justify-items-center"
               >
                 {pokemon ? (
-                  <img
-                    src={pokemon.spriteUrl}
-                    alt={pokemon.name}
-                    className="mx-auto h-16 w-16 object-contain [image-rendering:pixelated]"
-                  />
+                  <div className="flex h-[72px] w-full items-center justify-center">
+                    <PokemonSprite
+                      dexNumber={pokemon.dexNumber}
+                      name={pokemon.name}
+                      spriteUrl={pokemon.spriteUrl}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
                 ) : (
-                  <div className="flex h-16 items-center justify-center text-xs text-zinc-500">
+                  <div className="flex h-[72px] w-full items-center justify-center text-xs text-zinc-500">
                     Inconnu
                   </div>
                 )}
 
-                <p className="mt-2 w-full truncate text-center text-sm font-medium text-zinc-200">
+                <p className="w-full truncate text-center text-sm font-medium text-zinc-200 leading-8">
                   {capture.nickname || pokemon?.name || "Pokémon"}
                 </p>
 
-                {pokemon?.types && pokemon.types.length > 0 && (
-                  <div className="mt-1 flex w-full flex-wrap justify-center gap-1">
+                {pokemon?.types && pokemon.types.length > 0 ? (
+                  <div className="flex min-h-[40px] w-full flex-wrap content-start justify-center gap-1">
                     {pokemon.types.map((type) => (
                       <PokemonTypeBadge key={type} type={type} />
                     ))}
                   </div>
+                ) : (
+                  <div className="min-h-[40px] w-full" />
                 )}
 
-                {run.rules.showAbilities && capture.ability && (
-                  <p className="mt-1 w-full truncate text-center text-[11px] text-zinc-500">
-                    {capture.ability}
-                  </p>
-                )}
-
-                {run.rules.showNatures && capture.nature && (
-                  <p className="mt-0.5 w-full truncate text-center text-[11px] text-zinc-500">
-                    {capture.nature}
-                  </p>
-                )}
+                {/* Talent / nature masqués pour alléger les cartes d’équipe.
+                    On pourra les réactiver plus tard si besoin. */}
               </div>
             );
           })}
