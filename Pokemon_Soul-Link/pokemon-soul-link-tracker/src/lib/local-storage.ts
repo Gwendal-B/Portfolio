@@ -31,32 +31,10 @@ export function saveRuns(runs: Run[]): void {
   localStorage.setItem(RUNS_STORAGE_KEY, JSON.stringify(runs));
 }
 
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function addRun(run: Run): void {
-  const existingRuns = getRuns();
-  saveRuns([...existingRuns, run]);
-}
-
 export function getRunById(runId: string): Run | undefined {
   return getRuns().find((run) => run.id === runId);
 }
 
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
-export function updateRun(updatedRun: Run): void {
-  const existingRuns = getRuns();
-  saveRuns(existingRuns.map((run) => (run.id === updatedRun.id ? updatedRun : run)));
-}
-
-/**
- * ⚠️ LEGACY - À ne plus utiliser
- * Utiliser les services du domaine à la place
- */
 /** Supprime une run et toutes ses données associées (captures + soul links). */
 export function deleteRunWithCascade(runId: string): void {
   saveSoulLinks(getSoulLinks().filter((link) => link.runId !== runId));
@@ -154,19 +132,19 @@ export function exportRunAsJson(runId: string): RunExportData | null {
  */
 export function importRunFromJson(data: RunExportData): string {
   const now = new Date().toISOString();
-  const newRunId = `run-${Date.now()}`;
-  const uid = () => Math.random().toString(36).slice(2, 7);
+  const uid = () => `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+  const newRunId = `run-${uid()}`;
 
   const captureIdMap = new Map<string, string>();
   const newCaptures: CapturedPokemon[] = data.captures.map((capture) => {
-    const newId = `capture-${Date.now()}-${uid()}`;
+    const newId = `capture-${uid()}`;
     captureIdMap.set(capture.id, newId);
     return { ...capture, id: newId, runId: newRunId, soulLinkId: null };
   });
 
   const soulLinkIdMap = new Map<string, string>();
   const newSoulLinks: SoulLink[] = data.soulLinks.map((link) => {
-    const newId = `soul-link-${Date.now()}-${uid()}`;
+    const newId = `soul-link-${uid()}`;
     soulLinkIdMap.set(link.id, newId);
     return {
       ...link,
@@ -185,13 +163,16 @@ export function importRunFromJson(data: RunExportData): string {
     return capture;
   });
 
-  addRun({
-    ...data.run,
-    id: newRunId,
-    name: `${data.run.name} (importée)`,
-    createdAt: now,
-    updatedAt: now,
-  });
+  saveRuns([
+    ...getRuns(),
+    {
+      ...data.run,
+      id: newRunId,
+      name: `${data.run.name} (importée)`,
+      createdAt: now,
+      updatedAt: now,
+    },
+  ]);
 
   saveCapturedPokemons([...getCapturedPokemons(), ...finalCaptures]);
   saveSoulLinks([...getSoulLinks(), ...newSoulLinks]);

@@ -16,6 +16,7 @@ export default function TrackerPage() {
   const [runs, setRuns] = useState<Run[]>([]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [importError, setImportError] = useState("");
+  const [importSuccess, setImportSuccess] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function loadRuns() {
@@ -55,6 +56,7 @@ export default function TrackerPage() {
 
   function handleImport(event: React.ChangeEvent<HTMLInputElement>) {
     setImportError("");
+    setImportSuccess("");
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -68,11 +70,20 @@ export default function TrackerPage() {
           return;
         }
 
-        importRunFromJson(data);
-        loadRuns();
+      importRunFromJson(data);
+      loadRuns();
+      setImportSuccess(`Run "${data.run.name}" importée avec succès.`);
+      setTimeout(() => {
+        setImportSuccess("");
+      }, 3000);
       } catch {
         setImportError("Impossible de lire le fichier. Vérifie qu'il est bien au format JSON.");
       }
+      {importSuccess && (
+        <div className="mb-6 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+          {importSuccess}
+        </div>
+      )}
     };
     reader.readAsText(file);
 
