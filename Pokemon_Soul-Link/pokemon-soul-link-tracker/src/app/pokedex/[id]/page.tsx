@@ -6,6 +6,7 @@ import {
   getPokemonWeaknesses,
 } from "../../../lib/pokemon-type-chart";
 import { enrichPokemonWithGameData } from "../../../lib/pokedex-helpers";
+import { getPokemonGifUrl } from "../../../lib/pokemon-assets";
 /*
   Cette page est une route dynamique.
   Le [id] dans le nom du dossier veut dire :
@@ -218,12 +219,12 @@ export default async function PokemonDetailPage({
             </div>
 
             {/* Colonne droite */}
-            <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-6">
-              <div className="flex items-center justify-center">
-                <img
-                  src={pokemon.spriteUrl}
-                  alt={pokemon.name}
-                  className="h-56 w-56 object-contain [image-rendering:pixelated]"
+            <div className="rounded-3xl border border-zinc-900 p-6 space-y-4">
+              <div className="flex items-center justify-center h-40 w-full">
+                <img 
+                src={getPokemonGifUrl(pokemon.dexNumber)} 
+                alt={pokemon.name} 
+                className="max-h-full max-w-full object-contain"
                 />
               </div>
             </div>
