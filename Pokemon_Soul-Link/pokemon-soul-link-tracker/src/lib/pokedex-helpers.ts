@@ -1,6 +1,5 @@
 import type { Pokemon } from "../types/pokemon";
 import type { GameGroup } from "../types/run";
-import { getGenerationsForGameGroup } from "./game-groups";
 import { ALL_POKEMON } from "./pokemon-data";
 import { gen3KantoAbilitiesByDexNumber } from "../data/gen3-kanto-abilities";
 

@@ -5,6 +5,7 @@ import {
   getPokemonBaseStatTotal,
   getPokemonWeaknesses,
 } from "../../../lib/pokemon-type-chart";
+import { enrichPokemonWithGameData } from "../../../lib/pokedex-helpers";
 /*
   Cette page est une route dynamique.
   Le [id] dans le nom du dossier veut dire :
@@ -19,16 +20,21 @@ type PokemonDetailPageProps = {
   params: Promise<{
     id: string;
   }>;
+  searchParams: Promise<{
+    game?: string;
+  }>;
 };
 
 export default async function PokemonDetailPage({
   params,
+  searchParams,
 }: PokemonDetailPageProps) {
   /*
     Dans Next.js 16, params est asynchrone.
     On doit donc attendre sa valeur avec await.
   */
   const { id } = await params;
+  const { game } = await searchParams;
 
   /*
     L'id venant de l'URL est du texte.
@@ -37,7 +43,11 @@ export default async function PokemonDetailPage({
   */
   const pokemonId = Number(id);
 
-  const pokemon = getPokemonById(pokemonId);
+  const basePokemon = getPokemonById(pokemonId);
+
+  const pokemon = basePokemon && game
+    ? enrichPokemonWithGameData(basePokemon, game as any)
+    : basePokemon;
 
   /*
     Si aucun Pokémon n'est trouvé, on affiche un message simple

@@ -76,6 +76,9 @@ export default function PokedexPage() {
               <option value="Pokemon Rubis / Saphir / Émeraude">
                 Pokémon Rubis / Saphir / Émeraude
               </option>
+              <option value="Pokemon Rouge Feu / Vert Feuille">
+                Pokémon Rouge Feu / Vert Feuille
+              </option>
             </select>
           </div>
 
@@ -156,7 +159,7 @@ export default function PokedexPage() {
           {filteredPokemons.map((pokemon) => (
             <Link
               key={pokemon.id}
-              href={`/pokedex/${pokemon.id}`}
+              href={`/pokedex/${pokemon.id}?game=${encodeURIComponent(selectedGameGroup)}`}
               className="group rounded-2xl border border-zinc-800 bg-zinc-900 p-4 transition hover:border-zinc-600 hover:bg-zinc-800"
             >
               <div className="flex flex-col items-center text-center">

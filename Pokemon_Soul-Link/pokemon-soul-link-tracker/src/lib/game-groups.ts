@@ -8,12 +8,14 @@ export const GAME_GROUP_GENERATIONS: Record<GameGroup, number[]> = {
   "Pokemon Rouge / Bleu / Jaune": [1],
   "Pokemon Or / Argent / Cristal": [1, 2],
   "Pokemon Rubis / Saphir / Émeraude": [1, 2, 3],
+  "Pokemon Rouge Feu / Vert Feuille": [1],
 };
 
 export const GAME_GROUP_PRIMARY_GENERATION: Record<GameGroup, 1 | 2 | 3> = {
   "Pokemon Rouge / Bleu / Jaune": 1,
   "Pokemon Or / Argent / Cristal": 2,
   "Pokemon Rubis / Saphir / Émeraude": 3,
+  "Pokemon Rouge Feu / Vert Feuille": 3,
 };
 
 /**
