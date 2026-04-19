@@ -9,6 +9,7 @@ import {
 import { getGenerationsForGameGroup } from "../../lib/game-groups";
 import type { GameGroup } from "../../types/run";
 import Link from "next/link";
+import PokemonTypeBadge from "../../components/ui/PokemonTypeBadge";
 
 export default function PokedexPage() {
   const [selectedGameGroup, setSelectedGameGroup] =
@@ -151,52 +152,42 @@ export default function PokedexPage() {
           </span>
         </p>
 
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {filteredPokemons.map((pokemon) => (
             <Link
               key={pokemon.id}
               href={`/pokedex/${pokemon.id}`}
-              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-4 transition hover:border-zinc-600 hover:bg-zinc-800"
+              className="group rounded-2xl border border-zinc-800 bg-zinc-900 p-4 transition hover:border-zinc-600 hover:bg-zinc-800"
             >
-              <article>
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-zinc-400">
-                      #{String(pokemon.dexNumber).padStart(3, "0")}
-                    </p>
-                    <h2 className="mt-1 text-xl font-semibold">
-                      {pokemon.name}
-                    </h2>
+              <div className="flex flex-col items-center text-center">
+                {/* Sprite */}
+                <img
+                  src={pokemon.spriteUrl}
+                  alt={pokemon.name}
+                  className="h-24 w-24 object-contain [image-rendering:pixelated] transition group-hover:scale-110"
+                />
+
+                {/* Nom + ID */}
+                <h3 className="mt-3 text-sm font-semibold text-white">
+                  {pokemon.name}
+                </h3>
+
+                <p className="text-xs text-zinc-500">
+                  N° {pokemon.id.toString().padStart(4, "0")}
+                </p>
+
+                {/* Types */}
+                {pokemon.types && (
+                  <div className="mt-2 flex flex-wrap justify-center gap-1">
+                    {pokemon.types.map((type) => (
+                      <PokemonTypeBadge key={type} type={type} />
+                    ))}
                   </div>
-
-                  <img
-                    src={pokemon.spriteUrl}
-                    alt={pokemon.name}
-                    className="h-20 w-20 object-contain"
-                  />
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {pokemon.types.map((type) => (
-                    <span
-                      key={type}
-                      className="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-200"
-                    >
-                      {type}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-4 grid grid-cols-2 gap-2 text-sm text-zinc-300">
-                  <p>PV : {pokemon.stats.hp}</p>
-                  <p>ATQ : {pokemon.stats.attack}</p>
-                  <p>DEF : {pokemon.stats.defense}</p>
-                  <p>VIT : {pokemon.stats.speed}</p>
-                </div>
-              </article>
+                )}
+              </div>
             </Link>
           ))}
-        </section>
+        </div>
       </div>
     </main>
   );

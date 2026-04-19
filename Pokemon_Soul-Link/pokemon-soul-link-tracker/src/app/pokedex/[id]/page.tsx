@@ -1,6 +1,10 @@
 import { nationalPokedex, getPokemonById } from "../../../lib/pokedex";
 import Link from "next/link";
-
+import PokemonTypeBadge from "../../../components/ui/PokemonTypeBadge";
+import {
+  getPokemonBaseStatTotal,
+  getPokemonWeaknesses,
+} from "../../../lib/pokemon-type-chart";
 /*
   Cette page est une route dynamique.
   Le [id] dans le nom du dossier veut dire :
@@ -55,9 +59,21 @@ export default async function PokemonDetailPage({
     );
   }
 
+  const weaknesses = getPokemonWeaknesses(pokemon.types);
+  const baseStatTotal = getPokemonBaseStatTotal(pokemon.stats);
+
+  const evolutionNames = pokemon.evolutions.map(
+    (evolutionId) => getPokemonById(evolutionId)?.name ?? `#${evolutionId}`
+  );
+
+  const abilities =
+    pokemon.abilities && Array.isArray(pokemon.abilities)
+      ? pokemon.abilities
+      : pokemon.abilities?.standard ?? [];
+
   return (
     <main className="min-h-screen px-6 py-12 text-white">
-      <div className="mx-auto max-w-4xl sm:max-w-5xl lg:max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <Link
           href="/pokedex"
           className="mb-6 inline-block text-sm text-zinc-400 hover:text-white"
@@ -65,65 +81,140 @@ export default async function PokemonDetailPage({
           ← Retour au Pokédex
         </Link>
 
-        <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6 md:p-8">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+            {/* Colonne gauche */}
             <div>
-              <p className="text-sm text-zinc-400">
-                #{String(pokemon.dexNumber).padStart(3, "0")}
+              <p className="text-sm uppercase tracking-[0.18em] text-zinc-500">
+                Pokédex national
               </p>
 
-              <h1 className="mt-2 text-4xl font-bold">{pokemon.name}</h1>
+              <div className="mt-2 flex flex-wrap items-end gap-3">
+                <h1 className="text-4xl font-bold">{pokemon.name}</h1>
+                <span className="text-xl text-zinc-500">
+                  N° {String(pokemon.dexNumber).padStart(4, "0")}
+                </span>
+              </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {pokemon.types.map((type) => (
-                  <span
-                    key={type}
-                    className="rounded-full bg-zinc-800 px-3 py-1 text-sm text-zinc-200"
-                  >
-                    {type}
-                  </span>
+                  <PokemonTypeBadge key={type} type={type} />
                 ))}
               </div>
-            </div>
 
-            <img
-              src={pokemon.spriteUrl}
-              alt={pokemon.name}
-              className="h-32 w-32 object-contain"
-            />
-          </div>
+              <div className="mt-6">
+                <p className="mb-2 text-sm font-medium text-zinc-300">Faiblesses</p>
+                {weaknesses.length > 0 ? (
+                  <div className="flex flex-wrap gap-2">
+                    {weaknesses.map((type) => (
+                      <PokemonTypeBadge key={type} type={type} />
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-zinc-500">Aucune faiblesse renseignée.</p>
+                )}
+              </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div className="rounded-xl bg-zinc-800/50 p-4">
-              <h2 className="mb-3 text-lg font-semibold">
-                Statistiques de base
-              </h2>
-              <p className="mb-3 text-sm text-zinc-400">
-                Valeurs fixes propres à chaque espèce de Pokémon.
-              </p>
+              <div className="mt-8 grid gap-6 md:grid-cols-2">
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
+                  <h2 className="text-lg font-semibold text-white">Profil</h2>
 
-              <div className="space-y-2 text-zinc-300">
-                <p>PV : {pokemon.stats.hp}</p>
-                <p>Attaque : {pokemon.stats.attack}</p>
-                <p>Défense : {pokemon.stats.defense}</p>
-                <p>Vitesse : {pokemon.stats.speed}</p>
+                  <div className="mt-4 space-y-3 text-sm text-zinc-300">
+                    <p>
+                      <span className="font-medium text-white">Génération :</span>{" "}
+                      {pokemon.generation}
+                    </p>
+
+                    <p>
+                      <span className="font-medium text-white">Taux de capture :</span>{" "}
+                      {pokemon.captureRate}
+                    </p>
+
+                    <p>
+                      <span className="font-medium text-white">Talents :</span>{" "}
+                      {abilities.length > 0 ? abilities.join(", ") : "Aucun renseigné"}
+                    </p>
+
+                    <p>
+                      <span className="font-medium text-white">Évolutions :</span>{" "}
+                      {evolutionNames.length > 0 ? evolutionNames.join(" → ") : "Aucune"}
+                    </p>
+
+                    <p>
+                      <span className="font-medium text-white">Groupes de jeu :</span>{" "}
+                      {pokemon.gameGroups.join(", ")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
+                  <h2 className="text-lg font-semibold text-white">Statistiques de base</h2>
+
+                  <div className="mt-4 space-y-3 text-sm text-zinc-300">
+                    <div className="flex items-center justify-between">
+                      <span>PV</span>
+                      <span className="font-medium text-white">{pokemon.stats.hp}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span>Attaque</span>
+                      <span className="font-medium text-white">{pokemon.stats.attack}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span>Défense</span>
+                      <span className="font-medium text-white">{pokemon.stats.defense}</span>
+                    </div>
+
+                    {pokemon.stats.specialAttack !== undefined && (
+                      <div className="flex items-center justify-between">
+                        <span>Att. Spé.</span>
+                        <span className="font-medium text-white">
+                          {pokemon.stats.specialAttack}
+                        </span>
+                      </div>
+                    )}
+
+                    {pokemon.stats.specialDefense !== undefined && (
+                      <div className="flex items-center justify-between">
+                        <span>Déf. Spé.</span>
+                        <span className="font-medium text-white">
+                          {pokemon.stats.specialDefense}
+                        </span>
+                      </div>
+                    )}
+
+                    {pokemon.stats.special !== undefined && (
+                      <div className="flex items-center justify-between">
+                        <span>Spécial</span>
+                        <span className="font-medium text-white">
+                          {pokemon.stats.special}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between">
+                      <span>Vitesse</span>
+                      <span className="font-medium text-white">{pokemon.stats.speed}</span>
+                    </div>
+
+                    <div className="mt-2 border-t border-zinc-800 pt-3 flex items-center justify-between">
+                      <span className="font-medium text-white">Total</span>
+                      <span className="font-semibold text-white">{baseStatTotal}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-xl bg-zinc-800/50 p-4">
-              <h2 className="mb-3 text-lg font-semibold">Informations</h2>
-
-              <div className="space-y-2 text-zinc-300">
-                <p>Génération : {pokemon.generation}</p>
-                <p>Taux de capture : {pokemon.captureRate}</p>
-                <p>
-                  Évolutions :{" "}
-                  {pokemon.evolutions.length > 0
-                    ? pokemon.evolutions
-                        .map((evolutionId) => getPokemonById(evolutionId)?.name ?? `#${evolutionId}`)
-                        .join(", ")
-                    : "Aucune"}
-                </p>
+            {/* Colonne droite */}
+            <div className="rounded-3xl border border-zinc-800 bg-zinc-950 p-6">
+              <div className="flex items-center justify-center">
+                <img
+                  src={pokemon.spriteUrl}
+                  alt={pokemon.name}
+                  className="h-56 w-56 object-contain [image-rendering:pixelated]"
+                />
               </div>
             </div>
           </div>
