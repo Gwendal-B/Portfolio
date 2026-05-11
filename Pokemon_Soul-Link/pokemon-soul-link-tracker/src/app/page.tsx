@@ -61,11 +61,19 @@ const steps = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen px-6 py-14 text-white">
+    <main className="min-h-screen overflow-hidden px-6 py-14 text-white">
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute left-1/2 top-0 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute bottom-0 left-10 h-[360px] w-[360px] rounded-full bg-purple-500/10 blur-3xl" />
+        <div className="absolute bottom-20 right-10 h-[320px] w-[320px] rounded-full bg-emerald-500/10 blur-3xl" />
+      </div>
       <div className="mx-auto max-w-7xl">
         {/* Hero */}
-        <section className="rounded-3xl border border-zinc-800 bg-zinc-900/95 px-8 py-12 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] md:px-12 md:py-14">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
+        <section className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/90 px-8 py-12 shadow-2xl shadow-black/40 md:px-12 md:py-14">
+          <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 right-20 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent" />
+          <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
             <div>
               <p className="text-sm uppercase tracking-[0.28em] text-zinc-500">
                 PokéChallenge Tracker
@@ -148,13 +156,13 @@ export default function HomePage() {
             {gameCards.map((game) => (
               <article
                 key={game.title}
-                className="group rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-zinc-700 hover:bg-zinc-800/90"
+                className="group rounded-2xl border border-zinc-800 bg-zinc-900/95 p-6 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800/90 hover:shadow-2xl hover:shadow-black/30"
               >
-                <div className="mb-5 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950">
+                <div className="mb-5 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-inner">
                   <img
                     src={game.image}
                     alt={game.title}
-                    className="h-40 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
 
@@ -176,7 +184,7 @@ export default function HomePage() {
 
         {/* Modes */}
         <section className="mt-16 grid gap-6 lg:grid-cols-2">
-          <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+          <article className="rounded-2xl border border-zinc-800 bg-zinc-900/95 p-6 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800/90">
             <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">
               Mode
             </p>
@@ -187,7 +195,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+          <article className="rounded-2xl border border-zinc-800 bg-zinc-900/95 p-6 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800/90">
             <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">
               Mode
             </p>
@@ -207,9 +215,9 @@ export default function HomePage() {
             {featureCards.map((feature) => (
               <article
                 key={feature.title}
-                className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6"
+                className="rounded-2xl border border-zinc-800 bg-zinc-900/95 p-6 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-800/90"
               >
-                <h3 className="text-xl font-semibold">{feature.title}</h3>
+                <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-400">
                   {feature.description}
                 </p>

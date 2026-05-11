@@ -1,106 +1,138 @@
-
 # 🎮 PokéChallenge Tracker
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
-![Statut](https://img.shields.io/badge/statut-en%20développement-orange)
+![Version](https://img.shields.io/badge/version-3.0-blue)
+![Statut](https://img.shields.io/badge/statut-stable-green)
 ![Licence](https://img.shields.io/badge/licence-MIT-green)
 
-Une plateforme web combinant un site informatif et un tracker interactif dédié aux challenges Pokémon tels que le Nuzlocke, le Soul Link et le Randomizer.
+Une plateforme web combinant un site informatif et un tracker interactif dédié aux challenges Pokémon tels que le Nuzlocke et le Soul Link.
 
 ---
 
 ## 📖 Description
 
-**PokéChallenge Tracker** est un outil conçu pour les joueurs souhaitant suivre leurs aventures Pokémon tout en accédant à des ressources complètes sur les règles et mécaniques des challenges.
+**PokéChallenge Tracker** est un outil conçu pour les joueurs souhaitant suivre leurs aventures Pokémon tout en accédant à des ressources complètes sur les mécaniques des challenges.
 
 Le site permet :
 
-- d’explorer les règles des différents challenges ;
-- d’accéder à un Pokédex détaillé ;
-- de suivre une run grâce à un tracker interactif ;
-- de gérer des Soul Links entre joueurs.
+- de suivre une run Pokémon complète (captures, équipe, morts) ;
+- de gérer des Soul Links entre joueurs ;
+- d’explorer un Pokédex multi-générations ;
+- de personnaliser les règles de jeu ;
+- d’importer et exporter ses runs.
 
 ---
 
 ## ✨ Fonctionnalités
 
-### 📚 Partie informative
-
-- Guides sur les challenges :
-
-  - Nuzlocke
-  - Soul Link
-  - Randomizer
-
-- Explication des règles et variantes
-- Support progressif des générations
-
-### 📊 Pokédex
-
-- Statistiques des Pokémon
-- Types et talents
-- Taux de capture
-- Évolutions
-- Filtres avancés
-
-### 🧭 Tracker interactif
+### 📊 Tracker interactif
 
 - Création et gestion de runs
+- Mode **Nuzlocke** et **Soul Link**
 - Suivi des captures par zone
-- Gestion des statuts (vivant, mort, boîte, équipe)
-- Liaison des Pokémon en Soul Link
-- Journal de progression
-
-### ⚙️ Personnalisation
-
+- Gestion des statuts :
+  - Vivant
+  - Mort
+  - Inutilisable
+  - Boîte / Équipe
+- Liaison automatique et manuelle des Pokémon en Soul Link
 - Règles personnalisables
-- Presets de challenges
-- Sélection de la génération
+- Export / Import des runs en JSON
+
+---
+
+### 📚 Pokédex
+
+- Support des générations :
+  - Génération 1
+  - Génération 2
+  - Génération 3
+- Filtres avancés :
+  - Type
+  - Génération
+  - Recherche par nom
+- Fiches détaillées :
+  - Types
+  - Talents (selon le jeu)
+  - Statistiques de base
+  - Évolutions
+  - Taux de capture
+- Affichage des faiblesses
+- Sprites animés (.gif)
+
+---
+
+### 🎨 Interface
+
+- UI moderne avec Tailwind CSS
+- Home page avec sélection des jeux
+- Panels d’équipe dynamiques
+- Cartes Pokémon optimisées
+- Expérience fluide en local (offline-first)
 
 ---
 
 ## 🚀 Roadmap
 
-### 🟢 Version 1.0 – MVP
+### 🟢 Version 1.0 – MVP (terminée)
 
-- [x] Site informatif
-- [x] Support de la Génération 1
-- [x] Pokédex 1G
 - [x] Tracker local
 - [x] Mode Nuzlocke
 - [x] Mode Soul Link
-- [x] Sauvegarde via LocalStorage
+- [x] Pokédex Génération 1
+- [x] Sauvegarde LocalStorage
 
-### 🟡 Version 2.0
+---
 
-- [ ] Règles personnalisables
-- [ ] Gestion des routes
-- [ ] Automatisation du Soul Link
-- [ ] Ajout de la Génération 2
+### 🟡 Version 2.0 (terminée)
 
-### 🔵 Version 3.0
+- [x] Règles personnalisables
+- [x] Gestion des routes
+- [x] Automatisation du Soul Link
+- [x] Ajout de la Génération 2
+
+---
+
+### 🔵 Version 3.0 – Expérience complète offline (actuelle)
+
+- [x] Pokédex multi-générations (1 → 3)
+- [x] Fiches Pokémon détaillées
+- [x] Gestion dynamique des talents selon le jeu
+- [x] Sprites animés (.gif)
+- [x] Tracker complet et optimisé
+- [x] Import / Export JSON
+- [x] UI améliorée (Home, panels, cartes)
+- [x] Expérience utilisateur fluide et cohérente
+
+---
+
+### 🟣 Version 4.0 – Online & comptes (à venir)
 
 - [ ] Comptes utilisateurs
-- [ ] Sauvegarde en ligne
-- [ ] Ajout des Générations 3 et 4
+- [ ] Sauvegarde en ligne (Supabase)
+- [ ] Synchronisation multi-appareils
+- [ ] Partage de runs
 
-### 🟣 Version 4.0
+---
+
+### 🔴 Version 5.0 – Expérience avancée (future)
 
 - [ ] Multijoueur en temps réel
-- [ ] Partage de runs
-- [ ] Intégration Twitch et Discord
+- [ ] Intégration Twitch / Discord
+- [ ] Mode Randomizer complet
+- [ ] Variantes avancées (shiny, formes, etc.)
 
 ---
 
 ## 🛠️ Technologies
 
 | Domaine | Technologie |
-|---------|-------------|
-| Frontend | Next.js (React) |
+|--------|-------------|
+| Frontend | Next.js (App Router, React) |
 | Styling | Tailwind CSS |
-| Backend | Supabase / Node.js |
-| Base de données | PostgreSQL |
-| Données Pokémon | PokéAPI |
+| Stockage | LocalStorage |
+| Backend (prévu) | Supabase |
+| Base de données (prévue) | PostgreSQL |
+| Données Pokémon | Données locales (inspirées PokéAPI) |
 | Hébergement | Vercel |
 | Versioning | GitHub |
 
@@ -111,11 +143,13 @@ Le site permet :
 ```bash
 pokechallenge-tracker/
 ├── public/
+│   └── sprites/
 ├── src/
 │   ├── app/
 │   ├── components/
 │   ├── data/
 │   ├── lib/
+│   ├── domain/
 │   ├── types/
 │   └── utils/
 ├── README.md
@@ -124,7 +158,7 @@ pokechallenge-tracker/
 ⚙️ Installation
 
 # Cloner le dépôt
-git clone https://github.com/ton-utilisateur/pokechallenge-tracker.git
+git clone https://github.com/Gwendal-B/Portfolio/pokechallenge-tracker.git
 
 # Accéder au projet
 cd pokechallenge-tracker
